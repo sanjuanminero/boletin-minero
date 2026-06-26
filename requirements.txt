@@ -1,0 +1,10 @@
+# Núcleo (necesario)
+pyproj>=3.6        # conversión de coordenadas GK/POSGAR Faja 2 <-> WGS84
+pymupdf>=1.24      # lectura de PDF y diagnóstico texto/escaneado
+openpyxl>=3.1      # planilla Excel
+requests>=2.31     # descargas (boletín / catastro ArcGIS)
+
+# Opcional: solo si el boletín resulta ESCANEADO (OCR)
+# pytesseract>=0.3.10
+# pdf2image>=1.17
+#   + sistema: tesseract-ocr, tesseract-ocr-spa, poppler-utils

@@ -1,0 +1,116 @@
+"""
+Escaneo del Boletín Oficial de San Juan con foco minero -> modelo
+expediente -> eventos -> titulares (ver bsj/eventos.py).
+
+Para cada edición del rango:
+  1) baja el PDF (HTTP directo del mirror K2),
+  2) detecta la sección "EDICTOS DE MINAS" (texto nativo, sin OCR),
+  3) si la trae, OCR-ea SOLO esas páginas y corre el parser,
+  4) clasifica el tipo de evento y agrega todo por expediente,
+     colapsando las publicaciones repetidas de un mismo acto.
+
+Salidas en --salida:
+  modelo.json              -> visor (expedientes + eventos + titulares + calendario)
+  pedimentos.geojson       -> un polígono por expediente (mapa / QGIS)
+  pedimentos.xlsx          -> una fila por expediente
+  calendario_minero.json   -> días con edictos de minas
+
+Uso:
+    python escanear.py 2026-01-01 2026-12-31 --salida ./out_2026 --datum posgar94
+    python escanear.py 2026-06-01 2026-06-30 --sin-ocr      # solo calendario
+"""
+
+import argparse
+import os
+import json
+from datetime import datetime, timezone
+
+from bsj import boletin, parser as P, outputs, eventos, coords
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("desde"); ap.add_argument("hasta")
+    ap.add_argument("--salida", default="./out_mes")
+    ap.add_argument("--datum", default="posgar2007")  # SJ 2026: GK Faja 2 POSGAR 2007
+    ap.add_argument("--sin-ocr", action="store_true", help="solo detectar días con minas")
+    a = ap.parse_args()
+    os.makedirs(a.salida, exist_ok=True)
+    pdf_dir = os.path.join(a.salida, "pdf"); os.makedirs(pdf_dir, exist_ok=True)
+    ocr_dir = os.path.join(a.salida, "ocr"); os.makedirs(ocr_dir, exist_ok=True)
+
+    ediciones = boletin.listar_ediciones(desde=a.desde, hasta=a.hasta)
+    print(f"Ediciones en el rango: {len(ediciones)}")
+
+    calendario, todos = [], []
+    for e in sorted(ediciones, key=lambda x: x["fecha"]):
+        url, nombre, pags = boletin.link_descarga(e["item_url"])
+        if not url:
+            print(f"  {e['fecha']}: sin PDF"); continue
+        destino = os.path.join(pdf_dir, f"{e['fecha']}_{e['item_id']}.pdf")
+        if not os.path.exists(destino):
+            try:
+                boletin.bajar_pdf(url, destino)
+            except Exception as ex:
+                print(f"  {e['fecha']}: error al bajar ({ex})"); continue
+        texto = boletin.extraer_texto(destino)
+        hay = boletin.tiene_edictos_de_minas(texto)
+        fila = {"fecha": e["fecha"], "item_id": e["item_id"], "paginas": pags,
+                "minas": hay, "eventos": 0}
+        print(f"  {e['fecha']}  ({pags}p)  minas={'SÍ' if hay else 'no'}")
+
+        if hay and not a.sin_ocr:
+            pgs = boletin.paginas_de_minas(destino)
+            # caché de OCR: el texto OCR es determinístico, así que se guarda y reusa
+            # (permite iterar el parser sin re-OCR-ear, que es lo lento).
+            cache = os.path.join(ocr_dir, f"{e['fecha']}_{e['item_id']}.txt")
+            if os.path.exists(cache):
+                txt_minas = open(cache, encoding="utf-8").read()
+                print(f"      OCR (caché) páginas: {[x+1 for x in pgs]}")
+            else:
+                print(f"      OCR páginas de minas: {[x+1 for x in pgs]}")
+                txt_minas = boletin.extraer_texto_ocr(destino, solo_paginas=pgs)
+                with open(cache, "w", encoding="utf-8") as fh:
+                    fh.write(txt_minas)
+            peds = P.parsear_boletin(txt_minas)
+            fila["eventos"] = len(peds)
+            for p in peds:
+                p.crudo = f"[{e['fecha']}] " + p.crudo
+                todos.append((e["fecha"], p))
+                print(f"        - {eventos.ETIQUETAS.get(p.tipo_evento, p.tipo_evento)} | "
+                      f"{p.expediente or '(s/expte)'} | {p.titular or '?'} | "
+                      f"{p.mina or '-'} | {p.departamento or '?'} | {len(p.vertices)} vért.")
+        calendario.append(fila)
+
+    # agregación al modelo
+    expedientes = eventos.agregar_expedientes(todos, a.datum, coords)
+
+    meta = {
+        "generado": datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds"),
+        "desde": a.desde, "hasta": a.hasta, "datum": a.datum,
+        "n_ediciones": len(ediciones),
+        "n_ediciones_con_minas": sum(1 for c in calendario if c["minas"]),
+        "n_expedientes": len(expedientes),
+        "calendario": calendario,
+        "tipos": {k: v for k, v in eventos.ETIQUETAS.items()},
+    }
+
+    with open(os.path.join(a.salida, "calendario_minero.json"), "w", encoding="utf-8") as f:
+        json.dump(calendario, f, ensure_ascii=False, indent=2)
+    outputs.guardar_modelo_json(expedientes, os.path.join(a.salida, "modelo.json"), meta)
+    outputs.guardar_modelo_geojson(expedientes, os.path.join(a.salida, "pedimentos.geojson"))
+    outputs.guardar_modelo_xlsx(expedientes, os.path.join(a.salida, "pedimentos.xlsx"))
+
+    # resumen
+    dias = [c["fecha"] for c in calendario if c["minas"]]
+    print(f"\nResumen: {len(calendario)} ediciones, {len(dias)} con edictos de minas, "
+          f"{len(expedientes)} expedientes.")
+    porestado = {}
+    for ex in expedientes:
+        porestado[ex["estado_label"]] = porestado.get(ex["estado_label"], 0) + 1
+    for k, v in sorted(porestado.items(), key=lambda x: -x[1]):
+        print(f"  {v:3d}  {k}")
+
+
+if __name__ == "__main__":
+    main()

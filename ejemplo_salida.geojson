@@ -1,0 +1,75 @@
+{
+  "type": "FeatureCollection",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "expediente": "414-0123-2026",
+        "titular": "MINERA ANDINA DEL SOL S.A",
+        "mineral": "oro",
+        "departamento": "Iglesia",
+        "superficie_ha": 3500.0,
+        "confianza": "alta",
+        "datum": "posgar2007",
+        "fecha_boletin": "2026-06-23",
+        "centroide_lat": -30.330106,
+        "centroide_lon": -69.779897
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -69.83150500146581,
+              -30.284698118839657
+            ],
+            [
+              -69.72757468998029,
+              -30.28531703063895
+            ],
+            [
+              -69.7282418108409,
+              -30.375515192240957
+            ],
+            [
+              -69.83226739199566,
+              -30.37489405247381
+            ],
+            [
+              -69.83150500146581,
+              -30.284698118839657
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "expediente": "414-0456-2026",
+        "titular": "DEL VALLE EXPLORACIONES SRL",
+        "mineral": "cobre",
+        "departamento": "Calingasta",
+        "superficie_ha": null,
+        "confianza": "alta",
+        "datum": "posgar2007",
+        "fecha_boletin": "2026-06-23",
+        "centroide_lat": -31.820617,
+        "centroide_lon": -68.89438
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.89437965812975,
+          -31.820616674381334
+        ]
+      }
+    }
+  ]
+}

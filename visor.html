@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Boletín Minero San Juan — Visor de expedientes</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a21; --panel2:#1e222b; --line:#2a2f3a;
+    --txt:#e6e8ec; --muted:#9aa3b2; --accent:#F3C323;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;font-family:system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt)}
+  #app{display:flex;flex-direction:column;height:100vh}
+  header{display:flex;align-items:center;gap:14px;padding:10px 14px;background:var(--panel);border-bottom:1px solid var(--line)}
+  header h1{font-size:15px;font-weight:600;margin:0}
+  header h1 b{color:var(--accent)}
+  .stats{display:flex;gap:14px;margin-left:auto;font-size:12px;color:var(--muted)}
+  .stats b{color:var(--txt);font-weight:600}
+  .btn{background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:6px 10px;border-radius:7px;cursor:pointer;font-size:12px}
+  .btn:hover{border-color:var(--accent)}
+  .btn.on{background:var(--accent);color:#1a1a1a;border-color:var(--accent);font-weight:600}
+  .toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:8px 14px;background:var(--panel);border-bottom:1px solid var(--line)}
+  .toolbar label{font-size:11px;color:var(--muted);margin-right:4px}
+  select,input[type=text]{background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:5px 8px;border-radius:7px;font-size:12px}
+  input[type=text]{min-width:180px}
+  .tipos{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:11px;padding:4px 8px;border-radius:20px;border:1px solid var(--line);background:var(--panel2);cursor:pointer;user-select:none}
+  .chip .dot{width:9px;height:9px;border-radius:50%}
+  .chip.off{opacity:.38}
+  main{flex:1;display:flex;min-height:0}
+  #side{width:380px;max-width:42vw;overflow:auto;border-right:1px solid var(--line);background:var(--panel)}
+  #map{flex:1}
+  #resumen{flex:1;overflow:auto;padding:18px;display:none}
+  .card{padding:11px 13px;border-bottom:1px solid var(--line);cursor:pointer}
+  .card:hover{background:var(--panel2)}
+  .card.sel{background:var(--panel2);box-shadow:inset 3px 0 0 var(--accent)}
+  .card .top{display:flex;align-items:center;gap:8px}
+  .card .exp{font-size:13px;font-weight:600}
+  .card .estado{margin-left:auto;font-size:10px;padding:2px 8px;border-radius:20px;color:#10131a;font-weight:600;white-space:nowrap}
+  .card .cat{font-size:9px;padding:1px 6px;border-radius:20px;border:1px solid #1a7a3a;color:#7fe0a0;white-space:nowrap;margin-left:6px}
+  .card .cat.media{border-color:#b08900;color:#e7c84a}
+  .card .cat.baja{border-color:#7a5a1a;color:#caa860}
+  .fuente{font-size:9px;padding:0 5px;border-radius:10px;border:1px solid var(--line);color:var(--muted)}
+  .fuente.f-catastro{color:#7fe0a0;border-color:#1a7a3a}
+  .fuente.f-edicto{color:#8fc0ff;border-color:#2a5a8a}
+  .card .sub{font-size:12px;color:var(--muted);margin-top:3px}
+  .card .sub .k{color:var(--txt)}
+  .tl{margin-top:8px;display:flex;flex-direction:column;gap:4px}
+  .tl .ev{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted)}
+  .tl .ev .dot{width:8px;height:8px;border-radius:50%;flex:none}
+  .tl .ev .ap{margin-left:auto;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:0 6px;font-size:10px}
+  .empty{padding:30px;color:var(--muted);font-size:13px;line-height:1.6}
+  .legend-note{font-size:11px;color:var(--muted)}
+  /* resumen anual */
+  .rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:22px}
+  .rcard{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px}
+  .rcard .n{font-size:24px;font-weight:700}
+  .rcard .l{font-size:11px;color:var(--muted);margin-top:2px}
+  .rcard .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+  h2{font-size:14px;font-weight:600;margin:0 0 10px}
+  .bars{display:flex;align-items:flex-end;gap:8px;height:170px;padding:10px;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+  .bar{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px;height:100%}
+  .bar .col{width:70%;background:var(--accent);border-radius:4px 4px 0 0;min-height:2px;transition:height .2s}
+  .bar .v{font-size:11px;color:var(--txt)}
+  .bar .m{font-size:10px;color:var(--muted)}
+  .leaflet-popup-content{font-size:12px;line-height:1.5}
+  .pp b{color:#1a1a1a}
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1><b>Boletín Minero</b> San Juan · expedientes</h1>
+    <button class="btn" id="loadBtn">Cargar modelo.json</button>
+    <input type="file" id="file" accept="application/json,.json" style="display:none"/>
+    <div class="stats" id="stats"></div>
+  </header>
+  <div class="toolbar">
+    <span><label>Año</label><select id="anio"></select></span>
+    <span><label>Mes</label><select id="mes"></select></span>
+    <span><label>Buscar</label><input type="text" id="q" placeholder="titular, expediente o mina"/></span>
+    <span><label><input type="checkbox" id="soloCat"/> solo c/ catastro</label></span>
+    <div class="tipos" id="tipos"></div>
+    <span style="margin-left:auto">
+      <button class="btn on" id="vMapa">Mapa</button>
+      <button class="btn" id="vResumen">Resumen anual</button>
+    </span>
+  </div>
+  <main>
+    <div id="side"><div class="empty" id="sideEmpty">Cargá <b>modelo.json</b> (botón arriba) o dejá el visor junto a la carpeta <code>out_2026/</code>.</div></div>
+    <div id="map"></div>
+    <div id="resumen"></div>
+  </main>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// ---- paleta por tipo de evento (estado) ----
+const COLORS = {
+  edicto_mensura:"#F3C323", manifestacion_descubrimiento:"#1D9E75",
+  cateo_exploracion:"#378ADD", registro_mina:"#7F77DD",
+  servidumbre:"#5DCAA5", transferencia:"#D4537E",
+  vacancia:"#D85A30", abandono:"#993C1D", caducidad:"#D85A30",
+  otro:"#888780"
+};
+const MESES = ["01","02","03","04","05","06","07","08","09","10","11","12"];
+const MESNOM = {"01":"Ene","02":"Feb","03":"Mar","04":"Abr","05":"May","06":"Jun","07":"Jul","08":"Ago","09":"Sep","10":"Oct","11":"Nov","12":"Dic"};
+
+let MODELO=null, TIPOS={}, layer=null, map=null, selKey=null;
+const tipoOn = {};  // clave -> bool
+
+// preferencia catastro (oficial) sobre boletín (OCR)
+function cat(e){return e.catastro||null;}
+function ringDe(e){ const c=cat(e);
+  if(c&&c.poligono_wgs84&&c.poligono_wgs84.length>=3) return c.poligono_wgs84;
+  return (e.poligono_wgs84&&e.poligono_wgs84.length>=3)?e.poligono_wgs84:null; }
+function centroDe(e){ const c=cat(e); return (c&&c.centroide)||e.centroide||null; }
+function titularDe(e){ const c=cat(e); return (c&&c.titular)||e.titular_actual||'—'; }
+function titularFuente(e){ const c=cat(e); if(c&&c.titular) return 'catastro'; if(e.titular_actual) return 'edicto'; return null; }
+function minaDe(e){ const c=cat(e); return (c&&c.denominacion)||e.mina||''; }
+function mineralDe(e){ const c=cat(e); return (c&&c.minerales)||((e.minerales||[]).join(', '))||''; }
+
+// ---- Catastro Minero de San Juan (GeoJSON local, bajado por WFS, EPSG:5344→4326) ----
+// Se baja con: python -c "from bsj import catastro; catastro.descargar_padron('./out_2026/catastro')"
+const CAT_DIR = 'out_2026/catastro/';
+const CAT_LAYERS = [
+  {k:'minas',           l:'Minas (padrón)',                    color:'#b00020'},
+  {k:'manifestaciones', l:'Manifestaciones de descubrimiento', color:'#0F6E56'},
+  {k:'permisos',        l:'Permisos de exploración (cateos)',  color:'#185FA5'},
+  {k:'canteras',        l:'Canteras',                          color:'#7F77DD'},
+  {k:'solicitudes',     l:'Solicitudes',                       color:'#993556'},
+  {k:'servidumbres',    l:'Servidumbres',                      color:'#993C1D'},
+  {k:'limite',          l:'Límite provincial',                 color:'#888780'},
+];
+const catLayers = {};
+let catRenderer = null;
+
+function initMap(){
+  if(map) return;
+  map = L.map('map',{zoomControl:true,preferCanvas:true}).setView([-31.0,-69.0],7);
+  // mapas base
+  const base_osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    {maxZoom:19, attribution:'© OpenStreetMap'});
+  const base_sat = L.tileLayer(
+    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    {maxZoom:19, attribution:'Esri World Imagery'});
+  const base_topo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+    {maxZoom:17, subdomains:'abc', attribution:'© OpenTopoMap (CC-BY-SA)'});
+  base_osm.addTo(map);
+  const baseLayers = {'Calles (OSM)':base_osm, 'Satélite':base_sat, 'Terreno':base_topo};
+  catRenderer = L.canvas({padding:0.5});
+  const overlays={};
+  CAT_LAYERS.forEach(c=>{
+    const dash = c.k==='limite' ? '4 3' : null;
+    const lyr=L.geoJSON(null,{
+      renderer:catRenderer,
+      style:()=>({color:c.color,weight:1,fillColor:c.color,fillOpacity:c.k==='limite'?0:0.10,dashArray:dash}),
+      onEachFeature:(f,l)=>l.bindPopup(popupCatastro(f,c),{maxWidth:300}),
+    });
+    lyr._file=CAT_DIR+'catastro_'+c.k+'.geojson'; lyr._loaded=false;
+    catLayers[c.k]=lyr;
+    overlays['<span style="color:'+c.color+'">●</span> <span style="color:#1a1a1a">'+c.l+'</span>']=lyr;
+  });
+  L.control.layers(baseLayers,overlays,{collapsed:true,position:'topright'}).addTo(map);
+  map.on('overlayadd', async ev=>{
+    const lyr=ev.layer;
+    if(lyr && lyr._file && !lyr._loaded){
+      lyr._loaded=true;
+      try{ const r=await fetch(lyr._file); if(!r.ok) throw new Error('HTTP '+r.status);
+           lyr.addData(await r.json()); }
+      catch(e){ lyr._loaded=false; console.warn('No se pudo cargar capa catastro:',lyr._file,e);
+                alert('No se pudo cargar la capa del catastro ('+lyr._file+'). Bajala con descargar_padron y serví el visor por HTTP.'); }
+    }
+  });
+}
+
+function popupCatastro(f,c){
+  const p=f.properties||{};
+  const exp=p.expediente||p.expte_siged||'';
+  const den=p.denominacion||p.nombre_mina||'';
+  const tit=p.titular||'';
+  const min=p.minerales||p.tipo_de_servidumbre||p.tipoYacimiento||'';
+  const sup=p.sup_reg_ha!=null?(Math.round(p.sup_reg_ha*100)/100+' ha'):'';
+  const pert=p.cantidadPertenencias?(' · '+p.cantidadPertenencias+' pert.'):'';
+  return `<div class="pp"><span style="color:#777;font-size:10px">catastro · ${c.l}</span><br>
+    <b>${den||'(s/denominación)'}</b>${tit?'<br>'+tit:''}
+    ${exp?'<br><span style="color:#555">'+exp+'</span>':''}
+    ${min?'<br>'+min:''}${sup?'<br>'+sup+pert:''}
+    ${p.departamento?'<br><span style="color:#777">'+p.departamento+'</span>':''}</div>`;
+}
+
+function setModelo(d){
+  MODELO=d; TIPOS=(d.meta&&d.meta.tipos)||{};
+  Object.keys(TIPOS).forEach(k=>tipoOn[k]=true);
+  buildToolbar();
+  initMap();
+  render();
+}
+
+function buildToolbar(){
+  // años
+  const anios = new Set(); const meses=new Set();
+  MODELO.expedientes.forEach(e=>{(e.anios||[]).forEach(a=>anios.add(a));(e.meses||[]).forEach(m=>meses.add(m));});
+  const aSel=document.getElementById('anio'); aSel.innerHTML='';
+  aSel.appendChild(opt('todos','Todos'));
+  [...anios].sort().forEach(a=>aSel.appendChild(opt(a,a)));
+  buildMeses();
+  // tipos como chips
+  const cont=document.getElementById('tipos'); cont.innerHTML='';
+  Object.entries(TIPOS).forEach(([k,lbl])=>{
+    const c=document.createElement('span'); c.className='chip'; c.dataset.k=k;
+    c.innerHTML=`<span class="dot" style="background:${COLORS[k]||'#888'}"></span>${lbl}`;
+    c.onclick=()=>{tipoOn[k]=!tipoOn[k]; c.classList.toggle('off',!tipoOn[k]); render();};
+    cont.appendChild(c);
+  });
+}
+function buildMeses(){
+  const mSel=document.getElementById('mes'); mSel.innerHTML='';
+  mSel.appendChild(opt('todos','Todos'));
+  const anio=document.getElementById('anio').value;
+  const present=new Set();
+  MODELO.expedientes.forEach(e=>(e.meses||[]).forEach(m=>{ if(anio==='todos'||m.startsWith(anio)) present.add(m.slice(5)); }));
+  MESES.filter(m=>present.has(m)).forEach(m=>mSel.appendChild(opt(m,MESNOM[m])));
+}
+function opt(v,t){const o=document.createElement('option');o.value=v;o.textContent=t;return o;}
+
+function filtros(){
+  return {
+    anio:document.getElementById('anio').value,
+    mes:document.getElementById('mes').value,
+    q:document.getElementById('q').value.trim().toLowerCase(),
+    soloCat:document.getElementById('soloCat').checked
+  };
+}
+function matchMes(e,f){
+  if(f.anio==='todos' && f.mes==='todos') return true;
+  return (e.meses||[]).some(m=>{
+    const okA = f.anio==='todos' || m.startsWith(f.anio);
+    const okM = f.mes==='todos' || m.slice(5)===f.mes;
+    return okA && okM;
+  });
+}
+function matchTipo(e){ return (e.eventos||[]).some(ev=>tipoOn[ev.tipo]); }
+function deburr(s){return (s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();}
+function matchQ(e,f){
+  if(!f.q) return true;
+  const c=cat(e);
+  const hay=deburr([e.expediente,e.titular_actual,e.mina,(e.minerales||[]).join(' '),e.departamento,
+    c&&c.titular,c&&c.denominacion,c&&c.expediente,c&&c.minerales]
+    .filter(Boolean).join(' '));
+  return hay.includes(deburr(f.q));
+}
+function visibles(){
+  const f=filtros();
+  return MODELO.expedientes.filter(e=>matchMes(e,f)&&matchTipo(e)&&matchQ(e,f)&&(!f.soloCat||cat(e)));
+}
+
+function render(){
+  if(!MODELO) return;
+  const exps=visibles();
+  renderStats(exps);
+  renderSide(exps);
+  renderMap(exps);
+  if(document.getElementById('resumen').style.display!=='none') renderResumen(exps);
+}
+
+function renderStats(exps){
+  const m=MODELO.meta||{};
+  const apar=exps.reduce((s,e)=>s+(e.eventos||[]).reduce((a,ev)=>a+ev.apariciones,0),0);
+  document.getElementById('stats').innerHTML=
+    `<span><b>${exps.length}</b> expedientes</span>`+
+    `<span><b>${apar}</b> publicaciones</span>`+
+    `<span>rango <b>${m.desde||'?'}</b>→<b>${m.hasta||'?'}</b></span>`+
+    `<span>datum <b>${m.datum||'?'}</b></span>`;
+}
+
+function renderSide(exps){
+  const side=document.getElementById('side'); side.innerHTML='';
+  if(!exps.length){side.innerHTML='<div class="empty">Sin expedientes para este filtro.</div>';return;}
+  exps.forEach(e=>{
+    const col=COLORS[e.estado]||'#888';
+    const card=document.createElement('div'); card.className='card'+(e.clave===selKey?' sel':'');
+    const tl=(e.eventos||[]).map(ev=>{
+      const c=COLORS[ev.tipo]||'#888';
+      const fechas=ev.fechas.map(f=>f.slice(5)).join(', ');
+      return `<div class="ev"><span class="dot" style="background:${c}"></span>
+        <span><span style="color:var(--txt)">${ev.tipo_label}</span> · ${fechas}</span>
+        <span class="ap">×${ev.apariciones}</span></div>`;
+    }).join('');
+    const c=cat(e);
+    const badge=c?`<span class="cat ${c.match_confianza}" title="match por ${c.match_metodo} (${c.match_confianza})">✓ catastro</span>`:'';
+    const mina=minaDe(e), min=mineralDe(e);
+    const extra=c?`${c.sup_reg_ha!=null?Math.round(c.sup_reg_ha*100)/100+' ha':''}${c.cantidad_pertenencias?' · '+c.cantidad_pertenencias+' pert.':''}`
+                 :`${e.n_vertices?e.n_vertices+' vért. (aprox.)':''}`;
+    card.innerHTML=`
+      <div class="top">
+        <span class="exp">${e.expediente||'(sin expediente)'}</span>
+        ${badge}
+        <span class="estado" style="background:${col}">${e.estado_label}</span>
+      </div>
+      <div class="sub"><span class="k">${titularDe(e)}</span>${(()=>{const f=titularFuente(e);return f?` <span class="fuente f-${f}">${f}</span>`:'';})()}${mina?` · mina ${mina}`:''}</div>
+      <div class="sub">${(c&&c.departamento)||e.departamento||'?'}${min?' · '+min:''}${extra?' · '+extra:''}</div>
+      <div class="tl">${tl}</div>`;
+    card.onclick=()=>{selKey=e.clave; render(); focus(e);};
+    side.appendChild(card);
+  });
+}
+
+function renderMap(exps){
+  initMap();
+  if(layer) layer.remove();
+  layer=L.layerGroup().addTo(map);
+  const bounds=[];
+  exps.forEach(e=>{
+    const col=COLORS[e.estado]||'#888';
+    const oficial=!!(cat(e)&&cat(e).poligono_wgs84); // geometría del catastro
+    const r=ringDe(e), cen=centroDe(e);
+    let lyr=null;
+    if(r){
+      const latlng=r.map(([lon,lat])=>[lat,lon]);
+      // oficial: línea sólida llena; OCR aproximado: punteado y más tenue
+      lyr=L.polygon(latlng, oficial
+        ? {color:col,weight:2,fillColor:col,fillOpacity:.30}
+        : {color:col,weight:1.5,dashArray:'4 3',fillColor:col,fillOpacity:.12});
+      latlng.forEach(p=>bounds.push(p));
+    } else if(cen){
+      lyr=L.circleMarker([cen[0],cen[1]],{radius:7,color:col,fillColor:col,fillOpacity:.7,weight:2});
+      bounds.push([cen[0],cen[1]]);
+    }
+    if(lyr){
+      lyr.bindPopup(popup(e),{maxWidth:320});
+      lyr.on('click',()=>{selKey=e.clave; renderSide(visibles());});
+      lyr.addTo(layer);
+      e.__lyr=lyr;
+    }
+  });
+  if(bounds.length) map.fitBounds(bounds,{padding:[30,30],maxZoom:11});
+}
+function popup(e){
+  const c=cat(e);
+  const evs=(e.eventos||[]).map(ev=>`• ${ev.tipo_label} (×${ev.apariciones}): ${ev.fechas.join(', ')}`).join('<br>');
+  const min=mineralDe(e), mina=minaDe(e);
+  const catline=c?`<br><span style="color:#1a7a3a;font-size:10px">✓ catastro (${c.match_metodo}) · ${c.expediente||''}`+
+    `${c.sup_reg_ha!=null?' · '+Math.round(c.sup_reg_ha*100)/100+' ha':''}${c.cantidad_pertenencias?' · '+c.cantidad_pertenencias+' pert.':''}</span>`
+    :`<br><span style="color:#999;font-size:10px">sin match en catastro · geometría aproximada (OCR)</span>`;
+  const fte=titularFuente(e);
+  return `<div class="pp"><b>${e.expediente||'(sin expediente)'}</b><br>
+    ${titularDe(e)}${fte?` <span style="color:#777;font-size:10px">(${fte})</span>`:''}${mina?` · mina ${mina}`:''}<br>
+    <span style="color:#555">${(c&&c.departamento)||e.departamento||''} · ${e.estado_label}${min?' · '+min:''}</span>
+    ${catline}<br>${evs}</div>`;
+}
+function focus(e){
+  initMap();
+  const r=ringDe(e), cen=centroDe(e);
+  if(r){ const ll=r.map(([lon,lat])=>[lat,lon]); map.fitBounds(ll,{maxZoom:14,padding:[40,40]}); }
+  else if(cen){ map.setView([cen[0],cen[1]],14); }
+  if(e.__lyr) e.__lyr.openPopup();
+}
+
+function renderResumen(exps){
+  const cont=document.getElementById('resumen');
+  const anio=document.getElementById('anio').value;
+  // por estado
+  const porEstado={};
+  exps.forEach(e=>{porEstado[e.estado]=(porEstado[e.estado]||0)+1;});
+  const cards=Object.entries(porEstado).sort((a,b)=>b[1]-a[1]).map(([k,n])=>
+    `<div class="rcard"><div class="n">${n}</div><div class="l"><span class="dot" style="background:${COLORS[k]||'#888'}"></span>${TIPOS[k]||k}</div></div>`).join('');
+  // publicaciones por mes
+  const porMes={}; MESES.forEach(m=>porMes[m]=0);
+  exps.forEach(e=>(e.eventos||[]).forEach(ev=>ev.fechas.forEach(f=>{
+    if(anio==='todos'||f.startsWith(anio)) porMes[f.slice(5,7)]++;
+  })));
+  const max=Math.max(1,...Object.values(porMes));
+  const bars=MESES.map(m=>`<div class="bar"><div class="v">${porMes[m]||''}</div>
+    <div class="col" style="height:${porMes[m]/max*100}%;background:${porMes[m]?'var(--accent)':'#2a2f3a'}"></div>
+    <div class="m">${MESNOM[m]}</div></div>`).join('');
+  const tot=exps.reduce((s,e)=>s+(e.eventos||[]).reduce((a,ev)=>a+ev.apariciones,0),0);
+  cont.innerHTML=`
+    <h2>Resumen ${anio==='todos'?'(todos los años)':anio} — ${exps.length} expedientes · ${tot} publicaciones</h2>
+    <div class="rgrid">${cards||'<div class="empty">sin datos</div>'}</div>
+    <h2>Publicaciones por mes</h2>
+    <div class="bars">${bars}</div>
+    <p class="legend-note">Cada barra cuenta apariciones de edictos (un acto puede publicarse varias veces: mensura/manifestación 3×, cateo 2×). El estado es el tipo del último evento del expediente.</p>`;
+}
+
+// ---- toggles de vista ----
+function showView(v){
+  const mapa=v==='mapa';
+  document.getElementById('map').style.display=mapa?'block':'none';
+  document.getElementById('resumen').style.display=mapa?'none':'block';
+  document.getElementById('vMapa').classList.toggle('on',mapa);
+  document.getElementById('vResumen').classList.toggle('on',!mapa);
+  if(mapa){initMap();setTimeout(()=>map.invalidateSize(),50);render();}
+  else renderResumen(visibles());
+}
+
+// ---- eventos UI ----
+document.getElementById('loadBtn').onclick=()=>document.getElementById('file').click();
+document.getElementById('file').onchange=ev=>{
+  const f=ev.target.files[0]; if(!f) return;
+  const r=new FileReader(); r.onload=()=>{try{setModelo(JSON.parse(r.result));}catch(e){alert('JSON inválido: '+e);}}; r.readAsText(f);
+};
+document.getElementById('anio').onchange=()=>{buildMeses();render();};
+document.getElementById('mes').onchange=render;
+document.getElementById('q').oninput=render;
+document.getElementById('soloCat').onchange=render;
+document.getElementById('vMapa').onclick=()=>showView('mapa');
+document.getElementById('vResumen').onclick=()=>showView('resumen');
+
+// ---- autocarga (si el navegador lo permite bajo file://) ----
+(async()=>{
+  for(const p of ['out_2026/modelo.json','out_2027/modelo.json','out_2025/modelo.json','modelo.json']){
+    try{const r=await fetch(p); if(r.ok){setModelo(await r.json()); document.getElementById('sideEmpty')?.remove(); return;}}catch(e){}
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+# Cachés y datos pesados (no se necesitan para el sitio web)
+out_*/pdf/
+out_*/ocr/
+logs/
+*.log
+
+# Python
+__pycache__/
+*.pyc
+
+# OCR: modelo de idioma (se baja aparte; ver CLAUDE.md)
+tessdata/
+
+# Temporales / diagnósticos
+_diag_*.py
+scratchpad/
+
+# Salidas viejas (formato superado)
+out_junio/
+
+# Sistema
+Thumbs.db
+.DS_Store
