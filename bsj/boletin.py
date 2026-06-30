@@ -52,7 +52,7 @@ def _get(url):
     return r.text
 
 
-def listar_ediciones(desde=None, hasta=None, max_paginas=25):
+def listar_ediciones(desde=None, hasta=None, max_paginas=200):
     """
     Lista ediciones del Boletín. desde/hasta: 'YYYY-MM-DD' (inclusive) para filtrar.
     Devuelve [{'fecha':'YYYY-MM-DD','item_url':..,'item_id':..}], más nuevas primero.

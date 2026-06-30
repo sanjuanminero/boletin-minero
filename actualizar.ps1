@@ -9,9 +9,9 @@ $proj = 'C:\Users\DAMS-04\OneDrive\Escritorio\Boletin Minero'
 $py   = 'C:\Users\DAMS-04\AppData\Local\Programs\Python\Python312\python.exe'
 Set-Location $proj
 
-$year = (Get-Date).Year
-$hoy  = (Get-Date -Format 'yyyy-MM-dd')
-$out  = "./out_$year"
+$desde = '2024-01-01'        # base histórica unificada (2024 -> hoy)
+$hoy   = (Get-Date -Format 'yyyy-MM-dd')
+$out   = './out_hist'
 
 $logdir = Join-Path $proj 'logs'
 New-Item -ItemType Directory -Force $logdir | Out-Null
@@ -23,10 +23,10 @@ function Log($m) {
   Add-Content -Path $log -Value $line -Encoding utf8
 }
 
-Log "=== Actualización Boletín Minero $year (hasta $hoy) ==="
+Log "=== Actualización Boletín Minero ($desde -> $hoy) ==="
 
 Log "1/4 escanear (descarga + OCR incremental + modelo)..."
-& $py escanear.py "$year-01-01" $hoy --salida $out --datum posgar2007 *>> $log
+& $py escanear.py $desde $hoy --salida $out --datum posgar2007 *>> $log
 
 Log "2/4 reproyectar + limpieza de geometría (POSGAR 2007)..."
 & $py reproyectar.py $out --datum posgar2007 *>> $log

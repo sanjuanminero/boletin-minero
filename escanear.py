@@ -25,6 +25,7 @@ import os
 import json
 from datetime import datetime, timezone
 
+import fitz  # PyMuPDF (para contar páginas de PDFs cacheados)
 from bsj import boletin, parser as P, outputs, eventos, coords
 
 
@@ -44,16 +45,23 @@ def main():
 
     calendario, todos = [], []
     for e in sorted(ediciones, key=lambda x: x["fecha"]):
-        url, nombre, pags = boletin.link_descarga(e["item_url"])
-        if not url:
-            print(f"  {e['fecha']}: sin PDF"); continue
         destino = os.path.join(pdf_dir, f"{e['fecha']}_{e['item_id']}.pdf")
+        pags = None
         if not os.path.exists(destino):
+            # solo consultamos el item (HTTP) si hay que bajar el PDF
+            url, nombre, pags = boletin.link_descarga(e["item_url"])
+            if not url:
+                print(f"  {e['fecha']}: sin PDF"); continue
             try:
                 boletin.bajar_pdf(url, destino)
             except Exception as ex:
                 print(f"  {e['fecha']}: error al bajar ({ex})"); continue
         texto = boletin.extraer_texto(destino)
+        if pags is None:  # PDF cacheado: las páginas salen del propio archivo
+            try:
+                _d = fitz.open(destino); pags = _d.page_count; _d.close()
+            except Exception:
+                pags = None
         hay = boletin.tiene_edictos_de_minas(texto)
         fila = {"fecha": e["fecha"], "item_id": e["item_id"], "paginas": pags,
                 "minas": hay, "eventos": 0}

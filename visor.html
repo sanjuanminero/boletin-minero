@@ -124,7 +124,7 @@ function mineralDe(e){ const c=cat(e); return (c&&c.minerales)||((e.minerales||[
 
 // ---- Catastro Minero de San Juan (GeoJSON local, bajado por WFS, EPSG:5344→4326) ----
 // Se baja con: python -c "from bsj import catastro; catastro.descargar_padron('./out_2026/catastro')"
-const CAT_DIR = 'out_2026/catastro/';
+const CAT_DIR = 'out_hist/catastro/';
 const CAT_LAYERS = [
   {k:'minas',           l:'Minas (padrón)',                    color:'#b00020'},
   {k:'manifestaciones', l:'Manifestaciones de descubrimiento', color:'#0F6E56'},
@@ -411,7 +411,7 @@ document.getElementById('vResumen').onclick=()=>showView('resumen');
 
 // ---- autocarga (si el navegador lo permite bajo file://) ----
 (async()=>{
-  for(const p of ['out_2026/modelo.json','out_2027/modelo.json','out_2025/modelo.json','modelo.json']){
+  for(const p of ['out_hist/modelo.json','out_2026/modelo.json','modelo.json']){
     try{const r=await fetch(p); if(r.ok){setModelo(await r.json()); document.getElementById('sideEmpty')?.remove(); return;}}catch(e){}
   }
 })();
