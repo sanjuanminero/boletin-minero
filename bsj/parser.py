@@ -149,7 +149,9 @@ def trocear_avisos(texto: str):
     (MENSURA / MANIFESTACIÓN / CATEO / EXPLORACIÓN / SERVIDUMBRE), conservando el
     encabezado con su bloque (split por lookahead). NO se fragmenta por párrafos:
     eso dispersaba los vértices de un mismo edicto en bloques distintos."""
-    partes = [p for p in re.split(r"(?im)(?=^\s*EDICTO\s+DE\b)", texto) if p.strip()]
+    # OJO: el OCR espacia las letras del encabezado ("EDICTO D E CATEO"), por eso
+    # se tolera 'D\s*E' — si no, varios edictos quedan pegados en un solo bloque.
+    partes = [p for p in re.split(r"(?im)(?=^\s*EDICTO\s+D\s*E\b)", texto) if p.strip()]
     if len(partes) >= 2:
         return partes
     # un solo edicto (o sin encabezados claros): tratar todo como un bloque
@@ -195,15 +197,22 @@ def parsear_pedimento(bloque: str) -> Pedimento:
     #   "...se ha presentado <NOMBRE> s/Exploración | solicitando la Mensura | .-"
     #   "...hace saber que, <NOMBRE> solicita/registra/manifiesta..."
     #   índice: "<NOMBRE> s/ <acto>"
-    mt = re.search(r"a nombre de\s+(.{3,100}?)[.,\s]*(?:public|inscr[ií]b|c[ií]tese|\n\n|$)",
+    # 1) el PETICIONANTE: "...se ha presentado <NOMBRE> [s/ | solicitando | .-]"
+    mt = re.search(r"(?:se ha presentado|presentad[oa])\s+(.{3,90}?)\s*"
+                   r"(?:s\s*/|,?\s*solicit|manifiesta|\.\s*-)",
                    bloque, re.IGNORECASE | re.DOTALL)
+    # 2) "hace saber que, <NOMBRE> ..."
     if not mt:
-        mt = re.search(r"(?:se ha presentado|presentad[oa])\s+(.{3,100}?)\s*"
-                       r"(?:s\s*/|solicit|registr|manifiesta|\.\s*-)",
+        mt = re.search(r"hace saber que,?\s*(.{3,90}?)\s+(?:solicit|registr|en expte|manifiesta)",
                        bloque, re.IGNORECASE | re.DOTALL)
+    # 3) registro EXPLÍCITO: "Inscríbase el presente pedido a nombre de <NOMBRE>" o
+    #    "denominándola X a nombre de <NOMBRE>". NUNCA 'figura a nombre de', que en los
+    #    cateos cita a los DUEÑOS de las parcelas colindantes (no al peticionante).
     if not mt:
-        mt = re.search(r"hace saber que,?\s*(.{3,100}?)\s+(?:solicit|registr|en expte|manifiesta)",
+        mt = re.search(r"(?:inscr[ií]base[^\n]{0,40}?|presente pedido\s+|denomin[áa]ndola[^\n]{0,30}?)"
+                       r"a nombre de\s+(.{3,80}?)[.,]?\s*(?:public|inscr|c[ií]tese|\n|$)",
                        bloque, re.IGNORECASE | re.DOTALL)
+    # 4) índice "<NOMBRE> s/ <acto>"
     if not mt:
         mt = re.search(r"(?:^|\n)\s*([A-ZÁÉÍÓÚÑ][^\n]{2,80}?)\s+s\s*/\s", bloque)
     if mt:

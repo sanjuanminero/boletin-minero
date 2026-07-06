@@ -48,7 +48,7 @@ ETAPAS = {k: et for k, _, et, _ in TIPOS}
 ETIQUETAS["otro"] = "Otro / sin clasificar"
 ETAPAS["otro"] = "otro"
 
-_RX_ENCABEZADO = re.compile(r"edicto\s+de\s+([a-zñáéíóú]+)", re.IGNORECASE)
+_RX_ENCABEZADO = re.compile(r"edicto\s+d\s*e\s+([a-zñáéíóú]+)", re.IGNORECASE)
 # encabezado textual -> clave de tipo
 _ENCABEZADOS = {
     "mensura": "edicto_mensura",

@@ -136,10 +136,15 @@ const CAT_LAYERS = [
 ];
 const catLayers = {};
 let catRenderer = null;
+let boletinRenderer = null;
 
 function initMap(){
   if(map) return;
   map = L.map('map',{zoomControl:true,preferCanvas:true}).setView([-31.0,-69.0],7);
+  // panes: el catastro va DEBAJO (canvas); los expedientes del boletín van ARRIBA
+  // en SVG (solo captan el clic sobre la figura y dejan pasar el resto al catastro).
+  map.createPane('catastroPane'); map.getPane('catastroPane').style.zIndex = 350;
+  boletinRenderer = L.svg();
   // mapas base
   const base_osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     {maxZoom:19, attribution:'© OpenStreetMap'});
@@ -150,7 +155,7 @@ function initMap(){
     {maxZoom:17, subdomains:'abc', attribution:'© OpenTopoMap (CC-BY-SA)'});
   base_osm.addTo(map);
   const baseLayers = {'Calles (OSM)':base_osm, 'Satélite':base_sat, 'Terreno':base_topo};
-  catRenderer = L.canvas({padding:0.5});
+  catRenderer = L.canvas({padding:0.5, pane:'catastroPane'});
   const overlays={};
   CAT_LAYERS.forEach(c=>{
     const dash = c.k==='limite' ? '4 3' : null;
@@ -322,11 +327,11 @@ function renderMap(exps){
       const latlng=r.map(([lon,lat])=>[lat,lon]);
       // oficial: línea sólida llena; OCR aproximado: punteado y más tenue
       lyr=L.polygon(latlng, oficial
-        ? {color:col,weight:2,fillColor:col,fillOpacity:.30}
-        : {color:col,weight:1.5,dashArray:'4 3',fillColor:col,fillOpacity:.12});
+        ? {renderer:boletinRenderer,color:col,weight:2,fillColor:col,fillOpacity:.30}
+        : {renderer:boletinRenderer,color:col,weight:1.5,dashArray:'4 3',fillColor:col,fillOpacity:.12});
       latlng.forEach(p=>bounds.push(p));
     } else if(cen){
-      lyr=L.circleMarker([cen[0],cen[1]],{radius:7,color:col,fillColor:col,fillOpacity:.7,weight:2});
+      lyr=L.circleMarker([cen[0],cen[1]],{renderer:boletinRenderer,radius:7,color:col,fillColor:col,fillOpacity:.7,weight:2});
       bounds.push([cen[0],cen[1]]);
     }
     if(lyr){
