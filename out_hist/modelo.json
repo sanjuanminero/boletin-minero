@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generado": "2026-07-06T10:22:11-03:00",
+    "generado": "2026-07-06T12:28:09-03:00",
     "desde": "2024-01-01",
     "hasta": "2026-06-26",
     "datum": "posgar2007",
@@ -43654,8 +43654,14 @@
       "expediente": "1124-585-G-22",
       "departamento": "Ullum",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "Golden Mining S.A",
+          "desde": "2025-11-07",
+          "hasta": null
+        }
+      ],
+      "titular_actual": "Golden Mining S.A",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -52476,8 +52482,14 @@
       "expediente": "1124-573-G-25",
       "departamento": "Calingasta",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "Glencore Pachon S.A",
+          "desde": "2026-05-06",
+          "hasta": null
+        }
+      ],
+      "titular_actual": "Glencore Pachon S.A",
       "minerales": [],
       "minas": [],
       "mina": null,

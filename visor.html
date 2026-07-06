@@ -117,7 +117,11 @@ function ringDe(e){ const c=cat(e);
   if(c&&c.poligono_wgs84&&c.poligono_wgs84.length>=3) return c.poligono_wgs84;
   return (e.poligono_wgs84&&e.poligono_wgs84.length>=3)?e.poligono_wgs84:null; }
 function centroDe(e){ const c=cat(e); return (c&&c.centroide)||e.centroide||null; }
-function titularDe(e){ const c=cat(e); return (c&&c.titular)||e.titular_actual||'—'; }
+function titularDe(e){ const c=cat(e); const t=(c&&c.titular)||e.titular_actual; if(t) return t;
+  // cateos/servidumbres tersos: el boletín no publica al peticionante y el catastro
+  // no expone titular para permisos -> se aclara que el dato no está en la fuente.
+  return (e.estado==='cateo_exploracion'||e.estado==='servidumbre'||e.estado==='otro')
+    ? 'sin peticionante publicado' : '—'; }
 function titularFuente(e){ const c=cat(e); if(c&&c.titular) return 'catastro'; if(e.titular_actual) return 'edicto'; return null; }
 function minaDe(e){ const c=cat(e); return (c&&c.denominacion)||e.mina||''; }
 function mineralDe(e){ const c=cat(e); return (c&&c.minerales)||((e.minerales||[]).join(', '))||''; }

@@ -199,7 +199,7 @@ def parsear_pedimento(bloque: str) -> Pedimento:
     #   índice: "<NOMBRE> s/ <acto>"
     # 1) el PETICIONANTE: "...se ha presentado <NOMBRE> [s/ | solicitando | .-]"
     mt = re.search(r"(?:se ha presentado|presentad[oa])\s+(.{3,90}?)\s*"
-                   r"(?:s\s*/|,?\s*solicit|manifiesta|\.\s*-)",
+                   r"(?:s\s*/|/|,?\s*solicit|manifiesta|,?\s*en el\b|\.\s*-)",
                    bloque, re.IGNORECASE | re.DOTALL)
     # 2) "hace saber que, <NOMBRE> ..."
     if not mt:
