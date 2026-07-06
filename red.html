@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Entramado de terratenientes mineros — San Juan</title>
+<style>
+  :root{--bg:#0f1115;--panel:#171a21;--panel2:#1e222b;--line:#2a2f3a;--txt:#e6e8ec;--muted:#9aa3b2;--accent:#F3C323}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;font-family:system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt);overflow:hidden}
+  header{display:flex;align-items:center;gap:14px;padding:10px 14px;background:var(--panel);border-bottom:1px solid var(--line);position:fixed;top:0;left:0;right:0;z-index:10;flex-wrap:wrap}
+  header h1{font-size:15px;font-weight:600;margin:0}
+  header h1 b{color:var(--accent)}
+  header a{color:var(--muted);font-size:12px;text-decoration:none}
+  header a:hover{color:var(--accent)}
+  #q{background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:7px 10px;border-radius:8px;font-size:13px;min-width:260px;margin-left:auto}
+  #cv{position:fixed;top:52px;left:0;right:0;bottom:0;display:block;cursor:grab}
+  #cv:active{cursor:grabbing}
+  #info{position:fixed;right:14px;top:66px;width:290px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;font-size:12px;z-index:9;display:none}
+  #info h2{margin:0 0 6px;font-size:15px}
+  #info .tp{font-size:10px;padding:1px 6px;border-radius:10px;border:1px solid var(--line);color:var(--muted);margin-left:6px}
+  #info .row{color:var(--muted);margin:3px 0}
+  #info b{color:var(--txt)}
+  #info a{color:var(--accent);text-decoration:none;font-size:12px}
+  #info .co{margin-top:8px;display:flex;flex-wrap:wrap;gap:5px}
+  #info .co span{font-size:11px;padding:2px 7px;border-radius:20px;border:1px solid var(--line);cursor:pointer}
+  #hint{position:fixed;left:14px;bottom:14px;color:var(--muted);font-size:11px;z-index:9;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 11px;max-width:340px;line-height:1.5}
+  .load{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+  <h1><b>Entramado</b> de terratenientes mineros · San Juan</h1>
+  <a href="visor.html">← visor</a><a href="sociedades.html">buscador de sociedades →</a>
+  <input id="q" type="text" placeholder="Resaltar familia/entidad… (ej. Bastias, Nomikos)" autocomplete="off"/>
+</header>
+<canvas id="cv"></canvas>
+<div id="info"></div>
+<div id="hint">Cada punto es una <b>persona o sociedad</b>; una línea = <b>co-titularidad</b> de una propiedad.
+Tamaño = cantidad de propiedades. Color = apellido/familia. Arrastrá para mover, rueda para zoom,
+pasá el mouse por un nodo, clic para ver la ficha. Escribí arriba para resaltar (ej. <b>Bastias</b>).</div>
+<div class="load" id="load">Cargando entramado…</div>
+<script>
+const cv=document.getElementById('cv'), ctx=cv.getContext('2d');
+let nodes=[], links=[], BYNAME={}, DATA=null;
+let view={x:0,y:0,k:1}, hover=null, highlight='';
+function deburr(s){return (s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();}
+function resize(){ cv.width=innerWidth; cv.height=innerHeight-52; }
+addEventListener('resize',resize); resize();
+
+function colorFor(node){
+  // color por apellido/familia; sociedades en gris azulado
+  if(node.tipo==='sociedad' || !node.fam) return '#8aa0c0';
+  let h=0; const s=node.fam; for(let i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))%360;
+  return `hsl(${h},60%,60%)`;
+}
+
+async function load(){
+  for(const p of ['out_hist/sociedades.json','sociedades.json']){
+    try{const r=await fetch(p); if(r.ok){build(await r.json()); return;}}catch(e){}
+  }
+  document.getElementById('load').textContent='No pude cargar sociedades.json (serví por HTTP).';
+}
+function build(d){
+  DATA=d; d.sociedades.forEach(s=>BYNAME[s.nombre]=s);
+  const deg={}; d.edges.forEach(e=>{deg[e.a]=(deg[e.a]||0)+1;deg[e.b]=(deg[e.b]||0)+1;});
+  const names=Object.keys(deg); // solo entidades conectadas
+  const idx={};
+  nodes=names.map((n,i)=>{ idx[n]=i; const s=BYNAME[n]||{n:1,tipo:'persona',apellido:null};
+    return {name:n, tipo:s.tipo, fam:s.apellido, props:s.n||1, deg:deg[n],
+            r:4+Math.sqrt(s.n||1)*1.6, x:(Math.random()-.5)*800, y:(Math.random()-.5)*800, vx:0, vy:0};});
+  links=d.edges.map(e=>({s:idx[e.a],t:idx[e.b],w:e.w})).filter(l=>l.s!=null&&l.t!=null);
+  document.getElementById('load').style.display='none';
+  // centrar
+  view={x:cv.width/2,y:cv.height/2,k:1};
+  for(let i=0;i<300;i++) tick();
+  loop();
+}
+function tick(){
+  const N=nodes.length;
+  // repulsión (O(n^2), n<=~160)
+  for(let i=0;i<N;i++){ const a=nodes[i];
+    for(let j=i+1;j<N;j++){ const b=nodes[j];
+      let dx=a.x-b.x, dy=a.y-b.y, d2=dx*dx+dy*dy+0.01, d=Math.sqrt(d2);
+      const f=1400/d2; const fx=dx/d*f, fy=dy/d*f;
+      a.vx+=fx;a.vy+=fy;b.vx-=fx;b.vy-=fy; } }
+  // resortes
+  for(const l of links){ const a=nodes[l.s], b=nodes[l.t];
+    let dx=b.x-a.x, dy=b.y-a.y, d=Math.sqrt(dx*dx+dy*dy)+0.01;
+    const f=(d-70)*0.02; const fx=dx/d*f, fy=dy/d*f;
+    a.vx+=fx;a.vy+=fy;b.vx-=fx;b.vy-=fy; }
+  // gravedad al centro + integración
+  for(const n of nodes){ n.vx-=n.x*0.0025; n.vy-=n.y*0.0025;
+    n.vx*=0.85; n.vy*=0.85; n.x+=n.vx; n.y+=n.vy; }
+}
+function toScreen(n){ return {x:view.x+n.x*view.k, y:view.y+n.y*view.k}; }
+function draw(){
+  ctx.clearRect(0,0,cv.width,cv.height);
+  const hl=deburr(highlight);
+  // links
+  ctx.lineWidth=1;
+  for(const l of links){ const a=nodes[l.s], b=nodes[l.t], pa=toScreen(a), pb=toScreen(b);
+    const on = hover&&(l.s===hover||l.t===hover);
+    ctx.strokeStyle= on?'rgba(243,195,35,.6)':'rgba(255,255,255,.10)';
+    ctx.beginPath();ctx.moveTo(pa.x,pa.y);ctx.lineTo(pb.x,pb.y);ctx.stroke(); }
+  // nodes
+  for(let i=0;i<nodes.length;i++){ const n=nodes[i], p=toScreen(n);
+    const match = hl && deburr(n.name).includes(hl);
+    const nb = hover!=null && (i===hover || links.some(l=>(l.s===hover&&l.t===i)||(l.t===hover&&l.s===i)));
+    ctx.beginPath();ctx.arc(p.x,p.y,n.r*view.k,0,7);
+    ctx.fillStyle= match?'#F3C323': colorFor(n);
+    ctx.globalAlpha= (hl && !match)?0.25 : (hover!=null&&!nb&&i!==hover?0.3:1);
+    ctx.fill();
+    if(i===hover||match){ ctx.globalAlpha=1; ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke(); }
+    ctx.globalAlpha=1;
+    // etiqueta para nodos grandes, hover o match
+    if(n.r*view.k>9 || i===hover || match){
+      ctx.fillStyle= match||i===hover?'#fff':'rgba(230,232,236,.7)';
+      ctx.font=(i===hover?'600 ':'')+(11)+'px system-ui';
+      ctx.fillText(n.name.length>26?n.name.slice(0,25)+'…':n.name, p.x+n.r*view.k+3, p.y+3);
+    }
+  }
+}
+function loop(){ tick(); draw(); requestAnimationFrame(loop); }
+
+// ---- interacción ----
+let drag=null;
+cv.addEventListener('mousedown',e=>{ drag={x:e.clientX,y:e.clientY,vx:view.x,vy:view.y,moved:false}; });
+addEventListener('mousemove',e=>{
+  if(drag){ view.x=drag.vx+(e.clientX-drag.x); view.y=drag.vy+(e.clientY-drag.y); if(Math.hypot(e.clientX-drag.x,e.clientY-drag.y)>4)drag.moved=true; return; }
+  // hover
+  const mx=e.clientX, my=e.clientY-52; hover=null; let best=1e9;
+  for(let i=0;i<nodes.length;i++){ const p=toScreen(nodes[i]); const d=Math.hypot(p.x-mx,p.y-my); if(d<Math.max(8,nodes[i].r*view.k)&&d<best){best=d;hover=i;} }
+  cv.style.cursor=hover!=null?'pointer':'grab';
+});
+addEventListener('mouseup',e=>{
+  if(drag&&!drag.moved&&hover!=null) showInfo(nodes[hover].name);
+  drag=null;
+});
+cv.addEventListener('wheel',e=>{ e.preventDefault(); const f=e.deltaY<0?1.12:0.89;
+  const mx=e.clientX,my=e.clientY-52; view.x=mx-(mx-view.x)*f; view.y=my-(my-view.y)*f; view.k*=f; },{passive:false});
+
+function showInfo(name){
+  const s=BYNAME[name]; const info=document.getElementById('info'); if(!s){info.style.display='none';return;}
+  const co=Object.entries(s.co||{}).slice(0,12);
+  info.innerHTML=`<h2>${s.nombre}<span class="tp">${s.tipo}</span></h2>
+    <div class="row"><b>${s.n}</b> propiedades · <b>${Math.round(s.total_ha).toLocaleString('es-AR')}</b> ha</div>
+    <div class="row">${(s.departamentos||[]).join(', ')}</div>
+    <div class="row">registro ${(s.desde||'?').slice(0,4)}–${(s.hasta||'?').slice(0,4)}</div>
+    <div class="row">${(s.minerales||[]).join(', ')}</div>
+    <a href="sociedades.html?soc=${encodeURIComponent(s.nombre)}">ver todas sus propiedades en el mapa →</a>
+    ${co.length?`<div class="row" style="margin-top:8px">Co-titulares:</div><div class="co">${co.map(([n,w])=>`<span data-go="${encodeURIComponent(n)}">${n} · ${w}</span>`).join('')}</div>`:''}`;
+  info.style.display='block';
+  info.querySelectorAll('.co span').forEach(x=>x.onclick=()=>{ const nm=decodeURIComponent(x.dataset.go); const i=nodes.findIndex(n=>n.name===nm); if(i>=0){const p=nodes[i]; view.x=cv.width/2-p.x*view.k; view.y=cv.height/2-p.y*view.k;} showInfo(nm); });
+}
+document.getElementById('q').oninput=e=>{ highlight=e.target.value.trim(); };
+load();
+</script>
+</body>
+</html>

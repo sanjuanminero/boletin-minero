@@ -34,7 +34,10 @@ Log "2/4 reproyectar + limpieza de geometría (POSGAR 2007)..."
 Log "3/4 padrón del catastro (best-effort; si falla, se conserva el anterior)..."
 & $py -c "from bsj import catastro; catastro.descargar_padron('$out/catastro')" *>> $log
 
-Log "4/4 cruce boletín <-> catastro..."
+Log "4/5 cruce boletín <-> catastro..."
 & $py -m bsj.cruce $out *>> $log
+
+Log "5/5 base de sociedades / entramado..."
+& $py -m bsj.sociedades $out *>> $log
 
 Log "=== Fin. Modelo: $out/modelo.json ==="

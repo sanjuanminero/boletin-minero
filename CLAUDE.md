@@ -16,6 +16,9 @@ planilla Excel. Incluye una app de mapa (`mapa_catastro_minero.html`, Leaflet + 
 - `bsj/outputs.py`   — GeoJSON, XLSX y **modelo.json** (modelo rico para el visor).
 - `bsj/catastro.py`  — cliente **GeoServer WFS/WMS** del Catastro Minero Digital (fuente autoritativa, POSGAR 2007). `descargar_padron()` baja las capas a `out_2026/catastro/*.geojson`; `buscar()` filtra por CQL. (Antes era ArcGIS, se reescribió.)
 - `bsj/cruce.py`     — **cruce boletín↔catastro**: matchea cada expediente (por nº de expediente canónico, nombre de mina, o punto-en-polígono) y agrega el bloque `catastro` (geometría + atributos oficiales). `enriquecer(salida)` reescribe modelo.json. ~77/82 con match en 2026.
+- `bsj/sociedades.py` — **base de sociedades/titulares** desde el catastro (minas+manifestaciones tienen `titular`+`fechaInscripcion`+geom). Separa co-titularidad (' - ') en entidades y genera aristas para el entramado. Produce `sociedades.json`.
+- `sociedades.html`  — **buscador por sociedad**: escribís una sociedad/persona y ves todas sus propiedades en el mapa + fechas de registro + co-titulares + edictos.
+- `red.html`         — **entramado**: grafo de co-titularidad (personas/sociedades), clústers familiares (ej. Bastias), fuerza propia en canvas. Nota: los edictos NO nombran agrimensores (0 menciones en el OCR).
 - `bsj/pipeline.py`  — orquesta un PDF suelto (legado).
 - `escanear.py`      — **orquestador principal**: escanea un rango de fechas → modelo.json + geojson + xlsx + calendario.
 - `actualizar.ps1`   — **corrida diaria** (Programador de tareas, tarea `BoletinMinero-Diario` 07:00): encadena escanear→reproyectar→descargar_padron→cruce sobre `out_<año>`. Logs en `logs/`. Incremental por caché de PDF/OCR.

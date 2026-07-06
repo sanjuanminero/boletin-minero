@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sociedades Mineras San Juan — buscador</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+  :root{--bg:#0f1115;--panel:#171a21;--panel2:#1e222b;--line:#2a2f3a;--txt:#e6e8ec;--muted:#9aa3b2;--accent:#F3C323}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;font-family:system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt)}
+  #app{display:flex;flex-direction:column;height:100vh}
+  header{display:flex;align-items:center;gap:14px;padding:10px 14px;background:var(--panel);border-bottom:1px solid var(--line);flex-wrap:wrap}
+  header h1{font-size:15px;font-weight:600;margin:0}
+  header h1 b{color:var(--accent)}
+  header a{color:var(--muted);font-size:12px;text-decoration:none}
+  header a:hover{color:var(--accent)}
+  .searchbox{position:relative;margin-left:auto}
+  #q{background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:7px 10px;border-radius:8px;font-size:13px;min-width:320px}
+  #sug{position:absolute;top:38px;left:0;right:0;background:var(--panel2);border:1px solid var(--line);border-radius:8px;max-height:340px;overflow:auto;z-index:1000;display:none}
+  #sug div{padding:7px 10px;font-size:13px;cursor:pointer;border-bottom:1px solid var(--line);display:flex;gap:8px}
+  #sug div:hover{background:var(--panel)}
+  #sug .n{margin-left:auto;color:var(--muted);font-size:11px}
+  #sug .tp{font-size:10px;padding:1px 6px;border-radius:10px;border:1px solid var(--line);color:var(--muted)}
+  main{flex:1;display:flex;min-height:0}
+  #side{width:400px;max-width:44vw;overflow:auto;border-right:1px solid var(--line);background:var(--panel);padding:0 0 20px}
+  #map{flex:1}
+  .hero{padding:14px;border-bottom:1px solid var(--line)}
+  .hero h2{margin:0 0 4px;font-size:18px}
+  .hero .tp{font-size:11px;padding:2px 8px;border-radius:20px;border:1px solid var(--line);color:var(--muted);vertical-align:middle;margin-left:6px}
+  .kpis{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+  .kpi{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:8px 11px;min-width:84px}
+  .kpi .v{font-size:18px;font-weight:700}
+  .kpi .l{font-size:10px;color:var(--muted)}
+  .sec{padding:12px 14px;border-bottom:1px solid var(--line)}
+  .sec h3{margin:0 0 8px;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-size:11px;padding:3px 8px;border-radius:20px;border:1px solid var(--line);background:var(--panel2)}
+  .chip.click{cursor:pointer}.chip.click:hover{border-color:var(--accent)}
+  .prop{padding:9px 0;border-bottom:1px solid var(--line);cursor:pointer}
+  .prop:last-child{border:0}
+  .prop:hover{background:var(--panel2)}
+  .prop .t{font-size:13px;font-weight:600}
+  .prop .t .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+  .prop .s{font-size:12px;color:var(--muted);margin-top:2px}
+  .empty{padding:40px 20px;color:var(--muted);font-size:14px;line-height:1.7;text-align:center}
+  .leaflet-popup-content{font-size:12px;line-height:1.5}
+  .pp b{color:#1a1a1a}
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1><b>Sociedades Mineras</b> San Juan · buscador</h1>
+    <a href="visor.html">← volver al visor de expedientes</a>
+    <a href="red.html">ver entramado / red →</a>
+    <div class="searchbox">
+      <input id="q" type="text" placeholder="Escribí una sociedad o persona… (ej. Bastias, Golden, Ansilta)" autocomplete="off"/>
+      <div id="sug"></div>
+    </div>
+  </header>
+  <main>
+    <div id="side"><div class="empty" id="side0">Buscá una <b>sociedad o persona</b> arriba para ver todas sus propiedades, fechas de registro y vínculos.<br><br>Datos: Catastro Minero de San Juan (minas y manifestaciones con titular) + edictos del Boletín.</div></div>
+    <div id="map"></div>
+  </main>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const CMIN='#F3C323', CMAN='#1D9E75';
+let DATA=null, BYNAME={}, map=null, layer=null;
+function deburr(s){return (s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();}
+
+async function load(){
+  for(const p of ['out_hist/sociedades.json','sociedades.json']){
+    try{const r=await fetch(p); if(r.ok){setData(await r.json()); return;}}catch(e){}
+  }
+  document.getElementById('side0').innerHTML='No pude cargar <b>sociedades.json</b>. Serví el visor por HTTP.';
+}
+function setData(d){
+  DATA=d; d.sociedades.forEach(s=>BYNAME[s.nombre]=s);
+  initMap();
+  // permitir ?soc=Nombre en la URL
+  const q=new URLSearchParams(location.search).get('soc');
+  if(q){ const hit=d.sociedades.find(s=>deburr(s.nombre)===deburr(q)); if(hit) select(hit.nombre); }
+}
+function initMap(){
+  if(map) return;
+  map=L.map('map',{zoomControl:true}).setView([-31.0,-69.2],7);
+  const osm=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'});
+  const sat=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Esri'});
+  osm.addTo(map); L.control.layers({'Calles':osm,'Satélite':sat},null,{position:'topright'}).addTo(map);
+}
+
+// ---- buscador ----
+const qi=document.getElementById('q'), sug=document.getElementById('sug');
+qi.oninput=()=>{
+  const v=deburr(qi.value.trim());
+  if(!v){sug.style.display='none';return;}
+  const res=DATA.sociedades.filter(s=>deburr(s.nombre).includes(v)).slice(0,40);
+  sug.innerHTML=res.map(s=>`<div data-n="${encodeURIComponent(s.nombre)}">
+     <span class="tp">${s.tipo}</span><span>${s.nombre}</span><span class="n">${s.n} prop.</span></div>`).join('')
+     || '<div style="color:var(--muted)">sin resultados</div>';
+  sug.style.display='block';
+  [...sug.children].forEach(el=>{ if(el.dataset.n) el.onclick=()=>{select(decodeURIComponent(el.dataset.n)); sug.style.display='none';}; });
+};
+qi.onblur=()=>setTimeout(()=>sug.style.display='none',200);
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') sug.style.display='none'; });
+
+// ---- render de una sociedad ----
+function select(nombre){
+  const s=BYNAME[nombre]; if(!s) return;
+  qi.value=nombre;
+  history.replaceState(null,'','?soc='+encodeURIComponent(nombre));
+  renderSide(s); renderMap(s);
+}
+function renderSide(s){
+  const co=Object.entries(s.co||{});
+  const props=[...s.props].sort((a,b)=>(a.fecha||'').localeCompare(b.fecha||''));
+  document.getElementById('side').innerHTML=`
+    <div class="hero">
+      <h2>${s.nombre}<span class="tp">${s.tipo}</span></h2>
+      <div class="kpis">
+        <div class="kpi"><div class="v">${s.n}</div><div class="l">propiedades</div></div>
+        <div class="kpi"><div class="v">${Math.round(s.total_ha).toLocaleString('es-AR')}</div><div class="l">hectáreas</div></div>
+        <div class="kpi"><div class="v">${s.departamentos.length}</div><div class="l">departamentos</div></div>
+        <div class="kpi"><div class="v">${(s.desde||'?').slice(0,4)}–${(s.hasta||'?').slice(0,4)}</div><div class="l">registro</div></div>
+      </div>
+    </div>
+    ${s.minerales.length?`<div class="sec"><h3>Minerales</h3><div class="chips">${s.minerales.map(m=>`<span class="chip">${m}</span>`).join('')}</div></div>`:''}
+    ${co.length?`<div class="sec"><h3>Co-titulares (${co.length})</h3><div class="chips">${co.map(([n,w])=>`<span class="chip click" data-go="${encodeURIComponent(n)}">${n} · ${w}</span>`).join('')}</div></div>`:''}
+    ${s.edictos.length?`<div class="sec"><h3>Actividad en el boletín (${s.edictos.length})</h3>${s.edictos.map(e=>`<div class="prop"><div class="t">${e.expte||'(s/expte)'}</div><div class="s">${e.estado} · ${e.fechas.join(', ')}</div></div>`).join('')}</div>`:''}
+    <div class="sec"><h3>Propiedades (${props.length})</h3>${props.map((p,i)=>`
+      <div class="prop" data-i="${i}">
+        <div class="t"><span class="dot" style="background:${p.tipo==='mina'?CMIN:CMAN}"></span>${p.denom||'(s/denominación)'}</div>
+        <div class="s">${p.tipo} · ${p.depto||'?'}${p.ha?' · '+Math.round(p.ha)+' ha':''}${p.fecha?' · '+p.fecha:''}${p.min?' · '+p.min:''}</div>
+        ${p.expte?`<div class="s" style="color:#6b7280">${p.expte}</div>`:''}
+      </div>`).join('')}</div>`;
+  document.querySelectorAll('#side .chip.click').forEach(c=>c.onclick=()=>select(decodeURIComponent(c.dataset.go)));
+  document.querySelectorAll('#side .prop[data-i]').forEach(el=>el.onclick=()=>{ const p=props[+el.dataset.i]; if(p.__lyr){p.__lyr.openPopup(); map.fitBounds(p.__lyr.getBounds?p.__lyr.getBounds():[p.cen],{maxZoom:14,padding:[40,40]});} });
+  window.__props=props;
+}
+function renderMap(s){
+  initMap();
+  if(layer) layer.remove();
+  layer=L.layerGroup().addTo(map);
+  const bounds=[];
+  (window.__props||s.props).forEach(p=>{
+    const col=p.tipo==='mina'?CMIN:CMAN;
+    let lyr=null;
+    if(p.pol&&p.pol.length>=3){ const ll=p.pol.map(([lon,lat])=>[lat,lon]); lyr=L.polygon(ll,{color:col,weight:2,fillColor:col,fillOpacity:.35}); ll.forEach(x=>bounds.push(x)); }
+    else if(p.cen){ lyr=L.circleMarker([p.cen[0],p.cen[1]],{radius:7,color:col,fillColor:col,fillOpacity:.7,weight:2}); bounds.push(p.cen); }
+    if(lyr){ lyr.bindPopup(`<div class="pp"><b>${p.denom||''}</b><br>${p.tipo} · ${p.depto||''}${p.ha?' · '+Math.round(p.ha)+' ha':''}<br>${p.min||''}${p.fecha?'<br>registro '+p.fecha:''}${p.expte?'<br><span style="color:#555">'+p.expte+'</span>':''}</div>`); lyr.addTo(layer); p.__lyr=lyr; }
+  });
+  if(bounds.length) map.fitBounds(bounds,{padding:[40,40],maxZoom:12});
+}
+load();
+</script>
+</body>
+</html>
