@@ -184,6 +184,7 @@ def agregar_expedientes(items, datum, geo):
                 "_titulares": [],    # [(fecha, nombre)]
                 "_minerales": set(),
                 "_minas": set(),
+                "_agrimensores": set(),
                 "_mejor_vert": [],   # vértices del evento con más vértices
                 "_sup": None,
             }
@@ -202,6 +203,8 @@ def agregar_expedientes(items, datum, geo):
             e["_minerales"].add(ped.mineral)
         if ped.mina:
             e["_minas"].add(ped.mina)
+        if getattr(ped, "agrimensor", ""):
+            e["_agrimensores"].add(ped.agrimensor)
         # geometría: nos quedamos con el evento de más vértices
         if len(ped.vertices) > len(e["_mejor_vert"]):
             e["_mejor_vert"] = ped.vertices
@@ -247,6 +250,7 @@ def agregar_expedientes(items, datum, geo):
             "minerales": sorted(e["_minerales"]),
             "minas": sorted(e["_minas"]),
             "mina": sorted(e["_minas"])[0] if e["_minas"] else None,
+            "agrimensores": sorted(e["_agrimensores"]),
             "superficie_ha": e["_sup"],
             "n_vertices": len(ring),
             "n_vertices_ocr": len(bruto),

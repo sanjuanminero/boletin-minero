@@ -124,11 +124,12 @@ function renderSide(s){
         <div class="kpi"><div class="v">${Math.round(s.total_ha).toLocaleString('es-AR')}</div><div class="l">hectáreas</div></div>
         <div class="kpi"><div class="v">${s.departamentos.length}</div><div class="l">departamentos</div></div>
         <div class="kpi"><div class="v">${(s.desde||'?').slice(0,4)}–${(s.hasta||'?').slice(0,4)}</div><div class="l">registro</div></div>
+        ${s.n_edictos?`<div class="kpi"><div class="v">${s.n_edictos}</div><div class="l">actividad boletín</div></div>`:''}
       </div>
     </div>
     ${s.minerales.length?`<div class="sec"><h3>Minerales</h3><div class="chips">${s.minerales.map(m=>`<span class="chip">${m}</span>`).join('')}</div></div>`:''}
     ${co.length?`<div class="sec"><h3>Co-titulares (${co.length})</h3><div class="chips">${co.map(([n,w])=>`<span class="chip click" data-go="${encodeURIComponent(n)}">${n} · ${w}</span>`).join('')}</div></div>`:''}
-    ${s.edictos.length?`<div class="sec"><h3>Actividad en el boletín (${s.edictos.length})</h3>${s.edictos.map(e=>`<div class="prop"><div class="t">${e.expte||'(s/expte)'}</div><div class="s">${e.estado} · ${e.fechas.join(', ')}</div></div>`).join('')}</div>`:''}
+    ${s.edictos.length?`<div class="sec"><h3>Actividad en el boletín (${s.edictos.length})</h3>${s.edictos.map((e,i)=>`<div class="prop" data-e="${i}"><div class="t"><span class="dot" style="background:#F3C323"></span>${e.expte||'(s/expte)'}</div><div class="s">${e.estado} · ${(e.fechas||[]).join(', ')}${e.depto?' · '+e.depto:''}</div></div>`).join('')}</div>`:''}
     <div class="sec"><h3>Propiedades (${props.length})</h3>${props.map((p,i)=>`
       <div class="prop" data-i="${i}">
         <div class="t"><span class="dot" style="background:${p.tipo==='mina'?CMIN:CMAN}"></span>${p.denom||'(s/denominación)'}</div>
@@ -137,6 +138,7 @@ function renderSide(s){
       </div>`).join('')}</div>`;
   document.querySelectorAll('#side .chip.click').forEach(c=>c.onclick=()=>select(decodeURIComponent(c.dataset.go)));
   document.querySelectorAll('#side .prop[data-i]').forEach(el=>el.onclick=()=>{ const p=props[+el.dataset.i]; if(p.__lyr){p.__lyr.openPopup(); map.fitBounds(p.__lyr.getBounds?p.__lyr.getBounds():[p.cen],{maxZoom:14,padding:[40,40]});} });
+  document.querySelectorAll('#side .prop[data-e]').forEach(el=>el.onclick=()=>{ const e=s.edictos[+el.dataset.e]; if(e.__lyr){ e.__lyr.openPopup(); if(e.__lyr.getBounds) map.fitBounds(e.__lyr.getBounds(),{maxZoom:14,padding:[40,40]}); else if(e.cen) map.setView(e.cen,14);} });
   window.__props=props;
 }
 function renderMap(s){
@@ -144,12 +146,20 @@ function renderMap(s){
   if(layer) layer.remove();
   layer=L.layerGroup().addTo(map);
   const bounds=[];
+  // propiedades del catastro (sólido)
   (window.__props||s.props).forEach(p=>{
     const col=p.tipo==='mina'?CMIN:CMAN;
     let lyr=null;
     if(p.pol&&p.pol.length>=3){ const ll=p.pol.map(([lon,lat])=>[lat,lon]); lyr=L.polygon(ll,{color:col,weight:2,fillColor:col,fillOpacity:.35}); ll.forEach(x=>bounds.push(x)); }
     else if(p.cen){ lyr=L.circleMarker([p.cen[0],p.cen[1]],{radius:7,color:col,fillColor:col,fillOpacity:.7,weight:2}); bounds.push(p.cen); }
     if(lyr){ lyr.bindPopup(`<div class="pp"><b>${p.denom||''}</b><br>${p.tipo} · ${p.depto||''}${p.ha?' · '+Math.round(p.ha)+' ha':''}<br>${p.min||''}${p.fecha?'<br>registro '+p.fecha:''}${p.expte?'<br><span style="color:#555">'+p.expte+'</span>':''}</div>`); lyr.addTo(layer); p.__lyr=lyr; }
+  });
+  // actividad del boletín (punteado, color acento)
+  (s.edictos||[]).forEach(e=>{
+    let lyr=null;
+    if(e.pol&&e.pol.length>=3){ const ll=e.pol.map(([lon,lat])=>[lat,lon]); lyr=L.polygon(ll,{color:'#F3C323',weight:1.5,dashArray:'4 3',fillColor:'#F3C323',fillOpacity:.12}); ll.forEach(x=>bounds.push(x)); }
+    else if(e.cen){ lyr=L.circleMarker([e.cen[0],e.cen[1]],{radius:6,color:'#F3C323',fillColor:'#F3C323',fillOpacity:.5,weight:2}); bounds.push(e.cen); }
+    if(lyr){ lyr.bindPopup(`<div class="pp"><b>${e.expte||''}</b><br>${e.estado||''} · boletín<br>${(e.fechas||[]).join(', ')}<br><span style="color:#555">${e.depto||''}</span></div>`); lyr.addTo(layer); e.__lyr=lyr; }
   });
   if(bounds.length) map.fitBounds(bounds,{padding:[40,40],maxZoom:12});
 }

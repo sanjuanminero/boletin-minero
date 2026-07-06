@@ -112,7 +112,10 @@ def construir(salida):
                     a, b = sorted([ents[i], ents[j]])
                     edges[(a, b)] += 1
 
-    # actividad del boletín (edictos) por titular
+    # actividad del boletín (edictos) por titular. Si el titular no está en el padrón
+    # de minas/manifestaciones, igual se crea la entidad (así entran empresas que solo
+    # aparecen en el boletín: cateos, servidumbres, etc.). Se guarda la geometría para
+    # poder plotearla en el buscador de sociedades.
     edictos_por_ent = defaultdict(list)
     modelo = os.path.join(salida, "modelo.json")
     if os.path.exists(modelo):
@@ -123,20 +126,28 @@ def construir(salida):
             tit = c.get("titular") or e.get("titular_actual")
             if not tit:
                 continue
+            fechas = sorted({f for ev in e.get("eventos", []) for f in ev["fechas"]})
+            item = {
+                "expte": e.get("expediente"),
+                "estado": e.get("estado_label"),
+                "estado_k": e.get("estado"),
+                "fechas": fechas,
+                "depto": c.get("departamento") or e.get("departamento"),
+                "cen": c.get("centroide") or e.get("centroide"),
+                "pol": c.get("poligono_wgs84") or e.get("poligono_wgs84"),
+            }
             for parte in _split(tit):
-                ent = nombres_norm.get(_norm(parte))
-                if ent:
-                    edictos_por_ent[ent].append({
-                        "expte": e.get("expediente"),
-                        "estado": e.get("estado_label"),
-                        "fechas": sorted({f for ev in e.get("eventos", []) for f in ev["fechas"]}),
-                    })
+                ent = nombres_norm.get(_norm(parte), parte)  # matchea existente o crea
+                edictos_por_ent[ent].append(item)
 
-    # armar la lista de sociedades
+    # armar la lista de sociedades (unión de titulares del catastro + del boletín)
     socs = []
-    for nombre, props in ent_props.items():
-        fechas = [p["fecha"] for p in props if p["fecha"]]
-        deptos = sorted({p["depto"] for p in props if p["depto"]})
+    for nombre in set(ent_props) | set(edictos_por_ent):
+        props = ent_props.get(nombre, [])
+        edx = edictos_por_ent.get(nombre, [])
+        fechas = [p["fecha"] for p in props if p["fecha"]] + [f for e in edx for f in e["fechas"]]
+        deptos = sorted({p["depto"] for p in props if p["depto"]}
+                        | {e["depto"] for e in edx if e["depto"]})
         minset = sorted({m for p in props if p["min"] for m in re.split(r"\s*-\s*", p["min"])})
         co = Counter()
         for p in props:
@@ -148,16 +159,17 @@ def construir(salida):
             "tipo": "sociedad" if _es_sociedad(nombre) else "persona",
             "apellido": _apellido(nombre),
             "n": len(props),
+            "n_edictos": len(edx),
             "total_ha": round(sum(p["ha"] or 0 for p in props), 2),
             "departamentos": deptos,
             "minerales": minset,
             "desde": min(fechas) if fechas else None,
             "hasta": max(fechas) if fechas else None,
             "co": dict(co.most_common()),
-            "edictos": edictos_por_ent.get(nombre, []),
+            "edictos": edx,
             "props": props,
         })
-    socs.sort(key=lambda s: -s["n"])
+    socs.sort(key=lambda s: -(s["n"] + s["n_edictos"]))
 
     doc = {
         "meta": {

@@ -100,6 +100,7 @@ class Pedimento:
     titular: str = ""
     mineral: str = ""
     mina: str = ""                                  # nombre de la mina (ej. "AGU 5")
+    agrimensor: str = ""                            # profesional actuante (si el edicto lo nombra)
     tipo_evento: str = ""                           # clave de taxonomía (ver bsj.eventos)
     departamento: str = ""
     superficie_ha: float | None = None
@@ -223,6 +224,18 @@ def parsear_pedimento(bloque: str) -> Pedimento:
                    bloque, re.IGNORECASE)
     if mm:
         p.mina = re.sub(r"\s+", " ", mm.group(1)).strip(" ,.")
+
+    # agrimensor / profesional actuante. RARO en SJ: el edicto de mensura es la
+    # petición y no suele nombrar al profesional; se captura si aparece (p.ej. en
+    # 'EDICTO DE DESIGNACIÓN' o 'practicará la mensura el Ing./Agrim. <nombre>').
+    ma = re.search(
+        r"(?:agrimensor|ing(?:\.|eniero)?\s*agrim\w*|profesional\s+actuante|"
+        r"perito\s+agrimensor|practicar[áa]?\s+la\s+mensura\s+el\s+(?:ing\.?|agrim\.?)?|"
+        r"design[ao]se?\s+(?:al\s+)?(?:agrimensor|ing\.?|perito))\s+(?:don\s+|d\.\s+)?"
+        r"([A-ZÁÉÍÓÚÑ][A-Za-zÁÉÍÓÚÑáéíóúñ.\- ]{4,45}?)(?:[,.;]|\s+(?:aprob|para|Mat|CT|N[°º]))",
+        bloque)
+    if ma:
+        p.agrimensor = _limpiar_titular(ma.group(1))
 
     # tipo de evento del derecho procesal minero (taxonomía)
     from . import eventos

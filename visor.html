@@ -138,6 +138,7 @@ const CAT_LAYERS = [
   {k:'canteras',        l:'Canteras',                          color:'#7F77DD'},
   {k:'solicitudes',     l:'Solicitudes',                       color:'#993556'},
   {k:'servidumbres',    l:'Servidumbres',                      color:'#993C1D'},
+  {k:'proyectos',       l:'Proyectos mineros',                 color:'#D4537E'},
   {k:'limite',          l:'Límite provincial',                 color:'#888780'},
 ];
 const catLayers = {};
@@ -190,7 +191,7 @@ function initMap(){
 function popupCatastro(f,c){
   const p=f.properties||{};
   const exp=p.expediente||p.expte_siged||'';
-  const den=p.denominacion||p.nombre_mina||'';
+  const den=p.denominacion||p.nombre_mina||p.proyecto||'';
   const tit=p.titular||'';
   const min=p.minerales||p.tipo_de_servidumbre||p.tipoYacimiento||'';
   const sup=p.sup_reg_ha!=null?(Math.round(p.sup_reg_ha*100)/100+' ha'):'';
