@@ -9,7 +9,7 @@ $proj = 'C:\Users\DAMS-04\OneDrive\Escritorio\Boletin Minero'
 $py   = 'C:\Users\DAMS-04\AppData\Local\Programs\Python\Python312\python.exe'
 Set-Location $proj
 
-$desde = '2024-01-01'        # base histórica unificada (2024 -> hoy)
+$desde = '2020-01-01'        # base histórica unificada (2020 -> hoy)
 $hoy   = (Get-Date -Format 'yyyy-MM-dd')
 $out   = './out_hist'
 

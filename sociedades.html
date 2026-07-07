@@ -46,6 +46,20 @@
   .empty{padding:40px 20px;color:var(--muted);font-size:14px;line-height:1.7;text-align:center}
   .leaflet-popup-content{font-size:12px;line-height:1.5}
   .pp b{color:#1a1a1a}
+  .rk-head{padding:14px 14px 8px;border-bottom:1px solid var(--line)}
+  .rk-head h2{margin:0 0 8px;font-size:16px}
+  .rk-toggle{display:flex;gap:6px;flex-wrap:wrap}
+  .rk-toggle button{background:var(--panel2);border:1px solid var(--line);color:var(--muted);padding:5px 9px;border-radius:7px;font-size:12px;cursor:pointer}
+  .rk-toggle button.on{background:var(--accent);color:#1a1a1a;border-color:var(--accent);font-weight:600}
+  .rk-row{display:flex;align-items:center;gap:9px;padding:6px 14px;cursor:pointer;border-bottom:1px solid var(--line)}
+  .rk-row:hover{background:var(--panel2)}
+  .rk-row .pos{width:20px;color:var(--muted);font-size:12px;text-align:right}
+  .rk-row .nm{width:150px;font-size:12.5px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .rk-row .bar{flex:1;height:16px;border-radius:5px;background:var(--panel2);position:relative;min-width:20px}
+  .rk-row .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);border-radius:5px;opacity:.85}
+  .rk-row .v{width:82px;text-align:right;font-size:12px}
+  .backrk{color:var(--muted);font-size:12px;cursor:pointer}
+  .backrk:hover{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -81,7 +95,44 @@ function setData(d){
   initMap();
   // permitir ?soc=Nombre en la URL
   const q=new URLSearchParams(location.search).get('soc');
-  if(q){ const hit=d.sociedades.find(s=>deburr(s.nombre)===deburr(q)); if(hit) select(hit.nombre); }
+  if(q){ const hit=d.sociedades.find(s=>deburr(s.nombre)===deburr(q)); if(hit){ select(hit.nombre); return; } }
+  renderRanking('ha');
+}
+
+// ---- ranking / leaderboard ----
+let rkMetric='ha';
+const RK={ha:{key:'total_ha',lbl:'Hectáreas',fmt:v=>Math.round(v).toLocaleString('es-AR')+' ha'},
+          n:{key:'n',lbl:'Propiedades',fmt:v=>v+' prop.'},
+          ed:{key:'n_edictos',lbl:'Actividad boletín',fmt:v=>v+' edictos'}};
+function renderRanking(metric){
+  rkMetric=metric||rkMetric; qi.value=''; history.replaceState(null,'','sociedades.html');
+  const {key,fmt}=RK[rkMetric];
+  const list=DATA.sociedades.filter(s=>(s[key]||0)>0).sort((a,b)=>b[key]-a[key]).slice(0,40);
+  const max=list.length?list[0][key]:1;
+  document.getElementById('side').innerHTML=`
+    <div class="rk-head"><h2>Ranking de sociedades <span style="color:var(--muted);font-size:12px">· ${DATA.meta.n_sociedades} en total</span></h2>
+      <div class="rk-toggle">${Object.entries(RK).map(([k,v])=>`<button data-m="${k}" class="${k===rkMetric?'on':''}">${v.lbl}</button>`).join('')}</div>
+    </div>
+    ${list.map((s,i)=>`<div class="rk-row" data-n="${encodeURIComponent(s.nombre)}">
+        <span class="pos">${i+1}</span><span class="nm" title="${s.nombre}">${s.nombre}</span>
+        <span class="bar"><i style="width:${Math.max(2,s[key]/max*100)}%"></i></span>
+        <span class="v">${fmt(s[key])}</span></div>`).join('')}`;
+  document.querySelectorAll('.rk-toggle button').forEach(b=>b.onclick=()=>renderRanking(b.dataset.m));
+  document.querySelectorAll('.rk-row').forEach(el=>el.onclick=()=>select(decodeURIComponent(el.dataset.n)));
+  renderMapRanking(list);
+}
+function renderMapRanking(list){
+  initMap(); if(layer) layer.remove(); layer=L.layerGroup().addTo(map);
+  const bounds=[];
+  list.forEach((s,i)=>{
+    const pts=[...(s.props||[]),...(s.edictos||[])].map(p=>p.cen).filter(Boolean);
+    if(!pts.length) return;
+    const lat=pts.reduce((a,p)=>a+p[0],0)/pts.length, lon=pts.reduce((a,p)=>a+p[1],0)/pts.length;
+    const m=L.circleMarker([lat,lon],{radius:Math.max(5,14-i*0.22),color:'#F3C323',fillColor:'#F3C323',fillOpacity:.45,weight:2});
+    m.bindPopup(`<div class="pp"><b>${i+1}. ${s.nombre}</b><br>${s.n} prop · ${Math.round(s.total_ha).toLocaleString('es-AR')} ha</div>`);
+    m.on('click',()=>select(s.nombre)); m.addTo(layer); bounds.push([lat,lon]);
+  });
+  if(bounds.length) map.fitBounds(bounds,{padding:[50,50],maxZoom:9}); else map.setView([-31,-69.2],7);
 }
 function initMap(){
   if(map) return;
@@ -118,7 +169,8 @@ function renderSide(s){
   const props=[...s.props].sort((a,b)=>(a.fecha||'').localeCompare(b.fecha||''));
   document.getElementById('side').innerHTML=`
     <div class="hero">
-      <h2>${s.nombre}<span class="tp">${s.tipo}</span></h2>
+      <div class="backrk" onclick="renderRanking()">← Ranking de sociedades</div>
+      <h2 style="margin-top:6px">${s.nombre}<span class="tp">${s.tipo}</span></h2>
       <div class="kpis">
         <div class="kpi"><div class="v">${s.n}</div><div class="l">propiedades</div></div>
         <div class="kpi"><div class="v">${Math.round(s.total_ha).toLocaleString('es-AR')}</div><div class="l">hectáreas</div></div>
