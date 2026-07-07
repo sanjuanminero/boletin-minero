@@ -76,8 +76,8 @@ def main():
                 txt_minas = open(cache, encoding="utf-8").read()
                 print(f"      OCR (caché) páginas: {[x+1 for x in pgs]}")
             else:
-                print(f"      OCR páginas de minas: {[x+1 for x in pgs]}")
-                txt_minas = boletin.extraer_texto_ocr(destino, solo_paginas=pgs)
+                print(f"      texto/OCR páginas de minas: {[x+1 for x in pgs]}")
+                txt_minas = boletin.texto_de_paginas(destino, pgs)  # nativo (2020) u OCR (2024+)
                 with open(cache, "w", encoding="utf-8") as fh:
                     fh.write(txt_minas)
             peds = P.parsear_boletin(txt_minas)

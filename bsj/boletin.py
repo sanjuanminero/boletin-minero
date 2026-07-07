@@ -205,11 +205,23 @@ def _norm(s):
     return re.sub(r"\s+", "", s.upper())
 
 
+# vocabulario minero fuerte para el formato VIEJO (2020-2023), que no usa el título
+# de sección 'EDICTOS DE MINAS'. En 2020 los edictos son texto nativo.
+_SENALES_MINERAS = ("JUZGADOADMINISTRATIVODEMINAS", "ESCRIBANIADEMINAS",
+                    "DIRECTORDEMINERIA", "DIRECCIONDEMINERIA", "GAUSSKRUGER",
+                    "MANIFESTACIONDEDESCUBRIMIENTO", "PERTENENCIA", "LABORLEGAL")
+
+
 def tiene_edictos_de_minas(texto):
-    """True si el índice/títulos contienen la sección 'EDICTOS DE MINAS'.
-    OJO: 'Ministro de Minería' aparece SIEMPRE en el encabezado; no cuenta
-    ('MINISTRODEMINERIA' != 'EDICTOSDEMINAS')."""
-    return "EDICTOSDEMINAS" in _norm(texto)
+    """True si hay contenido minero. Primero por el título 'EDICTOS DE MINAS'
+    (formato 2024+); si no, por vocabulario minero fuerte (formato viejo 2020-2023).
+    OJO: 'Ministro de Minería' aparece SIEMPRE en el encabezado; no cuenta."""
+    t = _norm(texto)
+    if "EDICTOSDEMINAS" in t:
+        return True
+    if any(s in t for s in _SENALES_MINERAS):
+        return True
+    return ("MENSURA" in t or "CATEO" in t) and ("VERTICE" in t or "COORDENADAS" in t)
 
 
 def paginas_de_minas(ruta):
@@ -221,7 +233,7 @@ def paginas_de_minas(ruta):
                  "USUCAPION", "USUCAPIÓN", "SUCESORIOS", "LEYES",
                  "DECRETOS", "RECAUDACION")
     secciones = tuple(_norm(s) for s in secciones)
-    en_minas, paginas = False, []
+    en_minas, por_titulo = False, []
     for i in range(doc.page_count):
         t = _norm(doc[i].get_text("text"))
         if "EDICTOSDEMINAS" in t:
@@ -229,9 +241,31 @@ def paginas_de_minas(ruta):
         elif en_minas and any(s in t for s in secciones):
             en_minas = False
         if en_minas:
-            paginas.append(i)
+            por_titulo.append(i)
+    if por_titulo:                       # formato 2024+ (título de sección)
+        doc.close()
+        return por_titulo
+    # formato viejo (2020-2023): páginas con vocabulario minero fuerte
+    por_kw = [i for i in range(doc.page_count)
+              if any(s in _norm(doc[i].get_text("text")) for s in _SENALES_MINERAS)]
     doc.close()
-    return paginas
+    return por_kw
+
+
+def texto_de_paginas(ruta, paginas, umbral=1200):
+    """Texto de las páginas dadas: usa la CAPA DE TEXTO nativa si es sustancial
+    (boletines viejos con edictos en texto), si no OCR-ea (escaneados). Así 2020
+    se lee directo del texto y 2024+ por OCR."""
+    if not paginas:
+        return ""
+    doc = fitz.open(ruta)
+    nativo = sum(1 for i in paginas if len((doc[i].get_text("text") or "").strip()) > umbral)
+    if nativo >= len(paginas) * 0.5:
+        txt = "\n".join(doc[i].get_text("text") for i in paginas)
+        doc.close()
+        return txt
+    doc.close()
+    return extraer_texto_ocr(ruta, solo_paginas=paginas)
 
 
 if __name__ == "__main__":
