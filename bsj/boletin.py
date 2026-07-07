@@ -252,6 +252,44 @@ def paginas_de_minas(ruta):
     return por_kw
 
 
+def esta_escaneado(texto, n_paginas):
+    """True si el PDF es (casi) todo imagen: capa de texto pobre. Los boletines
+    de 2021 son así (sin capa de texto útil para detectar la sección de minas)."""
+    return len((texto or "").strip()) < max(1, n_paginas) * 400
+
+
+def minas_por_ocr(ruta, dpi=220, idioma="spa"):
+    """Para boletines ESCANEADOS sin capa de texto (2021): OCR-ea todas las páginas
+    y devuelve el texto de las que tienen vocabulario minero. Caro: usar solo cuando
+    la detección por capa de texto falla. Devuelve '' si no hay minería."""
+    import io
+    import pytesseract
+    from PIL import Image
+    cmd = _tesseract_cmd()
+    if cmd:
+        pytesseract.pytesseract.tesseract_cmd = cmd
+    td = _tessdata_dir()
+    if td:
+        os.environ["TESSDATA_PREFIX"] = td
+    # MINERO-ESPECÍFICO: en 2021 abundan las mensuras CIVILES (usucapión), que NO son
+    # mineras. Se exige vocabulario propio de minería para no meter falsos positivos.
+    claves = ("gauss", "posgar", "pertenencia", "escribania de minas",
+              "juzgado administrativo de minas", "director de mineria",
+              "manifestacion de descubrimiento", "labor legal")
+    doc = fitz.open(ruta)
+    zoom = dpi / 72.0
+    mat = fitz.Matrix(zoom, zoom)
+    partes = []
+    for i in range(doc.page_count):
+        pix = doc[i].get_pixmap(matrix=mat)
+        t = pytesseract.image_to_string(Image.open(io.BytesIO(pix.tobytes("png"))), lang=idioma)
+        tl = t.lower()
+        if any(k in tl for k in claves):
+            partes.append(t)
+    doc.close()
+    return "\n".join(partes)
+
+
 def texto_de_paginas(ruta, paginas, umbral=1200):
     """Texto de las páginas dadas: usa la CAPA DE TEXTO nativa si es sustancial
     (boletines viejos con edictos en texto), si no OCR-ea (escaneados). Así 2020

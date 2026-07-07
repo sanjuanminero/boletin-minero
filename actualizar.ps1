@@ -26,7 +26,7 @@ function Log($m) {
 Log "=== Actualización Boletín Minero ($desde -> $hoy) ==="
 
 Log "1/4 escanear (descarga + OCR incremental + modelo)..."
-& $py escanear.py $desde $hoy --salida $out --datum posgar2007 *>> $log
+& $py escanear.py $desde $hoy --salida $out --datum posgar2007 --ocr-detect *>> $log
 
 Log "2/4 reproyectar + limpieza de geometría (POSGAR 2007)..."
 & $py reproyectar.py $out --datum posgar2007 *>> $log

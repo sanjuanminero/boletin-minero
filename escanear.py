@@ -35,6 +35,8 @@ def main():
     ap.add_argument("--salida", default="./out_mes")
     ap.add_argument("--datum", default="posgar2007")  # SJ 2026: GK Faja 2 POSGAR 2007
     ap.add_argument("--sin-ocr", action="store_true", help="solo detectar días con minas")
+    ap.add_argument("--ocr-detect", action="store_true",
+                    help="OCR-detecta ediciones escaneadas sin capa de texto (2021). Caro.")
     a = ap.parse_args()
     os.makedirs(a.salida, exist_ok=True)
     pdf_dir = os.path.join(a.salida, "pdf"); os.makedirs(pdf_dir, exist_ok=True)
@@ -63,19 +65,34 @@ def main():
             except Exception:
                 pags = None
         hay = boletin.tiene_edictos_de_minas(texto)
+        cache = os.path.join(ocr_dir, f"{e['fecha']}_{e['item_id']}.txt")
+
+        # OCR-detección para años ESCANEADOS sin capa de texto (2021), solo con --ocr-detect.
+        # Cachea el resultado (aunque sea vacío = marcador de 'sin minas') para no re-OCR-ear.
+        txt_ocrdet = None
+        if not hay and a.ocr_detect and not a.sin_ocr and boletin.esta_escaneado(texto, pags or 1):
+            if os.path.exists(cache):
+                txt_ocrdet = open(cache, encoding="utf-8").read()
+            else:
+                print(f"  {e['fecha']}  ({pags}p)  OCR-detección de escaneado…")
+                txt_ocrdet = boletin.minas_por_ocr(destino)
+                with open(cache, "w", encoding="utf-8") as fh:
+                    fh.write(txt_ocrdet)
+            hay = bool(txt_ocrdet.strip())
+
         fila = {"fecha": e["fecha"], "item_id": e["item_id"], "paginas": pags,
                 "minas": hay, "eventos": 0}
         print(f"  {e['fecha']}  ({pags}p)  minas={'SÍ' if hay else 'no'}")
 
         if hay and not a.sin_ocr:
-            pgs = boletin.paginas_de_minas(destino)
-            # caché de OCR: el texto OCR es determinístico, así que se guarda y reusa
-            # (permite iterar el parser sin re-OCR-ear, que es lo lento).
-            cache = os.path.join(ocr_dir, f"{e['fecha']}_{e['item_id']}.txt")
-            if os.path.exists(cache):
+            # caché de OCR determinística (permite iterar el parser sin re-OCR-ear).
+            if txt_ocrdet is not None:
+                txt_minas = txt_ocrdet                    # ya OCR-eado por la detección
+            elif os.path.exists(cache):
                 txt_minas = open(cache, encoding="utf-8").read()
-                print(f"      OCR (caché) páginas: {[x+1 for x in pgs]}")
+                print("      texto/OCR (caché)")
             else:
+                pgs = boletin.paginas_de_minas(destino)
                 print(f"      texto/OCR páginas de minas: {[x+1 for x in pgs]}")
                 txt_minas = boletin.texto_de_paginas(destino, pgs)  # nativo (2020) u OCR (2024+)
                 with open(cache, "w", encoding="utf-8") as fh:
