@@ -1,5 +1,6858 @@
 [
   {
+    "fecha": "2020-01-02",
+    "item_id": "7912",
+    "paginas": 24,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2020-01-03",
+    "item_id": "7914",
+    "paginas": 20,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-01-06",
+    "item_id": "7916",
+    "paginas": 12,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-01-07",
+    "item_id": "7917",
+    "paginas": 8,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2020-01-08",
+    "item_id": "7919",
+    "paginas": 81,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-01-08",
+    "item_id": "7918",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-01-09",
+    "item_id": "7920",
+    "paginas": 12,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2020-01-10",
+    "item_id": "7921",
+    "paginas": 12,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2020-01-13",
+    "item_id": "7922",
+    "paginas": 16,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-01-14",
+    "item_id": "8896",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-01-14",
+    "item_id": "7923",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-01-15",
+    "item_id": "7924",
+    "paginas": 12,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-01-16",
+    "item_id": "7925",
+    "paginas": 28,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-01-17",
+    "item_id": "7927",
+    "paginas": 12,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-01-20",
+    "item_id": "7929",
+    "paginas": 8,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-01-21",
+    "item_id": "7931",
+    "paginas": 24,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-01-22",
+    "item_id": "7933",
+    "paginas": 20,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-01-23",
+    "item_id": "7934",
+    "paginas": 16,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-01-24",
+    "item_id": "7935",
+    "paginas": 12,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-01-27",
+    "item_id": "7936",
+    "paginas": 12,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-01-28",
+    "item_id": "7937",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-01-29",
+    "item_id": "7941",
+    "paginas": 24,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-01-30",
+    "item_id": "7948",
+    "paginas": 16,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-01-31",
+    "item_id": "7958",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-02-03",
+    "item_id": "7968",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-02-04",
+    "item_id": "7970",
+    "paginas": 20,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-02-05",
+    "item_id": "7974",
+    "paginas": 24,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-02-06",
+    "item_id": "7979",
+    "paginas": 16,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2020-02-07",
+    "item_id": "7985",
+    "paginas": 16,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2020-02-10",
+    "item_id": "7991",
+    "paginas": 20,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2020-02-11",
+    "item_id": "7994",
+    "paginas": 52,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2020-02-12",
+    "item_id": "7996",
+    "paginas": 20,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2020-02-13",
+    "item_id": "7997",
+    "paginas": 20,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2020-02-14",
+    "item_id": "8002",
+    "paginas": 20,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2020-02-17",
+    "item_id": "8009",
+    "paginas": 36,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2020-02-18",
+    "item_id": "8013",
+    "paginas": 24,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-02-19",
+    "item_id": "8018",
+    "paginas": 16,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-02-20",
+    "item_id": "8023",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2020-02-21",
+    "item_id": "8026",
+    "paginas": 20,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2020-02-26",
+    "item_id": "8046",
+    "paginas": 44,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2020-02-27",
+    "item_id": "8056",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-02-28",
+    "item_id": "8062",
+    "paginas": 44,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2020-03-02",
+    "item_id": "8064",
+    "paginas": 28,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2020-03-03",
+    "item_id": "8067",
+    "paginas": 20,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-03-04",
+    "item_id": "8069",
+    "paginas": 20,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2020-03-05",
+    "item_id": "8072",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-03-06",
+    "item_id": "8076",
+    "paginas": 28,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2020-03-09",
+    "item_id": "8078",
+    "paginas": 20,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2020-03-10",
+    "item_id": "8087",
+    "paginas": 225,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-03-10",
+    "item_id": "8080",
+    "paginas": 24,
+    "minas": true,
+    "eventos": 10
+  },
+  {
+    "fecha": "2020-03-11",
+    "item_id": "8089",
+    "paginas": 44,
+    "minas": true,
+    "eventos": 12
+  },
+  {
+    "fecha": "2020-03-12",
+    "item_id": "8097",
+    "paginas": 52,
+    "minas": true,
+    "eventos": 9
+  },
+  {
+    "fecha": "2020-03-13",
+    "item_id": "8100",
+    "paginas": 28,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2020-03-16",
+    "item_id": "8104",
+    "paginas": 28,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-03-17",
+    "item_id": "8109",
+    "paginas": 16,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-03-18",
+    "item_id": "8113",
+    "paginas": 16,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-03-19",
+    "item_id": "8123",
+    "paginas": 12,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-03-20",
+    "item_id": "8124",
+    "paginas": 20,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-03-21",
+    "item_id": "8127",
+    "paginas": 2,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-03-25",
+    "item_id": "8129",
+    "paginas": 2,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-03-26",
+    "item_id": "8136",
+    "paginas": 12,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-03-27",
+    "item_id": "8137",
+    "paginas": 4,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-03-30",
+    "item_id": "8138",
+    "paginas": 8,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-01",
+    "item_id": "8139",
+    "paginas": 8,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-02",
+    "item_id": "8144",
+    "paginas": 12,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-03",
+    "item_id": "8151",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-06",
+    "item_id": "8152",
+    "paginas": 24,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-07",
+    "item_id": "8154",
+    "paginas": 20,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-08",
+    "item_id": "8155",
+    "paginas": 8,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-11",
+    "item_id": "8162",
+    "paginas": 4,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-12",
+    "item_id": "8165",
+    "paginas": 2,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-13",
+    "item_id": "8166",
+    "paginas": 12,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-14",
+    "item_id": "8177",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-15",
+    "item_id": "8179",
+    "paginas": 20,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-16",
+    "item_id": "8180",
+    "paginas": 16,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-17",
+    "item_id": "8189",
+    "paginas": 20,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-18",
+    "item_id": "8190",
+    "paginas": 8,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-20",
+    "item_id": "8192",
+    "paginas": 16,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-21",
+    "item_id": "8194",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-22",
+    "item_id": "8195",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-23",
+    "item_id": "8198",
+    "paginas": 28,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-24",
+    "item_id": "8200",
+    "paginas": 8,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-26",
+    "item_id": "8202",
+    "paginas": 8,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-27",
+    "item_id": "8203",
+    "paginas": 12,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-28",
+    "item_id": "8205",
+    "paginas": 16,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-29",
+    "item_id": "8210",
+    "paginas": 12,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-04-30",
+    "item_id": "8211",
+    "paginas": 16,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-02",
+    "item_id": "8212",
+    "paginas": 8,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-04",
+    "item_id": "8213",
+    "paginas": 24,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-06",
+    "item_id": "8215",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-07",
+    "item_id": "8225",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-08",
+    "item_id": "8231",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-10",
+    "item_id": "8232",
+    "paginas": 2,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-11",
+    "item_id": "8237",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-12",
+    "item_id": "8241",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-13",
+    "item_id": "8248",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-14",
+    "item_id": "8256",
+    "paginas": 36,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-15",
+    "item_id": "8260",
+    "paginas": 36,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-16",
+    "item_id": "8261",
+    "paginas": 318,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-18",
+    "item_id": "8266",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-19",
+    "item_id": "8268",
+    "paginas": 28,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-20",
+    "item_id": "8273",
+    "paginas": 36,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-21",
+    "item_id": "8275",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-22",
+    "item_id": "8282",
+    "paginas": 36,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-25",
+    "item_id": "8286",
+    "paginas": 2,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-26",
+    "item_id": "8288",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-27",
+    "item_id": "8291",
+    "paginas": 36,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-05-29",
+    "item_id": "8296",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-01",
+    "item_id": "8298",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-02",
+    "item_id": "8301",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-03",
+    "item_id": "8304",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-04",
+    "item_id": "8305",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-05",
+    "item_id": "8308",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-06",
+    "item_id": "8309",
+    "paginas": 116,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-08",
+    "item_id": "8315",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-09",
+    "item_id": "8318",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-10",
+    "item_id": "8326",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-11",
+    "item_id": "8331",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-12",
+    "item_id": "8336",
+    "paginas": 107,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-17",
+    "item_id": "8350",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-18",
+    "item_id": "8355",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-19",
+    "item_id": "8360",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-22",
+    "item_id": "8364",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-23",
+    "item_id": "8365",
+    "paginas": 36,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-24",
+    "item_id": "8367",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-25",
+    "item_id": "8370",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-26",
+    "item_id": "8376",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-29",
+    "item_id": "8379",
+    "paginas": 28,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-06-30",
+    "item_id": "8380",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-01",
+    "item_id": "8381",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-02",
+    "item_id": "8382",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-03",
+    "item_id": "8384",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-06",
+    "item_id": "8386",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-07",
+    "item_id": "8388",
+    "paginas": 292,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-08",
+    "item_id": "8389",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-13",
+    "item_id": "8392",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-14",
+    "item_id": "8394",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-15",
+    "item_id": "8397",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-16",
+    "item_id": "8402",
+    "paginas": 36,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-17",
+    "item_id": "8403",
+    "paginas": 36,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-18",
+    "item_id": "8408",
+    "paginas": 2,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-20",
+    "item_id": "8411",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-21",
+    "item_id": "8414",
+    "paginas": 226,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-22",
+    "item_id": "8418",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-23",
+    "item_id": "8419",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-24",
+    "item_id": "8420",
+    "paginas": 36,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-27",
+    "item_id": "8423",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-28",
+    "item_id": "8424",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-29",
+    "item_id": "8432",
+    "paginas": 28,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-30",
+    "item_id": "8434",
+    "paginas": 36,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-07-31",
+    "item_id": "8435",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-08-03",
+    "item_id": "8439",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-08-04",
+    "item_id": "8441",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-08-05",
+    "item_id": "8452",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-08-06",
+    "item_id": "8456",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-08-07",
+    "item_id": "8457",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-08-10",
+    "item_id": "8460",
+    "paginas": 28,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-08-11",
+    "item_id": "8462",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-08-12",
+    "item_id": "8464",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-08-13",
+    "item_id": "8466",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-08-14",
+    "item_id": "8469",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-08-18",
+    "item_id": "8474",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-08-19",
+    "item_id": "8484",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-08-21",
+    "item_id": "8491",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-08-24",
+    "item_id": "8497",
+    "paginas": 40,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2020-08-25",
+    "item_id": "8498",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-08-26",
+    "item_id": "8505",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-08-27",
+    "item_id": "8506",
+    "paginas": 24,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-08-28",
+    "item_id": "8507",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-08-31",
+    "item_id": "8510",
+    "paginas": 20,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-01",
+    "item_id": "8515",
+    "paginas": 20,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-02",
+    "item_id": "8524",
+    "paginas": 28,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-03",
+    "item_id": "8539",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-04",
+    "item_id": "8542",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-06",
+    "item_id": "8662",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-07",
+    "item_id": "8545",
+    "paginas": 28,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-08",
+    "item_id": "8546",
+    "paginas": 12,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-09",
+    "item_id": "8548",
+    "paginas": 28,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-10",
+    "item_id": "8549",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-14",
+    "item_id": "8553",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-15",
+    "item_id": "8559",
+    "paginas": 36,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-16",
+    "item_id": "8566",
+    "paginas": 36,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-17",
+    "item_id": "8568",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-18",
+    "item_id": "8590",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-21",
+    "item_id": "8594",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-22",
+    "item_id": "8605",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-23",
+    "item_id": "8610",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-24",
+    "item_id": "8618",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-25",
+    "item_id": "8624",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-26",
+    "item_id": "8631",
+    "paginas": 4,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-27",
+    "item_id": "8632",
+    "paginas": 4,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-28",
+    "item_id": "8633",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-29",
+    "item_id": "8636",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-09-30",
+    "item_id": "8637",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-01",
+    "item_id": "8639",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-02",
+    "item_id": "8648",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-05",
+    "item_id": "8659",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-07",
+    "item_id": "8663",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-08",
+    "item_id": "8665",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-09",
+    "item_id": "8669",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-12",
+    "item_id": "8672",
+    "paginas": 2,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-13",
+    "item_id": "8674",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-14",
+    "item_id": "8681",
+    "paginas": 36,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-15",
+    "item_id": "8685",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-16",
+    "item_id": "8696",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-19",
+    "item_id": "8698",
+    "paginas": 96,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-20",
+    "item_id": "8707",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-21",
+    "item_id": "8712",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-22",
+    "item_id": "8713",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-23",
+    "item_id": "8717",
+    "paginas": 96,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-26",
+    "item_id": "8724",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-27",
+    "item_id": "8731",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-28",
+    "item_id": "8734",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-29",
+    "item_id": "8747",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-10-30",
+    "item_id": "8748",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-02",
+    "item_id": "8751",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-03",
+    "item_id": "8754",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-04",
+    "item_id": "8758",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-05",
+    "item_id": "8764",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-06",
+    "item_id": "8765",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-09",
+    "item_id": "8774",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-10",
+    "item_id": "8777",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-11",
+    "item_id": "8781",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-12",
+    "item_id": "8783",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-13",
+    "item_id": "8792",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-16",
+    "item_id": "8799",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-17",
+    "item_id": "8801",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-18",
+    "item_id": "8802",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-19",
+    "item_id": "8803",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-20",
+    "item_id": "8808",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-24",
+    "item_id": "8818",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-25",
+    "item_id": "8819",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-26",
+    "item_id": "8820",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-27",
+    "item_id": "8821",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-11-30",
+    "item_id": "8823",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-12-01",
+    "item_id": "8829",
+    "paginas": 116,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-12-02",
+    "item_id": "8834",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-12-03",
+    "item_id": "8838",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-12-04",
+    "item_id": "8840",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-12-09",
+    "item_id": "8846",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-12-10",
+    "item_id": "8851",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-12-11",
+    "item_id": "8857",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-12-14",
+    "item_id": "8860",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-12-15",
+    "item_id": "8862",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-12-16",
+    "item_id": "8863",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-12-17",
+    "item_id": "8869",
+    "paginas": 104,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-12-18",
+    "item_id": "8872",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-12-21",
+    "item_id": "8873",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-12-22",
+    "item_id": "8876",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-12-23",
+    "item_id": "8879",
+    "paginas": 96,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-12-28",
+    "item_id": "8880",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-12-29",
+    "item_id": "8881",
+    "paginas": 36,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2020-12-30",
+    "item_id": "8884",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-01-04",
+    "item_id": "8885",
+    "paginas": 120,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-01-05",
+    "item_id": "8886",
+    "paginas": 136,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-01-06",
+    "item_id": "8887",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-01-07",
+    "item_id": "8888",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-01-08",
+    "item_id": "8889",
+    "paginas": 116,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-01-11",
+    "item_id": "8890",
+    "paginas": 28,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-01-12",
+    "item_id": "8891",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-01-13",
+    "item_id": "8895",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-01-15",
+    "item_id": "8898",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-01-18",
+    "item_id": "8900",
+    "paginas": 24,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-01-19",
+    "item_id": "8902",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-01-20",
+    "item_id": "8903",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-01-21",
+    "item_id": "8904",
+    "paginas": 20,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-01-22",
+    "item_id": "8907",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-01-25",
+    "item_id": "8908",
+    "paginas": 28,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-01-26",
+    "item_id": "8911",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-01-27",
+    "item_id": "8910",
+    "paginas": 144,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-01-28",
+    "item_id": "8913",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-01-29",
+    "item_id": "8914",
+    "paginas": 20,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-02-01",
+    "item_id": "8916",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-02-02",
+    "item_id": "8918",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-02-03",
+    "item_id": "8920",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-02-04",
+    "item_id": "8922",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-02-05",
+    "item_id": "8924",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-02-08",
+    "item_id": "8929",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-02-09",
+    "item_id": "8930",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-02-10",
+    "item_id": "8931",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-02-11",
+    "item_id": "8932",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-02-12",
+    "item_id": "8933",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-02-17",
+    "item_id": "8934",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-02-18",
+    "item_id": "8935",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-02-19",
+    "item_id": "8940",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-02-22",
+    "item_id": "8941",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-02-23",
+    "item_id": "8946",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-02-24",
+    "item_id": "8949",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-02-25",
+    "item_id": "8950",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-02-26",
+    "item_id": "8951",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-01",
+    "item_id": "8952",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-02",
+    "item_id": "8954",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-03",
+    "item_id": "8959",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-04",
+    "item_id": "8960",
+    "paginas": 364,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2021-03-05",
+    "item_id": "8961",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-08",
+    "item_id": "8962",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-09",
+    "item_id": "8964",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-10",
+    "item_id": "8965",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-11",
+    "item_id": "8966",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-12",
+    "item_id": "8968",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-15",
+    "item_id": "8972",
+    "paginas": 36,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-16",
+    "item_id": "8973",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-17",
+    "item_id": "8976",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-18",
+    "item_id": "8982",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-19",
+    "item_id": "8984",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-22",
+    "item_id": "8986",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-23",
+    "item_id": "8987",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-25",
+    "item_id": "8988",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-26",
+    "item_id": "8989",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-29",
+    "item_id": "8990",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-30",
+    "item_id": "8991",
+    "paginas": 301,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-03-31",
+    "item_id": "8992",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-04-05",
+    "item_id": "8996",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-04-06",
+    "item_id": "8997",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-04-07",
+    "item_id": "8998",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-04-08",
+    "item_id": "9003",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-04-09",
+    "item_id": "9004",
+    "paginas": 380,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2021-04-12",
+    "item_id": "9006",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-04-13",
+    "item_id": "9007",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-04-14",
+    "item_id": "9008",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-04-15",
+    "item_id": "9009",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-04-16",
+    "item_id": "9011",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-04-19",
+    "item_id": "9012",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-04-20",
+    "item_id": "9013",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-04-21",
+    "item_id": "9016",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-04-22",
+    "item_id": "9019",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-04-23",
+    "item_id": "9021",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-04-26",
+    "item_id": "9022",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-04-27",
+    "item_id": "9023",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-04-28",
+    "item_id": "9025",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-04-29",
+    "item_id": "9027",
+    "paginas": 96,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-04-30",
+    "item_id": "9028",
+    "paginas": 96,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-01",
+    "item_id": "9029",
+    "paginas": 8,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-03",
+    "item_id": "9030",
+    "paginas": 96,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-04",
+    "item_id": "9032",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-05",
+    "item_id": "9033",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-06",
+    "item_id": "9036",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-07",
+    "item_id": "9039",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-10",
+    "item_id": "9040",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-11",
+    "item_id": "9041",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-12",
+    "item_id": "9043",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-13",
+    "item_id": "9044",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-14",
+    "item_id": "9045",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-17",
+    "item_id": "9046",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-18",
+    "item_id": "9047",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-19",
+    "item_id": "9048",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-20",
+    "item_id": "9051",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-21",
+    "item_id": "9052",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-25",
+    "item_id": "9053",
+    "paginas": 2,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-26",
+    "item_id": "9055",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-27",
+    "item_id": "9057",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-28",
+    "item_id": "9058",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-29",
+    "item_id": "9063",
+    "paginas": 8,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-05-31",
+    "item_id": "9064",
+    "paginas": 36,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-01",
+    "item_id": "9065",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-02",
+    "item_id": "9066",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-03",
+    "item_id": "9067",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-04",
+    "item_id": "9068",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-05",
+    "item_id": "9069",
+    "paginas": 6,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-07",
+    "item_id": "9070",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-08",
+    "item_id": "9073",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-09",
+    "item_id": "9075",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-10",
+    "item_id": "9076",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-11",
+    "item_id": "9077",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-12",
+    "item_id": "9078",
+    "paginas": 6,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-14",
+    "item_id": "9085",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-15",
+    "item_id": "9091",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-16",
+    "item_id": "9092",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-17",
+    "item_id": "9093",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-18",
+    "item_id": "9094",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-22",
+    "item_id": "9097",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-23",
+    "item_id": "9098",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-24",
+    "item_id": "9099",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-25",
+    "item_id": "9100",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-26",
+    "item_id": "9101",
+    "paginas": 6,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-28",
+    "item_id": "9102",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-29",
+    "item_id": "9103",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-06-30",
+    "item_id": "9105",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-01",
+    "item_id": "9106",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-02",
+    "item_id": "9107",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-05",
+    "item_id": "9108",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-06",
+    "item_id": "9109",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-07",
+    "item_id": "9111",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-08",
+    "item_id": "9112",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-09",
+    "item_id": "9113",
+    "paginas": 6,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-12",
+    "item_id": "9114",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-13",
+    "item_id": "9116",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-14",
+    "item_id": "9119",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-15",
+    "item_id": "9120",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-16",
+    "item_id": "9121",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-17",
+    "item_id": "9122",
+    "paginas": 5,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-19",
+    "item_id": "9123",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-20",
+    "item_id": "9124",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-21",
+    "item_id": "9126",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-22",
+    "item_id": "9128",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-23",
+    "item_id": "9129",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-26",
+    "item_id": "9130",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-27",
+    "item_id": "9131",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-28",
+    "item_id": "9132",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-29",
+    "item_id": "9134",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-07-30",
+    "item_id": "9135",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-01",
+    "item_id": "9136",
+    "paginas": 4,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-02",
+    "item_id": "9137",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-03",
+    "item_id": "9138",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-04",
+    "item_id": "9139",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-05",
+    "item_id": "9140",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-06",
+    "item_id": "9143",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-07",
+    "item_id": "9145",
+    "paginas": 6,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-09",
+    "item_id": "9146",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-10",
+    "item_id": "9147",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-11",
+    "item_id": "9148",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-12",
+    "item_id": "9150",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-13",
+    "item_id": "9151",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-17",
+    "item_id": "9152",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-18",
+    "item_id": "9153",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-19",
+    "item_id": "9154",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-20",
+    "item_id": "9155",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-23",
+    "item_id": "9157",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-24",
+    "item_id": "9159",
+    "paginas": 120,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-25",
+    "item_id": "9162",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-26",
+    "item_id": "9164",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-27",
+    "item_id": "9165",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-30",
+    "item_id": "9166",
+    "paginas": 92,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-08-31",
+    "item_id": "9167",
+    "paginas": 96,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-01",
+    "item_id": "9168",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-02",
+    "item_id": "9171",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-03",
+    "item_id": "9172",
+    "paginas": 96,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-06",
+    "item_id": "9174",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-07",
+    "item_id": "9175",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-08",
+    "item_id": "9177",
+    "paginas": 92,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-09",
+    "item_id": "9178",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-10",
+    "item_id": "9179",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-13",
+    "item_id": "9182",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-14",
+    "item_id": "9183",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-15",
+    "item_id": "9184",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-16",
+    "item_id": "9185",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-17",
+    "item_id": "9189",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-20",
+    "item_id": "9190",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-21",
+    "item_id": "9191",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-22",
+    "item_id": "9194",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-23",
+    "item_id": "9196",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-24",
+    "item_id": "9198",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-27",
+    "item_id": "9199",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-28",
+    "item_id": "9200",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-29",
+    "item_id": "9201",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-09-30",
+    "item_id": "9204",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-10-04",
+    "item_id": "9207",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-10-05",
+    "item_id": "9208",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-10-06",
+    "item_id": "9210",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-10-07",
+    "item_id": "9211",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-10-12",
+    "item_id": "9212",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-10-13",
+    "item_id": "9214",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-10-14",
+    "item_id": "9215",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-10-15",
+    "item_id": "9216",
+    "paginas": 132,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-10-18",
+    "item_id": "9217",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-10-19",
+    "item_id": "9219",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-10-20",
+    "item_id": "9220",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-10-21",
+    "item_id": "9224",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-10-22",
+    "item_id": "9225",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-10-25",
+    "item_id": "9226",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-10-26",
+    "item_id": "9227",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-10-27",
+    "item_id": "9228",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-10-28",
+    "item_id": "9229",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-10-29",
+    "item_id": "9230",
+    "paginas": 96,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-11-01",
+    "item_id": "9231",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-11-02",
+    "item_id": "9233",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-11-03",
+    "item_id": "9236",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-11-04",
+    "item_id": "9237",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-11-05",
+    "item_id": "9239",
+    "paginas": 52,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2021-11-08",
+    "item_id": "9240",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2021-11-09",
+    "item_id": "9241",
+    "paginas": 52,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2021-11-10",
+    "item_id": "9243",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-11-11",
+    "item_id": "9244",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-11-12",
+    "item_id": "9246",
+    "paginas": 96,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-11-15",
+    "item_id": "9247",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-11-16",
+    "item_id": "9248",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-11-17",
+    "item_id": "9249",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-11-18",
+    "item_id": "9252",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-11-19",
+    "item_id": "9254",
+    "paginas": 104,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-11-23",
+    "item_id": "9256",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-11-24",
+    "item_id": "9257",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-11-25",
+    "item_id": "9258",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-11-26",
+    "item_id": "9259",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-11-29",
+    "item_id": "9260",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-11-30",
+    "item_id": "9262",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-01",
+    "item_id": "9264",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-02",
+    "item_id": "9265",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-03",
+    "item_id": "9266",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-06",
+    "item_id": "9267",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-07",
+    "item_id": "9272",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-09",
+    "item_id": "9273",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-10",
+    "item_id": "9274",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-13",
+    "item_id": "9275",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-14",
+    "item_id": "9276",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-15",
+    "item_id": "9277",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-16",
+    "item_id": "9278",
+    "paginas": 108,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-17",
+    "item_id": "9279",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-20",
+    "item_id": "9280",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-21",
+    "item_id": "9282",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-22",
+    "item_id": "9283",
+    "paginas": 128,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-23",
+    "item_id": "9285",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-27",
+    "item_id": "9286",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-28",
+    "item_id": "9287",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-29",
+    "item_id": "9288",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2021-12-30",
+    "item_id": "9289",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-03",
+    "item_id": "9290",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-04",
+    "item_id": "9291",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-05",
+    "item_id": "9292",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-06",
+    "item_id": "9293",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-07",
+    "item_id": "9296",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-10",
+    "item_id": "9298",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-11",
+    "item_id": "9301",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-12",
+    "item_id": "9303",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-13",
+    "item_id": "9304",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-14",
+    "item_id": "9305",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-17",
+    "item_id": "9306",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-18",
+    "item_id": "9307",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-19",
+    "item_id": "9308",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-20",
+    "item_id": "9309",
+    "paginas": 116,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-21",
+    "item_id": "9311",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-24",
+    "item_id": "9312",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-25",
+    "item_id": "9316",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-26",
+    "item_id": "9317",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-27",
+    "item_id": "9318",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-28",
+    "item_id": "9320",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-01-31",
+    "item_id": "9321",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-02-01",
+    "item_id": "9322",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-02-02",
+    "item_id": "9324",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-02-03",
+    "item_id": "9325",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-02-04",
+    "item_id": "9327",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-02-07",
+    "item_id": "9328",
+    "paginas": 108,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-02-08",
+    "item_id": "9330",
+    "paginas": 140,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-02-09",
+    "item_id": "9332",
+    "paginas": 120,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-02-10",
+    "item_id": "9334",
+    "paginas": 152,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-02-14",
+    "item_id": "9336",
+    "paginas": 120,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-02-15",
+    "item_id": "9337",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-02-16",
+    "item_id": "9338",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-02-17",
+    "item_id": "9339",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-02-18",
+    "item_id": "9341",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-02-21",
+    "item_id": "9343",
+    "paginas": 92,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-02-22",
+    "item_id": "9344",
+    "paginas": 92,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-02-23",
+    "item_id": "9346",
+    "paginas": 92,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-02-24",
+    "item_id": "9348",
+    "paginas": 92,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-02-25",
+    "item_id": "9349",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-03-02",
+    "item_id": "9351",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-03-03",
+    "item_id": "9352",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-03-04",
+    "item_id": "9353",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-03-07",
+    "item_id": "9355",
+    "paginas": 92,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-03-08",
+    "item_id": "9356",
+    "paginas": 92,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-03-09",
+    "item_id": "9359",
+    "paginas": 96,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-03-10",
+    "item_id": "9360",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-03-11",
+    "item_id": "9361",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-03-14",
+    "item_id": "9362",
+    "paginas": 92,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2022-03-15",
+    "item_id": "9363",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-03-16",
+    "item_id": "9364",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 6
+  },
+  {
+    "fecha": "2022-03-17",
+    "item_id": "9365",
+    "paginas": 92,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2022-03-18",
+    "item_id": "9366",
+    "paginas": 124,
+    "minas": true,
+    "eventos": 6
+  },
+  {
+    "fecha": "2022-03-21",
+    "item_id": "9367",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-03-22",
+    "item_id": "9370",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2022-03-23",
+    "item_id": "9371",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-03-25",
+    "item_id": "9374",
+    "paginas": 345,
+    "minas": true,
+    "eventos": 5
+  },
+  {
+    "fecha": "2022-03-28",
+    "item_id": "9375",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2022-03-29",
+    "item_id": "9376",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2022-03-30",
+    "item_id": "9378",
+    "paginas": 96,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-03-31",
+    "item_id": "9380",
+    "paginas": 52,
+    "minas": true,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-04-01",
+    "item_id": "9381",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-04-04",
+    "item_id": "9385",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-04-05",
+    "item_id": "9389",
+    "paginas": 64,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-04-06",
+    "item_id": "9390",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-04-07",
+    "item_id": "9391",
+    "paginas": 84,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-04-08",
+    "item_id": "9395",
+    "paginas": 88,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-04-11",
+    "item_id": "9397",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2022-04-12",
+    "item_id": "9398",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2022-04-13",
+    "item_id": "9399",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-04-18",
+    "item_id": "9400",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2022-04-19",
+    "item_id": "9403",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2022-04-20",
+    "item_id": "9404",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2022-04-21",
+    "item_id": "9405",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-04-22",
+    "item_id": "9406",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-04-25",
+    "item_id": "9411",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-04-26",
+    "item_id": "9416",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-04-27",
+    "item_id": "9417",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-04-28",
+    "item_id": "9420",
+    "paginas": 76,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-04-29",
+    "item_id": "9421",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-05-02",
+    "item_id": "9422",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2022-05-03",
+    "item_id": "9426",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 6
+  },
+  {
+    "fecha": "2022-05-04",
+    "item_id": "9429",
+    "paginas": 76,
+    "minas": true,
+    "eventos": 5
+  },
+  {
+    "fecha": "2022-05-05",
+    "item_id": "9430",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2022-05-06",
+    "item_id": "9431",
+    "paginas": 72,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2022-05-09",
+    "item_id": "9432",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-05-10",
+    "item_id": "9436",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-05-11",
+    "item_id": "9437",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-05-12",
+    "item_id": "9438",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-05-13",
+    "item_id": "9439",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-05-16",
+    "item_id": "9441",
+    "paginas": 72,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-05-17",
+    "item_id": "9442",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-05-19",
+    "item_id": "9443",
+    "paginas": 76,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-05-20",
+    "item_id": "9444",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-05-23",
+    "item_id": "9446",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-05-24",
+    "item_id": "9447",
+    "paginas": 72,
+    "minas": true,
+    "eventos": 6
+  },
+  {
+    "fecha": "2022-05-26",
+    "item_id": "9448",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-05-27",
+    "item_id": "9452",
+    "paginas": 96,
+    "minas": true,
+    "eventos": 6
+  },
+  {
+    "fecha": "2022-05-30",
+    "item_id": "9453",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-05-31",
+    "item_id": "9454",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-06-01",
+    "item_id": "9455",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-06-02",
+    "item_id": "9456",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-06-03",
+    "item_id": "9458",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-06-06",
+    "item_id": "9460",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-06-07",
+    "item_id": "9462",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-06-09",
+    "item_id": "9464",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-06-10",
+    "item_id": "9468",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-06-14",
+    "item_id": "9469",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-06-15",
+    "item_id": "9470",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-06-16",
+    "item_id": "9473",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-06-21",
+    "item_id": "9474",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-06-22",
+    "item_id": "9475",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-06-23",
+    "item_id": "9476",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-06-24",
+    "item_id": "9478",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-06-27",
+    "item_id": "9479",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-06-28",
+    "item_id": "9480",
+    "paginas": 48,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2022-06-29",
+    "item_id": "9481",
+    "paginas": 44,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-06-30",
+    "item_id": "9482",
+    "paginas": 48,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-07-01",
+    "item_id": "9484",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-07-04",
+    "item_id": "9485",
+    "paginas": 72,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-07-05",
+    "item_id": "9486",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-07-06",
+    "item_id": "9487",
+    "paginas": 72,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-07-07",
+    "item_id": "9488",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2022-07-08",
+    "item_id": "9489",
+    "paginas": 72,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-07-11",
+    "item_id": "9490",
+    "paginas": 76,
+    "minas": true,
+    "eventos": 6
+  },
+  {
+    "fecha": "2022-07-12",
+    "item_id": "9491",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 9
+  },
+  {
+    "fecha": "2022-07-13",
+    "item_id": "9492",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 10
+  },
+  {
+    "fecha": "2022-07-14",
+    "item_id": "9493",
+    "paginas": 40,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-07-15",
+    "item_id": "9495",
+    "paginas": 40,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-07-18",
+    "item_id": "9500",
+    "paginas": 36,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-07-19",
+    "item_id": "9501",
+    "paginas": 36,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-07-20",
+    "item_id": "9502",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 9
+  },
+  {
+    "fecha": "2022-07-21",
+    "item_id": "9503",
+    "paginas": 36,
+    "minas": true,
+    "eventos": 9
+  },
+  {
+    "fecha": "2022-07-22",
+    "item_id": "9504",
+    "paginas": 36,
+    "minas": true,
+    "eventos": 7
+  },
+  {
+    "fecha": "2022-07-25",
+    "item_id": "9505",
+    "paginas": 36,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-07-26",
+    "item_id": "9507",
+    "paginas": 44,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-07-27",
+    "item_id": "9508",
+    "paginas": 44,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-07-28",
+    "item_id": "9509",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-07-29",
+    "item_id": "9511",
+    "paginas": 64,
+    "minas": true,
+    "eventos": 7
+  },
+  {
+    "fecha": "2022-08-01",
+    "item_id": "9512",
+    "paginas": 64,
+    "minas": true,
+    "eventos": 7
+  },
+  {
+    "fecha": "2022-08-02",
+    "item_id": "9513",
+    "paginas": 48,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-08-03",
+    "item_id": "9515",
+    "paginas": 44,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-08-04",
+    "item_id": "9516",
+    "paginas": 104,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-08-05",
+    "item_id": "9518",
+    "paginas": 84,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2022-08-08",
+    "item_id": "9519",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-08-09",
+    "item_id": "9520",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-08-10",
+    "item_id": "9521",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-08-11",
+    "item_id": "9522",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-08-12",
+    "item_id": "9533",
+    "paginas": 32,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-08-16",
+    "item_id": "9534",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-08-17",
+    "item_id": "9535",
+    "paginas": 32,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-08-18",
+    "item_id": "9536",
+    "paginas": 88,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-08-19",
+    "item_id": "9537",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-08-22",
+    "item_id": "9538",
+    "paginas": 92,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-08-23",
+    "item_id": "9539",
+    "paginas": 96,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2022-08-24",
+    "item_id": "9540",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-08-25",
+    "item_id": "9541",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-08-26",
+    "item_id": "9542",
+    "paginas": 92,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-08-29",
+    "item_id": "9548",
+    "paginas": 88,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-08-30",
+    "item_id": "9549",
+    "paginas": 76,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-08-31",
+    "item_id": "9550",
+    "paginas": 92,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-09-01",
+    "item_id": "9552",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-09-05",
+    "item_id": "9555",
+    "paginas": 72,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-09-06",
+    "item_id": "9556",
+    "paginas": 72,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-09-07",
+    "item_id": "9557",
+    "paginas": 64,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-09-08",
+    "item_id": "9558",
+    "paginas": 104,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-09-09",
+    "item_id": "9559",
+    "paginas": 56,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-09-12",
+    "item_id": "9560",
+    "paginas": 188,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-09-13",
+    "item_id": "9561",
+    "paginas": 52,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-09-14",
+    "item_id": "9563",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-09-15",
+    "item_id": "9567",
+    "paginas": 56,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2022-09-19",
+    "item_id": "9570",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-09-20",
+    "item_id": "9571",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-09-21",
+    "item_id": "9572",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-09-22",
+    "item_id": "9574",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-09-23",
+    "item_id": "9575",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-09-26",
+    "item_id": "9577",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-09-27",
+    "item_id": "9578",
+    "paginas": 84,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-09-28",
+    "item_id": "9579",
+    "paginas": 64,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-09-29",
+    "item_id": "9583",
+    "paginas": 64,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-10-06",
+    "item_id": "9592",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-10-11",
+    "item_id": "9594",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 5
+  },
+  {
+    "fecha": "2022-10-12",
+    "item_id": "9597",
+    "paginas": 76,
+    "minas": true,
+    "eventos": 6
+  },
+  {
+    "fecha": "2022-10-13",
+    "item_id": "9598",
+    "paginas": 88,
+    "minas": true,
+    "eventos": 7
+  },
+  {
+    "fecha": "2022-10-14",
+    "item_id": "9599",
+    "paginas": 88,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2022-10-17",
+    "item_id": "9600",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-10-18",
+    "item_id": "9601",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2022-10-19",
+    "item_id": "9605",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-10-20",
+    "item_id": "9606",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 5
+  },
+  {
+    "fecha": "2022-10-21",
+    "item_id": "9609",
+    "paginas": 88,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2022-10-24",
+    "item_id": "9615",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 5
+  },
+  {
+    "fecha": "2022-10-25",
+    "item_id": "9616",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2022-10-26",
+    "item_id": "9617",
+    "paginas": 72,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-10-27",
+    "item_id": "9621",
+    "paginas": 112,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-10-28",
+    "item_id": "9622",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2022-10-31",
+    "item_id": "9623",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-11-01",
+    "item_id": "9627",
+    "paginas": 96,
+    "minas": true,
+    "eventos": 11
+  },
+  {
+    "fecha": "2022-11-02",
+    "item_id": "9629",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 7
+  },
+  {
+    "fecha": "2022-11-03",
+    "item_id": "9630",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 7
+  },
+  {
+    "fecha": "2022-11-04",
+    "item_id": "9631",
+    "paginas": 64,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2022-11-07",
+    "item_id": "9632",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-11-08",
+    "item_id": "9635",
+    "paginas": 104,
+    "minas": true,
+    "eventos": 5
+  },
+  {
+    "fecha": "2022-11-09",
+    "item_id": "9636",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-11-10",
+    "item_id": "9637",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-11-11",
+    "item_id": "9638",
+    "paginas": 96,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2022-11-14",
+    "item_id": "9641",
+    "paginas": 112,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2022-11-15",
+    "item_id": "9642",
+    "paginas": 92,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-11-16",
+    "item_id": "9643",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-11-17",
+    "item_id": "9644",
+    "paginas": 84,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-11-18",
+    "item_id": "9646",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2022-11-22",
+    "item_id": "9647",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-11-23",
+    "item_id": "9650",
+    "paginas": 72,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-11-24",
+    "item_id": "9656",
+    "paginas": 92,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-11-25",
+    "item_id": "9657",
+    "paginas": 88,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-11-28",
+    "item_id": "9659",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2022-11-29",
+    "item_id": "9662",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-11-30",
+    "item_id": "9663",
+    "paginas": 96,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-12-01",
+    "item_id": "9665",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-12-02",
+    "item_id": "9666",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-12-05",
+    "item_id": "9669",
+    "paginas": 64,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-12-06",
+    "item_id": "9670",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-12-12",
+    "item_id": "9675",
+    "paginas": 124,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-12-13",
+    "item_id": "9676",
+    "paginas": 112,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2022-12-14",
+    "item_id": "9677",
+    "paginas": 92,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-12-15",
+    "item_id": "9678",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-12-16",
+    "item_id": "9679",
+    "paginas": 84,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-12-19",
+    "item_id": "9680",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-12-20",
+    "item_id": "9681",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-12-21",
+    "item_id": "9682",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-12-26",
+    "item_id": "9686",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2022-12-27",
+    "item_id": "9687",
+    "paginas": 164,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-12-28",
+    "item_id": "9688",
+    "paginas": 84,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2022-12-29",
+    "item_id": "9689",
+    "paginas": 56,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-01-02",
+    "item_id": "9692",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-01-03",
+    "item_id": "9695",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-01-04",
+    "item_id": "9696",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-01-05",
+    "item_id": "9697",
+    "paginas": 32,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2023-01-06",
+    "item_id": "9699",
+    "paginas": 36,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-01-09",
+    "item_id": "9700",
+    "paginas": 56,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-01-10",
+    "item_id": "9704",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-01-11",
+    "item_id": "9706",
+    "paginas": 28,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-01-12",
+    "item_id": "9707",
+    "paginas": 92,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-01-13",
+    "item_id": "9708",
+    "paginas": 36,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-01-16",
+    "item_id": "9711",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-01-17",
+    "item_id": "9714",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-01-18",
+    "item_id": "9715",
+    "paginas": 128,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-01-19",
+    "item_id": "9717",
+    "paginas": 56,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2023-01-20",
+    "item_id": "9718",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2023-01-23",
+    "item_id": "9719",
+    "paginas": 52,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-01-24",
+    "item_id": "9723",
+    "paginas": 16,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-01-25",
+    "item_id": "9724",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-01-26",
+    "item_id": "9727",
+    "paginas": 24,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-01-27",
+    "item_id": "9728",
+    "paginas": 16,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-01-30",
+    "item_id": "9729",
+    "paginas": 12,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-01-31",
+    "item_id": "9730",
+    "paginas": 16,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-02-01",
+    "item_id": "9732",
+    "paginas": 108,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-02-02",
+    "item_id": "9733",
+    "paginas": 28,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-02-03",
+    "item_id": "9735",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-02-06",
+    "item_id": "9737",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-02-07",
+    "item_id": "9738",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-02-08",
+    "item_id": "9739",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-02-09",
+    "item_id": "9740",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-02-10",
+    "item_id": "9741",
+    "paginas": 124,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-02-13",
+    "item_id": "9742",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-02-14",
+    "item_id": "9743",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-02-15",
+    "item_id": "9745",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-02-16",
+    "item_id": "9746",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-02-17",
+    "item_id": "9754",
+    "paginas": 92,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2023-02-22",
+    "item_id": "9756",
+    "paginas": 116,
+    "minas": true,
+    "eventos": 5
+  },
+  {
+    "fecha": "2023-02-23",
+    "item_id": "9758",
+    "paginas": 76,
+    "minas": true,
+    "eventos": 5
+  },
+  {
+    "fecha": "2023-02-24",
+    "item_id": "9762",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-02-27",
+    "item_id": "9764",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-02-28",
+    "item_id": "9765",
+    "paginas": 96,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-03-01",
+    "item_id": "9766",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-03-02",
+    "item_id": "9767",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-03-03",
+    "item_id": "9768",
+    "paginas": 92,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-03-06",
+    "item_id": "9769",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-03-07",
+    "item_id": "9770",
+    "paginas": 52,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-03-08",
+    "item_id": "9773",
+    "paginas": 52,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-03-09",
+    "item_id": "9774",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-03-10",
+    "item_id": "9775",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-03-13",
+    "item_id": "9777",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-03-14",
+    "item_id": "9778",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-03-15",
+    "item_id": "9779",
+    "paginas": 116,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-03-16",
+    "item_id": "9780",
+    "paginas": 120,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-03-17",
+    "item_id": "9781",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-03-20",
+    "item_id": "9783",
+    "paginas": 262,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-03-20",
+    "item_id": "9782",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-03-21",
+    "item_id": "9785",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-03-22",
+    "item_id": "9786",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-03-23",
+    "item_id": "9787",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-03-27",
+    "item_id": "9788",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-03-28",
+    "item_id": "9789",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-03-29",
+    "item_id": "9791",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-03-30",
+    "item_id": "9792",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-03-31",
+    "item_id": "9793",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-04-03",
+    "item_id": "9794",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-04-04",
+    "item_id": "9795",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-04-05",
+    "item_id": "9796",
+    "paginas": 112,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-04-10",
+    "item_id": "9802",
+    "paginas": 120,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-04-11",
+    "item_id": "9804",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-04-12",
+    "item_id": "9805",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-04-13",
+    "item_id": "9806",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-04-14",
+    "item_id": "9807",
+    "paginas": 120,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-04-17",
+    "item_id": "9808",
+    "paginas": 92,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-04-18",
+    "item_id": "9810",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-04-19",
+    "item_id": "9812",
+    "paginas": 88,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-04-20",
+    "item_id": "9813",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-04-21",
+    "item_id": "9814",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-04-24",
+    "item_id": "9815",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-04-25",
+    "item_id": "9816",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-04-26",
+    "item_id": "9818",
+    "paginas": 56,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2023-04-27",
+    "item_id": "9819",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-04-28",
+    "item_id": "9820",
+    "paginas": 92,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-05-02",
+    "item_id": "9821",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-05-03",
+    "item_id": "9822",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-05-04",
+    "item_id": "9823",
+    "paginas": 88,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-05-05",
+    "item_id": "9825",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-05-08",
+    "item_id": "9826",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-05-09",
+    "item_id": "9827",
+    "paginas": 92,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-05-10",
+    "item_id": "9828",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-05-11",
+    "item_id": "9829",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-05-12",
+    "item_id": "9830",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-05-15",
+    "item_id": "9831",
+    "paginas": 72,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-05-16",
+    "item_id": "9832",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-05-17",
+    "item_id": "9833",
+    "paginas": 96,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-05-18",
+    "item_id": "9834",
+    "paginas": 112,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-05-19",
+    "item_id": "9835",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-05-22",
+    "item_id": "9836",
+    "paginas": 84,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2023-05-23",
+    "item_id": "9837",
+    "paginas": 56,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-05-24",
+    "item_id": "9838",
+    "paginas": 56,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-05-29",
+    "item_id": "9839",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2023-05-30",
+    "item_id": "9840",
+    "paginas": 132,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-05-31",
+    "item_id": "9841",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-06-01",
+    "item_id": "9843",
+    "paginas": 148,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-06-02",
+    "item_id": "9844",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-06-05",
+    "item_id": "9845",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-06-06",
+    "item_id": "9846",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-06-07",
+    "item_id": "9847",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-06-08",
+    "item_id": "9848",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-06-09",
+    "item_id": "9849",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-06-12",
+    "item_id": "9850",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-06-14",
+    "item_id": "9852",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2023-06-15",
+    "item_id": "9853",
+    "paginas": 96,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-06-16",
+    "item_id": "9854",
+    "paginas": 64,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2023-06-21",
+    "item_id": "9855",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-06-22",
+    "item_id": "9856",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-06-23",
+    "item_id": "9857",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-06-26",
+    "item_id": "9860",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-06-27",
+    "item_id": "9861",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2023-06-28",
+    "item_id": "9862",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-06-29",
+    "item_id": "9863",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-06-30",
+    "item_id": "9864",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 5
+  },
+  {
+    "fecha": "2023-07-03",
+    "item_id": "9865",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2023-07-04",
+    "item_id": "9866",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2023-07-05",
+    "item_id": "9867",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-07-06",
+    "item_id": "9868",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-07-07",
+    "item_id": "9869",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-07-10",
+    "item_id": "9870",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-07-11",
+    "item_id": "9871",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-07-12",
+    "item_id": "9873",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-07-13",
+    "item_id": "9874",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-07-14",
+    "item_id": "9875",
+    "paginas": 72,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-07-17",
+    "item_id": "9877",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-07-18",
+    "item_id": "9878",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-07-19",
+    "item_id": "9884",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-07-20",
+    "item_id": "9886",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-07-21",
+    "item_id": "9887",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-07-24",
+    "item_id": "9888",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 7
+  },
+  {
+    "fecha": "2023-07-25",
+    "item_id": "9889",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 5
+  },
+  {
+    "fecha": "2023-07-26",
+    "item_id": "9891",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-07-27",
+    "item_id": "9892",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-07-28",
+    "item_id": "9893",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-07-31",
+    "item_id": "9894",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2023-08-01",
+    "item_id": "9896",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-08-02",
+    "item_id": "9897",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-08-03",
+    "item_id": "9898",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-08-04",
+    "item_id": "9900",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-08-07",
+    "item_id": "9901",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-08-08",
+    "item_id": "9902",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-08-09",
+    "item_id": "9903",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-08-10",
+    "item_id": "9904",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-08-11",
+    "item_id": "9905",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-08-14",
+    "item_id": "9906",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-08-15",
+    "item_id": "9907",
+    "paginas": 112,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-08-16",
+    "item_id": "9908",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-08-17",
+    "item_id": "9910",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-08-18",
+    "item_id": "9911",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-08-22",
+    "item_id": "9912",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-08-23",
+    "item_id": "9913",
+    "paginas": 52,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-08-24",
+    "item_id": "9914",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-08-25",
+    "item_id": "9916",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-08-28",
+    "item_id": "9917",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-08-29",
+    "item_id": "9918",
+    "paginas": 64,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2023-08-30",
+    "item_id": "9919",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-08-31",
+    "item_id": "9920",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2023-09-01",
+    "item_id": "9921",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-09-04",
+    "item_id": "9922",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-09-05",
+    "item_id": "9923",
+    "paginas": 32,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-09-06",
+    "item_id": "9924",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-09-07",
+    "item_id": "9925",
+    "paginas": 72,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-09-08",
+    "item_id": "9926",
+    "paginas": 52,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2023-09-12",
+    "item_id": "9927",
+    "paginas": 56,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-09-13",
+    "item_id": "9929",
+    "paginas": 40,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-09-14",
+    "item_id": "9930",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-09-15",
+    "item_id": "9932",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-09-15",
+    "item_id": "9931",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-09-19",
+    "item_id": "9933",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-09-20",
+    "item_id": "9936",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-09-21",
+    "item_id": "9937",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-09-22",
+    "item_id": "9938",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-09-25",
+    "item_id": "9939",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-09-26",
+    "item_id": "9940",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-09-27",
+    "item_id": "9941",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-09-28",
+    "item_id": "9942",
+    "paginas": 36,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-09-29",
+    "item_id": "9943",
+    "paginas": 36,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-10-02",
+    "item_id": "9944",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-10-03",
+    "item_id": "9945",
+    "paginas": 56,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-10-04",
+    "item_id": "9947",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-10-05",
+    "item_id": "9948",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-10-06",
+    "item_id": "9949",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-10-09",
+    "item_id": "9950",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-10-11",
+    "item_id": "9952",
+    "paginas": 100,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-10-12",
+    "item_id": "9954",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-10-17",
+    "item_id": "9955",
+    "paginas": 80,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-10-18",
+    "item_id": "9957",
+    "paginas": 84,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-10-19",
+    "item_id": "9958",
+    "paginas": 64,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-10-20",
+    "item_id": "9959",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-10-23",
+    "item_id": "9960",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-10-24",
+    "item_id": "9961",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-10-25",
+    "item_id": "9963",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-10-26",
+    "item_id": "9964",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-10-27",
+    "item_id": "9965",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-10-30",
+    "item_id": "9966",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-10-31",
+    "item_id": "9967",
+    "paginas": 44,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-11-01",
+    "item_id": "9968",
+    "paginas": 52,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-11-02",
+    "item_id": "9969",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-11-03",
+    "item_id": "9970",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-11-06",
+    "item_id": "9971",
+    "paginas": 48,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-11-07",
+    "item_id": "9972",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-11-08",
+    "item_id": "9974",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2023-11-09",
+    "item_id": "9976",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-11-10",
+    "item_id": "9977",
+    "paginas": 40,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-11-13",
+    "item_id": "9978",
+    "paginas": 52,
+    "minas": true,
+    "eventos": 5
+  },
+  {
+    "fecha": "2023-11-14",
+    "item_id": "9979",
+    "paginas": 52,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2023-11-15",
+    "item_id": "9980",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 7
+  },
+  {
+    "fecha": "2023-11-16",
+    "item_id": "9981",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2023-11-17",
+    "item_id": "9983",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 5
+  },
+  {
+    "fecha": "2023-11-21",
+    "item_id": "9984",
+    "paginas": 52,
+    "minas": true,
+    "eventos": 5
+  },
+  {
+    "fecha": "2023-11-22",
+    "item_id": "9985",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-11-23",
+    "item_id": "9987",
+    "paginas": 76,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-11-24",
+    "item_id": "9988",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-11-27",
+    "item_id": "9989",
+    "paginas": 52,
+    "minas": true,
+    "eventos": 6
+  },
+  {
+    "fecha": "2023-11-28",
+    "item_id": "9990",
+    "paginas": 72,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-11-29",
+    "item_id": "9991",
+    "paginas": 68,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-11-30",
+    "item_id": "9994",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-12-01",
+    "item_id": "9995",
+    "paginas": 72,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-12-04",
+    "item_id": "9996",
+    "paginas": 80,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-12-05",
+    "item_id": "9997",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-12-06",
+    "item_id": "9998",
+    "paginas": 108,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-12-07",
+    "item_id": "9999",
+    "paginas": 108,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-12-11",
+    "item_id": "10000",
+    "paginas": 104,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-12-12",
+    "item_id": "10002",
+    "paginas": 60,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-12-13",
+    "item_id": "10003",
+    "paginas": 92,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2023-12-14",
+    "item_id": "10004",
+    "paginas": 76,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2023-12-15",
+    "item_id": "10005",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-12-18",
+    "item_id": "10006",
+    "paginas": 48,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2023-12-19",
+    "item_id": "10007",
+    "paginas": 72,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2023-12-20",
+    "item_id": "10008",
+    "paginas": 84,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-12-21",
+    "item_id": "10009",
+    "paginas": 52,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2023-12-22",
+    "item_id": "10010",
+    "paginas": 48,
+    "minas": true,
+    "eventos": 4
+  },
+  {
+    "fecha": "2023-12-26",
+    "item_id": "10011",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2023-12-27",
+    "item_id": "10012",
+    "paginas": 72,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2023-12-28",
+    "item_id": "10013",
+    "paginas": 48,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2023-12-29",
+    "item_id": "10016",
+    "paginas": 96,
+    "minas": false,
+    "eventos": 0
+  },
+  {
     "fecha": "2024-01-02",
     "item_id": "10017",
     "paginas": 100,
@@ -4149,5 +11002,47 @@
     "paginas": 48,
     "minas": true,
     "eventos": 1
+  },
+  {
+    "fecha": "2026-06-29",
+    "item_id": "10708",
+    "paginas": 52,
+    "minas": true,
+    "eventos": 1
+  },
+  {
+    "fecha": "2026-06-30",
+    "item_id": "10709",
+    "paginas": 72,
+    "minas": true,
+    "eventos": 3
+  },
+  {
+    "fecha": "2026-07-01",
+    "item_id": "10710",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2026-07-02",
+    "item_id": "10711",
+    "paginas": 76,
+    "minas": false,
+    "eventos": 0
+  },
+  {
+    "fecha": "2026-07-03",
+    "item_id": "10712",
+    "paginas": 100,
+    "minas": true,
+    "eventos": 2
+  },
+  {
+    "fecha": "2026-07-06",
+    "item_id": "10713",
+    "paginas": 68,
+    "minas": false,
+    "eventos": 0
   }
 ]
