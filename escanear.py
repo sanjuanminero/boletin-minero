@@ -69,8 +69,12 @@ def main():
 
         # OCR-detección para años ESCANEADOS sin capa de texto (2021), solo con --ocr-detect.
         # Cachea el resultado (aunque sea vacío = marcador de 'sin minas') para no re-OCR-ear.
+        # OJO: solo 2021 tiene la minería 100% en imágenes (sin señal en la capa de
+        # texto). 2020 es texto nativo y 2022-2026 se detectan por texto, así que
+        # OCR-detectar esos años sería OCR-ear de más miles de páginas no-mineras.
         txt_ocrdet = None
-        if not hay and a.ocr_detect and not a.sin_ocr and boletin.esta_escaneado(texto, pags or 1):
+        if (not hay and a.ocr_detect and not a.sin_ocr and e["fecha"][:4] == "2021"
+                and boletin.esta_escaneado(texto, pags or 1)):
             if os.path.exists(cache):
                 txt_ocrdet = open(cache, encoding="utf-8").read()
             else:
