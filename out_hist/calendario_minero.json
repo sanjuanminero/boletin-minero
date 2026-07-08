@@ -1788,8 +1788,8 @@
     "fecha": "2021-01-06",
     "item_id": "8887",
     "paginas": 68,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 3
   },
   {
     "fecha": "2021-01-07",
@@ -1900,15 +1900,15 @@
     "fecha": "2021-01-29",
     "item_id": "8914",
     "paginas": 20,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-02-01",
     "item_id": "8916",
     "paginas": 52,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-02-02",
@@ -1928,8 +1928,8 @@
     "fecha": "2021-02-04",
     "item_id": "8922",
     "paginas": 52,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-02-05",
@@ -1942,29 +1942,29 @@
     "fecha": "2021-02-08",
     "item_id": "8929",
     "paginas": 40,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-02-09",
     "item_id": "8930",
     "paginas": 52,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-02-10",
     "item_id": "8931",
     "paginas": 64,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-02-11",
     "item_id": "8932",
     "paginas": 68,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-02-12",
@@ -1977,8 +1977,8 @@
     "fecha": "2021-02-17",
     "item_id": "8934",
     "paginas": 52,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-02-18",
@@ -1991,15 +1991,15 @@
     "fecha": "2021-02-19",
     "item_id": "8940",
     "paginas": 88,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-02-22",
     "item_id": "8941",
     "paginas": 56,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-02-23",
@@ -2012,22 +2012,22 @@
     "fecha": "2021-02-24",
     "item_id": "8949",
     "paginas": 60,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-02-25",
     "item_id": "8950",
     "paginas": 72,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 4
   },
   {
     "fecha": "2021-02-26",
     "item_id": "8951",
     "paginas": 64,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 6
   },
   {
     "fecha": "2021-03-01",
@@ -2040,8 +2040,8 @@
     "fecha": "2021-03-02",
     "item_id": "8954",
     "paginas": 56,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 3
   },
   {
     "fecha": "2021-03-03",
@@ -2082,29 +2082,29 @@
     "fecha": "2021-03-10",
     "item_id": "8965",
     "paginas": 48,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 5
   },
   {
     "fecha": "2021-03-11",
     "item_id": "8966",
     "paginas": 52,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 5
   },
   {
     "fecha": "2021-03-12",
     "item_id": "8968",
     "paginas": 44,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 3
   },
   {
     "fecha": "2021-03-15",
     "item_id": "8972",
     "paginas": 36,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 3
   },
   {
     "fecha": "2021-03-16",
@@ -2117,57 +2117,57 @@
     "fecha": "2021-03-17",
     "item_id": "8976",
     "paginas": 48,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-03-18",
     "item_id": "8982",
     "paginas": 56,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-03-19",
     "item_id": "8984",
     "paginas": 60,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 3
   },
   {
     "fecha": "2021-03-22",
     "item_id": "8986",
     "paginas": 84,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 3
   },
   {
     "fecha": "2021-03-23",
     "item_id": "8987",
     "paginas": 40,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 3
   },
   {
     "fecha": "2021-03-25",
     "item_id": "8988",
     "paginas": 60,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-03-26",
     "item_id": "8989",
     "paginas": 52,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-03-29",
     "item_id": "8990",
     "paginas": 52,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-03-30",
@@ -2180,29 +2180,29 @@
     "fecha": "2021-03-31",
     "item_id": "8992",
     "paginas": 56,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 3
   },
   {
     "fecha": "2021-04-05",
     "item_id": "8996",
     "paginas": 68,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-04-06",
     "item_id": "8997",
     "paginas": 72,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-04-07",
     "item_id": "8998",
     "paginas": 76,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-04-08",
@@ -2222,8 +2222,8 @@
     "fecha": "2021-04-12",
     "item_id": "9006",
     "paginas": 64,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-04-13",
@@ -2257,8 +2257,8 @@
     "fecha": "2021-04-19",
     "item_id": "9012",
     "paginas": 40,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-04-20",
@@ -2278,8 +2278,8 @@
     "fecha": "2021-04-22",
     "item_id": "9019",
     "paginas": 64,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-04-23",
@@ -2292,36 +2292,36 @@
     "fecha": "2021-04-26",
     "item_id": "9022",
     "paginas": 80,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-04-27",
     "item_id": "9023",
     "paginas": 80,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-04-28",
     "item_id": "9025",
     "paginas": 88,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-04-29",
     "item_id": "9027",
     "paginas": 96,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-04-30",
     "item_id": "9028",
     "paginas": 96,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-05-01",
@@ -2334,15 +2334,15 @@
     "fecha": "2021-05-03",
     "item_id": "9030",
     "paginas": 96,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-05-04",
     "item_id": "9032",
     "paginas": 100,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-05-05",
@@ -2355,29 +2355,29 @@
     "fecha": "2021-05-06",
     "item_id": "9036",
     "paginas": 100,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-05-07",
     "item_id": "9039",
     "paginas": 100,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-05-10",
     "item_id": "9040",
     "paginas": 80,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-05-11",
     "item_id": "9041",
     "paginas": 80,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-05-12",
@@ -2404,8 +2404,8 @@
     "fecha": "2021-05-17",
     "item_id": "9046",
     "paginas": 68,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-05-18",
@@ -2418,8 +2418,8 @@
     "fecha": "2021-05-19",
     "item_id": "9048",
     "paginas": 100,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-05-20",
@@ -2432,8 +2432,8 @@
     "fecha": "2021-05-21",
     "item_id": "9052",
     "paginas": 88,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-05-25",
@@ -2453,15 +2453,15 @@
     "fecha": "2021-05-27",
     "item_id": "9057",
     "paginas": 48,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-05-28",
     "item_id": "9058",
     "paginas": 40,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-05-29",
@@ -2474,22 +2474,22 @@
     "fecha": "2021-05-31",
     "item_id": "9064",
     "paginas": 36,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-06-01",
     "item_id": "9065",
     "paginas": 68,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-06-02",
     "item_id": "9066",
     "paginas": 68,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-06-03",
@@ -2516,29 +2516,29 @@
     "fecha": "2021-06-07",
     "item_id": "9070",
     "paginas": 64,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-06-08",
     "item_id": "9073",
     "paginas": 72,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-06-09",
     "item_id": "9075",
     "paginas": 88,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 3
   },
   {
     "fecha": "2021-06-10",
     "item_id": "9076",
     "paginas": 84,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-06-11",
@@ -2565,15 +2565,15 @@
     "fecha": "2021-06-15",
     "item_id": "9091",
     "paginas": 72,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-06-16",
     "item_id": "9092",
     "paginas": 64,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-06-17",
@@ -2586,29 +2586,29 @@
     "fecha": "2021-06-18",
     "item_id": "9094",
     "paginas": 88,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-06-22",
     "item_id": "9097",
     "paginas": 100,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-06-23",
     "item_id": "9098",
     "paginas": 72,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-06-24",
     "item_id": "9099",
     "paginas": 72,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 3
   },
   {
     "fecha": "2021-06-25",
@@ -2628,15 +2628,15 @@
     "fecha": "2021-06-28",
     "item_id": "9102",
     "paginas": 76,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 5
   },
   {
     "fecha": "2021-06-29",
     "item_id": "9103",
     "paginas": 72,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 5
   },
   {
     "fecha": "2021-06-30",
@@ -2649,22 +2649,22 @@
     "fecha": "2021-07-01",
     "item_id": "9106",
     "paginas": 76,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 4
   },
   {
     "fecha": "2021-07-02",
     "item_id": "9107",
     "paginas": 64,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 5
   },
   {
     "fecha": "2021-07-05",
     "item_id": "9108",
     "paginas": 52,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 3
   },
   {
     "fecha": "2021-07-06",
@@ -2712,15 +2712,15 @@
     "fecha": "2021-07-14",
     "item_id": "9119",
     "paginas": 60,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-07-15",
     "item_id": "9120",
     "paginas": 64,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-07-16",
@@ -2754,22 +2754,22 @@
     "fecha": "2021-07-21",
     "item_id": "9126",
     "paginas": 48,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-07-22",
     "item_id": "9128",
     "paginas": 68,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 3
   },
   {
     "fecha": "2021-07-23",
     "item_id": "9129",
     "paginas": 68,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-07-26",
@@ -2789,22 +2789,22 @@
     "fecha": "2021-07-28",
     "item_id": "9132",
     "paginas": 48,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-07-29",
     "item_id": "9134",
     "paginas": 60,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-07-30",
     "item_id": "9135",
     "paginas": 68,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-08-01",
@@ -2817,36 +2817,36 @@
     "fecha": "2021-08-02",
     "item_id": "9137",
     "paginas": 60,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-08-03",
     "item_id": "9138",
     "paginas": 76,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-08-04",
     "item_id": "9139",
     "paginas": 84,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-08-05",
     "item_id": "9140",
     "paginas": 72,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-08-06",
     "item_id": "9143",
     "paginas": 64,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-08-07",
@@ -2859,8 +2859,8 @@
     "fecha": "2021-08-09",
     "item_id": "9146",
     "paginas": 64,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-08-10",
@@ -2880,8 +2880,8 @@
     "fecha": "2021-08-12",
     "item_id": "9150",
     "paginas": 68,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-08-13",
@@ -2901,113 +2901,113 @@
     "fecha": "2021-08-18",
     "item_id": "9153",
     "paginas": 56,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-08-19",
     "item_id": "9154",
     "paginas": 72,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-08-20",
     "item_id": "9155",
     "paginas": 80,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-08-23",
     "item_id": "9157",
     "paginas": 76,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 6
   },
   {
     "fecha": "2021-08-24",
     "item_id": "9159",
     "paginas": 120,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 5
   },
   {
     "fecha": "2021-08-25",
     "item_id": "9162",
     "paginas": 80,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-08-26",
     "item_id": "9164",
     "paginas": 52,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-08-27",
     "item_id": "9165",
     "paginas": 68,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-08-30",
     "item_id": "9166",
     "paginas": 92,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-08-31",
     "item_id": "9167",
     "paginas": 96,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-09-01",
     "item_id": "9168",
     "paginas": 88,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-09-02",
     "item_id": "9171",
     "paginas": 80,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-09-03",
     "item_id": "9172",
     "paginas": 96,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-09-06",
     "item_id": "9174",
     "paginas": 64,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-09-07",
     "item_id": "9175",
     "paginas": 52,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-09-08",
     "item_id": "9177",
     "paginas": 92,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-09-09",
@@ -3020,8 +3020,8 @@
     "fecha": "2021-09-10",
     "item_id": "9179",
     "paginas": 64,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-09-13",
@@ -3034,15 +3034,15 @@
     "fecha": "2021-09-14",
     "item_id": "9183",
     "paginas": 60,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-09-15",
     "item_id": "9184",
     "paginas": 60,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-09-16",
@@ -3055,57 +3055,57 @@
     "fecha": "2021-09-17",
     "item_id": "9189",
     "paginas": 52,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-09-20",
     "item_id": "9190",
     "paginas": 72,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 3
   },
   {
     "fecha": "2021-09-21",
     "item_id": "9191",
     "paginas": 84,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-09-22",
     "item_id": "9194",
     "paginas": 72,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-09-23",
     "item_id": "9196",
     "paginas": 72,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 6
   },
   {
     "fecha": "2021-09-24",
     "item_id": "9198",
     "paginas": 44,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-09-27",
     "item_id": "9199",
     "paginas": 52,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 6
   },
   {
     "fecha": "2021-09-28",
     "item_id": "9200",
     "paginas": 60,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-09-29",
@@ -3118,113 +3118,113 @@
     "fecha": "2021-09-30",
     "item_id": "9204",
     "paginas": 88,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 6
   },
   {
     "fecha": "2021-10-04",
     "item_id": "9207",
     "paginas": 72,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-10-05",
     "item_id": "9208",
     "paginas": 72,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 5
   },
   {
     "fecha": "2021-10-06",
     "item_id": "9210",
     "paginas": 76,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-10-07",
     "item_id": "9211",
     "paginas": 68,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 3
   },
   {
     "fecha": "2021-10-12",
     "item_id": "9212",
     "paginas": 64,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-10-13",
     "item_id": "9214",
     "paginas": 84,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-10-14",
     "item_id": "9215",
     "paginas": 68,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 7
   },
   {
     "fecha": "2021-10-15",
     "item_id": "9216",
     "paginas": 132,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 4
   },
   {
     "fecha": "2021-10-18",
     "item_id": "9217",
     "paginas": 76,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-10-19",
     "item_id": "9219",
     "paginas": 80,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 4
   },
   {
     "fecha": "2021-10-20",
     "item_id": "9220",
     "paginas": 64,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-10-21",
     "item_id": "9224",
     "paginas": 64,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 3
   },
   {
     "fecha": "2021-10-22",
     "item_id": "9225",
     "paginas": 84,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 3
   },
   {
     "fecha": "2021-10-25",
     "item_id": "9226",
     "paginas": 76,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 5
   },
   {
     "fecha": "2021-10-26",
     "item_id": "9227",
     "paginas": 68,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-10-27",
@@ -3251,15 +3251,15 @@
     "fecha": "2021-11-01",
     "item_id": "9231",
     "paginas": 52,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 3
   },
   {
     "fecha": "2021-11-02",
     "item_id": "9233",
     "paginas": 60,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-11-03",
@@ -3300,15 +3300,15 @@
     "fecha": "2021-11-10",
     "item_id": "9243",
     "paginas": 100,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-11-11",
     "item_id": "9244",
     "paginas": 80,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-11-12",
@@ -3321,8 +3321,8 @@
     "fecha": "2021-11-15",
     "item_id": "9247",
     "paginas": 100,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-11-16",
@@ -3335,8 +3335,8 @@
     "fecha": "2021-11-17",
     "item_id": "9249",
     "paginas": 100,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-11-18",
@@ -3349,22 +3349,22 @@
     "fecha": "2021-11-19",
     "item_id": "9254",
     "paginas": 104,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-11-23",
     "item_id": "9256",
     "paginas": 52,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-11-24",
     "item_id": "9257",
     "paginas": 56,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-11-25",
@@ -3377,8 +3377,8 @@
     "fecha": "2021-11-26",
     "item_id": "9259",
     "paginas": 76,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-11-29",
@@ -3398,36 +3398,36 @@
     "fecha": "2021-12-01",
     "item_id": "9264",
     "paginas": 64,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-12-02",
     "item_id": "9265",
     "paginas": 84,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 5
   },
   {
     "fecha": "2021-12-03",
     "item_id": "9266",
     "paginas": 80,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 7
   },
   {
     "fecha": "2021-12-06",
     "item_id": "9267",
     "paginas": 60,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 8
   },
   {
     "fecha": "2021-12-07",
     "item_id": "9272",
     "paginas": 84,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-12-09",
@@ -3447,8 +3447,8 @@
     "fecha": "2021-12-13",
     "item_id": "9275",
     "paginas": 72,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-12-14",
@@ -3461,29 +3461,29 @@
     "fecha": "2021-12-15",
     "item_id": "9277",
     "paginas": 76,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 1
   },
   {
     "fecha": "2021-12-16",
     "item_id": "9278",
     "paginas": 108,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-12-17",
     "item_id": "9279",
     "paginas": 88,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-12-20",
     "item_id": "9280",
     "paginas": 68,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 3
   },
   {
     "fecha": "2021-12-21",
@@ -3496,36 +3496,36 @@
     "fecha": "2021-12-22",
     "item_id": "9283",
     "paginas": 128,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-12-23",
     "item_id": "9285",
     "paginas": 64,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-12-27",
     "item_id": "9286",
     "paginas": 60,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-12-28",
     "item_id": "9287",
     "paginas": 64,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-12-29",
     "item_id": "9288",
     "paginas": 52,
-    "minas": false,
-    "eventos": 0
+    "minas": true,
+    "eventos": 2
   },
   {
     "fecha": "2021-12-30",
@@ -4160,7 +4160,7 @@
   {
     "fecha": "2022-05-16",
     "item_id": "9441",
-    "paginas": 72,
+    "paginas": 76,
     "minas": true,
     "eventos": 1
   },
@@ -4216,7 +4216,7 @@
   {
     "fecha": "2022-05-30",
     "item_id": "9453",
-    "paginas": 60,
+    "paginas": 56,
     "minas": false,
     "eventos": 0
   },
@@ -4244,7 +4244,7 @@
   {
     "fecha": "2022-06-03",
     "item_id": "9458",
-    "paginas": 68,
+    "paginas": 76,
     "minas": false,
     "eventos": 0
   },
@@ -4356,7 +4356,7 @@
   {
     "fecha": "2022-07-01",
     "item_id": "9484",
-    "paginas": 100,
+    "paginas": 124,
     "minas": false,
     "eventos": 0
   },
@@ -4993,7 +4993,7 @@
   {
     "fecha": "2022-11-18",
     "item_id": "9646",
-    "paginas": 80,
+    "paginas": 64,
     "minas": true,
     "eventos": 3
   },
@@ -5049,7 +5049,7 @@
   {
     "fecha": "2022-12-01",
     "item_id": "9665",
-    "paginas": 80,
+    "paginas": 88,
     "minas": true,
     "eventos": 2
   },
@@ -5077,7 +5077,7 @@
   {
     "fecha": "2022-12-12",
     "item_id": "9675",
-    "paginas": 124,
+    "paginas": 120,
     "minas": true,
     "eventos": 2
   },
@@ -5098,7 +5098,7 @@
   {
     "fecha": "2022-12-15",
     "item_id": "9678",
-    "paginas": 80,
+    "paginas": 84,
     "minas": false,
     "eventos": 0
   },
@@ -5154,7 +5154,7 @@
   {
     "fecha": "2022-12-29",
     "item_id": "9689",
-    "paginas": 56,
+    "paginas": 72,
     "minas": true,
     "eventos": 1
   },
@@ -5455,7 +5455,7 @@
   {
     "fecha": "2023-03-03",
     "item_id": "9768",
-    "paginas": 92,
+    "paginas": 76,
     "minas": true,
     "eventos": 1
   },
@@ -5686,7 +5686,7 @@
   {
     "fecha": "2023-04-21",
     "item_id": "9814",
-    "paginas": 68,
+    "paginas": 60,
     "minas": false,
     "eventos": 0
   },
@@ -5770,7 +5770,7 @@
   {
     "fecha": "2023-05-10",
     "item_id": "9828",
-    "paginas": 64,
+    "paginas": 68,
     "minas": false,
     "eventos": 0
   },
@@ -6015,7 +6015,7 @@
   {
     "fecha": "2023-07-05",
     "item_id": "9867",
-    "paginas": 60,
+    "paginas": 56,
     "minas": true,
     "eventos": 1
   },
@@ -6792,7 +6792,7 @@
   {
     "fecha": "2023-12-18",
     "item_id": "10006",
-    "paginas": 48,
+    "paginas": 52,
     "minas": true,
     "eventos": 3
   },
@@ -11044,5 +11044,12 @@
     "paginas": 68,
     "minas": false,
     "eventos": 0
+  },
+  {
+    "fecha": "2026-07-07",
+    "item_id": "10714",
+    "paginas": 40,
+    "minas": true,
+    "eventos": 2
   }
 ]
