@@ -175,7 +175,35 @@ function initMap(){
     catLayers[c.k]=lyr;
     overlays['<span style="color:'+c.color+'">●</span> <span style="color:#1a1a1a">'+c.l+'</span>']=lyr;
   });
+  // Geoservicios OFICIALES del Catastro Minero (GeoServer OGC)
+  const WMS_URL='https://catastrominero.sanjuan.gob.ar/geoserver/wms';
+  const WFS_URL='https://catastrominero.sanjuan.gob.ar/geoserver/wfs';
+  const wmsOficial=L.tileLayer.wms(WMS_URL,{
+    layers:'mineria:vw_minas_padron,mineria:vw_manifestaciones_padron,mineria:vw_permisos_exploracion,'+
+           'mineria:vw_canteras,mineria:vw_servidumbres_poligonos,mineria:vw_proyectosmineros',
+    format:'image/png',transparent:true,version:'1.1.1',opacity:0.75,
+    attribution:'Catastro Minero San Juan · WMS oficial',pane:'catastroPane'});
+  catLayers['wms']=wmsOficial;
+  overlays['🛰 <b style="color:#1a1a1a">WMS oficial (en vivo)</b>']=wmsOficial;
   L.control.layers(baseLayers,overlays,{collapsed:true,position:'topright'}).addTo(map);
+  // panel con las URLs de los geoservicios (para usar en QGIS/ArcGIS)
+  const geo=L.control({position:'bottomleft'});
+  geo.onAdd=function(){
+    const d=L.DomUtil.create('div');
+    d.innerHTML='<details style="background:#171a21;border:1px solid #2a2f3a;border-radius:8px;'+
+      'padding:8px 11px;font-size:11px;color:#9aa3b2;max-width:340px">'+
+      '<summary style="cursor:pointer;color:#e6e8ec">Geoservicios del Catastro Minero (WMS/WFS)</summary>'+
+      '<div style="margin-top:6px;line-height:1.6">'+
+      '<b style="color:#e6e8ec">WMS</b> (imágenes de mapa georreferenciadas):<br>'+
+      '<code style="user-select:all;color:#F3C323;word-break:break-all">'+WMS_URL+'</code><br>'+
+      '<b style="color:#e6e8ec">WFS</b> (datos vectoriales: puntos/líneas/polígonos + atributos):<br>'+
+      '<code style="user-select:all;color:#F3C323;word-break:break-all">'+WFS_URL+'</code><br>'+
+      '<span style="color:#6b7280">Cargalos en QGIS/ArcGIS para el padrón oficial en vivo. '+
+      'El visor ya trae las capas del WFS descargadas y clickeables.</span></div></details>';
+    L.DomEvent.disableClickPropagation(d);
+    return d;
+  };
+  geo.addTo(map);
   map.on('overlayadd', async ev=>{
     const lyr=ev.layer;
     if(lyr && lyr._file && !lyr._loaded){
