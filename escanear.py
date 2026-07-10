@@ -124,9 +124,24 @@ def main():
         "tipos": {k: v for k, v in eventos.ETIQUETAS.items()},
     }
 
+    # GUARDIÁN de datos: si esta corrida no encontró expedientes (típico cuando el
+    # mirror del boletín falla y lista 0 ediciones) NO pisar un modelo.json que ya
+    # tiene datos. Sin esto, un fallo de red en la corrida diaria borra toda la base.
+    modelo_path = os.path.join(a.salida, "modelo.json")
+    if not expedientes and os.path.exists(modelo_path):
+        try:
+            prev = json.load(open(modelo_path, encoding="utf-8"))
+            n_prev = len(prev.get("expedientes", []))
+        except Exception:
+            n_prev = 0
+        if n_prev:
+            print(f"\n[GUARDIÁN] 0 expedientes en esta corrida y el modelo existente "
+                  f"tiene {n_prev}. No se sobrescribe (probable fallo del listado/red).")
+            return
+
     with open(os.path.join(a.salida, "calendario_minero.json"), "w", encoding="utf-8") as f:
         json.dump(calendario, f, ensure_ascii=False, indent=2)
-    outputs.guardar_modelo_json(expedientes, os.path.join(a.salida, "modelo.json"), meta)
+    outputs.guardar_modelo_json(expedientes, modelo_path, meta)
     outputs.guardar_modelo_geojson(expedientes, os.path.join(a.salida, "pedimentos.geojson"))
     outputs.guardar_modelo_xlsx(expedientes, os.path.join(a.salida, "pedimentos.xlsx"))
 
