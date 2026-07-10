@@ -36,9 +36,9 @@
 </header>
 <canvas id="cv"></canvas>
 <div id="info"></div>
-<div id="hint">Cada punto es una <b>persona o sociedad</b>; una línea = <b>co-titularidad</b> de una propiedad.
-Tamaño = cantidad de propiedades. Color = apellido/familia. Arrastrá para mover, rueda para zoom,
-pasá el mouse por un nodo, clic para ver la ficha. Escribí arriba para resaltar (ej. <b>Bastias</b>).</div>
+<div id="hint"><b>■ cuadrado = sociedad</b> · <b>● círculo = persona</b>. <b>Tamaño = hectáreas controladas</b>
+(los grandes van al centro). Una línea = <b>co-titularidad</b> de una propiedad. Color de personas = familia.
+Arrastrá para mover, rueda para zoom, clic en un nodo para ver la ficha. Escribí arriba para resaltar (ej. <b>Glencore</b>, <b>Bastias</b>).</div>
 <div class="load" id="load">Cargando entramado…</div>
 <script>
 const cv=document.getElementById('cv'), ctx=cv.getContext('2d');
@@ -49,8 +49,8 @@ function resize(){ cv.width=innerWidth; cv.height=innerHeight-52; }
 addEventListener('resize',resize); resize();
 
 function colorFor(node){
-  // color por apellido/familia; sociedades en gris azulado
-  if(node.tipo==='sociedad' || !node.fam) return '#8aa0c0';
+  // sociedades en azul institucional (se dibujan como cuadrado); personas por familia
+  if(node.tipo==='sociedad' || !node.fam) return '#5aa0ff';
   let h=0; const s=node.fam; for(let i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))%360;
   return `hsl(${h},60%,60%)`;
 }
@@ -64,19 +64,25 @@ async function load(){
 function build(d){
   DATA=d; d.sociedades.forEach(s=>BYNAME[s.nombre]=s);
   const deg={}; d.edges.forEach(e=>{deg[e.a]=(deg[e.a]||0)+1;deg[e.b]=(deg[e.b]||0)+1;});
-  const names=Object.keys(deg); // solo entidades conectadas
+  // MAPA DE PESO + VÍNCULOS. Entran todas las entidades que POSEEN al menos una
+  // propiedad (o que co-titularizan). El tamaño y la centralidad se rigen por las
+  // HECTÁREAS controladas: así los grandes (Argentina Minera, Glencore, Barrick…)
+  // aparecen grandes y al centro aunque vayan solos y no compartan con nadie.
+  // Las líneas siguen siendo co-titularidad. Cuadrado = sociedad, círculo = persona.
+  const ents=d.sociedades.filter(s=>(s.n||0)>=1 || deg[s.nombre]);
+  const sHa=Math.sqrt(Math.max(1,...ents.map(s=>s.total_ha||0)));
   const idx={};
-  nodes=names.map((n,i)=>{ idx[n]=i; const s=BYNAME[n]||{n:1,tipo:'persona',apellido:null};
-    // importancia = grado (con cuántos co-titula) + tamaño de cartera. Los hubs
-    // (donde confluye la gente más importante) salen más grandes y más al centro.
-    return {name:n, tipo:s.tipo, fam:s.apellido, props:s.n||1, deg:deg[n],
-            r:3.5+Math.sqrt(s.n||1)*0.8+Math.sqrt(deg[n]||1)*3.2,
-            x:(Math.random()-.5)*800, y:(Math.random()-.5)*800, vx:0, vy:0};});
+  nodes=ents.map((s,i)=>{ idx[s.nombre]=i;
+    const ha=s.total_ha||0, imp=Math.sqrt(ha)/sHa;              // 0..1 = peso relativo
+    return {name:s.nombre, tipo:s.tipo, fam:s.apellido, props:s.n||0, ha:ha,
+            deg:deg[s.nombre]||0, imp:imp,
+            r:4+imp*20+Math.sqrt(deg[s.nombre]||0)*2.2,
+            x:(Math.random()-.5)*900, y:(Math.random()-.5)*900, vx:0, vy:0};});
   links=d.edges.map(e=>({s:idx[e.a],t:idx[e.b],w:e.w})).filter(l=>l.s!=null&&l.t!=null);
   document.getElementById('load').style.display='none';
   // centrar
   view={x:cv.width/2,y:cv.height/2,k:1};
-  for(let i=0;i<300;i++) tick();
+  for(let i=0;i<320;i++) tick();
   loop();
 }
 function tick(){
@@ -92,9 +98,9 @@ function tick(){
     let dx=b.x-a.x, dy=b.y-a.y, d=Math.sqrt(dx*dx+dy*dy)+0.01;
     const f=(d-70)*0.02; const fx=dx/d*f, fy=dy/d*f;
     a.vx+=fx;a.vy+=fy;b.vx-=fx;b.vy-=fy; }
-  // gravedad al centro proporcional a la importancia (grado): los hubs se acomodan
-  // más al centro y las hojas quedan en la periferia. + integración.
-  for(const n of nodes){ const g=0.0016*(1+Math.sqrt(n.deg||1)*0.9);
+  // gravedad al centro proporcional al PESO (hectáreas) + un poco por co-titularidad:
+  // los grandes controladores se acomodan al centro y los chicos en la periferia.
+  for(const n of nodes){ const g=0.0013*(1+n.imp*6+Math.sqrt(n.deg||0)*0.5);
     n.vx-=n.x*g; n.vy-=n.y*g;
     n.vx*=0.85; n.vy*=0.85; n.x+=n.vx; n.y+=n.vy; }
 }
@@ -112,7 +118,10 @@ function draw(){
   for(let i=0;i<nodes.length;i++){ const n=nodes[i], p=toScreen(n);
     const match = hl && deburr(n.name).includes(hl);
     const nb = hover!=null && (i===hover || links.some(l=>(l.s===hover&&l.t===i)||(l.t===hover&&l.s===i)));
-    ctx.beginPath();ctx.arc(p.x,p.y,n.r*view.k,0,7);
+    const rad=n.r*view.k;
+    ctx.beginPath();
+    if(n.tipo==='sociedad') ctx.rect(p.x-rad,p.y-rad,rad*2,rad*2);   // cuadrado = sociedad
+    else ctx.arc(p.x,p.y,rad,0,7);                                    // círculo = persona
     ctx.fillStyle= match?'#F3C323': colorFor(n);
     ctx.globalAlpha= (hl && !match)?0.25 : (hover!=null&&!nb&&i!==hover?0.3:1);
     ctx.fill();

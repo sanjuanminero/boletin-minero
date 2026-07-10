@@ -175,21 +175,14 @@ function initMap(){
     catLayers[c.k]=lyr;
     overlays['<span style="color:'+c.color+'">●</span> <span style="color:#1a1a1a">'+c.l+'</span>']=lyr;
   });
-  // Geoservicios OFICIALES del Catastro Minero (GeoServer OGC)
+  // Geoservicios OFICIALES del Catastro Minero (GeoServer OGC) — solo URLs de referencia.
+  // Las capas del visor son las del WFS ya descargadas (GeoJSON local, clickeables): mismo
+  // dato oficial que un KMZ del catastro pero con atributos al clic y sin depender de CORS.
+  // El WMS "en vivo" se quitó a propósito: es una imagen no clickeable (el navegador no puede
+  // consultarle atributos por CORS) y duplicaba estas mismas capas. Para el padrón en vivo,
+  // usar las URLs de abajo en QGIS/ArcGIS.
   const WMS_URL='https://catastrominero.sanjuan.gob.ar/geoserver/wms';
   const WFS_URL='https://catastrominero.sanjuan.gob.ar/geoserver/wfs';
-  // WMS oficial EN VIVO, una capa POR ÍTEM (para poder filtrar cateos, minas, etc.).
-  const WMS_TYPE={minas:'mineria:vw_minas_padron',manifestaciones:'mineria:vw_manifestaciones_padron',
-    permisos:'mineria:vw_permisos_exploracion',canteras:'mineria:vw_canteras',
-    solicitudes:'mineria:vw_solicitudes_poligonos',servidumbres:'mineria:vw_servidumbres_poligonos',
-    proyectos:'mineria:vw_proyectosmineros'};
-  CAT_LAYERS.forEach(c=>{
-    if(!WMS_TYPE[c.k]) return;
-    const w=L.tileLayer.wms(WMS_URL,{layers:WMS_TYPE[c.k],format:'image/png',transparent:true,
-      version:'1.1.1',opacity:0.8,pane:'catastroPane',attribution:'Catastro Minero SJ · WMS'});
-    catLayers['wms_'+c.k]=w;
-    overlays['🛰 <span style="color:'+c.color+'">■</span> <span style="color:#1a1a1a">WMS en vivo · '+c.l+'</span>']=w;
-  });
   L.control.layers(baseLayers,overlays,{collapsed:true,position:'topright'}).addTo(map);
   // panel con las URLs de los geoservicios (para usar en QGIS/ArcGIS)
   const geo=L.control({position:'bottomleft'});
