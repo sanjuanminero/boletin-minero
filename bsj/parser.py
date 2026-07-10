@@ -166,6 +166,12 @@ def _limpiar_titular(s: str) -> str:
     s = re.sub(r"\s+", " ", s).strip()
     s = re.split(r"\s*(?:—|–|\bs/|/|\ben el\b|\bexpte|\bexpediente|\bsolicit|"
                  r"\bmanifiesta|\bregistr|\bpor resoluc|\bcomunica\b)", s, flags=re.IGNORECASE)[0]
+    # cortar la boilerplate de cola del edicto que se cuela tras el nombre
+    # ("<NOMBRE>. Publíquese Edicto 2 veces", "... Cítese", "... de conformidad...").
+    s = re.split(r"\s*(?:\bpubl[ií]?quese\b|\bpublicar\b|\bpubl[ií]c\w*|\bedicto\b|"
+                 r"\bc[ií]tese\b|\bnotif\w*|\bde conformidad\b|\bconf\.|\bdispon\w*|"
+                 r"\bresuel\w*|\bh[áa]gase\b|\bhace saber\b|\bp[oó]r\s+\d)",
+                 s, flags=re.IGNORECASE)[0]
     s = re.split(r"\d{3,}", s)[0]
     return s.strip(" ,.;:-")[:80]
 
