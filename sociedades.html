@@ -51,6 +51,8 @@
   .rk-toggle{display:flex;gap:6px;flex-wrap:wrap}
   .rk-toggle button{background:var(--panel2);border:1px solid var(--line);color:var(--muted);padding:5px 9px;border-radius:7px;font-size:12px;cursor:pointer}
   .rk-toggle button.on{background:var(--accent);color:#1a1a1a;border-color:var(--accent);font-weight:600}
+  .rk-year{margin-top:9px;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:7px}
+  .rk-year select{background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:4px 8px;border-radius:7px;font-size:12px;cursor:pointer}
   .rk-row{display:flex;align-items:center;gap:9px;padding:6px 14px;cursor:pointer;border-bottom:1px solid var(--line)}
   .rk-row:hover{background:var(--panel2)}
   .rk-row .pos{width:20px;color:var(--muted);font-size:12px;text-align:right}
@@ -96,36 +98,64 @@ function setData(d){
   // permitir ?soc=Nombre en la URL
   const q=new URLSearchParams(location.search).get('soc');
   if(q){ const hit=d.sociedades.find(s=>deburr(s.nombre)===deburr(q)); if(hit){ select(hit.nombre); return; } }
-  renderRanking('ha');
+  renderRanking('cat');
 }
 
 // ---- ranking / leaderboard ----
-let rkMetric='ha';
-const RK={ha:{key:'total_ha',lbl:'Hectáreas',fmt:v=>Math.round(v).toLocaleString('es-AR')+' ha'},
-          n:{key:'n',lbl:'Propiedades',fmt:v=>v+' prop.'},
-          ed:{key:'n_edictos',lbl:'Actividad boletín',fmt:v=>v+' edictos'},
-          // conteos por tipo de acto (boletín): rankear por cuántos cateos / mensuras /
-          // manifestaciones tiene cada titular. Las hectáreas del boletín no se usan
-          // (corruptas por OCR); estos son conteos confiables.
-          cat:{key:'n_cateo',lbl:'Cateos',fmt:v=>v+(v===1?' cateo':' cateos')},
-          men:{key:'n_mensura',lbl:'Mensuras',fmt:v=>v+(v===1?' mensura':' mensuras')},
-          man:{key:'n_manifestacion',lbl:'Manif. descubr.',fmt:v=>v+(v===1?' manif.':' manif.')}};
-function renderRanking(metric){
-  rkMetric=metric||rkMetric; qi.value=''; history.replaceState(null,'','sociedades.html');
-  const {key,fmt}=RK[rkMetric];
-  const list=DATA.sociedades.filter(s=>(s[key]||0)>0).sort((a,b)=>b[key]-a[key]).slice(0,40);
-  const max=list.length?list[0][key]:1;
+// Todas las métricas se calculan client-side desde props (catastro: fecha+tipo+ha) y
+// edictos (boletín: estado_k+fechas), para poder filtrar por AÑO. Los cateos salen del
+// boletín (2020-2026, no tienen ha ni titular en el catastro); manifestaciones y minas
+// (mensuradas) salen del catastro, con hectáreas confiables e historia de décadas por
+// fechaInscripcion. El total de ha del boletín NO se usa (corrupto por OCR).
+let rkMetric='cat', rkYear='all';
+const _yr=d=>(d||'').slice(0,4);
+const inY=(fechas,y)=> y==='all' || (fechas||[]).some(f=>_yr(f)===y);
+const _cnt=(arr,pred,y,fechasDe)=>(arr||[]).filter(x=>pred(x)&&inY(fechasDe(x),y)).length;
+const _ha =(arr,pred,y)=>(arr||[]).filter(x=>pred(x)&&inY([x.fecha],y)).reduce((a,x)=>a+(x.ha||0),0);
+const _haFmt=v=>Math.round(v).toLocaleString('es-AR')+' ha';
+const esManif=p=>p.tipo==='manifestacion', esMina=p=>p.tipo==='mina';
+const RK={
+  cat:  {lbl:'Cateos',        val:(s,y)=>_cnt(s.edictos,e=>e.estado_k==='cateo_exploracion',y,e=>e.fechas), fmt:v=>v+(v===1?' cateo':' cateos')},
+  man:  {lbl:'Manifestaciones',val:(s,y)=>_cnt(s.props,esManif,y,p=>[p.fecha]),                            fmt:v=>v+' manif.'},
+  men:  {lbl:'Mensuras',      val:(s,y)=>_cnt(s.props,esMina,y,p=>[p.fecha]),                              fmt:v=>v+(v===1?' mensura':' mensuras')},
+  ha:   {lbl:'Hectáreas',     val:(s,y)=>_ha(s.props,()=>true,y),                                          fmt:_haFmt},
+  manha:{lbl:'Manif. (ha)',   val:(s,y)=>_ha(s.props,esManif,y),                                           fmt:_haFmt},
+  menha:{lbl:'Mensura (ha)',  val:(s,y)=>_ha(s.props,esMina,y),                                            fmt:_haFmt},
+  n:    {lbl:'Propiedades',   val:(s,y)=>_cnt(s.props,()=>true,y,p=>[p.fecha]),                            fmt:v=>v+' prop.'},
+  ed:   {lbl:'Actividad boletín',val:(s,y)=>_cnt(s.edictos,()=>true,y,e=>e.fechas),                        fmt:v=>v+' edictos'},
+};
+function _anios(){
+  const ys=new Set();
+  DATA.sociedades.forEach(s=>{
+    (s.props||[]).forEach(p=>{ if(p.fecha) ys.add(_yr(p.fecha)); });
+    (s.edictos||[]).forEach(e=>(e.fechas||[]).forEach(f=>{ if(f) ys.add(_yr(f)); }));
+  });
+  return [...ys].filter(Boolean).sort((a,b)=>b.localeCompare(a));
+}
+function renderRanking(metric,year){
+  if(metric) rkMetric=metric;
+  if(year!==undefined) rkYear=year;
+  qi.value=''; history.replaceState(null,'','sociedades.html');
+  const M=RK[rkMetric], yLbl=rkYear==='all'?'todos los años':rkYear;
+  const scored=DATA.sociedades.map(s=>({s,v:M.val(s,rkYear)})).filter(o=>o.v>0)
+                 .sort((a,b)=>b.v-a.v).slice(0,40);
+  const max=scored.length?scored[0].v:1;
+  const opts=`<option value="all"${rkYear==='all'?' selected':''}>Todos</option>`+
+    _anios().map(y=>`<option value="${y}"${y===rkYear?' selected':''}>${y}</option>`).join('');
   document.getElementById('side').innerHTML=`
     <div class="rk-head"><h2>Ranking de sociedades <span style="color:var(--muted);font-size:12px">· ${DATA.meta.n_sociedades} en total</span></h2>
       <div class="rk-toggle">${Object.entries(RK).map(([k,v])=>`<button data-m="${k}" class="${k===rkMetric?'on':''}">${v.lbl}</button>`).join('')}</div>
+      <div class="rk-year">Año: <select id="rkYear">${opts}</select><span>· ${scored.length} con ${M.lbl.toLowerCase()} (${yLbl})</span></div>
     </div>
-    ${list.map((s,i)=>`<div class="rk-row" data-n="${encodeURIComponent(s.nombre)}">
-        <span class="pos">${i+1}</span><span class="nm" title="${s.nombre}">${s.nombre}</span>
-        <span class="bar"><i style="width:${Math.max(2,s[key]/max*100)}%"></i></span>
-        <span class="v">${fmt(s[key])}</span></div>`).join('')}`;
+    ${scored.length?scored.map((o,i)=>`<div class="rk-row" data-n="${encodeURIComponent(o.s.nombre)}">
+        <span class="pos">${i+1}</span><span class="nm" title="${o.s.nombre}">${o.s.nombre}</span>
+        <span class="bar"><i style="width:${Math.max(2,o.v/max*100)}%"></i></span>
+        <span class="v">${M.fmt(o.v)}</span></div>`).join('')
+      :'<div class="empty">Sin datos para esa métrica en '+yLbl+'.</div>'}`;
   document.querySelectorAll('.rk-toggle button').forEach(b=>b.onclick=()=>renderRanking(b.dataset.m));
+  document.getElementById('rkYear').onchange=e=>renderRanking(null,e.target.value);
   document.querySelectorAll('.rk-row').forEach(el=>el.onclick=()=>select(decodeURIComponent(el.dataset.n)));
-  renderMapRanking(list);
+  renderMapRanking(scored.map(o=>o.s));
 }
 function renderMapRanking(list){
   initMap(); if(layer) layer.remove(); layer=L.layerGroup().addTo(map);
