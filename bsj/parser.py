@@ -164,6 +164,13 @@ def _limpiar_titular(s: str) -> str:
     (s/, /, '—', 'en el', 'expte', 'solicita'...) y ante la primera corrida de dígitos
     (coordenadas). Evita que el titular se lleve media frase u OCR de tablas."""
     s = re.sub(r"\s+", " ", s).strip()
+    # de-hifenar cortes de OCR ('so- licitando' -> 'solicitando')
+    s = re.sub(r"([A-Za-zÁÉÍÓÚÑ])-\s+([a-záéíóúñ])", r"\1\2", s)
+    # sacar el artículo/'la empresa' inicial que ensucia el nombre ('la Empresa X'->'X',
+    # 'el I.P.E.E.M'->'I.P.E.E.M'). Solo artículo en minúscula: un nombre propio no
+    # arranca con 'el/la/los/las' minúscula (evita romper 'Los Andes S.A').
+    s = re.sub(r"^(?:el|la|los|las)\s+(?:[Ee]mpresa\s+|[Ff]irma\s+|[Ss]e[ñn]or[ao]?\s+|"
+               r"[Ss]r[a]?\.?\s+)?", "", s)
     s = re.split(r"\s*(?:—|–|\bs/|/|\ben el\b|\bexpte|\bexpediente|\bsolicit|"
                  r"\bmanifiesta|\bregistr|\bpor resoluc|\bcomunica\b)", s, flags=re.IGNORECASE)[0]
     # cortar la boilerplate de cola del edicto que se cuela tras el nombre
@@ -173,7 +180,14 @@ def _limpiar_titular(s: str) -> str:
                  r"\bresuel\w*|\bh[áa]gase\b|\bhace saber\b|\bp[oó]r\s+\d)",
                  s, flags=re.IGNORECASE)[0]
     s = re.split(r"\d{3,}", s)[0]
-    return s.strip(" ,.;:-")[:80]
+    s = s.strip(" ,.;:-")[:80]
+    # rechazar frases que claramente NO son un nombre (extracción fallida): devuelve ""
+    # y el titular queda vacío (mejor 'sin titular' que basura tipo 'el pedido de mensura').
+    if re.search(r"\b(pedido|caducar|acciones|escritural|proporcion\w*|documento\w*|"
+                 r"domicilio\w*|consideren|quienes|creyeren|los que|el que|derechos?)\b",
+                 s, re.IGNORECASE):
+        return ""
+    return s
 
 
 def _buscar(lista, texto):

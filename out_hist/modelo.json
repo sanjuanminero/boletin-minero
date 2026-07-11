@@ -11094,14 +11094,9 @@
           "nombre": "SCALZOTTO IDA",
           "desde": "2020-01-09",
           "hasta": "2020-01-10"
-        },
-        {
-          "nombre": "el pedido de mensura y caducar sus derechos",
-          "desde": "2020-01-10",
-          "hasta": null
         }
       ],
-      "titular_actual": "el pedido de mensura y caducar sus derechos",
+      "titular_actual": null,
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -11370,12 +11365,12 @@
           "hasta": "2020-01-10"
         },
         {
-          "nombre": "I.P.E.E.M., so- licitando la Mensura de la mina “J XIV”",
+          "nombre": "I.P.E.E.M",
           "desde": "2020-01-10",
           "hasta": null
         }
       ],
-      "titular_actual": "I.P.E.E.M., so- licitando la Mensura de la mina “J XIV”",
+      "titular_actual": "I.P.E.E.M",
       "minerales": [],
       "minas": [
         "de autos"
@@ -13435,11 +13430,6 @@
       "departamento": "Calingasta",
       "datum": "posgar2007",
       "titulares": [
-        {
-          "nombre": "el pedido de mensura y caducar sus derechos",
-          "desde": "2020-03-10",
-          "hasta": "2020-03-11"
-        },
         {
           "nombre": "ARGENTINA MINERA S.A",
           "desde": "2020-03-11",
@@ -22842,12 +22832,12 @@
       "datum": "posgar2007",
       "titulares": [
         {
-          "nombre": "la Empresa Desarrollo de Recursos S.A",
+          "nombre": "Desarrollo de Recursos S.A",
           "desde": "2021-05-21",
           "hasta": null
         }
       ],
-      "titular_actual": "la Empresa Desarrollo de Recursos S.A",
+      "titular_actual": "Desarrollo de Recursos S.A",
       "minerales": [
         "oro"
       ],
@@ -23657,12 +23647,12 @@
       "datum": "posgar2007",
       "titulares": [
         {
-          "nombre": "la Empresa Argentina Minera S.A",
+          "nombre": "Argentina Minera S.A",
           "desde": "2021-06-07",
           "hasta": null
         }
       ],
-      "titular_actual": "la Empresa Argentina Minera S.A",
+      "titular_actual": "Argentina Minera S.A",
       "minerales": [
         "oro"
       ],
@@ -39448,14 +39438,8 @@
       "expediente": "1124-000243-B-96",
       "departamento": "Angaco",
       "datum": "posgar2007",
-      "titulares": [
-        {
-          "nombre": "por acciones escriturales de $",
-          "desde": "2021-11-05",
-          "hasta": null
-        }
-      ],
-      "titular_actual": "por acciones escriturales de $",
+      "titulares": [],
+      "titular_actual": null,
       "minerales": [
         "oro"
       ],
@@ -40053,17 +40037,17 @@
       "datum": "posgar2007",
       "titulares": [
         {
-          "nombre": "el .P.E.E.M",
+          "nombre": "P.E.E.M",
           "desde": "2021-11-23",
           "hasta": "2021-11-26"
         },
         {
-          "nombre": "el |.P.E.E.M",
+          "nombre": "|.P.E.E.M",
           "desde": "2021-11-26",
           "hasta": null
         }
       ],
-      "titular_actual": "el |.P.E.E.M",
+      "titular_actual": "|.P.E.E.M",
       "minerales": [
         "oro"
       ],
@@ -40567,12 +40551,12 @@
       "datum": "posgar2007",
       "titulares": [
         {
-          "nombre": "el I.P.E.E.M",
+          "nombre": "I.P.E.E.M",
           "desde": "2021-11-24",
           "hasta": null
         }
       ],
-      "titular_actual": "el I.P.E.E.M",
+      "titular_actual": "I.P.E.E.M",
       "minerales": [
         "oro"
       ],
@@ -88777,14 +88761,8 @@
       "expediente": "1124-534-L-22",
       "departamento": "Caucete",
       "datum": "posgar2007",
-      "titulares": [
-        {
-          "nombre": "las personas, con los documentos en las proporciones señaladas, 2) El inmueble",
-          "desde": null,
-          "hasta": null
-        }
-      ],
-      "titular_actual": "las personas, con los documentos en las proporciones señaladas, 2) El inmueble",
+      "titulares": [],
+      "titular_actual": null,
       "minerales": [
         "oro"
       ],
@@ -96159,12 +96137,12 @@
       "datum": "posgar2007",
       "titulares": [
         {
-          "nombre": "la empresa PACHON S.A",
+          "nombre": "PACHON S.A",
           "desde": "2024-04-29",
           "hasta": null
         }
       ],
-      "titular_actual": "la empresa PACHON S.A",
+      "titular_actual": "PACHON S.A",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -113093,14 +113071,8 @@
       "expediente": "1124-017-G-24",
       "departamento": "Calingasta",
       "datum": "posgar2007",
-      "titulares": [
-        {
-          "nombre": "las personas, en las proporciones y domicilios",
-          "desde": null,
-          "hasta": null
-        }
-      ],
-      "titular_actual": "las personas, en las proporciones y domicilios",
+      "titulares": [],
+      "titular_actual": null,
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -119243,12 +119215,12 @@
       "datum": "posgar2007",
       "titulares": [
         {
-          "nombre": "la empresa GWK MINERALS S.A",
+          "nombre": "GWK MINERALS S.A",
           "desde": "2025-05-30",
           "hasta": null
         }
       ],
-      "titular_actual": "la empresa GWK MINERALS S.A",
+      "titular_actual": "GWK MINERALS S.A",
       "minerales": [],
       "minas": [
         "de autos. Se tienen presentes"
@@ -121704,12 +121676,12 @@
       "datum": "posgar2007",
       "titulares": [
         {
-          "nombre": "la empresa GWK MINERALS S.A",
+          "nombre": "GWK MINERALS S.A",
           "desde": "2025-06-06",
           "hasta": null
         }
       ],
-      "titular_actual": "la empresa GWK MINERALS S.A",
+      "titular_actual": "GWK MINERALS S.A",
       "minerales": [],
       "minas": [
         "de autos. Se tienen presentes"
