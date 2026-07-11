@@ -154,12 +154,22 @@ def construir(salida):
             for other in (p["cotit"] or []):
                 if other != nombre:
                     co[other] += 1
+        # conteo de expedientes del boletín por TIPO de acto. Permite rankear por
+        # "cuántos cateos / mensuras / manifestaciones" tiene cada titular: no es lo
+        # mismo tener miles de ha en cateo (mera exploración) que ha mensuradas
+        # (derecho consolidado). La superficie del boletín está corrupta por OCR, así
+        # que acá van los CONTEOS (confiables); las hectáreas siguen siendo las del
+        # catastro (total_ha, registradas).
+        tpc = Counter(x.get("estado_k") for x in edx if x.get("estado_k"))
         socs.append({
             "nombre": nombre,
             "tipo": "sociedad" if _es_sociedad(nombre) else "persona",
             "apellido": _apellido(nombre),
             "n": len(props),
             "n_edictos": len(edx),
+            "n_cateo": tpc.get("cateo_exploracion", 0),
+            "n_mensura": tpc.get("edicto_mensura", 0),
+            "n_manifestacion": tpc.get("manifestacion_descubrimiento", 0),
             "total_ha": round(sum(p["ha"] or 0 for p in props), 2),
             "departamentos": deptos,
             "minerales": minset,

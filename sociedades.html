@@ -103,7 +103,13 @@ function setData(d){
 let rkMetric='ha';
 const RK={ha:{key:'total_ha',lbl:'Hectáreas',fmt:v=>Math.round(v).toLocaleString('es-AR')+' ha'},
           n:{key:'n',lbl:'Propiedades',fmt:v=>v+' prop.'},
-          ed:{key:'n_edictos',lbl:'Actividad boletín',fmt:v=>v+' edictos'}};
+          ed:{key:'n_edictos',lbl:'Actividad boletín',fmt:v=>v+' edictos'},
+          // conteos por tipo de acto (boletín): rankear por cuántos cateos / mensuras /
+          // manifestaciones tiene cada titular. Las hectáreas del boletín no se usan
+          // (corruptas por OCR); estos son conteos confiables.
+          cat:{key:'n_cateo',lbl:'Cateos',fmt:v=>v+(v===1?' cateo':' cateos')},
+          men:{key:'n_mensura',lbl:'Mensuras',fmt:v=>v+(v===1?' mensura':' mensuras')},
+          man:{key:'n_manifestacion',lbl:'Manif. descubr.',fmt:v=>v+(v===1?' manif.':' manif.')}};
 function renderRanking(metric){
   rkMetric=metric||rkMetric; qi.value=''; history.replaceState(null,'','sociedades.html');
   const {key,fmt}=RK[rkMetric];
