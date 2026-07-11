@@ -225,6 +225,25 @@ def parsear_pedimento(bloque: str) -> Pedimento:
     if mt:
         p.titular = _limpiar_titular(mt.group(1))
 
+    # 5) CATEOS: "...Por Resolución N° X. Publíquese Edicto ... a nombre de <NOMBRE>,
+    #    colocar Cartel Aviso...". El registro del cateo nombra al peticionante tras
+    #    'a nombre de' (distinto de 'FIGURA a nombre de', que cita a los colindantes;
+    #    por eso el lookbehind lo excluye y se exige que el nombre preceda a la
+    #    boilerplate de registro). OCR: normalizar espacios, de-hifenar y limpiar comillas.
+    if not p.titular:
+        s = re.sub(r"[-=_*]{3,}", " ", bloque)
+        s = re.sub(r"([A-Za-zÁÉÍÓÚÑ])-\s+([A-Za-zÁÉÍÓÚÑ])", r"\1\2", s)   # 'DA- NIEL' -> 'DANIEL'
+        s = re.sub(r"\s+", " ", s)
+        m5 = re.search(r"(?<!figura )a nombre de\s+(.{3,80}?)\s*,?\s*"
+                       r"(?:coloc|col[óo]quese|cartel|p[óo]ngase|publ|inscr[íi]|"
+                       r"c[íi]tese|por resoluc)", s, re.IGNORECASE)
+        if m5:
+            cand = re.sub(r"^[^0-9A-Za-zÁÉÍÓÚÑ(]+", "", m5.group(1))
+            cand = _limpiar_titular(cand)
+            cand = re.sub(r"[^0-9A-Za-zÁÉÍÓÚÑ)]+$", "", cand).strip()
+            if len(cand) >= 4 and not re.search(r"\d{3}", cand):
+                p.titular = cand[:80]
+
     # nombre de la mina: "Mensura de la Mina AGU 5," -> "AGU 5"
     mm = re.search(r"\bmina\s+([A-ZÁÉÍÓÚÑ0-9][\w áéíóúñ.\-]{1,40}?)\s*,",
                    bloque, re.IGNORECASE)

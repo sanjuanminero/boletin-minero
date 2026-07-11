@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generado": "2026-07-08T12:11:27-03:00",
+    "generado": "2026-07-11T07:14:06-03:00",
     "desde": "2020-01-01",
-    "hasta": "2026-07-08",
+    "hasta": "2026-07-11",
     "datum": "posgar2007",
     "n_ediciones": 1603,
     "n_ediciones_con_minas": 769,
@@ -13014,8 +13014,14 @@
       "expediente": "1124.005-P-19",
       "departamento": "Iglesia",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "ARGENTINA MINERA S.A",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "ARGENTINA MINERA S.A",
       "minerales": [
         "oro"
       ],
@@ -13302,8 +13308,14 @@
       "expediente": "1124.015-P-19",
       "departamento": "Iglesia",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "SEBASTIAN YAPUR MARZO",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "SEBASTIAN YAPUR MARZO",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -18166,8 +18178,14 @@
       "expediente": "1124-174-V-18",
       "departamento": "Iglesia",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "VILLAFAÑE MARIO ALBERTO",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "VILLAFAÑE MARIO ALBERTO",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -18492,8 +18510,14 @@
       "expediente": "1124-241-P-2018",
       "departamento": "Iglesia",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "PÁEZ RICARDO FRANCISCO",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "PÁEZ RICARDO FRANCISCO",
       "minerales": [
         "oro"
       ],
@@ -18934,8 +18958,14 @@
       "expediente": "1124-314-V-19",
       "departamento": "Iglesia",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "VERÓNICA LORENA VARGAS",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "VERÓNICA LORENA VARGAS",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -19394,8 +19424,14 @@
       "expediente": "1124-349-V-19",
       "departamento": "Iglesia",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "VERÓNICA LORENA VARGAS",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "VERÓNICA LORENA VARGAS",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -19618,8 +19654,14 @@
       "expediente": "1124-384-E-16",
       "departamento": "Angaco",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "ECOMINING S.A",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "ECOMINING S.A",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -19952,8 +19994,14 @@
       "expediente": "1124-401-G-2017",
       "departamento": "Valle Fértil",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "GRAMAGE ROLANDO NESTOR",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "GRAMAGE ROLANDO NESTOR",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -20855,8 +20903,14 @@
       "expediente": "545-748-H-94",
       "departamento": "Calingasta",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "MIRANDA S.A",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "MIRANDA S.A",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -21607,8 +21661,14 @@
       "expediente": "1124-423-B-16",
       "departamento": "Calingasta",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "ALCRUZ S.A",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "ALCRUZ S.A",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -26697,8 +26757,14 @@
       "expediente": "1124-385-C-19",
       "departamento": "Valle Fértil",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "CARRIZO ANGEL IGNACIO Y ONTIVERO ARIEL MARIO",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "CARRIZO ANGEL IGNACIO Y ONTIVERO ARIEL MARIO",
       "minerales": [
         "cuarzo"
       ],
@@ -32769,11 +32835,6 @@
         {
           "nombre": "PETRA GOLD SERVICIOS MINEROS S.R.L",
           "desde": "2021-09-27",
-          "hasta": "2021-09-28"
-        },
-        {
-          "nombre": "PETRA GOLD SERVICIOS MINEROS S.R.L",
-          "desde": "2021-09-28",
           "hasta": null
         }
       ],
@@ -34559,8 +34620,14 @@
       "expediente": "1124-016-B-20",
       "departamento": "Calingasta",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "BASTIAS HUGO ENRIQUE",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "BASTIAS HUGO ENRIQUE",
       "minerales": [
         "oro"
       ],
@@ -39675,8 +39742,14 @@
       "expediente": "242.984-M-87",
       "departamento": "Capital",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "MINERA DEL CARMEN S.A",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "MINERA DEL CARMEN S.A",
       "minerales": [
         "oro"
       ],
@@ -40302,8 +40375,14 @@
       "expediente": "558-L-95",
       "departamento": "Iglesia",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "MIRANDA S.A",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "MIRANDA S.A",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -45285,8 +45364,14 @@
       "expediente": "1124-386-M-13",
       "departamento": "Iglesia",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "BOSQUE HUGO ARTURO",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "BOSQUE HUGO ARTURO",
       "minerales": [
         "oro"
       ],
@@ -49741,8 +49826,14 @@
       "expediente": "1124-344-S-10",
       "departamento": "Sarmiento",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "HUGO ARTURO BOSQUE",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "HUGO ARTURO BOSQUE",
       "minerales": [
         "oro"
       ],
@@ -55133,8 +55224,14 @@
       "expediente": "1124-338-M-21",
       "departamento": "9 de Julio",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "MAIDANA JULIAN SANTIAGO",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "MAIDANA JULIAN SANTIAGO",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -58848,8 +58945,14 @@
       "expediente": "1124-282-S-06",
       "departamento": "Albardón",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "BOSQUE HUGO ARTURO",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "BOSQUE HUGO ARTURO",
       "minerales": [
         "oro"
       ],
@@ -79164,8 +79267,14 @@
       "expediente": "1124-528-L-21",
       "departamento": "Calingasta",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "BASTIAS GABRIEL ENRIQUE",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "BASTIAS GABRIEL ENRIQUE",
       "minerales": [
         "oro"
       ],
@@ -80237,8 +80346,14 @@
       "expediente": "1124-404-B-22",
       "departamento": "Angaco",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "Clemente Chirapozo lo que se",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "Clemente Chirapozo lo que se",
       "minerales": [
         "cobre"
       ],
@@ -84031,8 +84146,14 @@
       "expediente": "1124-464-M-09",
       "departamento": "Iglesia",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "Denel S.A. No esta vigente, por haber sido",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "Denel S.A. No esta vigente, por haber sido",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -85482,8 +85603,14 @@
       "expediente": "1124-048-M-22",
       "departamento": "Sarmiento",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "Productos Frescos S.A. (No Costa CUIT), las",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "Productos Frescos S.A. (No Costa CUIT), las",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -87585,8 +87712,14 @@
       "expediente": "1124-564-G-21",
       "departamento": "Ullum",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "Plana salas Mario Luis D.N.IL.N* 10",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "Plana salas Mario Luis D.N.IL.N* 10",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -88644,8 +88777,14 @@
       "expediente": "1124-534-L-22",
       "departamento": "Caucete",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "las personas, con los documentos en las proporciones señaladas, 2) El inmueble",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "las personas, con los documentos en las proporciones señaladas, 2) El inmueble",
       "minerales": [
         "oro"
       ],
@@ -89314,8 +89453,14 @@
       "expediente": "1124-549-A-22",
       "departamento": "Capital",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "Martinez Rogelio",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "Martinez Rogelio",
       "minerales": [
         "oro"
       ],
@@ -94884,8 +95029,14 @@
       "expediente": "1124",
       "departamento": "Iglesia",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "BAMASA MINING SERVICES S.R.L",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "BAMASA MINING SERVICES S.R.L",
       "minerales": [
         "oro"
       ],
@@ -97448,8 +97599,14 @@
       "expediente": "1124-239-M-23",
       "departamento": "Calingasta",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "HUGO ARTURO BOSQUE",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "HUGO ARTURO BOSQUE",
       "minerales": [
         "oro",
         "plata"
@@ -99538,8 +99695,14 @@
       "expediente": "1124-067-B-23",
       "departamento": "Calingasta",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "SABLE ARGENTINA S.A",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "SABLE ARGENTINA S.A",
       "minerales": [
         "oro"
       ],
@@ -99750,8 +99913,14 @@
       "expediente": "1124-142-B-23",
       "departamento": "Ullum",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "SABLE ARGENTINA S.A",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "SABLE ARGENTINA S.A",
       "minerales": [
         "oro"
       ],
@@ -100180,8 +100349,14 @@
       "expediente": "1124-243-M-21",
       "departamento": "Iglesia",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "BASTIAS YACANTE MARIA LAURA",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "BASTIAS YACANTE MARIA LAURA",
       "minerales": [
         "oro"
       ],
@@ -101292,8 +101467,14 @@
       "expediente": "1124-595-L-22",
       "departamento": "Caucete",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "Leyes Braulio",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "Leyes Braulio",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -105334,8 +105515,14 @@
       "expediente": "1124-264-A-23",
       "departamento": "Caucete",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "Leyes Braulio",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "Leyes Braulio",
       "minerales": [
         "oro"
       ],
@@ -106241,8 +106428,14 @@
       "expediente": "1124-331-C-08",
       "departamento": "Calingasta",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "HUGO ENRIQUE BASTIAS",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "HUGO ENRIQUE BASTIAS",
       "minerales": [
         "caliza",
         "oro"
@@ -106471,8 +106664,14 @@
       "expediente": "1124-367-M-23",
       "departamento": "Angaco",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "HUGO ENRIQUE BASTIAS",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "HUGO ENRIQUE BASTIAS",
       "minerales": [
         "oro"
       ],
@@ -107066,8 +107265,14 @@
       "expediente": "302-F-199",
       "departamento": "Calingasta",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "HUGO ENRIQUE BASTIAS",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "HUGO ENRIQUE BASTIAS",
       "minerales": [
         "oro"
       ],
@@ -108377,8 +108582,14 @@
       "expediente": "1124-401-B-23",
       "departamento": "Caucete",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "PROYECTO HUACHI S.R.L",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "PROYECTO HUACHI S.R.L",
       "minerales": [
         "oro"
       ],
@@ -108539,8 +108750,14 @@
       "expediente": "1124-405-B-23",
       "departamento": "Capital",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "Leyes Braulio",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "Leyes Braulio",
       "minerales": [
         "oro"
       ],
@@ -108669,8 +108886,14 @@
       "expediente": "1124-493-P-2020",
       "departamento": null,
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "PROYECTO HUACHI S.R.L",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "PROYECTO HUACHI S.R.L",
       "minerales": [
         "oro"
       ],
@@ -112508,8 +112731,14 @@
       "expediente": "1124-356-T-24",
       "departamento": "Caucete",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "Fernández Maria Antonia L.C.N* 1",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "Fernández Maria Antonia L.C.N* 1",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -112864,8 +113093,14 @@
       "expediente": "1124-017-G-24",
       "departamento": "Calingasta",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "las personas, en las proporciones y domicilios",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "las personas, en las proporciones y domicilios",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -115101,8 +115336,14 @@
       "expediente": "1124-225-T-2024",
       "departamento": "Ullum",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "Leonardi Aníbal Guillermo",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "Leonardi Aníbal Guillermo",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -115222,8 +115463,14 @@
       "expediente": "1124-226-T-2024",
       "departamento": "Ullum",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "Leonardi Aníbal Guillermo",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "Leonardi Aníbal Guillermo",
       "minerales": [],
       "minas": [],
       "mina": null,
@@ -115427,8 +115674,14 @@
       "expediente": "1124-243-B-24",
       "departamento": "Iglesia",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "AURORA MINING $.A",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "AURORA MINING $.A",
       "minerales": [
         "oro"
       ],
@@ -121321,8 +121574,14 @@
       "expediente": "546.314-A-94",
       "departamento": "Calingasta",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "AURORA MINING S.A",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "AURORA MINING S.A",
       "minerales": [
         "oro"
       ],
@@ -123366,8 +123625,14 @@
       "expediente": "1124-243-V-25",
       "departamento": "Iglesia",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "LOVERA JUAN JOSE, LOVERA JUAN ÁNGEL Y GABRIEL LUIS LAS HERAS",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "LOVERA JUAN JOSE, LOVERA JUAN ÁNGEL Y GABRIEL LUIS LAS HERAS",
       "minerales": [
         "oro"
       ],
@@ -129302,8 +129567,14 @@
       "expediente": "1124-579-C-24",
       "departamento": "Calingasta",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "CALINGASTA MINERALES S.R.L",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "CALINGASTA MINERALES S.R.L",
       "minerales": [
         "bentonita"
       ],
@@ -129431,8 +129702,14 @@
       "expediente": "1124-580-C-24",
       "departamento": "Calingasta",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "CALINGASTA MINERALES S.R.L",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "CALINGASTA MINERALES S.R.L",
       "minerales": [
         "bentonita"
       ],
@@ -133417,8 +133694,14 @@
       "expediente": "1124-258-X-2013",
       "departamento": "Calingasta",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "GLENCORE PACHON S.A",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "GLENCORE PACHON S.A",
       "minerales": [
         "plata"
       ],
@@ -135944,8 +136227,14 @@
       "expediente": "1124-405-P-2017",
       "departamento": "Calingasta",
       "datum": "posgar2007",
-      "titulares": [],
-      "titular_actual": null,
+      "titulares": [
+        {
+          "nombre": "PUENTE CLAUDIO",
+          "desde": null,
+          "hasta": null
+        }
+      ],
+      "titular_actual": "PUENTE CLAUDIO",
       "minerales": [
         "bentonita"
       ],
