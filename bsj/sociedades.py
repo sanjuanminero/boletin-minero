@@ -33,10 +33,116 @@ def _es_sociedad(nombre):
     return bool(_RX_SOC.search(nombre or ""))
 
 
+# ---------- limpieza + resolución de entidades (unificar nombres) ----------
+# El catastro trae "APELLIDO NOMBRE" en MAYÚSCULA y limpio; el boletín (OCR) trae
+# variantes: minúscula, "Nombre Apellido", truncados, símbolos mal leídos ($=S, |=I).
+# Acá se limpian y se colapsan las variantes de una misma entidad en un nombre canónico
+# (MAYÚSCULA, formato del catastro). Ver prototipo validado en el commit.
+
+def _clean(s):
+    s = (s or "").replace("$", "S").replace("|", "I").replace("ﬁ", "fi").replace("�", "")
+    s = re.sub(r"\bS\s*[:;]\s*A\b", "S.A", s)      # 'S:A' / 'S;A' (OCR) -> 'S.A'
+    return re.sub(r"\s+", " ", s).strip(" .,-")
+
+
+def _deburr(s):
+    import unicodedata
+    return unicodedata.normalize("NFD", s or "").encode("ascii", "ignore").decode()
+
+
+def _ntok(s):
+    return len([t for t in _deburr(_clean(s)).split() if len(t) > 1])
+
+
 def _split(titular):
-    """Separa co-titulares por ' - '. Devuelve nombres limpios."""
-    partes = re.split(r"\s+-\s+", titular or "")
-    return [p.strip(" .,-") for p in partes if p.strip(" .,-")]
+    """Separa co-titulares. Además de ' - ', separa personas por ' Y ' y por ', '
+    cuando ambos lados son nombres completos (>=3 tokens: distingue dos personas de
+    'Apellido, Nombre'). Las empresas NO se cortan por ' Y ' (ej. 'Gold Y Energy S.R.L')."""
+    out = []
+    for p in re.split(r"\s+-\s+", titular or ""):
+        p = _clean(p)
+        if not p:
+            continue
+        if _es_sociedad(p):
+            out.append(p)
+            continue
+        for q in re.split(r"\s+[Yy]\s+", p):
+            q = _clean(q)
+            cs = re.split(r"\s*,\s*", q)
+            if len(cs) == 2 and all(_ntok(x) >= 3 for x in cs):
+                out.extend(_clean(x) for x in cs)
+            elif q:
+                out.append(q)
+    return [x for x in out if x]
+
+
+def _legal(s):
+    d = _deburr(s).upper()
+    for pat, tag in ((r"S\.?R\.?L", "SRL"), (r"S\.?A\.?S", "SAS"),
+                     (r"LTDA|LIMITADA|\bLTD", "LTD"), (r"S\.?A\b", "SA")):
+        if re.search(pat, d):
+            return tag
+    return ""
+
+
+def _tokset(s):
+    return frozenset(t for t in re.sub(r"[^a-z0-9 ]", " ", _deburr(_clean(s)).lower()).split()
+                     if len(t) > 1)
+
+
+def _key(s):
+    # empresa: tokens + forma legal (para NO mezclar S.A con S.R.L); persona: set de tokens
+    return ("C", _tokset(s), _legal(s)) if _es_sociedad(s) else ("P", _tokset(s), "")
+
+
+def _is_combo(s):
+    return ("," in s) or bool(re.search(r"\s[Yy]\s", s)) or _ntok(s) >= 5
+
+
+def _canonizar(nombres, cat_names):
+    """nombres: set de nombres individuales ya limpios. Devuelve dict nombre->canónico.
+    Colapsa variantes (mismo set de tokens) y truncados (subconjunto de un único
+    superset de UNA sola persona). El canónico es la variante más completa, en MAYÚSCULA."""
+    groups = defaultdict(list)
+    for n in nombres:
+        groups[_key(n)].append(n)
+    rep = {}
+    # merge cruzado persona->empresa: si un nombre sin sufijo legal ('ANDES CORPORACION
+    # MINERA', 'PACHON') tiene el mismo set de tokens que una empresa ('...S.A'), es la
+    # misma entidad (el boletín a veces omite el S.A/S.R.L).
+    comp_by_toks = {}
+    for k in groups:
+        if k[0] == "C" and k[1]:
+            comp_by_toks.setdefault(k[1], k)
+    for k in list(groups):
+        if k[0] == "P" and k[1] in comp_by_toks:
+            rep[k] = comp_by_toks[k[1]]
+    pk = [k for k in groups if k[0] == "P" and k[1] and k not in rep]
+    singles = {k for k in pk if len(k[1]) <= 4 and all(not _is_combo(v) for v in groups[k])}
+    for k in pk:
+        if len(k[1]) < 2:
+            continue
+        sup = [o for o in singles if o != k and k[1] < o[1]]
+        if len(sup) == 1:
+            rep[k] = sup[0]
+
+    def root(k):
+        seen = set()
+        while k in rep and k not in seen:
+            seen.add(k)
+            k = rep[k]
+        return k
+
+    clusters = defaultdict(list)
+    for n in nombres:
+        clusters[root(_key(n))].append(n)
+    canon = {}
+    for variants in clusters.values():
+        best = max(variants, key=lambda v: (_ntok(v), v in cat_names, len(v)))
+        disp = _clean(best).upper()
+        for v in variants:
+            canon[v] = disp
+    return canon
 
 
 def _apellido(nombre):
@@ -72,21 +178,42 @@ def _fecha(s):
 
 def construir(salida):
     cat_dir = os.path.join(salida, "catastro")
-    ent_props = defaultdict(list)     # nombre -> [propiedad]
+    modelo = os.path.join(salida, "modelo.json")
+
+    # ---- Pass 0: universo de nombres crudos (catastro + boletín) -> mapa canónico ----
+    # Se resuelven las entidades ANTES de agregar, para que catastro y boletín usen el
+    # MISMO nombre canónico (unifica mayúscula/minúscula, orden y truncados del OCR).
+    cat_geo = {}
+    raw, cat_names = set(), set()
+    for capa in CAPAS_TITULAR:
+        fp = os.path.join(cat_dir, f"catastro_{capa}.geojson")
+        cat_geo[capa] = json.load(open(fp, encoding="utf-8")) if os.path.exists(fp) else {"features": []}
+        for f in cat_geo[capa]["features"]:
+            t = (f.get("properties") or {}).get("titular")
+            for p in _split(t):
+                raw.add(p); cat_names.add(p)
+    dm = json.load(open(modelo, encoding="utf-8")) if os.path.exists(modelo) else {"expedientes": []}
+    for e in dm.get("expedientes", []):
+        c = e.get("catastro") or {}
+        tit = c.get("titular") or e.get("titular_actual")
+        for p in _split(tit):
+            raw.add(p)
+    canon = _canonizar(raw, cat_names)
+
+    def C(name):
+        return canon.get(name, _clean(name).upper())
+
+    ent_props = defaultdict(list)     # nombre canónico -> [propiedad]
     edges = Counter()                 # (a,b) -> nº de propiedades compartidas
     vistos = defaultdict(set)         # nombre -> set(expediente) para deduplicar
 
     for capa in CAPAS_TITULAR:
-        fp = os.path.join(cat_dir, f"catastro_{capa}.geojson")
-        if not os.path.exists(fp):
-            continue
-        gj = json.load(open(fp, encoding="utf-8"))
-        for f in gj.get("features", []):
+        for f in cat_geo[capa]["features"]:
             p = f.get("properties", {})
             titular = p.get("titular")
             if not titular:
                 continue
-            ents = _split(titular)
+            ents = list(dict.fromkeys(C(x) for x in _split(titular)))   # canónicos, sin dup
             anillo = _anillo(f.get("geometry"))
             prop = {
                 "tipo": "mina" if capa == "minas" else "manifestacion",
@@ -112,41 +239,44 @@ def construir(salida):
                     a, b = sorted([ents[i], ents[j]])
                     edges[(a, b)] += 1
 
-    # actividad del boletín (edictos) por titular. Si el titular no está en el padrón
-    # de minas/manifestaciones, igual se crea la entidad (así entran empresas que solo
-    # aparecen en el boletín: cateos, servidumbres, etc.). Se guarda la geometría para
-    # poder plotearla en el buscador de sociedades.
+    # actividad del boletín (edictos) por titular canónico. Acá está el VALOR del
+    # scraper: le pone nombre a cateos/servidumbres que el WFS deja sin titular. Se
+    # guarda la geometría y la superficie oficial del catastro (cruce) para el buscador.
     edictos_por_ent = defaultdict(list)
-    modelo = os.path.join(salida, "modelo.json")
-    if os.path.exists(modelo):
-        dm = json.load(open(modelo, encoding="utf-8"))
-        nombres_norm = {_norm(n): n for n in ent_props}
-        for e in dm.get("expedientes", []):
-            c = e.get("catastro") or {}
-            tit = c.get("titular") or e.get("titular_actual")
-            if not tit:
-                continue
-            fechas = sorted({f for ev in e.get("eventos", []) for f in ev["fechas"]})
-            item = {
-                "expte": e.get("expediente"),
-                "estado": e.get("estado_label"),
-                "estado_k": e.get("estado"),
-                "fechas": fechas,
-                "depto": c.get("departamento") or e.get("departamento"),
-                "cen": c.get("centroide") or e.get("centroide"),
-                "pol": c.get("poligono_wgs84") or e.get("poligono_wgs84"),
-                # superficie del POLÍGONO del catastro (WFS) que matcheó el cruce. Confiable
-                # (a diferencia de la superficie del boletín, corrupta por OCR). Es la que
-                # usamos para las hectáreas de cateo por titular.
-                "sup_ha": c.get("sup_reg_ha"),
-            }
-            for parte in _split(tit):
-                ent = nombres_norm.get(_norm(parte), parte)  # matchea existente o crea
-                edictos_por_ent[ent].append(item)
+    for e in dm.get("expedientes", []):
+        c = e.get("catastro") or {}
+        tit = c.get("titular") or e.get("titular_actual")
+        if not tit:
+            continue
+        fechas = sorted({f for ev in e.get("eventos", []) for f in ev["fechas"]})
+        item = {
+            "expte": e.get("expediente"),
+            "estado": e.get("estado_label"),
+            "estado_k": e.get("estado"),
+            "fechas": fechas,
+            "depto": c.get("departamento") or e.get("departamento"),
+            "cen": c.get("centroide") or e.get("centroide"),
+            "pol": c.get("poligono_wgs84") or e.get("poligono_wgs84"),
+            # superficie del POLÍGONO del catastro (WFS) que matcheó el cruce. Confiable
+            # (a diferencia de la superficie del boletín, corrupta por OCR). Es la que
+            # usamos para las hectáreas de cateo por titular.
+            "sup_ha": c.get("sup_reg_ha"),
+        }
+        for ent in dict.fromkeys(C(x) for x in _split(tit)):
+            edictos_por_ent[ent].append(item)
 
     # armar la lista de sociedades (unión de titulares del catastro + del boletín)
     socs = []
+    validos = set()
     for nombre in set(ent_props) | set(edictos_por_ent):
+        # descartar fragmentos: un nombre de PERSONA válido tiene >=2 palabras (los
+        # truncados de OCR tipo 'JULIAN', 'MAIDANA', 'IL' son basura, no una entidad).
+        # Y descartar referencias legales mal capturadas como titular ('LEY 27...').
+        if not _es_sociedad(nombre) and _ntok(nombre) < 2:
+            continue
+        if re.match(r"^(LEY|EXPTE|EXPEDIENTE|ART|ARTICULO|FS|BOLETIN|DECRETO)\b", nombre):
+            continue
+        validos.add(nombre)
         props = ent_props.get(nombre, [])
         edx = edictos_por_ent.get(nombre, [])
         fechas = [p["fecha"] for p in props if p["fecha"]] + [f for e in edx for f in e["fechas"]]
@@ -206,7 +336,9 @@ def construir(salida):
             "n_propiedades": sum(len(p) for p in ent_props.values()),
         },
         "sociedades": socs,
-        "edges": [{"a": a, "b": b, "w": w} for (a, b), w in edges.most_common()],
+        # aristas de co-titularidad solo entre entidades válidas (sin fragmentos descartados)
+        "edges": [{"a": a, "b": b, "w": w} for (a, b), w in edges.most_common()
+                  if a in validos and b in validos],
     }
     ruta = os.path.join(salida, "sociedades.json")
     with open(ruta, "w", encoding="utf-8") as f:
