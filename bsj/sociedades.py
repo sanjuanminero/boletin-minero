@@ -288,23 +288,33 @@ def construir(salida):
             for other in (p["cotit"] or []):
                 if other != nombre:
                     co[other] += 1
-        # HECTÁREAS POR TIPO (todas del WFS/catastro, que es lo confiable):
-        #  - mensura   = superficie de las MINAS registradas (mensuradas) del titular
-        #  - manif     = superficie de las MANIFESTACIONES de descubrimiento
-        #  - cateo     = superficie de los POLÍGONOS de cateo que el cruce le asoció
-        #                (el titular del cateo viene del boletín; la ha, del catastro).
-        # De-duplico cateos por expediente para no sumar dos veces la misma superficie.
-        ha_mensura = round(sum(p["ha"] or 0 for p in props if p["tipo"] == "mina"), 2)
+        # HECTÁREAS POR TIPO — hectáreas del catastro (WFS), confiables:
+        #  - manif    = superficie de las MANIFESTACIONES de descubrimiento (capa del
+        #               catastro, con titular+ha; historia completa).
+        #  - cateo    = superficie del POLÍGONO de cateo que el cruce asoció al titular
+        #               (el nombre lo aporta el boletín; la ha, el catastro).
+        #  - mensura  = superficie MENSURADA según los EDICTOS DE MENSURA del boletín,
+        #               cruzada al polígono del catastro. OJO: la capa 'minas' del
+        #               catastro son las minas ya registradas en pertenencias (chicas,
+        #               ~12 ha); una mensura MIDE una manifestación (área grande), por
+        #               eso se toma el área del acto de mensura (lo que se ve en el edicto).
+        # De-duplico por expediente para no sumar dos veces la misma superficie.
         ha_manif = round(sum(p["ha"] or 0 for p in props if p["tipo"] == "manifestacion"), 2)
-        cateos_vistos, ha_cateo = set(), 0.0
-        for x in edx:
-            if x.get("estado_k") != "cateo_exploracion" or not x.get("sup_ha"):
-                continue
-            k = x.get("expte") or id(x)
-            if k in cateos_vistos:
-                continue
-            cateos_vistos.add(k)
-            ha_cateo += x["sup_ha"]
+
+        def _ha_por_tipo(estado_k):
+            vistos_e, tot = set(), 0.0
+            for x in edx:
+                if x.get("estado_k") != estado_k or not x.get("sup_ha"):
+                    continue
+                k = x.get("expte") or id(x)
+                if k in vistos_e:
+                    continue
+                vistos_e.add(k)
+                tot += x["sup_ha"]
+            return round(tot, 2)
+
+        ha_cateo = _ha_por_tipo("cateo_exploracion")
+        ha_mensura = _ha_por_tipo("edicto_mensura")
         tpc = Counter(x.get("estado_k") for x in edx if x.get("estado_k"))
         socs.append({
             "nombre": nombre,

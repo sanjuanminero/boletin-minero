@@ -112,9 +112,9 @@ function setData(d){
 let rkMetric='cat';
 const _haFmt=v=>Math.round(v).toLocaleString('es-AR')+' ha';
 const RK={
-  cat:{key:'ha_cateo',  lbl:'Cateos',         fmt:_haFmt},
-  man:{key:'ha_manif',  lbl:'Manifestaciones',fmt:_haFmt},
-  men:{key:'ha_mensura',lbl:'Mensuras',       fmt:_haFmt},
+  cat:{key:'ha_cateo',  lbl:'Cateos',         fmt:_haFmt, nota:'superficie de los cateos (permisos de exploración) del titular'},
+  man:{key:'ha_manif',  lbl:'Manifestaciones',fmt:_haFmt, nota:'superficie de las manifestaciones de descubrimiento (padrón del catastro)'},
+  men:{key:'ha_mensura',lbl:'Mensuras',       fmt:_haFmt, nota:'superficie MENSURADA según los edictos de mensura (mide la manifestación; no la mina registrada, que es chica)'},
 };
 function renderRanking(metric){
   if(metric) rkMetric=metric;
@@ -125,7 +125,7 @@ function renderRanking(metric){
   document.getElementById('side').innerHTML=`
     <div class="rk-head"><h2>Ranking de sociedades <span style="color:var(--muted);font-size:12px">· ${DATA.meta.n_sociedades} en total</span></h2>
       <div class="rk-toggle">${Object.entries(RK).map(([k,v])=>`<button data-m="${k}" class="${k===rkMetric?'on':''}">${v.lbl}</button>`).join('')}</div>
-      <div class="rk-year">Hectáreas · ${list.length} titulares con ${RK[rkMetric].lbl.toLowerCase()} · fuente: Catastro Minero (WFS)</div>
+      <div class="rk-year">Hectáreas oficiales del catastro · ${list.length} titulares · <span title="fuente">${RK[rkMetric].nota}</span></div>
     </div>
     ${list.length?list.map((s,i)=>`<div class="rk-row" data-n="${encodeURIComponent(s.nombre)}">
         <span class="pos">${i+1}</span><span class="nm" title="${s.nombre}">${s.nombre}</span>
