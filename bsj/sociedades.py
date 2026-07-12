@@ -314,7 +314,12 @@ def construir(salida):
             return round(tot, 2)
 
         ha_cateo = _ha_por_tipo("cateo_exploracion")
+        # mensura EN TRÁMITE: área de los edictos de mensura (mide la manifestación que
+        # se está constituyendo en mina; el derecho todavía figura como manifestación).
         ha_mensura = _ha_por_tipo("edicto_mensura")
+        # mensura EFECTIVA: minas ya registradas en el padrón con sus pertenencias
+        # (resultado final de la mensura; áreas chicas por ley).
+        ha_minas = round(sum(p["ha"] or 0 for p in props if p["tipo"] == "mina"), 2)
         tpc = Counter(x.get("estado_k") for x in edx if x.get("estado_k"))
         socs.append({
             "nombre": nombre,
@@ -328,6 +333,7 @@ def construir(salida):
             "ha_cateo": round(ha_cateo, 2),
             "ha_manif": ha_manif,
             "ha_mensura": ha_mensura,
+            "ha_minas": ha_minas,
             "total_ha": round(sum(p["ha"] or 0 for p in props), 2),
             "departamentos": deptos,
             "minerales": minset,

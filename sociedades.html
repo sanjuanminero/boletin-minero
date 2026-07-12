@@ -112,9 +112,10 @@ function setData(d){
 let rkMetric='cat';
 const _haFmt=v=>Math.round(v).toLocaleString('es-AR')+' ha';
 const RK={
-  cat:{key:'ha_cateo',  lbl:'Cateos',         fmt:_haFmt, nota:'superficie de los cateos (permisos de exploración) del titular'},
-  man:{key:'ha_manif',  lbl:'Manifestaciones',fmt:_haFmt, nota:'superficie de las manifestaciones de descubrimiento (padrón del catastro)'},
-  men:{key:'ha_mensura',lbl:'Mensuras',       fmt:_haFmt, nota:'superficie MENSURADA según los edictos de mensura (mide la manifestación; no la mina registrada, que es chica)'},
+  cat:{key:'ha_cateo',  lbl:'Cateos',              fmt:_haFmt, nota:'superficie de los cateos (permisos de exploración) del titular'},
+  man:{key:'ha_manif',  lbl:'Manifestaciones',     fmt:_haFmt, nota:'superficie de las manifestaciones de descubrimiento (padrón del catastro)'},
+  men:{key:'ha_mensura',lbl:'Mensura (en trámite)',fmt:_haFmt, nota:'superficie de los edictos de mensura: el derecho se está mensurando y aún figura como manifestación (área grande, NO registrada como mina todavía)'},
+  min:{key:'ha_minas',  lbl:'Minas registradas',   fmt:_haFmt, nota:'minas ya inscriptas en el padrón con sus pertenencias — mensura EFECTIVA (áreas chicas por ley)'},
 };
 function renderRanking(metric){
   if(metric) rkMetric=metric;
