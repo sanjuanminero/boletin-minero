@@ -3,6 +3,7 @@ pyproj>=3.6        # conversión de coordenadas GK/POSGAR Faja 2 <-> WGS84
 pymupdf>=1.24      # lectura de PDF y diagnóstico texto/escaneado
 openpyxl>=3.1      # planilla Excel
 requests>=2.31     # descargas (boletín / catastro ArcGIS)
+shapely>=2.0       # análisis histórico: unión/diferencia de polígonos (áreas vacantes)
 
 # Opcional: solo si el boletín resulta ESCANEADO (OCR)
 # pytesseract>=0.3.10

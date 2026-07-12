@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Análisis Histórico — Catastro Minero San Juan</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+  :root{--bg:#0f1115;--panel:#171a21;--panel2:#1e222b;--line:#2a2f3a;--txt:#e6e8ec;--muted:#9aa3b2;--accent:#F3C323;--free:#34d399;--hot:#fb7185;--old:#f59e0b}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;font-family:system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt);overflow:hidden}
+  header{display:flex;align-items:center;gap:12px;padding:9px 14px;background:var(--panel);border-bottom:1px solid var(--line);flex-wrap:wrap}
+  header h1{font-size:15px;font-weight:600;margin:0}
+  header h1 b{color:var(--accent)}
+  .btn{background:var(--panel2);border:1px solid var(--line);color:var(--muted);padding:5px 10px;border-radius:7px;font-size:12px;cursor:pointer;text-decoration:none}
+  .btn:hover{color:var(--accent)}
+  .modes{display:flex;gap:6px;margin-left:auto}
+  .modes button{background:var(--panel2);border:1px solid var(--line);color:var(--muted);padding:6px 12px;border-radius:8px;font-size:12.5px;cursor:pointer;font-weight:600}
+  .modes button.on{background:var(--accent);color:#1a1a1a;border-color:var(--accent)}
+  #wrap{display:flex;height:calc(100% - 46px)}
+  #side{width:340px;min-width:340px;overflow:auto;border-right:1px solid var(--line);background:var(--panel)}
+  #map{flex:1}
+  .intro{padding:13px 14px;font-size:12px;color:var(--muted);line-height:1.55;border-bottom:1px solid var(--line)}
+  .intro b{color:var(--txt)}
+  .intro .big{color:var(--free);font-weight:700;font-size:13px}
+  .row{display:flex;align-items:center;gap:9px;padding:8px 14px;cursor:pointer;border-bottom:1px solid var(--line);font-size:12.5px}
+  .row:hover{background:var(--panel2)}
+  .row .pos{width:20px;color:var(--muted);font-size:11px;text-align:right}
+  .row .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .row .v{font-weight:600;white-space:nowrap}
+  .row .sub{color:var(--muted);font-size:11px}
+  .tag{display:inline-block;font-size:9.5px;padding:1px 6px;border-radius:10px;border:1px solid var(--line);color:var(--muted);margin-left:5px}
+  .legend{position:absolute;right:12px;bottom:20px;z-index:500;background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:9px 12px;font-size:11px;color:var(--muted);line-height:1.7}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+  .leaflet-popup-content{font-size:12px;line-height:1.5}
+  .pp b{color:#1a1a1a}
+  .toggleocc{font-size:11px;color:var(--muted);padding:9px 14px;display:flex;align-items:center;gap:7px;border-bottom:1px solid var(--line)}
+</style>
+</head>
+<body>
+<header>
+  <h1><b>Análisis Histórico</b> · Catastro Minero San Juan</h1>
+  <a class="btn" href="visor.html">Visor</a>
+  <a class="btn" href="sociedades.html">Sociedades</a>
+  <a class="btn" href="red.html">Entramado</a>
+  <div class="modes">
+    <button data-m="libres" class="on">🟢 Áreas vacantes</button>
+    <button data-m="antiguos">🕰 Antigüedad</button>
+    <button data-m="zonas">🔥 Movimiento</button>
+  </div>
+</header>
+<div id="wrap">
+  <div id="side"></div>
+  <div id="map"></div>
+</div>
+<div class="legend" id="legend"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+let DATA=null, map=null, layer=null, occLayer=null, mode='libres';
+const $=id=>document.getElementById(id);
+function initMap(){
+  if(map) return;
+  map=L.map('map',{zoomControl:true,preferCanvas:true}).setView([-31.0,-69.0],7);
+  const osm=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'});
+  const sat=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Esri'});
+  osm.addTo(map); L.control.layers({'Calles':osm,'Satélite':sat},null,{position:'topright'}).addTo(map);
+}
+async function load(){
+  for(const p of ['out_hist/analisis_historico.json','analisis_historico.json']){
+    try{const r=await fetch(p); if(r.ok){DATA=await r.json(); break;}}catch(e){}
+  }
+  initMap();
+  if(!DATA){ $('side').innerHTML='<div class="intro">No pude cargar <b>analisis_historico.json</b>. Corré <code>python -m bsj.historico ./out_hist</code> y serví por HTTP.</div>'; return; }
+  document.querySelectorAll('.modes button').forEach(b=>b.onclick=()=>setMode(b.dataset.m));
+  setMode('libres');
+}
+function setMode(m){
+  mode=m;
+  document.querySelectorAll('.modes button').forEach(b=>b.classList.toggle('on',b.dataset.m===m));
+  if(layer){ layer.remove(); layer=null; }
+  ({libres:renderLibres, antiguos:renderAntiguos, zonas:renderZonas}[m])();
+}
+function occToggleHTML(){
+  return `<label class="toggleocc"><input type="checkbox" id="occ" ${occLayer&&map.hasLayer(occLayer)?'checked':''}> Mostrar padrón ocupado (contexto)</label>`;
+}
+function wireOcc(){
+  const c=$('occ'); if(!c) return;
+  c.onchange=async()=>{
+    if(c.checked){
+      if(!occLayer){
+        occLayer=L.layerGroup();
+        for(const capa of ['permisos','manifestaciones','minas']){
+          try{const r=await fetch('out_hist/catastro/catastro_'+capa+'.geojson'); if(!r.ok) continue;
+            L.geoJSON(await r.json(),{style:{color:'#5b6472',weight:0.6,fillColor:'#5b6472',fillOpacity:0.12},interactive:false}).addTo(occLayer);
+          }catch(e){}
+        }
+      }
+      occLayer.addTo(map); occLayer.bringToBack();
+    } else if(occLayer){ occLayer.remove(); }
+  };
+}
+
+// ---- VACANTES ----
+function renderLibres(){
+  const feats=DATA.libres.features;
+  $('legend').innerHTML='<i style="background:var(--free)"></i> área vacante (posible cateo)<br><i style="background:#5b6472"></i> padrón ocupado';
+  layer=L.geoJSON(DATA.libres,{
+    style:{color:'#10b981',weight:1,fillColor:'#34d399',fillOpacity:0.35},
+    onEachFeature:(f,l)=>l.bindPopup(`<div class="pp"><b>Área vacante</b><br>~${Math.round(f.properties.ha).toLocaleString('es-AR')} ha<br><span style="color:#555">Sin registro activo encima — candidata a solicitud de cateo.</span></div>`)
+  }).addTo(map);
+  const m=DATA.meta;
+  let html=`<div class="intro">
+    <b>¿Cómo encuentra alguien un área para pedir un cateo?</b> No mirando "qué está ocupado"
+    (casi todo lo está), sino los <b>huecos dentro del cinturón minero</b> — terreno sin
+    registro activo, rodeado de manifestaciones y minas (donde hay mineral).
+    <br><br>Estas son las <b>${m.n_libres}</b> mayores áreas vacantes:
+    <span class="big">${Math.round(m.libres_ha_total).toLocaleString('es-AR')} ha</span> en total.
+    Clic para ubicarla. <span style="color:#6b7280">Verificar siempre contra el catastro oficial antes de presentar.</span>
+    </div>${occToggleHTML()}`;
+  feats.forEach((f,i)=>{
+    html+=`<div class="row" data-i="${i}"><span class="pos">${i+1}</span>
+      <span class="nm">Área libre ${i+1}</span>
+      <span class="v" style="color:var(--free)">${Math.round(f.properties.ha).toLocaleString('es-AR')} ha</span></div>`;
+  });
+  $('side').innerHTML=html; wireOcc();
+  $('side').querySelectorAll('.row').forEach(el=>el.onclick=()=>{
+    const f=feats[+el.dataset.i]; const c=f.properties.cen;
+    const gj=L.geoJSON(f); map.fitBounds(gj.getBounds(),{maxZoom:12,padding:[40,40]});
+    L.popup().setLatLng(c).setContent(`<div class="pp"><b>Área vacante</b> · ~${Math.round(f.properties.ha).toLocaleString('es-AR')} ha</div>`).openOn(map);
+  });
+}
+
+// ---- ANTIGÜEDAD ----
+function colorEdad(anio){
+  const a=+anio; if(a<1920) return '#7f1d1d'; if(a<1960) return '#b91c1c';
+  if(a<1990) return '#ea580c'; if(a<2010) return '#f59e0b'; return '#fcd34d';
+}
+function renderAntiguos(){
+  const list=DATA.antiguos.filter(a=>a.cen);
+  $('legend').innerHTML='Antigüedad del registro activo:<br>'+
+    '<i style="background:#7f1d1d"></i> &lt;1920 &nbsp;<i style="background:#b91c1c"></i> &lt;1960<br>'+
+    '<i style="background:#ea580c"></i> &lt;1990 &nbsp;<i style="background:#f59e0b"></i> &lt;2010 &nbsp;<i style="background:#fcd34d"></i> +2010';
+  layer=L.layerGroup();
+  list.forEach(a=>{
+    const yr=a.fecha.slice(0,4);
+    L.circleMarker(a.cen,{radius:6,color:'#111',weight:1,fillColor:colorEdad(yr),fillOpacity:0.9})
+     .bindPopup(`<div class="pp"><b>${a.denom||a.tipo}</b> · ${yr}<br>${a.titular||'?'}<br><span style="color:#555">${a.tipo} · ${a.ha||'?'} ha · ${a.depto||''} · ${a.min||''}</span></div>`)
+     .addTo(layer);
+  });
+  layer.addTo(map);
+  let html=`<div class="intro"><b>Registros activos más viejos.</b> Siguen en el padrón del
+    catastro (⇒ vigentes) y son los que más tiempo llevan sin caducar. Los más antiguos suelen
+    ser derechos consolidados históricos. Clic para ubicarlos.</div>${occToggleHTML()}`;
+  list.forEach((a,i)=>{
+    html+=`<div class="row" data-i="${i}"><span class="pos">${i+1}</span>
+      <span class="nm">${a.denom||'(s/nombre)'}<div class="sub">${(a.titular||'?').slice(0,34)}</div></span>
+      <span class="v" style="color:${colorEdad(a.fecha.slice(0,4))}">${a.fecha.slice(0,4)}</span></div>`;
+  });
+  $('side').innerHTML=html; wireOcc();
+  $('side').querySelectorAll('.row').forEach(el=>el.onclick=()=>{
+    const a=list[+el.dataset.i]; map.setView(a.cen,12);
+    L.popup().setLatLng(a.cen).setContent(`<div class="pp"><b>${a.denom||a.tipo}</b> · ${a.fecha.slice(0,4)}<br>${a.titular||'?'}</div>`).openOn(map);
+  });
+}
+
+// ---- MOVIMIENTO ----
+function renderZonas(){
+  const list=DATA.zonas;
+  const max=list.length?list[0].n:1;
+  $('legend').innerHTML='<i style="background:var(--hot);border-radius:50%"></i> zona de actividad<br>tamaño = nº de registros (cateos+manif+minas)';
+  layer=L.layerGroup();
+  list.forEach(z=>{
+    L.circleMarker(z.cen,{radius:6+Math.sqrt(z.n)*1.6,color:'#fb7185',weight:1,fillColor:'#fb7185',fillOpacity:0.35})
+     .bindPopup(`<div class="pp"><b>Zona de actividad</b><br>${z.n} registros<br><span style="color:#555">${z.mina} minas · ${z.manif} manif. · ${z.cateo} cateos</span></div>`)
+     .addTo(layer);
+  });
+  layer.addTo(map);
+  let html=`<div class="intro"><b>Zonas con más movimiento.</b> Celdas de ~8 km con más
+    registros acumulados (minas + manifestaciones + cateos). Marcan los distritos donde se
+    concentra la actividad minera. Clic para ubicarlas.</div>${occToggleHTML()}`;
+  list.forEach((z,i)=>{
+    html+=`<div class="row" data-i="${i}"><span class="pos">${i+1}</span>
+      <span class="nm">Zona ${i+1}<div class="sub">${z.mina} minas · ${z.manif} manif · ${z.cateo} cateos</div></span>
+      <span class="v" style="color:var(--hot)">${z.n}</span></div>`;
+  });
+  $('side').innerHTML=html; wireOcc();
+  $('side').querySelectorAll('.row').forEach(el=>el.onclick=()=>{
+    const z=list[+el.dataset.i]; map.setView(z.cen,11);
+  });
+}
+load();
+</script>
+</body>
+</html>

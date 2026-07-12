@@ -37,7 +37,10 @@ Log "3/4 padrón del catastro (best-effort; si falla, se conserva el anterior)..
 Log "4/5 cruce boletín <-> catastro..."
 & $py -m bsj.cruce $out *>> $log
 
-Log "5/5 base de sociedades / entramado..."
+Log "5/6 base de sociedades / entramado..."
 & $py -m bsj.sociedades $out *>> $log
+
+Log "6/6 analisis historico (antiguedad + zonas + areas vacantes)..."
+& $py -m bsj.historico $out *>> $log
 
 Log "=== Fin. Modelo: $out/modelo.json ==="
