@@ -135,6 +135,10 @@ def construir(salida):
                 "depto": c.get("departamento") or e.get("departamento"),
                 "cen": c.get("centroide") or e.get("centroide"),
                 "pol": c.get("poligono_wgs84") or e.get("poligono_wgs84"),
+                # superficie del POLÍGONO del catastro (WFS) que matcheó el cruce. Confiable
+                # (a diferencia de la superficie del boletín, corrupta por OCR). Es la que
+                # usamos para las hectáreas de cateo por titular.
+                "sup_ha": c.get("sup_reg_ha"),
             }
             for parte in _split(tit):
                 ent = nombres_norm.get(_norm(parte), parte)  # matchea existente o crea
@@ -154,12 +158,23 @@ def construir(salida):
             for other in (p["cotit"] or []):
                 if other != nombre:
                     co[other] += 1
-        # conteo de expedientes del boletín por TIPO de acto. Permite rankear por
-        # "cuántos cateos / mensuras / manifestaciones" tiene cada titular: no es lo
-        # mismo tener miles de ha en cateo (mera exploración) que ha mensuradas
-        # (derecho consolidado). La superficie del boletín está corrupta por OCR, así
-        # que acá van los CONTEOS (confiables); las hectáreas siguen siendo las del
-        # catastro (total_ha, registradas).
+        # HECTÁREAS POR TIPO (todas del WFS/catastro, que es lo confiable):
+        #  - mensura   = superficie de las MINAS registradas (mensuradas) del titular
+        #  - manif     = superficie de las MANIFESTACIONES de descubrimiento
+        #  - cateo     = superficie de los POLÍGONOS de cateo que el cruce le asoció
+        #                (el titular del cateo viene del boletín; la ha, del catastro).
+        # De-duplico cateos por expediente para no sumar dos veces la misma superficie.
+        ha_mensura = round(sum(p["ha"] or 0 for p in props if p["tipo"] == "mina"), 2)
+        ha_manif = round(sum(p["ha"] or 0 for p in props if p["tipo"] == "manifestacion"), 2)
+        cateos_vistos, ha_cateo = set(), 0.0
+        for x in edx:
+            if x.get("estado_k") != "cateo_exploracion" or not x.get("sup_ha"):
+                continue
+            k = x.get("expte") or id(x)
+            if k in cateos_vistos:
+                continue
+            cateos_vistos.add(k)
+            ha_cateo += x["sup_ha"]
         tpc = Counter(x.get("estado_k") for x in edx if x.get("estado_k"))
         socs.append({
             "nombre": nombre,
@@ -170,6 +185,9 @@ def construir(salida):
             "n_cateo": tpc.get("cateo_exploracion", 0),
             "n_mensura": tpc.get("edicto_mensura", 0),
             "n_manifestacion": tpc.get("manifestacion_descubrimiento", 0),
+            "ha_cateo": round(ha_cateo, 2),
+            "ha_manif": ha_manif,
+            "ha_mensura": ha_mensura,
             "total_ha": round(sum(p["ha"] or 0 for p in props), 2),
             "departamentos": deptos,
             "minerales": minset,
@@ -179,7 +197,7 @@ def construir(salida):
             "edictos": edx,
             "props": props,
         })
-    socs.sort(key=lambda s: -(s["n"] + s["n_edictos"]))
+    socs.sort(key=lambda s: -(s["ha_cateo"] + s["ha_manif"] + s["ha_mensura"]))
 
     doc = {
         "meta": {
