@@ -155,6 +155,10 @@ def _bloque(f, metodo, confianza):
         "sup_reg_ha": p.get("sup_reg_ha"),
         "cantidad_pertenencias": p.get("cantidadPertenencias"),
         "departamento": p.get("departamento"),
+        # fecha de inscripción de la MENSURA: si está, la mensura es EFECTIVA (mina
+        # registrada); si falta, está EN TRÁMITE. Lo usa el visor para distinguirlas.
+        "fechaInscripcionMensura": p.get("fechaInscripcionMensura"),
+        "numeroInscripcionMensura": p.get("numeroInscripcionMensura"),
         "poligono_wgs84": f["anillo"], "centroide": f["centroide"],
     }
 
