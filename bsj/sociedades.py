@@ -224,6 +224,9 @@ def construir(salida):
                 "min": p.get("minerales"),
                 "yac": p.get("tipoYacimiento"),
                 "fecha": _fecha(p.get("fechaInscripcion")),
+                # fecha de inscripción de la MENSURA: si está, esta manifestación/mina
+                # tiene la mensura EFECTIVAMENTE registrada en el padrón (WFS).
+                "finMensura": _fecha(p.get("fechaInscripcionMensura")),
                 "cen": _centroide(anillo),
                 "pol": anillo,
                 "cotit": ents if len(ents) > 1 else None,
@@ -314,11 +317,15 @@ def construir(salida):
             return round(tot, 2)
 
         ha_cateo = _ha_por_tipo("cateo_exploracion")
-        # mensura EN TRÁMITE: área de los edictos de mensura (mide la manifestación que
-        # se está constituyendo en mina; el derecho todavía figura como manifestación).
+        # mensura EN TRÁMITE: área de los edictos de mensura del boletín (el derecho se
+        # está midiendo; aún no consta inscripción de mensura en el padrón).
         ha_mensura = _ha_por_tipo("edicto_mensura")
-        # mensura EFECTIVA: minas ya registradas en el padrón con sus pertenencias
-        # (resultado final de la mensura; áreas chicas por ley).
+        # mensura EFECTIVA (registrada): manifestaciones/minas del catastro que YA tienen
+        # fechaInscripcionMensura en el WFS. Esta es la verdad oficial de qué mensuras se
+        # inscribieron (ej. Andes Corp. Minera: 14 registros, ~19.664 ha en 2024-2025),
+        # independiente de si el edicto quedó capturado en el boletín.
+        ha_mensurada = round(sum(p["ha"] or 0 for p in props if p.get("finMensura")), 2)
+        # minas registradas en pertenencias (capa 'minas', chicas) — dato de referencia.
         ha_minas = round(sum(p["ha"] or 0 for p in props if p["tipo"] == "mina"), 2)
         tpc = Counter(x.get("estado_k") for x in edx if x.get("estado_k"))
         socs.append({
@@ -333,6 +340,7 @@ def construir(salida):
             "ha_cateo": round(ha_cateo, 2),
             "ha_manif": ha_manif,
             "ha_mensura": ha_mensura,
+            "ha_mensurada": ha_mensurada,
             "ha_minas": ha_minas,
             "total_ha": round(sum(p["ha"] or 0 for p in props), 2),
             "departamentos": deptos,
