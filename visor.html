@@ -25,7 +25,7 @@
   .toolbar label{font-size:11px;color:var(--muted);margin-right:4px}
   select,input[type=text]{background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:5px 8px;border-radius:7px;font-size:12px}
   input[type=text]{min-width:180px}
-  .tipos{display:flex;flex-wrap:wrap;gap:6px}
+  .tipos{display:flex;flex-wrap:wrap;gap:6px;flex-basis:100%;margin-top:2px;border-top:1px solid var(--line);padding-top:8px}
   .chip{display:inline-flex;align-items:center;gap:6px;font-size:11px;padding:4px 8px;border-radius:20px;border:1px solid var(--line);background:var(--panel2);cursor:pointer;user-select:none}
   .chip .dot{width:9px;height:9px;border-radius:50%}
   .chip.off{opacity:.38}
@@ -83,11 +83,11 @@
     <span><label>Mes</label><select id="mes"></select></span>
     <span><label>Buscar</label><input type="text" id="q" placeholder="titular, expediente o mina"/></span>
     <span><label><input type="checkbox" id="soloCat"/> solo c/ catastro</label></span>
-    <div class="tipos" id="tipos"></div>
     <span style="margin-left:auto">
       <button class="btn on" id="vMapa">Mapa</button>
       <button class="btn" id="vResumen">Resumen anual</button>
     </span>
+    <div class="tipos" id="tipos"></div>
   </div>
   <main>
     <div id="side"><div class="empty" id="sideEmpty">Cargando expedientes…</div></div>
@@ -149,7 +149,7 @@ const CAT_LAYERS = [
   // mensuras EFECTIVAS (registros del WFS con fechaInscripcionMensura). Naranja, arriba
   // de todo y clickeable, para diferenciar lo efectivamente registrado. Fuente: WFS
   // (NO se re-escrapea; se lee fechaInscripcionMensura del padrón).
-  {k:'mensuras_efectivas', l:'★ Mensuras efectivas (inscriptas)', color:'#F28C1E', mens:true},
+  {k:'mensuras_efectivas', l:'Mensuras efectivas (inscriptas)', color:'#F28C1E', mens:true},
 ];
 const catLayers = {};
 let catRenderer = null;
@@ -188,7 +188,7 @@ function initMap(){
     });
     lyr._file=CAT_DIR+'catastro_'+c.k+'.geojson'; lyr._loaded=false;
     catLayers[c.k]=lyr;
-    const marca = c.mens ? '★' : '●';
+    const marca = '●';
     overlays['<span style="color:'+c.color+'">'+marca+'</span> <span style="color:#1a1a1a">'+c.l+'</span>']=lyr;
   });
   // Geoservicios OFICIALES del Catastro Minero (GeoServer OGC) — solo URLs de referencia.
@@ -275,7 +275,7 @@ function buildToolbar(){
   // separadas del 'edicto de mensura (en trámite)'.
   if(tipoOn['mensura_efectiva']===undefined) tipoOn['mensura_efectiva']=true;
   const ce=document.createElement('span'); ce.className='chip'+(tipoOn['mensura_efectiva']?'':' off'); ce.dataset.k='mensura_efectiva';
-  ce.innerHTML=`<span class="dot" style="background:${COLOR_MENS_EFECTIVA}"></span>★ Mensura efectiva`;
+  ce.innerHTML=`<span class="dot" style="background:${COLOR_MENS_EFECTIVA}"></span>Mensura efectiva`;
   ce.onclick=()=>{tipoOn['mensura_efectiva']=!tipoOn['mensura_efectiva']; ce.classList.toggle('off',!tipoOn['mensura_efectiva']); render();};
   cont.appendChild(ce);
 }
@@ -365,7 +365,7 @@ function renderSide(exps){
       <div class="top">
         <span class="exp">${e.expediente||'(sin expediente)'}</span>
         ${badge}
-        ${mensuraInscripta(e)?`<span class="cat" style="background:#F28C1E;color:#1a1a1a;border-color:#F28C1E" title="Mensura inscripta en el padrón el ${(cat(e).fechaInscripcionMensura||'').slice(0,10)} — mensura efectiva">★ mensura efectiva</span>`:''}
+        ${mensuraInscripta(e)?`<span class="cat" style="background:#F28C1E;color:#1a1a1a;border-color:#F28C1E" title="Mensura inscripta en el padrón el ${(cat(e).fechaInscripcionMensura||'').slice(0,10)} — mensura efectiva">mensura efectiva</span>`:''}
         <span class="estado" style="background:${col}">${e.estado_label}</span>
       </div>
       <div class="sub"><span class="k">${titularDe(e)}</span>${(()=>{const f=titularFuente(e);return f?` <span class="fuente f-${f}">${f}</span>`:'';})()}${mina?` · mina ${mina}`:''}</div>
