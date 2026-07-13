@@ -69,7 +69,7 @@
   <header>
     <h1><b>Sociedades Mineras</b> San Juan · buscador</h1>
     <a href="visor.html">← volver al visor de expedientes</a>
-    <a href="historico.html">análisis histórico →</a>
+    <a href="historico.html">análisis →</a>
     <a href="red.html">ver entramado / red →</a>
     <div class="searchbox">
       <input id="q" type="text" placeholder="Escribí una sociedad o persona… (ej. Bastias, Golden, Ansilta)" autocomplete="off"/>
@@ -126,7 +126,7 @@ function renderRanking(metric){
   document.getElementById('side').innerHTML=`
     <div class="rk-head"><h2>Ranking de sociedades <span style="color:var(--muted);font-size:12px">· ${DATA.meta.n_sociedades} en total</span></h2>
       <div class="rk-toggle">${Object.entries(RK).map(([k,v])=>`<button data-m="${k}" class="${k===rkMetric?'on':''}">${v.lbl}</button>`).join('')}</div>
-      <div class="rk-year">Hectáreas oficiales del catastro · ${list.length} titulares · <span title="fuente">${RK[rkMetric].nota}</span></div>
+      <div class="rk-year">Hectáreas oficiales del catastro · ${list.length} titulares</div>
     </div>
     ${list.length?list.map((s,i)=>`<div class="rk-row" data-n="${encodeURIComponent(s.nombre)}">
         <span class="pos">${i+1}</span><span class="nm" title="${s.nombre}">${s.nombre}</span>

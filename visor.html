@@ -74,10 +74,8 @@
   <header>
     <h1><b>Boletín Minero</b> San Juan · expedientes</h1>
     <a class="btn" href="sociedades.html" style="text-decoration:none">Sociedades</a>
-    <a class="btn" href="historico.html" style="text-decoration:none">Análisis Histórico</a>
+    <a class="btn" href="historico.html" style="text-decoration:none">Análisis</a>
     <a class="btn" href="red.html" style="text-decoration:none">Entramado</a>
-    <button class="btn" id="loadBtn">Cargar modelo.json</button>
-    <input type="file" id="file" accept="application/json,.json" style="display:none"/>
     <div class="stats" id="stats"></div>
   </header>
   <div class="toolbar">
@@ -92,7 +90,7 @@
     </span>
   </div>
   <main>
-    <div id="side"><div class="empty" id="sideEmpty">Cargá <b>modelo.json</b> (botón arriba) o dejá el visor junto a la carpeta <code>out_2026/</code>.</div></div>
+    <div id="side"><div class="empty" id="sideEmpty">Cargando expedientes…</div></div>
     <div id="map"></div>
     <div id="resumen"></div>
   </main>
@@ -145,6 +143,10 @@ const CAT_LAYERS = [
   {k:'servidumbres',    l:'Servidumbres',                      color:'#993C1D'},
   {k:'proyectos',       l:'Proyectos mineros',                 color:'#D4537E'},
   {k:'limite',          l:'Límite provincial',                 color:'#888780'},
+  // mensuras EFECTIVAS (registros del WFS con fechaInscripcionMensura). Naranja, arriba
+  // de todo y clickeable, para diferenciar lo efectivamente registrado. Fuente: WFS
+  // (NO se re-escrapea; se lee fechaInscripcionMensura del padrón).
+  {k:'mensuras_efectivas', l:'★ Mensuras efectivas (inscriptas)', color:'#F28C1E', mens:true},
 ];
 const catLayers = {};
 let catRenderer = null;
@@ -156,6 +158,7 @@ function initMap(){
   // panes: el catastro va DEBAJO (canvas); los expedientes del boletín van ARRIBA
   // en SVG (solo captan el clic sobre la figura y dejan pasar el resto al catastro).
   map.createPane('catastroPane'); map.getPane('catastroPane').style.zIndex = 350;
+  map.createPane('mensurasPane'); map.getPane('mensurasPane').style.zIndex = 360;
   boletinRenderer = L.svg();
   // mapas base
   const base_osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -168,17 +171,22 @@ function initMap(){
   base_osm.addTo(map);
   const baseLayers = {'Calles (OSM)':base_osm, 'Satélite':base_sat, 'Terreno':base_topo};
   catRenderer = L.canvas({padding:0.5, pane:'catastroPane'});
+  const mensRenderer = L.canvas({padding:0.5, pane:'mensurasPane'});
   const overlays={};
   CAT_LAYERS.forEach(c=>{
     const dash = c.k==='limite' ? '4 3' : null;
+    const style = c.mens
+      ? {color:'#B4630A',weight:1.5,fillColor:c.color,fillOpacity:0.55}   // naranja, resaltado
+      : {color:c.color,weight:1,fillColor:c.color,fillOpacity:c.k==='limite'?0:0.10,dashArray:dash};
     const lyr=L.geoJSON(null,{
-      renderer:catRenderer,
-      style:()=>({color:c.color,weight:1,fillColor:c.color,fillOpacity:c.k==='limite'?0:0.10,dashArray:dash}),
+      renderer:c.mens?mensRenderer:catRenderer,
+      style:()=>style,
       onEachFeature:(f,l)=>l.bindPopup(popupCatastro(f,c),{maxWidth:300}),
     });
     lyr._file=CAT_DIR+'catastro_'+c.k+'.geojson'; lyr._loaded=false;
     catLayers[c.k]=lyr;
-    overlays['<span style="color:'+c.color+'">●</span> <span style="color:#1a1a1a">'+c.l+'</span>']=lyr;
+    const marca = c.mens ? '★' : '●';
+    overlays['<span style="color:'+c.color+'">'+marca+'</span> <span style="color:#1a1a1a">'+c.l+'</span>']=lyr;
   });
   // Geoservicios OFICIALES del Catastro Minero (GeoServer OGC) — solo URLs de referencia.
   // Las capas del visor son las del WFS ya descargadas (GeoJSON local, clickeables): mismo
@@ -227,10 +235,11 @@ function popupCatastro(f,c){
   const min=p.minerales||p.tipo_de_servidumbre||p.tipoYacimiento||'';
   const sup=p.sup_reg_ha!=null?(Math.round(p.sup_reg_ha*100)/100+' ha'):'';
   const pert=p.cantidadPertenencias?(' · '+p.cantidadPertenencias+' pert.'):'';
+  const fim=p.fechaInscripcionMensura?('<br><span style="color:#B4630A;font-weight:600">★ mensura inscripta '+(''+p.fechaInscripcionMensura).slice(0,10)+'</span>'):'';
   return `<div class="pp"><span style="color:#777;font-size:10px">catastro · ${c.l}</span><br>
     <b>${den||'(s/denominación)'}</b>${tit?'<br>'+tit:''}
     ${exp?'<br><span style="color:#555">'+exp+'</span>':''}
-    ${min?'<br>'+min:''}${sup?'<br>'+sup+pert:''}
+    ${min?'<br>'+min:''}${sup?'<br>'+sup+pert:''}${fim}
     ${p.departamento?'<br><span style="color:#777">'+p.departamento+'</span>':''}</div>`;
 }
 
@@ -441,11 +450,6 @@ function showView(v){
 }
 
 // ---- eventos UI ----
-document.getElementById('loadBtn').onclick=()=>document.getElementById('file').click();
-document.getElementById('file').onchange=ev=>{
-  const f=ev.target.files[0]; if(!f) return;
-  const r=new FileReader(); r.onload=()=>{try{setModelo(JSON.parse(r.result));}catch(e){alert('JSON inválido: '+e);}}; r.readAsText(f);
-};
 document.getElementById('anio').onchange=()=>{buildMeses();render();};
 document.getElementById('mes').onchange=render;
 document.getElementById('q').oninput=render;

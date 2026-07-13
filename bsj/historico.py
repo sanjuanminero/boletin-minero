@@ -72,31 +72,34 @@ def _poligonos(geom):
 def analizar(salida, buffer_grados=0.06, min_ha=80, max_ha=60000, top_libres=90):
     cat_dir = os.path.join(salida, "catastro")
 
-    # ---- 1) registros activos más viejos ----
-    antiguos = []
-    for capa in ("minas", "manifestaciones"):
-        for f in _load(cat_dir, capa)["features"]:
-            p = f.get("properties", {})
-            fecha = (p.get("fechaInscripcion") or "")[:10]
-            if not fecha:
-                continue
-            sh = _valida(f.get("geometry"))
-            cen = None
-            if sh:
-                c = sh.representative_point()
-                cen = [round(c.y, 6), round(c.x, 6)]
-            antiguos.append({
-                "tipo": "mina" if capa == "minas" else "manifestacion",
-                "titular": p.get("titular"),
-                "denom": p.get("denominacion") or p.get("nombre_mina"),
-                "fecha": fecha,
-                "ha": p.get("sup_reg_ha"),
-                "depto": p.get("departamento"),
-                "min": p.get("minerales"),
-                "cen": cen,
-            })
-    antiguos.sort(key=lambda x: x["fecha"])
-    antiguos = antiguos[:60]
+    # ---- 1) manifestaciones DORMIDAS: reclamos antiguos que NUNCA se mensuraron ----
+    # Manifestación con fechaInscripcion pero SIN fechaInscripcionMensura: un derecho
+    # viejo que nunca avanzó a mina registrada. Son los interesantes (posible caducidad /
+    # oportunidad), a diferencia de las minas (que arrastran registros de 1889 sin valor
+    # para esto) y de las manifestaciones ya mensuradas (activas y al día).
+    dormidas = []
+    for f in _load(cat_dir, "manifestaciones")["features"]:
+        p = f.get("properties", {})
+        fecha = (p.get("fechaInscripcion") or "")[:10]
+        if not fecha or p.get("fechaInscripcionMensura"):
+            continue
+        sh = _valida(f.get("geometry"))
+        cen = None
+        if sh:
+            c = sh.representative_point()
+            cen = [round(c.y, 6), round(c.x, 6)]
+        dormidas.append({
+            "tipo": "manifestacion",
+            "titular": p.get("titular"),
+            "denom": p.get("denominacion") or p.get("nombre_mina"),
+            "fecha": fecha,
+            "ha": p.get("sup_reg_ha"),
+            "depto": p.get("departamento"),
+            "min": p.get("minerales"),
+            "cen": cen,
+        })
+    dormidas.sort(key=lambda x: x["fecha"])
+    dormidas = dormidas[:60]
 
     # ---- 2) zonas de movimiento (grilla de centroides) ----
     CELL = 0.08  # ~8 km
@@ -159,20 +162,53 @@ def analizar(salida, buffer_grados=0.06, min_ha=80, max_ha=60000, top_libres=90)
 
     doc = {
         "meta": {
-            "n_antiguos": len(antiguos),
+            "n_dormidas": len(dormidas),
             "n_zonas": len(zonas),
             "n_libres": len(libres),
             "libres_ha_total": libres_ha,
             "cinturon_buffer_grados": buffer_grados,
         },
-        "antiguos": antiguos,
+        "dormidas": dormidas,
         "zonas": zonas,
         "libres": {"type": "FeatureCollection", "features": libres},
     }
     ruta = os.path.join(salida, "analisis_historico.json")
     with open(ruta, "w", encoding="utf-8") as f:
         json.dump(doc, f, ensure_ascii=False)
+
+    # capa MENSURAS EFECTIVAS para el visor (registros con fechaInscripcionMensura).
+    generar_mensuras_efectivas(salida)
     return doc["meta"]
+
+
+def generar_mensuras_efectivas(salida):
+    """GeoJSON de las manifestaciones/minas con la mensura EFECTIVAMENTE inscripta
+    (fechaInscripcionMensura). Lo usa el visor como capa naranja diferenciada."""
+    cat_dir = os.path.join(salida, "catastro")
+    feats = []
+    for capa in ("manifestaciones", "minas"):
+        for f in _load(cat_dir, capa)["features"]:
+            p = f.get("properties", {})
+            if not p.get("fechaInscripcionMensura"):
+                continue
+            feats.append({
+                "type": "Feature",
+                "geometry": f.get("geometry"),
+                "properties": {
+                    "denominacion": p.get("denominacion") or p.get("nombre_mina"),
+                    "titular": p.get("titular"),
+                    "expediente": p.get("expediente"),
+                    "sup_reg_ha": p.get("sup_reg_ha"),
+                    "minerales": p.get("minerales"),
+                    "departamento": p.get("departamento"),
+                    "fechaInscripcionMensura": (p.get("fechaInscripcionMensura") or "")[:10],
+                    "capa": capa,
+                },
+            })
+    ruta = os.path.join(cat_dir, "catastro_mensuras_efectivas.geojson")
+    with open(ruta, "w", encoding="utf-8") as f:
+        json.dump({"type": "FeatureCollection", "features": feats}, f, ensure_ascii=False)
+    return len(feats)
 
 
 if __name__ == "__main__":

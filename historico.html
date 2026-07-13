@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Análisis Histórico — Catastro Minero San Juan</title>
+<title>Análisis — Catastro Minero San Juan</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <style>
   :root{--bg:#0f1115;--panel:#171a21;--panel2:#1e222b;--line:#2a2f3a;--txt:#e6e8ec;--muted:#9aa3b2;--accent:#F3C323;--free:#34d399;--hot:#fb7185;--old:#f59e0b}
@@ -39,13 +39,13 @@
 </head>
 <body>
 <header>
-  <h1><b>Análisis Histórico</b> · Catastro Minero San Juan</h1>
+  <h1><b>Análisis</b> · Catastro Minero San Juan</h1>
   <a class="btn" href="visor.html">Visor</a>
   <a class="btn" href="sociedades.html">Sociedades</a>
   <a class="btn" href="red.html">Entramado</a>
   <div class="modes">
     <button data-m="libres" class="on">🟢 Áreas vacantes</button>
-    <button data-m="antiguos">🕰 Antigüedad</button>
+    <button data-m="dormidas">😴 Manif. dormidas</button>
     <button data-m="zonas">🔥 Movimiento</button>
   </div>
 </header>
@@ -78,7 +78,7 @@ function setMode(m){
   mode=m;
   document.querySelectorAll('.modes button').forEach(b=>b.classList.toggle('on',b.dataset.m===m));
   if(layer){ layer.remove(); layer=null; }
-  ({libres:renderLibres, antiguos:renderAntiguos, zonas:renderZonas}[m])();
+  ({libres:renderLibres, dormidas:renderDormidas, zonas:renderZonas}[m])();
 }
 function occToggleHTML(){
   return `<label class="toggleocc"><input type="checkbox" id="occ" ${occLayer&&map.hasLayer(occLayer)?'checked':''}> Mostrar padrón ocupado (contexto)</label>`;
@@ -130,27 +130,30 @@ function renderLibres(){
   });
 }
 
-// ---- ANTIGÜEDAD ----
+// ---- MANIFESTACIONES DORMIDAS (viejas, nunca mensuradas) ----
 function colorEdad(anio){
-  const a=+anio; if(a<1920) return '#7f1d1d'; if(a<1960) return '#b91c1c';
-  if(a<1990) return '#ea580c'; if(a<2010) return '#f59e0b'; return '#fcd34d';
+  const a=+anio; if(a<1990) return '#7f1d1d'; if(a<2005) return '#b91c1c';
+  if(a<2012) return '#ea580c'; if(a<2018) return '#f59e0b'; return '#fcd34d';
 }
-function renderAntiguos(){
-  const list=DATA.antiguos.filter(a=>a.cen);
-  $('legend').innerHTML='Antigüedad del registro activo:<br>'+
-    '<i style="background:#7f1d1d"></i> &lt;1920 &nbsp;<i style="background:#b91c1c"></i> &lt;1960<br>'+
-    '<i style="background:#ea580c"></i> &lt;1990 &nbsp;<i style="background:#f59e0b"></i> &lt;2010 &nbsp;<i style="background:#fcd34d"></i> +2010';
+function renderDormidas(){
+  const list=(DATA.dormidas||[]).filter(a=>a.cen);
+  $('legend').innerHTML='Manifestación sin mensurar, por antigüedad:<br>'+
+    '<i style="background:#7f1d1d"></i> &lt;1990 &nbsp;<i style="background:#b91c1c"></i> &lt;2005<br>'+
+    '<i style="background:#ea580c"></i> &lt;2012 &nbsp;<i style="background:#f59e0b"></i> &lt;2018 &nbsp;<i style="background:#fcd34d"></i> +2018';
   layer=L.layerGroup();
   list.forEach(a=>{
     const yr=a.fecha.slice(0,4);
     L.circleMarker(a.cen,{radius:6,color:'#111',weight:1,fillColor:colorEdad(yr),fillOpacity:0.9})
-     .bindPopup(`<div class="pp"><b>${a.denom||a.tipo}</b> · ${yr}<br>${a.titular||'?'}<br><span style="color:#555">${a.tipo} · ${a.ha||'?'} ha · ${a.depto||''} · ${a.min||''}</span></div>`)
+     .bindPopup(`<div class="pp"><b>${a.denom||'manifestación'}</b> · ${yr}<br>${a.titular||'?'}<br><span style="color:#555">manif. sin mensurar · ${a.ha||'?'} ha · ${a.depto||''} · ${a.min||''}</span></div>`)
      .addTo(layer);
   });
   layer.addTo(map);
-  let html=`<div class="intro"><b>Registros activos más viejos.</b> Siguen en el padrón del
-    catastro (⇒ vigentes) y son los que más tiempo llevan sin caducar. Los más antiguos suelen
-    ser derechos consolidados históricos. Clic para ubicarlos.</div>${occToggleHTML()}`;
+  let html=`<div class="intro"><b>Manifestaciones "dormidas".</b> Reclamos de descubrimiento
+    <b>viejos que nunca se mensuraron</b> (siguen sin inscripción de mensura en el padrón).
+    Son derechos que llevan años/décadas sin avanzar a mina — posibles candidatos a
+    caducidad u oportunidad. Clic para ubicarlos.
+    <br><span style="color:#6b7280">Nota: el catastro no publica fechas de cateo, por eso
+    no se pueden listar "cateos vencidos" desde el WFS.</span></div>${occToggleHTML()}`;
   list.forEach((a,i)=>{
     html+=`<div class="row" data-i="${i}"><span class="pos">${i+1}</span>
       <span class="nm">${a.denom||'(s/nombre)'}<div class="sub">${(a.titular||'?').slice(0,34)}</div></span>
@@ -159,7 +162,7 @@ function renderAntiguos(){
   $('side').innerHTML=html; wireOcc();
   $('side').querySelectorAll('.row').forEach(el=>el.onclick=()=>{
     const a=list[+el.dataset.i]; map.setView(a.cen,12);
-    L.popup().setLatLng(a.cen).setContent(`<div class="pp"><b>${a.denom||a.tipo}</b> · ${a.fecha.slice(0,4)}<br>${a.titular||'?'}</div>`).openOn(map);
+    L.popup().setLatLng(a.cen).setContent(`<div class="pp"><b>${a.denom||'manifestación'}</b> · ${a.fecha.slice(0,4)}<br>${a.titular||'?'}</div>`).openOn(map);
   });
 }
 
