@@ -262,14 +262,22 @@ function buildToolbar(){
   aSel.appendChild(opt('todos','Todos'));
   [...anios].sort().forEach(a=>aSel.appendChild(opt(a,a)));
   buildMeses();
-  // tipos como chips
+  // tipos como chips (el chip actúa de leyenda de color + filtro)
   const cont=document.getElementById('tipos'); cont.innerHTML='';
   Object.entries(TIPOS).forEach(([k,lbl])=>{
     const c=document.createElement('span'); c.className='chip'; c.dataset.k=k;
-    c.innerHTML=`<span class="dot" style="background:${COLORS[k]||'#888'}"></span>${lbl}`;
+    const lbl2 = k==='edicto_mensura' ? 'Mensura (en trámite)' : lbl;  // las efectivas van aparte
+    c.innerHTML=`<span class="dot" style="background:${COLORS[k]||'#888'}"></span>${lbl2}`;
     c.onclick=()=>{tipoOn[k]=!tipoOn[k]; c.classList.toggle('off',!tipoOn[k]); render();};
     cont.appendChild(c);
   });
+  // chip EXTRA: mensura EFECTIVA (naranja). Filtra las mensuras ya inscriptas en el padrón,
+  // separadas del 'edicto de mensura (en trámite)'.
+  if(tipoOn['mensura_efectiva']===undefined) tipoOn['mensura_efectiva']=true;
+  const ce=document.createElement('span'); ce.className='chip'+(tipoOn['mensura_efectiva']?'':' off'); ce.dataset.k='mensura_efectiva';
+  ce.innerHTML=`<span class="dot" style="background:${COLOR_MENS_EFECTIVA}"></span>★ Mensura efectiva`;
+  ce.onclick=()=>{tipoOn['mensura_efectiva']=!tipoOn['mensura_efectiva']; ce.classList.toggle('off',!tipoOn['mensura_efectiva']); render();};
+  cont.appendChild(ce);
 }
 function buildMeses(){
   const mSel=document.getElementById('mes'); mSel.innerHTML='';
@@ -297,7 +305,11 @@ function matchMes(e,f){
     return okA && okM;
   });
 }
-function matchTipo(e){ return (e.eventos||[]).some(ev=>tipoOn[ev.tipo]); }
+function matchTipo(e){
+  // las mensuras EFECTIVAS (naranja) se controlan con su propio chip; las demás por tipo.
+  if(mensuraInscripta(e)) return tipoOn['mensura_efectiva']!==false;
+  return (e.eventos||[]).some(ev=>tipoOn[ev.tipo]);
+}
 function deburr(s){return (s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();}
 function matchQ(e,f){
   if(!f.q) return true;
