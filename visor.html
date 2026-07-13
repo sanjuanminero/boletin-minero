@@ -126,10 +126,13 @@ function titularDe(e){ const c=cat(e); const t=(c&&c.titular)||e.titular_actual;
 function titularFuente(e){ const c=cat(e); if(c&&c.titular) return 'catastro'; if(e.titular_actual) return 'edicto'; return null; }
 function minaDe(e){ const c=cat(e); return (c&&c.denominacion)||e.mina||''; }
 function mineralDe(e){ const c=cat(e); return (c&&c.minerales)||((e.minerales||[]).join(', '))||''; }
-// Un edicto de mensura con fechaInscripcionMensura en el catastro = mensura EFECTIVA
-// (mina registrada). Sin ella = mensura EN TRÁMITE. Se pinta distinto (verde) + badge.
+// Un edicto de mensura cuya mina/manifestación YA tiene fechaInscripcionMensura en el
+// catastro (WFS) = mensura EFECTIVA (inscripta). Sin ella = EN TRÁMITE (parcial). La
+// efectiva se pinta NARANJA (igual que la capa 'Mensuras efectivas'); el verde anterior
+// se confundía con el de manifestación.
+const COLOR_MENS_EFECTIVA='#F28C1E';
 function mensuraInscripta(e){ const c=cat(e); return !!(e.estado==='edicto_mensura' && c && c.fechaInscripcionMensura); }
-function colorDe(e){ return mensuraInscripta(e) ? '#15A34A' : (COLORS[e.estado]||'#888'); }
+function colorDe(e){ return mensuraInscripta(e) ? COLOR_MENS_EFECTIVA : (COLORS[e.estado]||'#888'); }
 
 // ---- Catastro Minero de San Juan (GeoJSON local, bajado por WFS, EPSG:5344→4326) ----
 // Se baja con: python -c "from bsj import catastro; catastro.descargar_padron('./out_2026/catastro')"
@@ -350,7 +353,7 @@ function renderSide(exps){
       <div class="top">
         <span class="exp">${e.expediente||'(sin expediente)'}</span>
         ${badge}
-        ${mensuraInscripta(e)?`<span class="cat alta" title="Mensura inscripta en el padrón el ${(cat(e).fechaInscripcionMensura||'').slice(0,10)} — mina registrada">✓ mina registrada</span>`:''}
+        ${mensuraInscripta(e)?`<span class="cat" style="background:#F28C1E;color:#1a1a1a;border-color:#F28C1E" title="Mensura inscripta en el padrón el ${(cat(e).fechaInscripcionMensura||'').slice(0,10)} — mensura efectiva">★ mensura efectiva</span>`:''}
         <span class="estado" style="background:${col}">${e.estado_label}</span>
       </div>
       <div class="sub"><span class="k">${titularDe(e)}</span>${(()=>{const f=titularFuente(e);return f?` <span class="fuente f-${f}">${f}</span>`:'';})()}${mina?` · mina ${mina}`:''}</div>
