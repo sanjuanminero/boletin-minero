@@ -262,12 +262,16 @@ function buildToolbar(){
   aSel.appendChild(opt('todos','Todos'));
   [...anios].sort().forEach(a=>aSel.appendChild(opt(a,a)));
   buildMeses();
-  // tipos como chips (el chip actúa de leyenda de color + filtro)
+  // tipos como chips (el chip actúa de leyenda de color + filtro). Etiquetas cortas
+  // para que el selector no quede largo; el nombre completo va en el title (hover).
   const cont=document.getElementById('tipos'); cont.innerHTML='';
+  const CHIP_LBL={edicto_mensura:'Mensura trámite', manifestacion_descubrimiento:'Manifestación',
+    cateo_exploracion:'Cateo', registro_mina:'Registro mina', servidumbre:'Servidumbre',
+    transferencia:'Transferencia', vacancia:'Vacancia', abandono:'Abandono',
+    caducidad:'Caducidad', otro:'Otro'};
   Object.entries(TIPOS).forEach(([k,lbl])=>{
-    const c=document.createElement('span'); c.className='chip'; c.dataset.k=k;
-    const lbl2 = k==='edicto_mensura' ? 'Mensura (en trámite)' : lbl;  // las efectivas van aparte
-    c.innerHTML=`<span class="dot" style="background:${COLORS[k]||'#888'}"></span>${lbl2}`;
+    const c=document.createElement('span'); c.className='chip'; c.dataset.k=k; c.title=lbl;
+    c.innerHTML=`<span class="dot" style="background:${COLORS[k]||'#888'}"></span>${CHIP_LBL[k]||lbl}`;
     c.onclick=()=>{tipoOn[k]=!tipoOn[k]; c.classList.toggle('off',!tipoOn[k]); render();};
     cont.appendChild(c);
   });
