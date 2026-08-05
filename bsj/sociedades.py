@@ -353,11 +353,38 @@ def construir(salida):
         })
     socs.sort(key=lambda s: -(s["ha_cateo"] + s["ha_manif"] + s["ha_mensura"]))
 
+    # ---- EMBUDO del proceso: totales de hectáreas por etapa (catastro WFS, únicos) ----
+    def _sup_geo(capa, cond=lambda p: True):
+        fp = os.path.join(cat_dir, f"catastro_{capa}.geojson")
+        if not os.path.exists(fp):
+            return 0.0
+        gj = json.load(open(fp, encoding="utf-8"))
+        return round(sum((f.get("properties", {}).get("sup_reg_ha") or 0)
+                         for f in gj.get("features", []) if cond(f.get("properties", {}))))
+    _tiene_insc = lambda p: bool(p.get("fechaInscripcionMensura"))
+    mt_vistos, mensura_tramite = set(), 0.0
+    for e in dm.get("expedientes", []):
+        c = e.get("catastro") or {}
+        if e.get("estado") != "edicto_mensura" or not c.get("sup_reg_ha"):
+            continue
+        k = e.get("expediente") or id(e)
+        if k not in mt_vistos:
+            mt_vistos.add(k)
+            mensura_tramite += c["sup_reg_ha"]
+    embudo = {
+        "cateos": _sup_geo("permisos"),
+        "manifestaciones": _sup_geo("manifestaciones"),
+        "mensura_tramite": round(mensura_tramite),
+        "mensura_efectiva": _sup_geo("manifestaciones", _tiene_insc) + _sup_geo("minas", _tiene_insc),
+        "minas_registradas": _sup_geo("minas"),
+    }
+
     doc = {
         "meta": {
             "generado": datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds"),
             "n_sociedades": len(socs),
             "n_propiedades": sum(len(p) for p in ent_props.values()),
+            "embudo": embudo,
         },
         "sociedades": socs,
         # aristas de co-titularidad solo entre entidades válidas (sin fragmentos descartados)

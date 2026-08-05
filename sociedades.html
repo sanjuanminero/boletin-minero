@@ -53,6 +53,17 @@
   .rk-toggle button.on{background:var(--accent);color:#1a1a1a;border-color:var(--accent);font-weight:600}
   .rk-year{margin-top:9px;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:7px}
   .rk-year select{background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:4px 8px;border-radius:7px;font-size:12px;cursor:pointer}
+  .embudo{padding:11px 14px;border-bottom:1px solid var(--line);background:var(--panel)}
+  .embudo>summary{cursor:pointer;font-size:13px;font-weight:600;color:var(--txt);list-style:none}
+  .embudo>summary span{color:var(--muted);font-weight:400;font-size:11px}
+  .erow{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:11px}
+  .erow .el{width:118px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .erow .ebar{flex:1;height:12px;background:var(--panel2);border-radius:4px;overflow:hidden}
+  .erow .ebar i{display:block;height:100%;border-radius:4px}
+  .erow .ev{width:88px;text-align:right;color:var(--txt);font-variant-numeric:tabular-nums}
+  .epct{margin-top:10px;font-size:11px;color:var(--muted);line-height:1.65}
+  .epct b{color:var(--txt)}
+  .epct .hi{margin-top:5px;color:var(--accent);font-size:12px}
   .rk-row{display:flex;align-items:center;gap:9px;padding:6px 14px;cursor:pointer;border-bottom:1px solid var(--line)}
   .rk-row:hover{background:var(--panel2)}
   .rk-row .pos{width:20px;color:var(--muted);font-size:12px;text-align:right}
@@ -116,6 +127,30 @@ const RK={
   men:{key:'ha_mensura',  lbl:'Mensura (en trámite)',fmt:_haFmt, nota:'superficie de los edictos de mensura del boletín: el derecho se está midiendo pero aún NO consta inscripción de mensura en el padrón'},
   mef:{key:'ha_mensurada',lbl:'Mensura efectiva',    fmt:_haFmt, nota:'mensuras EFECTIVAMENTE inscriptas en el padrón (fecha de inscripción de mensura en el WFS) — la verdad oficial de qué se registró'},
 };
+function renderEmbudo(){
+  const e=DATA.meta&&DATA.meta.embudo; if(!e) return '';
+  const fmt=v=>Math.round(v).toLocaleString('es-AR');
+  const pct=(a,b)=>b?Math.round(a/b*100):0;
+  const max=e.cateos||1;
+  const rows=[
+    ['Cateos (exploración)', e.cateos, '#378ADD'],
+    ['Manifestaciones', e.manifestaciones, '#1D9E75'],
+    ['Mensura en trámite', e.mensura_tramite, '#F3C323'],
+    ['Mensura efectiva', e.mensura_efectiva, '#F28C1E'],
+  ];
+  return `<details class="embudo" open>
+    <summary>Embudo del proceso minero <span>· hectáreas (catastro)</span></summary>
+    ${rows.map(([l,v,c])=>`<div class="erow"><span class="el">${l}</span>
+      <span class="ebar"><i style="width:${Math.max(1.5,v/max*100)}%;background:${c}"></i></span>
+      <span class="ev">${fmt(v)} ha</span></div>`).join('')}
+    <div class="epct">
+      <div>Cateos / Manifestaciones: <b>${pct(e.cateos,e.manifestaciones)}%</b> <span style="color:#6b7280">(la exploración cubre más área que el descubrimiento)</span></div>
+      <div>Mensura (trámite) / Manifestaciones: <b>${pct(e.mensura_tramite,e.manifestaciones)}%</b></div>
+      <div>Mensura efectiva / Mensura (trámite): <b>${pct(e.mensura_efectiva,e.mensura_tramite)}%</b></div>
+      <div class="hi">Solo el <b>${pct(e.mensura_efectiva,e.manifestaciones)}%</b> del área descubierta llega a mensura registrada.</div>
+    </div>
+  </details>`;
+}
 function renderRanking(metric){
   if(metric) rkMetric=metric;
   qi.value=''; history.replaceState(null,'','sociedades.html');
@@ -123,6 +158,7 @@ function renderRanking(metric){
   const list=DATA.sociedades.filter(s=>(s[key]||0)>0).sort((a,b)=>b[key]-a[key]).slice(0,40);
   const max=list.length?list[0][key]:1;
   document.getElementById('side').innerHTML=`
+    ${renderEmbudo()}
     <div class="rk-head"><h2>Ranking de sociedades <span style="color:var(--muted);font-size:12px">· ${DATA.meta.n_sociedades} en total</span></h2>
       <div class="rk-toggle">${Object.entries(RK).map(([k,v])=>`<button data-m="${k}" class="${k===rkMetric?'on':''}">${v.lbl}</button>`).join('')}</div>
       <div class="rk-year">Hectáreas oficiales del catastro · ${list.length} titulares</div>
