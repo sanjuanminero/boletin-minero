@@ -67,8 +67,8 @@
   <div id="main"></div>
 </div>
 <script>
-const COLORS={cateo_exploracion:'#378ADD', manifestacion_descubrimiento:'#1D9E75', edicto_mensura:'#F3C323',
-  registro_mina:'#7F77DD', servidumbre:'#5DCAA5', transferencia:'#D4537E', otro:'#888780',
+const COLORS={inicio:'#9aa3b2', cateo_exploracion:'#378ADD', manifestacion_descubrimiento:'#1D9E75', edicto_mensura:'#F3C323',
+  registro_mina:'#7F77DD', servidumbre:'#5DCAA5', transferencia:'#D4537E', caducidad:'#D85A30', otro:'#888780',
   insc:'#9b8cff', resmen:'#e0a030', inscmen:'#F28C1E'};
 let MODELO=null, ITEMS=[], SEL=[];
 const $=id=>document.getElementById(id);
@@ -92,25 +92,36 @@ async function load(){
 }
 function titu(e){ const c=e.catastro||{}; return c.titular||e.titular_actual||''; }
 function mina(e){ const c=e.catastro||{}; return c.denominacion||e.mina||''; }
-// hitos con fecha, ordenados
+// AÑO DE INICIO del trámite = el que viene en el número de expediente (último grupo
+// de 2 o 4 dígitos). Es el origen real del expediente.
+function expYear(e){
+  const mm=(e.expediente||'').match(/(\d{4}|\d{2})(?!\d)/g);
+  if(!mm) return null; const y=mm[mm.length-1];
+  if(y.length===4){ const n=+y; return (n>=1880&&n<=2026)?n:null; }
+  const d=+y; return d<=26?2000+d:1900+d;
+}
+// hitos ordenados. Se PRIORIZA el boletín (mismo enfoque que el visor): el origen es
+// el año del expediente y los eventos son los edictos escrapeados. Las fechas del
+// catastro (inscripción / mensura) se muestran como dato secundario.
 function hitos(e){
-  const c=e.catastro||{}; const out=[];
-  if(c.fechaInscripcion) out.push({f:c.fechaInscripcion.slice(0,10), lbl:'Inscripción (manif/mina)', tipo:'insc'});
-  (e.eventos||[]).forEach(ev=>(ev.fechas||[]).forEach(f=>{ if(f) out.push({f:f.slice(0,10), lbl:ev.tipo_label||ev.tipo, tipo:ev.tipo}); }));
-  if(c.fechaResolucionMensura) out.push({f:c.fechaResolucionMensura.slice(0,10), lbl:'Resolución de mensura', tipo:'resmen'});
-  if(c.fechaInscripcionMensura) out.push({f:c.fechaInscripcionMensura.slice(0,10), lbl:'Inscripción de mensura (efectiva)', tipo:'inscmen'});
-  // colapsar mismas fecha+tipo
+  const c=e.catastro||{}; const out=[]; const ey=expYear(e);
+  if(ey) out.push({f:ey+'-01-01', lbl:'Inicio del expediente', tipo:'inicio', src:'exp'});
+  (e.eventos||[]).forEach(ev=>(ev.fechas||[]).forEach(f=>{ if(f) out.push({f:f.slice(0,10), lbl:ev.tipo_label||ev.tipo, tipo:ev.tipo, src:'boletin'}); }));
+  if(c.fechaInscripcion) out.push({f:c.fechaInscripcion.slice(0,10), lbl:'Inscripción catastro', tipo:'insc', src:'cat'});
+  if(c.fechaResolucionMensura) out.push({f:c.fechaResolucionMensura.slice(0,10), lbl:'Resolución mensura', tipo:'resmen', src:'cat'});
+  if(c.fechaInscripcionMensura) out.push({f:c.fechaInscripcionMensura.slice(0,10), lbl:'Mensura inscripta', tipo:'inscmen', src:'cat'});
   const seen=new Set(), uniq=[];
   out.sort((a,b)=>a.f.localeCompare(b.f)).forEach(h=>{const k=h.f+h.tipo; if(!seen.has(k)){seen.add(k);uniq.push(h);}});
   return uniq;
 }
 function intro(){
-  $('main').innerHTML=`<div class="intro"><b>¿Cuánto tarda una propiedad en cada etapa?</b>
-   Elegí una o varias propiedades de la izquierda (las escrapeadas del boletín + su ficha del
-   catastro) y mirá la línea de tiempo de su trámite: inscripción de la manifestación, edictos
-   del boletín (cateo/mensura) y la inscripción de la mensura. Se calcula el tiempo entre etapas
-   — p. ej. cuántos años pasan desde el descubrimiento hasta que la mensura queda inscripta.
-   <br><br><span style="color:#6b7280">Se listan las ${ITEMS.length} propiedades con al menos dos fechas.</span></div>`;
+  $('main').innerHTML=`<div class="intro"><b>Línea de tiempo del trámite (foco: boletín).</b>
+   Elegí una o varias propiedades de la izquierda. El <b>origen</b> es el año que trae el
+   número de expediente, y los hitos son los <b>edictos escrapeados del boletín</b> (cateo,
+   manifestación, mensura) — las mismas fechas que ves en el visor. Se ve cuánto tarda cada
+   expediente en aparecer y avanzar en el boletín. La inscripción del catastro se muestra
+   como dato secundario.
+   <br><br><span style="color:#6b7280">Se listan ${ITEMS.length} propiedades escrapeadas.</span></div>`;
 }
 function renderList(){
   const v=deb($('q').value), anio=$('anio').value, soloMen=$('soloMen').checked;
@@ -146,12 +157,19 @@ function renderMain(){
   let html='';
   SEL.forEach(i=>{
     const e=MODELO.expedientes[i]; const h=hitos(e);
-    const insc=h.find(x=>x.tipo==='insc'), inscmen=h.find(x=>x.tipo==='inscmen');
+    const inicio=h.find(x=>x.tipo==='inicio');
+    const bol=h.filter(x=>x.src==='boletin');
+    const inscmen=h.find(x=>x.tipo==='inscmen');
     const prim=h[0], ult=h[h.length-1];
     let dur='';
-    if(insc&&inscmen) dur=`De descubrimiento a mensura inscripta: <b>${fmtDur(insc.f,inscmen.f)}</b> <span>(${yr(insc.f)} → ${yr(inscmen.f)})</span>`;
-    else if(inscmen&&prim!==inscmen) dur=`Del 1er edicto a mensura inscripta: <b>${fmtDur(prim.f,inscmen.f)}</b> <span>(${yr(prim.f)} → ${yr(inscmen.f)})</span>`;
-    else dur=`Trámite visible: <b>${fmtDur(prim.f,ult.f)}</b> <span>(${yr(prim.f)} → ${yr(ult.f)})</span>`;
+    if(inicio){
+      dur=`Iniciado <b>~${yr(inicio.f)}</b> <span>(nº de expediente)</span>`;
+      if(bol.length) dur+=` · en el boletín desde <b>${yr(bol[0].f)}</b> <span>(${fmtDur(inicio.f,bol[0].f)} después)</span> · ${bol.length} edicto${bol.length>1?'s':''}`;
+      else dur+=` · <span>sin edictos en el boletín (2020-2026)</span>`;
+      if(inscmen) dur+=` · mensura inscripta <b>${yr(inscmen.f)}</b>`;
+    } else {
+      dur=`Trámite visible: <b>${fmtDur(prim.f,ult.f)}</b> <span>(${yr(prim.f)} → ${yr(ult.f)})</span>`;
+    }
     html+=`<div class="prop">
       <div class="h"><span class="exp">${e.expediente||'(s/exp)'}</span>
         <span class="ti">${mina(e)?mina(e)+' · ':''}${titu(e)||''}</span>
@@ -167,11 +185,11 @@ function renderMain(){
     </div>`;
   });
   html+=`<div class="leg">
-    <span><i style="background:#9b8cff"></i>Inscripción manif/mina</span>
-    <span><i style="background:#378ADD"></i>Cateo</span>
-    <span><i style="background:#F3C323"></i>Mensura (edicto)</span>
-    <span><i style="background:#e0a030"></i>Resolución mensura</span>
-    <span><i style="background:#F28C1E"></i>Mensura inscripta</span></div>`;
+    <span><i style="background:#9aa3b2"></i>Inicio del expediente</span>
+    <span><i style="background:#378ADD"></i>Cateo (boletín)</span>
+    <span><i style="background:#1D9E75"></i>Manifestación (boletín)</span>
+    <span><i style="background:#F3C323"></i>Mensura (boletín)</span>
+    <span style="opacity:.7"><i style="background:#F28C1E"></i>Mensura inscripta (catastro)</span></div>`;
   $('main').innerHTML=html;
   $('main').querySelectorAll('.rm').forEach(el=>el.onclick=()=>toggle(+el.dataset.i));
 }
