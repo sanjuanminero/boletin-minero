@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Línea de tiempo — Boletín Minero San Juan</title>
+<style>
+  :root{--bg:#0f1115;--panel:#171a21;--panel2:#1e222b;--line:#2a2f3a;--txt:#e6e8ec;--muted:#9aa3b2;--accent:#F3C323}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;font-family:system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt)}
+  header{display:flex;align-items:center;gap:12px;padding:9px 14px;background:var(--panel);border-bottom:1px solid var(--line);flex-wrap:wrap}
+  header h1{font-size:15px;font-weight:600;margin:0}
+  header h1 b{color:var(--accent)}
+  .btn{background:var(--panel2);border:1px solid var(--line);color:var(--muted);padding:5px 10px;border-radius:7px;font-size:12px;cursor:pointer;text-decoration:none}
+  .btn:hover{color:var(--accent)}
+  #wrap{display:flex;height:calc(100% - 46px)}
+  #side{width:320px;min-width:320px;overflow:auto;border-right:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column}
+  #q{margin:12px;background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:8px 10px;border-radius:8px;font-size:13px}
+  #list{flex:1;overflow:auto}
+  .it{padding:8px 12px;border-bottom:1px solid var(--line);cursor:pointer;font-size:12px}
+  .it:hover{background:var(--panel2)}
+  .it.on{background:#20304a}
+  .it .e{font-weight:600}
+  .it .s{color:var(--muted);font-size:11px;margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  #main{flex:1;overflow:auto;padding:16px 18px}
+  .intro{color:var(--muted);font-size:12.5px;line-height:1.6;max-width:760px;margin-bottom:16px}
+  .intro b{color:var(--txt)}
+  .empty{color:var(--muted);padding:40px;text-align:center}
+  .prop{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:14px}
+  .prop .h{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+  .prop .h .exp{font-weight:600}
+  .prop .h .ti{color:var(--muted);font-size:12px}
+  .prop .h .rm{margin-left:auto;color:var(--muted);font-size:11px;cursor:pointer}
+  .prop .h .rm:hover{color:#e0533b}
+  .dur{font-size:12px;color:var(--accent);margin:2px 0 12px}
+  .dur span{color:var(--muted)}
+  /* timeline */
+  .tl{position:relative;height:54px;margin:6px 0 2px}
+  .tl .axis{position:absolute;left:0;right:0;top:34px;height:2px;background:var(--line)}
+  .tl .yr{position:absolute;top:40px;transform:translateX(-50%);font-size:10px;color:var(--muted)}
+  .tl .seg{position:absolute;top:33px;height:4px;border-radius:2px;background:#3a4152}
+  .tl .mk{position:absolute;top:26px;width:16px;height:16px;border-radius:50%;transform:translateX(-50%);border:2px solid var(--bg);cursor:default}
+  .tl .lb{position:absolute;top:2px;transform:translateX(-50%);font-size:9.5px;color:var(--muted);white-space:nowrap;max-width:120px;overflow:hidden;text-overflow:ellipsis}
+  .leg{font-size:11px;color:var(--muted);margin-top:6px;display:flex;gap:14px;flex-wrap:wrap}
+  .leg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+</style>
+</head>
+<body>
+<header>
+  <h1><b>Línea de tiempo</b> · trámite de las propiedades</h1>
+  <a class="btn" href="visor.html">Visor</a>
+  <a class="btn" href="sociedades.html">Sociedades</a>
+  <a class="btn" href="historico.html">Análisis</a>
+</header>
+<div id="wrap">
+  <div id="side">
+    <input id="q" type="text" placeholder="Buscar expediente, titular o mina…" autocomplete="off"/>
+    <div id="list"></div>
+  </div>
+  <div id="main"></div>
+</div>
+<script>
+const COLORS={cateo_exploracion:'#378ADD', manifestacion_descubrimiento:'#1D9E75', edicto_mensura:'#F3C323',
+  registro_mina:'#7F77DD', servidumbre:'#5DCAA5', transferencia:'#D4537E', otro:'#888780',
+  insc:'#9b8cff', resmen:'#e0a030', inscmen:'#F28C1E'};
+let MODELO=null, ITEMS=[], SEL=[];
+const $=id=>document.getElementById(id);
+function deb(s){return (s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();}
+function yr(f){return f?f.slice(0,4):'';}
+
+async function load(){
+  for(const p of ['out_hist/modelo.json','modelo.json']){
+    try{const r=await fetch(p); if(r.ok){MODELO=await r.json(); break;}}catch(e){}
+  }
+  if(!MODELO){ $('main').innerHTML='<div class="empty">No pude cargar modelo.json (serví por HTTP).</div>'; return; }
+  // solo expedientes con al menos 2 hitos con fecha
+  ITEMS=MODELO.expedientes.filter(e=>hitos(e).length>=2);
+  ITEMS.sort((a,b)=>(titu(b)?1:0)-(titu(a)?1:0));
+  renderList('');
+  $('q').oninput=()=>renderList($('q').value);
+  intro();
+}
+function titu(e){ const c=e.catastro||{}; return c.titular||e.titular_actual||''; }
+function mina(e){ const c=e.catastro||{}; return c.denominacion||e.mina||''; }
+// hitos con fecha, ordenados
+function hitos(e){
+  const c=e.catastro||{}; const out=[];
+  if(c.fechaInscripcion) out.push({f:c.fechaInscripcion.slice(0,10), lbl:'Inscripción (manif/mina)', tipo:'insc'});
+  (e.eventos||[]).forEach(ev=>(ev.fechas||[]).forEach(f=>{ if(f) out.push({f:f.slice(0,10), lbl:ev.tipo_label||ev.tipo, tipo:ev.tipo}); }));
+  if(c.fechaResolucionMensura) out.push({f:c.fechaResolucionMensura.slice(0,10), lbl:'Resolución de mensura', tipo:'resmen'});
+  if(c.fechaInscripcionMensura) out.push({f:c.fechaInscripcionMensura.slice(0,10), lbl:'Inscripción de mensura (efectiva)', tipo:'inscmen'});
+  // colapsar mismas fecha+tipo
+  const seen=new Set(), uniq=[];
+  out.sort((a,b)=>a.f.localeCompare(b.f)).forEach(h=>{const k=h.f+h.tipo; if(!seen.has(k)){seen.add(k);uniq.push(h);}});
+  return uniq;
+}
+function intro(){
+  $('main').innerHTML=`<div class="intro"><b>¿Cuánto tarda una propiedad en cada etapa?</b>
+   Elegí una o varias propiedades de la izquierda (las escrapeadas del boletín + su ficha del
+   catastro) y mirá la línea de tiempo de su trámite: inscripción de la manifestación, edictos
+   del boletín (cateo/mensura) y la inscripción de la mensura. Se calcula el tiempo entre etapas
+   — p. ej. cuántos años pasan desde el descubrimiento hasta que la mensura queda inscripta.
+   <br><br><span style="color:#6b7280">Se listan las ${ITEMS.length} propiedades con al menos dos fechas.</span></div>`;
+}
+function renderList(q){
+  const v=deb(q);
+  const res=(!v?ITEMS:ITEMS.filter(e=>deb([e.expediente,titu(e),mina(e)].join(' ')).includes(v))).slice(0,300);
+  $('list').innerHTML=res.map(e=>{const i=MODELO.expedientes.indexOf(e);
+    return `<div class="it${SEL.includes(i)?' on':''}" data-i="${i}">
+      <div class="e">${e.expediente||'(s/exp)'} ${mina(e)?'· '+mina(e):''}</div>
+      <div class="s">${titu(e)||'—'} · ${hitos(e).length} hitos</div></div>`;}).join('')
+    || '<div class="empty" style="padding:20px">Sin resultados</div>';
+  $('list').querySelectorAll('.it').forEach(el=>el.onclick=()=>toggle(+el.dataset.i));
+}
+function toggle(i){ const k=SEL.indexOf(i); if(k>=0) SEL.splice(k,1); else SEL.push(i); renderList($('q').value); renderMain(); }
+function fmtDur(d1,d2){
+  const a=new Date(d1), b=new Date(d2); const dias=(b-a)/86400000;
+  const años=dias/365.25;
+  if(años>=1) return años.toFixed(1).replace('.',',')+' años';
+  return Math.round(dias)+' días';
+}
+function renderMain(){
+  if(!SEL.length){ intro(); return; }
+  // rango temporal común
+  let all=[]; SEL.forEach(i=>hitos(MODELO.expedientes[i]).forEach(h=>all.push(h.f)));
+  all.sort();
+  const y0=+yr(all[0]), y1=+yr(all[all.length-1]); const span=Math.max(1,y1-y0);
+  const yrs=[]; for(let y=y0;y<=y1;y++) yrs.push(y);
+  const pos=f=>{ const t=(new Date(f)-new Date(y0+'-01-01'))/(new Date((y1+1)+'-01-01')-new Date(y0+'-01-01')); return (t*100).toFixed(2); };
+  let html='';
+  SEL.forEach(i=>{
+    const e=MODELO.expedientes[i]; const h=hitos(e);
+    const insc=h.find(x=>x.tipo==='insc'), inscmen=h.find(x=>x.tipo==='inscmen');
+    const prim=h[0], ult=h[h.length-1];
+    let dur='';
+    if(insc&&inscmen) dur=`De descubrimiento a mensura inscripta: <b>${fmtDur(insc.f,inscmen.f)}</b> <span>(${yr(insc.f)} → ${yr(inscmen.f)})</span>`;
+    else if(inscmen&&prim!==inscmen) dur=`Del 1er edicto a mensura inscripta: <b>${fmtDur(prim.f,inscmen.f)}</b> <span>(${yr(prim.f)} → ${yr(inscmen.f)})</span>`;
+    else dur=`Trámite visible: <b>${fmtDur(prim.f,ult.f)}</b> <span>(${yr(prim.f)} → ${yr(ult.f)})</span>`;
+    html+=`<div class="prop">
+      <div class="h"><span class="exp">${e.expediente||'(s/exp)'}</span>
+        <span class="ti">${mina(e)?mina(e)+' · ':''}${titu(e)||''}</span>
+        <span class="rm" data-i="${i}">✕ quitar</span></div>
+      <div class="dur">${dur}</div>
+      <div class="tl">
+        <div class="axis"></div>
+        <div class="seg" style="left:${pos(prim.f)}%;width:${Math.max(0.5,pos(ult.f)-pos(prim.f))}%"></div>
+        ${yrs.filter((y,idx)=>yrs.length<=12||idx%Math.ceil(yrs.length/12)===0).map(y=>`<div class="yr" style="left:${pos(y+'-07-01')}%">${y}</div>`).join('')}
+        ${h.map((x,idx)=>`<div class="mk" style="left:${pos(x.f)}%;background:${COLORS[x.tipo]||'#888'}" title="${x.f} · ${x.lbl}"></div>
+           <div class="lb" style="left:${pos(x.f)}%;top:${idx%2?13:1}px">${x.lbl.length>16?x.lbl.slice(0,15)+'…':x.lbl}</div>`).join('')}
+      </div>
+    </div>`;
+  });
+  html+=`<div class="leg">
+    <span><i style="background:#9b8cff"></i>Inscripción manif/mina</span>
+    <span><i style="background:#378ADD"></i>Cateo</span>
+    <span><i style="background:#F3C323"></i>Mensura (edicto)</span>
+    <span><i style="background:#e0a030"></i>Resolución mensura</span>
+    <span><i style="background:#F28C1E"></i>Mensura inscripta</span></div>`;
+  $('main').innerHTML=html;
+  $('main').querySelectorAll('.rm').forEach(el=>el.onclick=()=>toggle(+el.dataset.i));
+}
+load();
+</script>
+</body>
+</html>

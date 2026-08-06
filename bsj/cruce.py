@@ -155,8 +155,11 @@ def _bloque(f, metodo, confianza):
         "sup_reg_ha": p.get("sup_reg_ha"),
         "cantidad_pertenencias": p.get("cantidadPertenencias"),
         "departamento": p.get("departamento"),
-        # fecha de inscripción de la MENSURA: si está, la mensura es EFECTIVA (mina
-        # registrada); si falta, está EN TRÁMITE. Lo usa el visor para distinguirlas.
+        # fechas del trámite (para la línea de tiempo): inscripción de la manifestación/
+        # mina, resolución de mensura e inscripción de mensura. La de inscripción de
+        # mensura además marca la mensura EFECTIVA (mina registrada) en el visor.
+        "fechaInscripcion": p.get("fechaInscripcion"),
+        "fechaResolucionMensura": p.get("fechaResolucionMensura"),
         "fechaInscripcionMensura": p.get("fechaInscripcionMensura"),
         "numeroInscripcionMensura": p.get("numeroInscripcionMensura"),
         "poligono_wgs84": f["anillo"], "centroide": f["centroide"],

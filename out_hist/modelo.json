@@ -1,12 +1,12 @@
 {
   "meta": {
-    "generado": "2026-07-12T07:13:21-03:00",
+    "generado": "2026-08-06T07:16:09-03:00",
     "desde": "2020-01-01",
-    "hasta": "2026-07-12",
+    "hasta": "2026-08-06",
     "datum": "posgar2007",
-    "n_ediciones": 1603,
-    "n_ediciones_con_minas": 769,
-    "n_expedientes": 818,
+    "n_ediciones": 1621,
+    "n_ediciones_con_minas": 782,
+    "n_expedientes": 824,
     "calendario": [
       {
         "fecha": "2020-01-02",
@@ -11060,6 +11060,132 @@
         "paginas": 40,
         "minas": true,
         "eventos": 2
+      },
+      {
+        "fecha": "2026-07-08",
+        "item_id": "10715",
+        "paginas": 20,
+        "minas": true,
+        "eventos": 1
+      },
+      {
+        "fecha": "2026-07-13",
+        "item_id": "10716",
+        "paginas": 36,
+        "minas": true,
+        "eventos": 1
+      },
+      {
+        "fecha": "2026-07-14",
+        "item_id": "10717",
+        "paginas": 36,
+        "minas": true,
+        "eventos": 4
+      },
+      {
+        "fecha": "2026-07-15",
+        "item_id": "10718",
+        "paginas": 36,
+        "minas": true,
+        "eventos": 2
+      },
+      {
+        "fecha": "2026-07-16",
+        "item_id": "10719",
+        "paginas": 76,
+        "minas": true,
+        "eventos": 1
+      },
+      {
+        "fecha": "2026-07-17",
+        "item_id": "10720",
+        "paginas": 20,
+        "minas": true,
+        "eventos": 1
+      },
+      {
+        "fecha": "2026-07-20",
+        "item_id": "10721",
+        "paginas": 40,
+        "minas": true,
+        "eventos": 1
+      },
+      {
+        "fecha": "2026-07-21",
+        "item_id": "10722",
+        "paginas": 24,
+        "minas": true,
+        "eventos": 1
+      },
+      {
+        "fecha": "2026-07-22",
+        "item_id": "10723",
+        "paginas": 28,
+        "minas": true,
+        "eventos": 1
+      },
+      {
+        "fecha": "2026-07-23",
+        "item_id": "10724",
+        "paginas": 60,
+        "minas": true,
+        "eventos": 2
+      },
+      {
+        "fecha": "2026-07-24",
+        "item_id": "10725",
+        "paginas": 44,
+        "minas": true,
+        "eventos": 2
+      },
+      {
+        "fecha": "2026-07-27",
+        "item_id": "10726",
+        "paginas": 52,
+        "minas": true,
+        "eventos": 2
+      },
+      {
+        "fecha": "2026-07-28",
+        "item_id": "10727",
+        "paginas": 40,
+        "minas": false,
+        "eventos": 0
+      },
+      {
+        "fecha": "2026-07-29",
+        "item_id": "10728",
+        "paginas": 56,
+        "minas": false,
+        "eventos": 0
+      },
+      {
+        "fecha": "2026-07-30",
+        "item_id": "10729",
+        "paginas": 76,
+        "minas": false,
+        "eventos": 0
+      },
+      {
+        "fecha": "2026-07-31",
+        "item_id": "10730",
+        "paginas": 56,
+        "minas": false,
+        "eventos": 0
+      },
+      {
+        "fecha": "2026-08-03",
+        "item_id": "10731",
+        "paginas": 60,
+        "minas": false,
+        "eventos": 0
+      },
+      {
+        "fecha": "2026-08-04",
+        "item_id": "10732",
+        "paginas": 56,
+        "minas": true,
+        "eventos": 1
       }
     ],
     "tipos": {
@@ -11074,12 +11200,12 @@
       "caducidad": "Caducidad",
       "otro": "Otro / sin clasificar"
     },
-    "catastro_features": 4779,
+    "catastro_features": 5923,
     "cruce": {
-      "total": 818,
-      "expediente": 637,
+      "total": 824,
+      "expediente": 641,
       "nombre_mina": 30,
-      "espacial": 123,
+      "espacial": 125,
       "sin_match": 28
     }
   },
@@ -11359,7 +11485,9 @@
         "centroide": [
           -31.486085714285714,
           -69.95172857142857
-        ]
+        ],
+        "fechaInscripcion": "2017-12-13T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -11514,7 +11642,9 @@
         "centroide": [
           -29.79676666666667,
           -69.65926666666667
-        ]
+        ],
+        "fechaInscripcion": "2009-09-17T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -11665,7 +11795,9 @@
         "centroide": [
           -30.790557142857143,
           -69.60232857142857
-        ]
+        ],
+        "fechaInscripcion": "2020-02-17T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -11735,7 +11867,7 @@
       ],
       "catastro": {
         "match_metodo": "espacial",
-        "match_confianza": "media",
+        "match_confianza": "baja",
         "capa": "manifestaciones",
         "expediente": "1124-000487-2021-EXP-MANIF",
         "denominacion": "ANA MARIA",
@@ -11804,7 +11936,9 @@
         "centroide": [
           -30.828876923076923,
           -68.91846923076923
-        ]
+        ],
+        "fechaInscripcion": "2023-07-04T00:00:00Z",
+        "fechaResolucionMensura": "2023-11-15T00:00:00Z"
       }
     },
     {
@@ -11958,7 +12092,9 @@
         "centroide": [
           -30.651940000000003,
           -69.5263
-        ]
+        ],
+        "fechaInscripcion": "2020-02-07T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -12050,7 +12186,7 @@
       ],
       "catastro": {
         "match_metodo": "espacial",
-        "match_confianza": "media",
+        "match_confianza": "baja",
         "capa": "manifestaciones",
         "expediente": "1124-000487-2021-EXP-MANIF",
         "denominacion": "ANA MARIA",
@@ -12119,7 +12255,9 @@
         "centroide": [
           -30.828876923076923,
           -68.91846923076923
-        ]
+        ],
+        "fechaInscripcion": "2023-07-04T00:00:00Z",
+        "fechaResolucionMensura": "2023-11-15T00:00:00Z"
       }
     },
     {
@@ -12248,7 +12386,9 @@
         "centroide": [
           -30.13676,
           -69.75284
-        ]
+        ],
+        "fechaInscripcion": "1986-09-30T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -12379,7 +12519,9 @@
         "centroide": [
           -30.56194,
           -69.50962
-        ]
+        ],
+        "fechaInscripcion": "1994-11-29T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -12599,7 +12741,9 @@
         "centroide": [
           -30.497257142857144,
           -69.7058
-        ]
+        ],
+        "fechaInscripcion": "1994-10-04T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -12728,7 +12872,9 @@
         "centroide": [
           -30.497257142857144,
           -69.7058
-        ]
+        ],
+        "fechaInscripcion": "1994-10-04T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -13607,7 +13753,9 @@
         "centroide": [
           -31.29746,
           -70.4962
-        ]
+        ],
+        "fechaInscripcion": "2020-03-05T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -13776,7 +13924,9 @@
         "centroide": [
           -31.331611111111116,
           -70.47856666666667
-        ]
+        ],
+        "fechaInscripcion": "2020-05-05T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -13937,7 +14087,9 @@
         "centroide": [
           -31.285379999999996,
           -70.23832
-        ]
+        ],
+        "fechaInscripcion": "2020-03-05T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -14086,7 +14238,9 @@
         "centroide": [
           -31.48432857142857,
           -69.81985714285715
-        ]
+        ],
+        "fechaInscripcion": "2020-03-05T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -14233,7 +14387,9 @@
         "centroide": [
           -31.26368,
           -70.49593999999999
-        ]
+        ],
+        "fechaInscripcion": "2020-03-05T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -14390,7 +14546,9 @@
         "centroide": [
           -31.481942857142858,
           -69.8645142857143
-        ]
+        ],
+        "fechaInscripcion": "2020-03-05T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -14537,7 +14695,9 @@
         "centroide": [
           -31.481742857142855,
           -70.52848571428571
-        ]
+        ],
+        "fechaInscripcion": "2006-11-01T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -14670,7 +14830,9 @@
         "centroide": [
           -30.23872,
           -69.67724
-        ]
+        ],
+        "fechaInscripcion": "2014-05-13T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -14884,7 +15046,9 @@
         "centroide": [
           -31.596257142857144,
           -70.52932857142856
-        ]
+        ],
+        "fechaInscripcion": "2016-05-17T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -15005,7 +15169,9 @@
         "centroide": [
           -30.724599999999995,
           -69.59973333333333
-        ]
+        ],
+        "fechaInscripcion": "2020-12-15T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -15142,7 +15308,9 @@
         "centroide": [
           -30.733315384615384,
           -69.63593076923077
-        ]
+        ],
+        "fechaInscripcion": "2020-12-15T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -15279,7 +15447,9 @@
         "centroide": [
           -31.288415384615384,
           -69.85285384615385
-        ]
+        ],
+        "fechaInscripcion": "2020-12-10T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -16098,7 +16268,9 @@
         "centroide": [
           -31.414077777777777,
           -67.42628888888889
-        ]
+        ],
+        "fechaInscripcion": "2021-02-10T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -16219,7 +16391,9 @@
         "centroide": [
           -29.8865,
           -68.5604
-        ]
+        ],
+        "fechaInscripcion": "2021-02-04T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -16568,7 +16742,9 @@
         "centroide": [
           -30.780192857142854,
           -69.70215
-        ]
+        ],
+        "fechaInscripcion": "2021-01-27T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -16914,7 +17090,9 @@
         "centroide": [
           -29.330757142857145,
           -69.79582857142857
-        ]
+        ],
+        "fechaInscripcion": "2021-01-27T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -17106,7 +17284,9 @@
         "centroide": [
           -31.449945454545453,
           -70.0999909090909
-        ]
+        ],
+        "fechaInscripcion": "2021-01-27T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -17601,7 +17781,9 @@
         "centroide": [
           -31.500816666666665,
           -70.48308333333334
-        ]
+        ],
+        "fechaInscripcion": "2006-09-27T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -17748,7 +17930,9 @@
         "centroide": [
           -31.655571428571427,
           -70.47061428571429
-        ]
+        ],
+        "fechaInscripcion": "2021-01-29T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -17882,7 +18066,9 @@
         "centroide": [
           -31.500816666666665,
           -70.48308333333334
-        ]
+        ],
+        "fechaInscripcion": "2006-09-27T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -18003,7 +18189,9 @@
         "centroide": [
           -29.8865,
           -68.5604
-        ]
+        ],
+        "fechaInscripcion": "2021-02-04T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -18137,7 +18325,9 @@
         "centroide": [
           -30.886958333333336,
           -69.76076666666667
-        ]
+        ],
+        "fechaInscripcion": "2021-03-17T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -19379,7 +19569,9 @@
         "centroide": [
           -28.516738461538463,
           -69.41045384615384
-        ]
+        ],
+        "fechaInscripcion": "2018-12-17T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -20906,7 +21098,9 @@
         "centroide": [
           -30.71943333333333,
           -68.95685833333333
-        ]
+        ],
+        "fechaInscripcion": "2021-03-16T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -21509,7 +21703,9 @@
         "centroide": [
           -30.82278,
           -69.75802
-        ]
+        ],
+        "fechaInscripcion": "2021-04-27T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -21688,7 +21884,9 @@
         "centroide": [
           -29.65423846153846,
           -68.68699230769231
-        ]
+        ],
+        "fechaInscripcion": "2021-04-20T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -22201,7 +22399,9 @@
         "centroide": [
           -30.687149999999995,
           -69.77741
-        ]
+        ],
+        "fechaInscripcion": "2021-03-19T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -22470,7 +22670,9 @@
         "centroide": [
           -29.65423846153846,
           -68.68699230769231
-        ]
+        ],
+        "fechaInscripcion": "2021-04-20T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -22637,7 +22839,9 @@
         "centroide": [
           -30.687149999999995,
           -69.77741
-        ]
+        ],
+        "fechaInscripcion": "2021-03-19T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -22858,7 +23062,9 @@
         "centroide": [
           -28.684573684210523,
           -69.59728947368421
-        ]
+        ],
+        "fechaInscripcion": "2021-05-10T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -23176,7 +23382,9 @@
         "centroide": [
           -29.918200000000002,
           -68.56032
-        ]
+        ],
+        "fechaInscripcion": "2017-06-16T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -23483,7 +23691,9 @@
         "centroide": [
           -31.498614285714286,
           -69.39417142857143
-        ]
+        ],
+        "fechaInscripcion": "2006-07-31T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -24023,7 +24233,9 @@
         "centroide": [
           -31.38832,
           -69.87010000000001
-        ]
+        ],
+        "fechaInscripcion": "2019-07-03T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -24312,7 +24524,9 @@
         "centroide": [
           -31.95540487804878,
           -70.20644146341463
-        ]
+        ],
+        "fechaInscripcion": "2021-06-03T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -24457,7 +24671,9 @@
         "centroide": [
           -31.92115714285714,
           -70.12862857142856
-        ]
+        ],
+        "fechaInscripcion": "2021-06-03T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -25032,7 +25248,9 @@
         "centroide": [
           -31.246988888888886,
           -70.33393333333333
-        ]
+        ],
+        "fechaInscripcion": "2021-06-08T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -25302,7 +25520,9 @@
         "centroide": [
           -31.573500000000003,
           -69.39626000000001
-        ]
+        ],
+        "fechaInscripcion": "2017-11-06T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -25563,7 +25783,9 @@
         "centroide": [
           -30.454379999999997,
           -69.67488
-        ]
+        ],
+        "fechaInscripcion": "2018-12-26T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -25735,7 +25957,9 @@
         "centroide": [
           -28.68786923076923,
           -69.66746153846154
-        ]
+        ],
+        "fechaInscripcion": "2012-07-18T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -26082,7 +26306,9 @@
         "centroide": [
           -28.68786923076923,
           -69.66746153846154
-        ]
+        ],
+        "fechaInscripcion": "2012-07-18T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -26414,7 +26640,9 @@
         "centroide": [
           -29.4841,
           -69.46799999999999
-        ]
+        ],
+        "fechaInscripcion": "2021-06-29T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -26581,7 +26809,9 @@
         "centroide": [
           -31.560360000000003,
           -69.89254
-        ]
+        ],
+        "fechaInscripcion": "2021-07-28T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -27010,7 +27240,9 @@
         "centroide": [
           -30.797342857142855,
           -69.56434285714286
-        ]
+        ],
+        "fechaInscripcion": "2020-05-21T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -27238,7 +27470,9 @@
         "centroide": [
           -30.527683333333332,
           -69.63795
-        ]
+        ],
+        "fechaInscripcion": "2018-12-26T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -27429,7 +27663,9 @@
         "centroide": [
           -31.129357142857145,
           -69.63372857142858
-        ]
+        ],
+        "fechaInscripcion": "1998-08-27T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -27573,7 +27809,9 @@
         "centroide": [
           -30.823019999999996,
           -69.5758
-        ]
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -28768,7 +29006,9 @@
         "centroide": [
           -30.651940000000003,
           -69.5263
-        ]
+        ],
+        "fechaInscripcion": "2020-02-07T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -29176,7 +29416,9 @@
         "centroide": [
           -30.154740000000004,
           -69.76338
-        ]
+        ],
+        "fechaInscripcion": "1995-09-08T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -29803,7 +30045,9 @@
         "centroide": [
           -29.839888429752065,
           -69.89168099173554
-        ]
+        ],
+        "fechaInscripcion": "1994-11-29T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -30431,7 +30675,9 @@
         "centroide": [
           -29.839888429752065,
           -69.89168099173554
-        ]
+        ],
+        "fechaInscripcion": "1994-11-29T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -30636,7 +30882,9 @@
         "centroide": [
           -29.802417647058824,
           -69.81928235294117
-        ]
+        ],
+        "fechaInscripcion": "2021-08-23T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -30783,7 +31031,9 @@
         "centroide": [
           -30.52372857142857,
           -69.84897142857143
-        ]
+        ],
+        "fechaInscripcion": "2021-08-19T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -30914,7 +31164,9 @@
         "centroide": [
           -30.154740000000004,
           -69.76338
-        ]
+        ],
+        "fechaInscripcion": "1995-09-08T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -31358,7 +31610,9 @@
         "centroide": [
           -30.6795,
           -69.49543333333332
-        ]
+        ],
+        "fechaInscripcion": "2011-08-17T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -31632,7 +31886,9 @@
         "centroide": [
           -31.115639999999996,
           -69.60262
-        ]
+        ],
+        "fechaInscripcion": "2021-09-15T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -31943,7 +32199,9 @@
         "centroide": [
           -30.12489090909091,
           -69.77547272727273
-        ]
+        ],
+        "fechaInscripcion": "2021-09-15T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -32292,7 +32550,9 @@
         "centroide": [
           -29.2395,
           -69.89407647058823
-        ]
+        ],
+        "fechaInscripcion": "2013-06-26T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -32421,7 +32681,9 @@
         "centroide": [
           -29.09602,
           -69.64918
-        ]
+        ],
+        "fechaInscripcion": "2021-08-10T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -32603,7 +32865,9 @@
         "centroide": [
           -29.781463636363636,
           -69.3379090909091
-        ]
+        ],
+        "fechaInscripcion": "2017-06-22T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -32733,7 +32997,9 @@
         "centroide": [
           -29.326742857142857,
           -69.80999999999999
-        ]
+        ],
+        "fechaInscripcion": "2021-09-01T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -32935,7 +33201,9 @@
         "centroide": [
           -31.620447368421054,
           -70.2673052631579
-        ]
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -33170,7 +33438,9 @@
         "centroide": [
           -29.825133333333333,
           -69.83627142857142
-        ]
+        ],
+        "fechaInscripcion": "1994-11-29T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -33298,7 +33568,9 @@
         "centroide": [
           -30.47744,
           -69.97364
-        ]
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -33438,7 +33710,9 @@
         "centroide": [
           -32.39898,
           -69.78962
-        ]
+        ],
+        "fechaInscripcion": "2008-10-08T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -33927,7 +34201,9 @@
         "centroide": [
           -28.705218181818182,
           -69.50488181818181
-        ]
+        ],
+        "fechaInscripcion": "2021-08-04T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -34095,7 +34371,9 @@
         "centroide": [
           -30.695309090909088,
           -69.53182727272727
-        ]
+        ],
+        "fechaInscripcion": "2022-04-07T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -34981,7 +35259,9 @@
         "centroide": [
           -29.825133333333333,
           -69.83627142857142
-        ]
+        ],
+        "fechaInscripcion": "1994-11-29T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -35280,7 +35560,9 @@
         "centroide": [
           -30.313979999999997,
           -67.70764
-        ]
+        ],
+        "fechaInscripcion": "2015-05-27T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -35423,7 +35705,9 @@
         "centroide": [
           -30.58124666666667,
           -70.21878
-        ]
+        ],
+        "fechaInscripcion": "2021-09-30T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -35880,7 +36164,9 @@
         "centroide": [
           -28.623083333333334,
           -69.6997988095238
-        ]
+        ],
+        "fechaInscripcion": "2021-10-04T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -36277,7 +36563,9 @@
         "centroide": [
           -29.87836666666667,
           -69.62259999999999
-        ]
+        ],
+        "fechaInscripcion": "2021-10-18T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -36438,7 +36726,9 @@
         "centroide": [
           -31.203766666666663,
           -70.33585555555555
-        ]
+        ],
+        "fechaInscripcion": "2021-09-22T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -36583,7 +36873,9 @@
         "centroide": [
           -29.779657142857143,
           -69.21677142857143
-        ]
+        ],
+        "fechaInscripcion": "2021-10-18T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -36730,7 +37022,9 @@
         "centroide": [
           -30.53308,
           -69.00872
-        ]
+        ],
+        "fechaInscripcion": "2015-07-10T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -37365,7 +37659,9 @@
         "centroide": [
           -31.598740000000003,
           -69.43093999999999
-        ]
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -38174,7 +38470,9 @@
         "centroide": [
           -30.76286,
           -69.6652
-        ]
+        ],
+        "fechaInscripcion": "2021-10-18T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -38331,7 +38629,9 @@
         "centroide": [
           -30.285442857142858,
           -69.66614285714286
-        ]
+        ],
+        "fechaInscripcion": "2014-04-21T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -39119,7 +39419,9 @@
         "centroide": [
           -28.716218032786884,
           -69.72818360655738
-        ]
+        ],
+        "fechaInscripcion": "2018-04-19T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -39379,7 +39681,9 @@
         "centroide": [
           -28.66258,
           -69.60938000000002
-        ]
+        ],
+        "fechaInscripcion": "1976-10-05T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -39716,7 +40020,9 @@
         "centroide": [
           -29.451657142857147,
           -69.4122
-        ]
+        ],
+        "fechaInscripcion": "2021-10-05T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -39895,7 +40201,9 @@
         "centroide": [
           -29.781463636363636,
           -69.3379090909091
-        ]
+        ],
+        "fechaInscripcion": "2017-06-22T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -40042,7 +40350,9 @@
         "centroide": [
           -30.37287777777778,
           -69.69374444444445
-        ]
+        ],
+        "fechaInscripcion": "2021-10-28T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -40203,7 +40513,9 @@
         "centroide": [
           -31.44977,
           -70.54763
-        ]
+        ],
+        "fechaInscripcion": "2015-02-20T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -40715,7 +41027,9 @@
         "centroide": [
           -29.813646666666667,
           -69.65112
-        ]
+        ],
+        "fechaInscripcion": "2009-09-17T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -41229,7 +41543,9 @@
         "centroide": [
           -29.813646666666667,
           -69.65112
-        ]
+        ],
+        "fechaInscripcion": "2009-09-17T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -41505,7 +41821,9 @@
         "centroide": [
           -31.329028571428573,
           -69.79308571428571
-        ]
+        ],
+        "fechaInscripcion": "2014-11-05T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -41676,7 +41994,9 @@
         "centroide": [
           -31.34479090909091,
           -69.89195454545455
-        ]
+        ],
+        "fechaInscripcion": "2019-02-26T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -41829,7 +42149,9 @@
         "centroide": [
           -30.119614285714285,
           -69.71024285714286
-        ]
+        ],
+        "fechaInscripcion": "1995-09-14T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -42000,7 +42322,9 @@
         "centroide": [
           -30.958899999999996,
           -70.28017692307692
-        ]
+        ],
+        "fechaInscripcion": "2021-11-30T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -42125,7 +42449,9 @@
         "centroide": [
           -29.01066,
           -69.73818
-        ]
+        ],
+        "fechaInscripcion": "2021-12-07T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -42256,7 +42582,9 @@
         "centroide": [
           -29.84456,
           -68.56038000000001
-        ]
+        ],
+        "fechaInscripcion": "2017-09-12T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -42413,7 +42741,9 @@
         "centroide": [
           -31.48432857142857,
           -69.81985714285715
-        ]
+        ],
+        "fechaInscripcion": "2020-03-05T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -42715,7 +43045,9 @@
         "centroide": [
           -28.761419999999998,
           -69.45112
-        ]
+        ],
+        "fechaInscripcion": "2021-12-14T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -42848,7 +43180,9 @@
         "centroide": [
           -30.17356,
           -69.76744
-        ]
+        ],
+        "fechaInscripcion": "1986-07-03T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -42981,7 +43315,9 @@
         "centroide": [
           -30.13682,
           -69.74248
-        ]
+        ],
+        "fechaInscripcion": "1987-09-02T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -43154,7 +43490,9 @@
         "centroide": [
           -30.117669999999997,
           -69.7486
-        ]
+        ],
+        "fechaInscripcion": "1986-10-01T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -43285,7 +43623,9 @@
         "centroide": [
           -29.84876,
           -69.51998
-        ]
+        ],
+        "fechaInscripcion": "1994-07-28T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -43569,7 +43909,9 @@
         "centroide": [
           -30.03652857142857,
           -69.60195714285715
-        ]
+        ],
+        "fechaInscripcion": "2003-12-23T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -43784,7 +44126,9 @@
         "centroide": [
           -30.099476923076924,
           -69.74995384615384
-        ]
+        ],
+        "fechaInscripcion": "1992-07-15T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -44154,7 +44498,9 @@
         "centroide": [
           -31.574563636363635,
           -69.81923636363636
-        ]
+        ],
+        "fechaInscripcion": "2019-02-26T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -44281,7 +44627,9 @@
         "centroide": [
           -31.02042,
           -69.54946
-        ]
+        ],
+        "fechaInscripcion": "2022-03-08T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -44772,7 +45120,9 @@
         "centroide": [
           -31.44854,
           -69.40082
-        ]
+        ],
+        "fechaInscripcion": "2020-11-19T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -45653,7 +46003,9 @@
         "centroide": [
           -29.133151851851853,
           -69.83632345679013
-        ]
+        ],
+        "fechaInscripcion": "2022-03-15T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -45770,7 +46122,9 @@
         "centroide": [
           -30.5137375,
           -69.5209
-        ]
+        ],
+        "fechaInscripcion": "2021-08-04T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -46172,7 +46526,9 @@
         "centroide": [
           -31.343219999999995,
           -70.2391
-        ]
+        ],
+        "fechaInscripcion": "2022-02-23T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -46315,7 +46671,9 @@
         "centroide": [
           -30.787877777777776,
           -70.13136666666666
-        ]
+        ],
+        "fechaInscripcion": "2022-03-08T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -46437,7 +46795,9 @@
         "centroide": [
           -30.80922,
           -70.1467
-        ]
+        ],
+        "fechaInscripcion": "2022-03-08T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -46573,7 +46933,9 @@
         "centroide": [
           -29.671408333333332,
           -68.88577500000001
-        ]
+        ],
+        "fechaInscripcion": "2022-03-07T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -47153,7 +47515,9 @@
         "centroide": [
           -31.2103,
           -69.56058
-        ]
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -47609,7 +47973,9 @@
         "centroide": [
           -29.84286,
           -69.4417
-        ]
+        ],
+        "fechaInscripcion": "2022-02-25T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -47723,7 +48089,9 @@
         "centroide": [
           -30.374514285714287,
           -69.8818
-        ]
+        ],
+        "fechaInscripcion": "2022-03-15T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -47835,7 +48203,9 @@
         "centroide": [
           -29.59334,
           -69.49908
-        ]
+        ],
+        "fechaInscripcion": "2022-04-19T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -47952,7 +48322,9 @@
         "centroide": [
           -30.467539999999996,
           -70.10083999999999
-        ]
+        ],
+        "fechaInscripcion": "2022-04-19T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -48456,7 +48828,9 @@
         "centroide": [
           -30.695309090909088,
           -69.53182727272727
-        ]
+        ],
+        "fechaInscripcion": "2022-04-07T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -48959,7 +49333,9 @@
         "centroide": [
           -30.19435,
           -68.03081666666667
-        ]
+        ],
+        "fechaInscripcion": "2019-05-02T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -49358,7 +49734,9 @@
         "centroide": [
           -31.49302,
           -69.4004
-        ]
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -49736,7 +50114,9 @@
         "centroide": [
           -30.854306666666666,
           -69.61780666666667
-        ]
+        ],
+        "fechaInscripcion": "2019-02-28T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -51316,7 +51696,9 @@
         "centroide": [
           -30.696620000000003,
           -70.148
-        ]
+        ],
+        "fechaInscripcion": "2022-05-09T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -51462,7 +51844,9 @@
         "centroide": [
           -30.497257142857144,
           -69.7058
-        ]
+        ],
+        "fechaInscripcion": "1994-10-04T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -51588,7 +51972,9 @@
         "centroide": [
           -30.790557142857143,
           -69.60232857142857
-        ]
+        ],
+        "fechaInscripcion": "2020-02-17T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -51719,7 +52105,9 @@
         "centroide": [
           -31.45992,
           -69.39552
-        ]
+        ],
+        "fechaInscripcion": "2001-06-07T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -51864,7 +52252,9 @@
         "centroide": [
           -30.497257142857144,
           -69.7058
-        ]
+        ],
+        "fechaInscripcion": "1994-10-04T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -51978,7 +52368,9 @@
         "centroide": [
           -31.453480000000003,
           -69.38046
-        ]
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -52723,7 +53115,9 @@
         "centroide": [
           -28.815679999999997,
           -69.45138
-        ]
+        ],
+        "fechaInscripcion": "2009-09-04T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -52858,7 +53252,9 @@
         "centroide": [
           -31.17174,
           -69.90304
-        ]
+        ],
+        "fechaInscripcion": "2005-08-16T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -53790,7 +54186,9 @@
         "centroide": [
           -28.947793023255816,
           -69.74943488372092
-        ]
+        ],
+        "fechaInscripcion": "2019-08-15T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -54522,7 +54920,9 @@
         "centroide": [
           -31.395664285714286,
           -70.23761428571429
-        ]
+        ],
+        "fechaInscripcion": "2022-06-28T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -54627,7 +55027,9 @@
         "centroide": [
           -29.4459,
           -69.43744
-        ]
+        ],
+        "fechaInscripcion": "2022-06-28T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -54964,7 +55366,9 @@
         "centroide": [
           -30.935144444444443,
           -69.62645555555555
-        ]
+        ],
+        "fechaInscripcion": "2022-06-28T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -55401,7 +55805,9 @@
         "centroide": [
           -30.78902,
           -69.66542
-        ]
+        ],
+        "fechaInscripcion": "2015-08-19T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -56902,7 +57308,9 @@
         "centroide": [
           -29.414371428571428,
           -69.4645
-        ]
+        ],
+        "fechaInscripcion": "2022-06-28T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -57023,7 +57431,9 @@
         "centroide": [
           -29.01078,
           -69.70398
-        ]
+        ],
+        "fechaInscripcion": "2022-07-14T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -57168,7 +57578,9 @@
         "centroide": [
           -30.5948625,
           -67.63685000000001
-        ]
+        ],
+        "fechaInscripcion": "2013-09-12T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -58186,7 +58598,9 @@
         "centroide": [
           -30.967746153846154,
           -69.55198461538461
-        ]
+        ],
+        "fechaInscripcion": "2004-09-10T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -58327,7 +58741,9 @@
         "centroide": [
           -29.525619999999996,
           -69.76362
-        ]
+        ],
+        "fechaInscripcion": "2002-12-17T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -58494,7 +58910,9 @@
         "centroide": [
           -29.820469230769227,
           -69.63556923076922
-        ]
+        ],
+        "fechaInscripcion": "2009-09-17T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -59204,7 +59622,9 @@
         "centroide": [
           -29.820469230769227,
           -69.63556923076922
-        ]
+        ],
+        "fechaInscripcion": "2009-09-17T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -59357,7 +59777,9 @@
         "centroide": [
           -28.513346666666667,
           -69.50795333333333
-        ]
+        ],
+        "fechaInscripcion": "2022-08-10T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -59486,7 +59908,9 @@
         "centroide": [
           -28.53276363636364,
           -69.50953636363637
-        ]
+        ],
+        "fechaInscripcion": "2022-08-10T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -59748,7 +60172,9 @@
         "centroide": [
           -31.17884,
           -69.66186
-        ]
+        ],
+        "fechaInscripcion": "2009-07-15T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -60077,7 +60503,9 @@
         "centroide": [
           -30.59173333333333,
           -67.61865333333334
-        ]
+        ],
+        "fechaInscripcion": "2013-09-12T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -61955,7 +62383,9 @@
         "centroide": [
           -30.59173333333333,
           -67.61865333333334
-        ]
+        ],
+        "fechaInscripcion": "2013-09-12T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -62063,7 +62493,9 @@
         "centroide": [
           -30.57214,
           -67.63946
-        ]
+        ],
+        "fechaInscripcion": "2015-10-20T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -62184,7 +62616,9 @@
         "centroide": [
           -31.17884,
           -69.66186
-        ]
+        ],
+        "fechaInscripcion": "2009-07-15T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -62416,7 +62850,9 @@
         "centroide": [
           -30.06136,
           -68.60914
-        ]
+        ],
+        "fechaInscripcion": "2022-08-31T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -62652,7 +63088,9 @@
         "centroide": [
           -29.434980000000003,
           -69.47652000000001
-        ]
+        ],
+        "fechaInscripcion": "2022-08-30T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -63430,7 +63868,9 @@
         "centroide": [
           -32.11394,
           -70.2491
-        ]
+        ],
+        "fechaInscripcion": "2022-09-14T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -63552,7 +63992,9 @@
         "centroide": [
           -29.434980000000003,
           -69.47652000000001
-        ]
+        ],
+        "fechaInscripcion": "2022-08-30T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -63683,7 +64125,9 @@
         "centroide": [
           -30.67931818181818,
           -69.83947272727272
-        ]
+        ],
+        "fechaInscripcion": "2022-08-31T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -63852,7 +64296,9 @@
         "centroide": [
           -30.735210000000002,
           -69.69457
-        ]
+        ],
+        "fechaInscripcion": "2019-10-24T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -63991,7 +64437,9 @@
         "centroide": [
           -30.82278,
           -69.75802
-        ]
+        ],
+        "fechaInscripcion": "2021-04-27T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -64114,7 +64562,9 @@
         "centroide": [
           -31.793680000000002,
           -70.35248
-        ]
+        ],
+        "fechaInscripcion": "2013-08-01T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -64720,7 +65170,9 @@
         "centroide": [
           -31.865228723404254,
           -70.41422446808511
-        ]
+        ],
+        "fechaInscripcion": "2016-07-25T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -64876,7 +65328,9 @@
         "centroide": [
           -31.022954545454546,
           -69.78026363636364
-        ]
+        ],
+        "fechaInscripcion": "2019-05-14T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -65006,7 +65460,9 @@
         "centroide": [
           -31.843400000000003,
           -69.60492
-        ]
+        ],
+        "fechaInscripcion": "2017-11-06T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -65215,7 +65671,9 @@
         "centroide": [
           -29.2971,
           -69.98818260869565
-        ]
+        ],
+        "fechaInscripcion": "1998-06-23T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -65336,7 +65794,9 @@
         "centroide": [
           -31.204560000000004,
           -67.29002
-        ]
+        ],
+        "fechaInscripcion": "2022-09-05T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -65619,7 +66079,9 @@
         "centroide": [
           -30.58274,
           -67.63668
-        ]
+        ],
+        "fechaInscripcion": "2013-09-12T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -65744,7 +66206,9 @@
         "centroide": [
           -30.703277777777778,
           -70.18508888888888
-        ]
+        ],
+        "fechaInscripcion": "2019-10-24T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -65885,7 +66349,9 @@
         "centroide": [
           -30.70753333333333,
           -69.6954
-        ]
+        ],
+        "fechaInscripcion": "2022-09-27T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -66379,7 +66845,9 @@
         "centroide": [
           -29.159814285714283,
           -69.84565714285715
-        ]
+        ],
+        "fechaInscripcion": "1999-06-09T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -66544,7 +67012,9 @@
         "centroide": [
           -29.791281818181815,
           -69.87118181818181
-        ]
+        ],
+        "fechaInscripcion": "1992-11-30T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -66702,7 +67172,9 @@
         "centroide": [
           -29.923344444444442,
           -69.88616111111111
-        ]
+        ],
+        "fechaInscripcion": "2022-10-21T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -66807,7 +67279,9 @@
         "centroide": [
           -29.41708,
           -69.85882000000001
-        ]
+        ],
+        "fechaInscripcion": "2009-09-07T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -66956,7 +67430,9 @@
         "centroide": [
           -29.417219999999997,
           -69.83822
-        ]
+        ],
+        "fechaInscripcion": "1998-11-11T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -67091,7 +67567,9 @@
         "centroide": [
           -31.172159999999998,
           -69.93932
-        ]
+        ],
+        "fechaInscripcion": "2004-09-21T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -67226,7 +67704,9 @@
         "centroide": [
           -31.21404,
           -69.90344
-        ]
+        ],
+        "fechaInscripcion": "2009-11-20T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -67356,7 +67836,9 @@
         "centroide": [
           -31.132780000000004,
           -69.79679999999999
-        ]
+        ],
+        "fechaInscripcion": "2004-08-25T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -67485,7 +67967,9 @@
         "centroide": [
           -31.843400000000003,
           -69.60492
-        ]
+        ],
+        "fechaInscripcion": "2017-11-06T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -67783,7 +68267,9 @@
         "centroide": [
           -32.485757142857146,
           -69.9442
-        ]
+        ],
+        "fechaInscripcion": "2013-11-12T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -68063,7 +68549,9 @@
         "centroide": [
           -29.73006,
           -68.70981
-        ]
+        ],
+        "fechaInscripcion": "2012-08-17T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -68229,7 +68717,9 @@
         "centroide": [
           -29.73006,
           -68.70981
-        ]
+        ],
+        "fechaInscripcion": "2012-08-17T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -68845,7 +69335,9 @@
         "centroide": [
           -30.860599999999998,
           -69.64602
-        ]
+        ],
+        "fechaInscripcion": "2019-02-28T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -68976,7 +69468,9 @@
         "centroide": [
           -30.79262,
           -69.62541999999999
-        ]
+        ],
+        "fechaInscripcion": "2020-06-19T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -69133,7 +69627,9 @@
         "centroide": [
           -29.509342857142858,
           -69.53011428571429
-        ]
+        ],
+        "fechaInscripcion": "2020-10-14T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -69543,7 +70039,9 @@
         "centroide": [
           -30.788619999999998,
           -70.11524
-        ]
+        ],
+        "fechaInscripcion": "2013-09-18T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -69777,7 +70275,9 @@
         "centroide": [
           -31.042359999999995,
           -69.66380000000001
-        ]
+        ],
+        "fechaInscripcion": "2017-09-05T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -70167,7 +70667,9 @@
         "centroide": [
           -30.57515714285714,
           -67.62047142857143
-        ]
+        ],
+        "fechaInscripcion": "2018-03-02T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -70288,7 +70790,9 @@
         "centroide": [
           -31.322960000000002,
           -70.33426
-        ]
+        ],
+        "fechaInscripcion": "2022-11-10T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -70748,7 +71252,9 @@
         "centroide": [
           -29.920085714285715,
           -68.6616142857143
-        ]
+        ],
+        "fechaInscripcion": "2001-09-14T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -70905,7 +71411,9 @@
         "centroide": [
           -29.78432,
           -68.66478
-        ]
+        ],
+        "fechaInscripcion": "2001-06-29T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -71056,7 +71564,9 @@
         "centroide": [
           -31.578988888888887,
           -69.93123333333332
-        ]
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -71250,7 +71760,9 @@
         "centroide": [
           -30.068213333333333,
           -69.72635333333332
-        ]
+        ],
+        "fechaInscripcion": "2020-06-16T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -71511,7 +72023,9 @@
         "centroide": [
           -31.271785714285716,
           -69.94265714285714
-        ]
+        ],
+        "fechaInscripcion": "2020-09-15T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -71854,7 +72368,9 @@
         "centroide": [
           -29.873226666666667,
           -69.87243333333335
-        ]
+        ],
+        "fechaInscripcion": "2022-11-29T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -72039,7 +72555,9 @@
         "centroide": [
           -31.1094,
           -69.70498571428571
-        ]
+        ],
+        "fechaInscripcion": "1999-10-06T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -72190,7 +72708,9 @@
         "centroide": [
           -30.988642857142857,
           -70.14768571428571
-        ]
+        ],
+        "fechaInscripcion": "2018-05-04T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -72480,7 +73000,9 @@
         "centroide": [
           -30.839026666666665,
           -69.56532
-        ]
+        ],
+        "fechaInscripcion": "2022-12-15T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -73166,7 +73688,9 @@
         "centroide": [
           -29.791281818181815,
           -69.87118181818181
-        ]
+        ],
+        "fechaInscripcion": "1992-11-30T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -73306,7 +73830,9 @@
         "centroide": [
           -30.81348,
           -70.11878
-        ]
+        ],
+        "fechaInscripcion": "2020-10-20T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -73429,7 +73955,9 @@
         "centroide": [
           -30.535177777777776,
           -69.67255555555556
-        ]
+        ],
+        "fechaInscripcion": "1994-12-06T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -73568,7 +74096,9 @@
         "centroide": [
           -30.496339999999996,
           -69.66576
-        ]
+        ],
+        "fechaInscripcion": "1994-10-04T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -73731,7 +74261,9 @@
         "centroide": [
           -30.50632222222222,
           -69.72535555555555
-        ]
+        ],
+        "fechaInscripcion": "1994-10-04T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -73918,7 +74450,9 @@
         "centroide": [
           -30.53866923076923,
           -69.69990769230769
-        ]
+        ],
+        "fechaInscripcion": "1994-10-04T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -74033,7 +74567,9 @@
         "centroide": [
           -30.770514285714285,
           -68.9563
-        ]
+        ],
+        "fechaInscripcion": "2023-02-14T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -74164,7 +74700,9 @@
         "centroide": [
           -31.543285714285712,
           -70.53458571428573
-        ]
+        ],
+        "fechaInscripcion": "2015-06-23T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -74410,7 +74948,9 @@
         "centroide": [
           -30.51788,
           -69.68679999999999
-        ]
+        ],
+        "fechaInscripcion": "1992-08-05T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -74555,7 +75095,9 @@
         "centroide": [
           -30.81348,
           -70.11878
-        ]
+        ],
+        "fechaInscripcion": "2020-10-20T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -75170,7 +75712,9 @@
         "centroide": [
           -30.52502,
           -69.82204
-        ]
+        ],
+        "fechaInscripcion": "2023-04-17T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -75754,7 +76298,9 @@
         "centroide": [
           -30.78313076923077,
           -68.946
-        ]
+        ],
+        "fechaInscripcion": "2023-04-13T00:00:00Z",
+        "fechaResolucionMensura": "2023-11-15T00:00:00Z"
       }
     },
     {
@@ -75874,7 +76420,9 @@
         "centroide": [
           -29.8514,
           -69.56182
-        ]
+        ],
+        "fechaInscripcion": "1995-03-22T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -75985,7 +76533,9 @@
         "centroide": [
           -29.8514,
           -69.56182
-        ]
+        ],
+        "fechaInscripcion": "1995-03-22T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -76561,7 +77111,9 @@
         "centroide": [
           -31.19556,
           -69.85818
-        ]
+        ],
+        "fechaInscripcion": "2013-08-01T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -76974,7 +77526,9 @@
         "centroide": [
           -31.326600000000003,
           -68.90126000000001
-        ]
+        ],
+        "fechaInscripcion": "2017-03-21T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -77991,7 +78545,9 @@
         "centroide": [
           -31.446015384615386,
           -69.29410769230769
-        ]
+        ],
+        "fechaInscripcion": "2023-06-14T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -78224,7 +78780,9 @@
         "centroide": [
           -30.722481818181816,
           -68.90641818181818
-        ]
+        ],
+        "fechaInscripcion": "2023-07-14T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -78511,7 +79069,9 @@
         "centroide": [
           -29.026575,
           -69.757965
-        ]
+        ],
+        "fechaInscripcion": "2023-07-14T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -78634,7 +79194,9 @@
         "centroide": [
           -30.5374,
           -70.0336
-        ]
+        ],
+        "fechaInscripcion": "2023-07-18T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -79770,7 +80332,9 @@
         "centroide": [
           -29.200366666666664,
           -69.56684666666666
-        ]
+        ],
+        "fechaInscripcion": "2023-07-18T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -80299,7 +80863,9 @@
         "centroide": [
           -30.828876923076923,
           -68.91846923076923
-        ]
+        ],
+        "fechaInscripcion": "2023-07-04T00:00:00Z",
+        "fechaResolucionMensura": "2023-11-15T00:00:00Z"
       }
     },
     {
@@ -80888,7 +81454,9 @@
         "centroide": [
           -31.757619999999996,
           -70.35194
-        ]
+        ],
+        "fechaInscripcion": "2013-08-06T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -81051,7 +81619,9 @@
         "centroide": [
           -31.230566666666668,
           -70.19133333333333
-        ]
+        ],
+        "fechaInscripcion": "2021-12-28T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -81190,7 +81760,9 @@
         "centroide": [
           -30.74502222222222,
           -68.9718111111111
-        ]
+        ],
+        "fechaInscripcion": "2023-07-26T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -81637,14 +82209,14 @@
       ],
       "catastro": {
         "match_metodo": "espacial",
-        "match_confianza": "media",
-        "capa": "proyectos",
-        "expediente": "",
-        "denominacion": null,
+        "match_confianza": "baja",
+        "capa": "manifestaciones",
+        "expediente": "1124-000044-2026-EXP-MANIF",
+        "denominacion": "DOÑA PURA",
         "titular": null,
         "minerales": null,
         "tipo_yacimiento": null,
-        "sup_reg_ha": null,
+        "sup_reg_ha": 273.6179,
         "cantidad_pertenencias": null,
         "departamento": null,
         "fechaInscripcionMensura": null,
@@ -81674,7 +82246,9 @@
         "centroide": [
           -31.00186,
           -67.57629999999999
-        ]
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -81854,7 +82428,9 @@
         "centroide": [
           -30.50888947368421,
           -69.47954736842105
-        ]
+        ],
+        "fechaInscripcion": "2023-07-31T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -81961,8 +82537,8 @@
         "2023-08"
       ],
       "catastro": {
-        "match_metodo": "nombre_mina",
-        "match_confianza": "media",
+        "match_metodo": "espacial",
+        "match_confianza": "baja",
         "capa": "manifestaciones",
         "expediente": "1124-000487-2021-EXP-MANIF",
         "denominacion": "ANA MARIA",
@@ -82031,7 +82607,9 @@
         "centroide": [
           -30.828876923076923,
           -68.91846923076923
-        ]
+        ],
+        "fechaInscripcion": "2023-07-04T00:00:00Z",
+        "fechaResolucionMensura": "2023-11-15T00:00:00Z"
       }
     },
     {
@@ -82292,7 +82870,9 @@
         "centroide": [
           -29.7048,
           -68.63322
-        ]
+        ],
+        "fechaInscripcion": "2007-12-06T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -83147,7 +83727,9 @@
         "centroide": [
           -31.49812857142857,
           -68.22384285714286
-        ]
+        ],
+        "fechaInscripcion": "2017-05-04T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -83278,7 +83860,9 @@
         "centroide": [
           -30.561557142857144,
           -68.99714285714286
-        ]
+        ],
+        "fechaInscripcion": "2020-07-29T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -83437,7 +84021,9 @@
         "centroide": [
           -30.5265125,
           -69.5651125
-        ]
+        ],
+        "fechaInscripcion": "2014-05-06T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -83923,7 +84509,9 @@
         "centroide": [
           -31.729911111111115,
           -70.39695555555555
-        ]
+        ],
+        "fechaInscripcion": "2017-11-01T00:00:00Z",
+        "fechaResolucionMensura": "2026-04-10T00:00:00Z"
       }
     },
     {
@@ -84504,7 +85092,9 @@
         "centroide": [
           -30.558139999999998,
           -69.57514
-        ]
+        ],
+        "fechaInscripcion": "2011-05-03T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -84958,7 +85548,9 @@
         "centroide": [
           -30.432518181818182,
           -69.51467272727272
-        ]
+        ],
+        "fechaInscripcion": "2023-11-09T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -86266,7 +86858,9 @@
         "centroide": [
           -29.80227142857143,
           -69.58692857142857
-        ]
+        ],
+        "fechaInscripcion": "2009-09-17T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -86557,7 +87151,9 @@
         "centroide": [
           -30.977899999999998,
           -69.75988
-        ]
+        ],
+        "fechaInscripcion": "1994-10-31T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -86720,7 +87316,9 @@
         "centroide": [
           -30.553377777777776,
           -69.58738888888888
-        ]
+        ],
+        "fechaInscripcion": "1994-12-09T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -86883,7 +87481,9 @@
         "centroide": [
           -30.558422222222223,
           -69.5796888888889
-        ]
+        ],
+        "fechaInscripcion": "1994-12-09T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -87214,7 +87814,9 @@
         "centroide": [
           -31.29834545454545,
           -70.03429090909091
-        ]
+        ],
+        "fechaInscripcion": "2023-11-17T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -87319,7 +87921,9 @@
         "centroide": [
           -29.00484,
           -69.6553
-        ]
+        ],
+        "fechaInscripcion": "2023-11-28T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -88868,7 +89472,9 @@
         "centroide": [
           -30.76872857142857,
           -68.87337142857143
-        ]
+        ],
+        "fechaInscripcion": "2023-11-28T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -89518,7 +90124,9 @@
         "centroide": [
           -29.192899999999995,
           -69.80576666666667
-        ]
+        ],
+        "fechaInscripcion": "2000-02-08T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -89882,7 +90490,9 @@
         "centroide": [
           -30.839026666666665,
           -69.56532
-        ]
+        ],
+        "fechaInscripcion": "2022-12-15T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -90003,7 +90613,9 @@
         "centroide": [
           -28.78408,
           -69.45124000000001
-        ]
+        ],
+        "fechaInscripcion": "2023-12-20T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -90128,7 +90740,9 @@
         "centroide": [
           -31.199779999999997,
           -70.22678
-        ]
+        ],
+        "fechaInscripcion": "2023-12-18T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -91067,7 +91681,9 @@
         "centroide": [
           -31.218733333333336,
           -70.21502222222222
-        ]
+        ],
+        "fechaInscripcion": "2023-10-31T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -91176,7 +91792,9 @@
         "centroide": [
           -28.9375,
           -68.99674
-        ]
+        ],
+        "fechaInscripcion": "2023-10-31T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -91716,7 +92334,9 @@
         "centroide": [
           -28.513346666666667,
           -69.50795333333333
-        ]
+        ],
+        "fechaInscripcion": "2022-08-10T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -91887,7 +92507,9 @@
         "centroide": [
           -28.53276363636364,
           -69.50953636363637
-        ]
+        ],
+        "fechaInscripcion": "2022-08-10T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -92506,7 +93128,9 @@
         "centroide": [
           -29.732477272727273,
           -69.88518409090909
-        ]
+        ],
+        "fechaInscripcion": "2021-07-28T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -92865,7 +93489,9 @@
         "centroide": [
           -29.751900000000003,
           -69.84614444444443
-        ]
+        ],
+        "fechaInscripcion": "2022-05-23T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -93058,7 +93684,9 @@
         "centroide": [
           -28.513346666666667,
           -69.50795333333333
-        ]
+        ],
+        "fechaInscripcion": "2022-08-10T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -94332,7 +94960,9 @@
         "centroide": [
           -31.95540487804878,
           -70.20644146341463
-        ]
+        ],
+        "fechaInscripcion": "2021-06-03T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -94986,7 +95616,9 @@
         "centroide": [
           -31.69633,
           -70.4605
-        ]
+        ],
+        "fechaInscripcion": "2017-12-01T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -95098,7 +95730,9 @@
         "centroide": [
           -31.8213375,
           -70.407025
-        ]
+        ],
+        "fechaInscripcion": "2016-07-26T00:00:00Z",
+        "fechaResolucionMensura": "2026-02-25T00:00:00Z"
       }
     },
     {
@@ -95517,7 +96151,9 @@
         "centroide": [
           -29.416980000000002,
           -69.87944
-        ]
+        ],
+        "fechaInscripcion": "2009-09-07T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -95928,7 +96564,9 @@
         "centroide": [
           -31.95540487804878,
           -70.20644146341463
-        ]
+        ],
+        "fechaInscripcion": "2021-06-03T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -96034,7 +96672,9 @@
         "centroide": [
           -32.11394,
           -70.2491
-        ]
+        ],
+        "fechaInscripcion": "2022-09-14T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -96170,7 +96810,9 @@
         "centroide": [
           -29.304219999999997,
           -69.8539
-        ]
+        ],
+        "fechaInscripcion": "2007-11-09T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -96757,7 +97399,9 @@
         "centroide": [
           -30.687149999999995,
           -69.77741
-        ]
+        ],
+        "fechaInscripcion": "2021-03-19T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -97913,7 +98557,9 @@
         "centroide": [
           -31.719680769230767,
           -70.46190192307692
-        ]
+        ],
+        "fechaInscripcion": "2017-11-01T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -98216,7 +98862,9 @@
         "centroide": [
           -31.738246153846156,
           -70.44180256410257
-        ]
+        ],
+        "fechaInscripcion": "2017-11-01T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -99050,7 +99698,9 @@
         "centroide": [
           -30.90132222222222,
           -69.85943333333334
-        ]
+        ],
+        "fechaInscripcion": "2024-03-20T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -99399,7 +100049,9 @@
         "centroide": [
           -31.203766666666663,
           -70.33585555555555
-        ]
+        ],
+        "fechaInscripcion": "2021-09-22T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -99644,7 +100296,9 @@
         "centroide": [
           -29.59334,
           -69.49908
-        ]
+        ],
+        "fechaInscripcion": "2022-04-19T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -100290,17 +100944,17 @@
       "catastro": {
         "match_metodo": "expediente",
         "match_confianza": "alta",
-        "capa": "minas",
+        "capa": "mensuras_efectivas",
         "expediente": "1124-000053-1953-EXP",
         "denominacion": "SANTO DOMINGO I",
         "titular": "Jorge Saul Lucero",
         "minerales": "Mica",
-        "tipo_yacimiento": "Vetiforme",
+        "tipo_yacimiento": null,
         "sup_reg_ha": 5.9999,
-        "cantidad_pertenencias": 2,
+        "cantidad_pertenencias": null,
         "departamento": "Valle Fértil",
-        "fechaInscripcionMensura": "1962-07-12T00:00:00Z",
-        "numeroInscripcionMensura": "T 25 Nº 34 Fº 104",
+        "fechaInscripcionMensura": "1962-07-12",
+        "numeroInscripcionMensura": null,
         "poligono_wgs84": [
           [
             -67.6604,
@@ -100326,7 +100980,9 @@
         "centroide": [
           -30.556420000000003,
           -67.66178
-        ]
+        ],
+        "fechaInscripcion": "1953-12-09T00:00:00Z",
+        "fechaResolucionMensura": "1961-04-18T00:00:00Z"
       }
     },
     {
@@ -100808,7 +101464,9 @@
         "centroide": [
           -31.59542,
           -70.41682
-        ]
+        ],
+        "fechaInscripcion": "2024-04-23T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -101061,7 +101719,9 @@
         "centroide": [
           -31.880763157894737,
           -70.31939736842105
-        ]
+        ],
+        "fechaInscripcion": "2024-04-16T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -102173,7 +102833,9 @@
         "centroide": [
           -31.8213375,
           -70.407025
-        ]
+        ],
+        "fechaInscripcion": "2016-07-26T00:00:00Z",
+        "fechaResolucionMensura": "2026-02-25T00:00:00Z"
       }
     },
     {
@@ -102574,7 +103236,9 @@
         "centroide": [
           -30.2956,
           -69.63046
-        ]
+        ],
+        "fechaInscripcion": "2024-04-17T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -102695,7 +103359,9 @@
         "centroide": [
           -29.01762,
           -69.15437999999999
-        ]
+        ],
+        "fechaInscripcion": "2024-04-26T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -102922,7 +103588,9 @@
         "centroide": [
           -31.59542,
           -70.41682
-        ]
+        ],
+        "fechaInscripcion": "2024-04-23T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -105516,7 +106184,9 @@
         "centroide": [
           -32.55566557377049,
           -69.83423606557376
-        ]
+        ],
+        "fechaInscripcion": "2024-06-07T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -105759,7 +106429,9 @@
         "centroide": [
           -32.404952173913045,
           -70.20447391304347
-        ]
+        ],
+        "fechaInscripcion": "2024-06-07T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -106171,7 +106843,9 @@
         "centroide": [
           -31.651940000000003,
           -70.44882
-        ]
+        ],
+        "fechaInscripcion": "2016-07-25T00:00:00Z",
+        "fechaResolucionMensura": "2026-03-12T00:00:00Z"
       }
     },
     {
@@ -106458,7 +107132,9 @@
         "centroide": [
           -31.598360000000003,
           -69.87002
-        ]
+        ],
+        "fechaInscripcion": "2024-07-25T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -107147,7 +107823,9 @@
         "centroide": [
           -31.72212,
           -70.29868
-        ]
+        ],
+        "fechaInscripcion": "2013-08-06T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -107360,7 +108038,9 @@
         "centroide": [
           -30.673399999999997,
           -69.8243
-        ]
+        ],
+        "fechaInscripcion": "2024-08-13T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -107606,7 +108286,9 @@
         "centroide": [
           -31.3615,
           -69.31148
-        ]
+        ],
+        "fechaInscripcion": "1999-03-09T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -107726,7 +108408,9 @@
         "centroide": [
           -29.96898,
           -69.63354
-        ]
+        ],
+        "fechaInscripcion": "2024-07-29T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -108692,7 +109376,9 @@
         "centroide": [
           -29.546257142857144,
           -69.47858571428571
-        ]
+        ],
+        "fechaInscripcion": "2024-09-18T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -109184,7 +109870,7 @@
       ],
       "catastro": {
         "match_metodo": "espacial",
-        "match_confianza": "media",
+        "match_confianza": "baja",
         "capa": "manifestaciones",
         "expediente": "1124-338881-1993-EXP",
         "denominacion": "LA ELQUINA VI",
@@ -109221,7 +109907,9 @@
         "centroide": [
           -30.475779999999997,
           -69.47926
-        ]
+        ],
+        "fechaInscripcion": "2006-08-16T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -110686,7 +111374,9 @@
         "centroide": [
           -29.916671428571426,
           -68.78854285714286
-        ]
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -112658,7 +113348,9 @@
         "centroide": [
           -31.607640000000004,
           -69.43808
-        ]
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -112971,7 +113663,9 @@
         "centroide": [
           -30.19435,
           -68.03081666666667
-        ]
+        ],
+        "fechaInscripcion": "2019-05-02T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -113288,7 +113982,9 @@
         "centroide": [
           -31.76814,
           -70.4561
-        ]
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -113473,7 +114169,9 @@
         "centroide": [
           -29.862247619047622,
           -69.78208095238095
-        ]
+        ],
+        "fechaInscripcion": "2024-12-03T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -113586,7 +114284,9 @@
         "centroide": [
           -30.63755714285714,
           -69.6131
-        ]
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -115706,7 +116406,9 @@
         "centroide": [
           -31.160719999999998,
           -70.15880000000001
-        ]
+        ],
+        "fechaInscripcion": "2020-09-15T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -116613,7 +117315,9 @@
         "centroide": [
           -29.294028571428573,
           -69.09760000000001
-        ]
+        ],
+        "fechaInscripcion": "2025-02-28T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -119001,7 +119705,9 @@
         "centroide": [
           -29.236559999999997,
           -69.85332
-        ]
+        ],
+        "fechaInscripcion": "2007-10-10T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -119142,7 +119848,9 @@
         "centroide": [
           -29.28166,
           -69.85372
-        ]
+        ],
+        "fechaInscripcion": "2007-11-09T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -119273,7 +119981,9 @@
         "centroide": [
           -31.12046,
           -70.27781999999999
-        ]
+        ],
+        "fechaInscripcion": "1999-07-06T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -120497,7 +121207,9 @@
         "centroide": [
           -30.441022222222223,
           -69.75644444444444
-        ]
+        ],
+        "fechaInscripcion": "2025-04-04T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -121221,7 +121933,9 @@
         "centroide": [
           -28.91112,
           -69.70134
-        ]
+        ],
+        "fechaInscripcion": "2022-03-15T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -121487,7 +122201,9 @@
         "centroide": [
           -28.964671428571428,
           -69.65661428571428
-        ]
+        ],
+        "fechaInscripcion": "2025-05-09T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -123052,7 +123768,9 @@
         "centroide": [
           -30.6339,
           -69.5215
-        ]
+        ],
+        "fechaInscripcion": "2025-05-28T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -123211,7 +123929,9 @@
         "centroide": [
           -31.327971428571427,
           -69.83944285714286
-        ]
+        ],
+        "fechaInscripcion": "2014-11-05T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -123324,7 +124044,9 @@
         "centroide": [
           -30.60778,
           -67.67422
-        ]
+        ],
+        "fechaInscripcion": "1990-03-27T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -123454,7 +124176,9 @@
         "centroide": [
           -30.60778,
           -67.67422
-        ]
+        ],
+        "fechaInscripcion": "1990-03-27T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -123729,7 +124453,9 @@
         "centroide": [
           -28.91112,
           -69.70134
-        ]
+        ],
+        "fechaInscripcion": "2022-03-15T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -124918,7 +125644,9 @@
         "centroide": [
           -30.506080000000004,
           -69.48089999999999
-        ]
+        ],
+        "fechaInscripcion": "2006-10-09T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -125239,7 +125967,9 @@
         "centroide": [
           -30.717821739130436,
           -68.94801304347826
-        ]
+        ],
+        "fechaInscripcion": "1994-03-30T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -125361,7 +126091,9 @@
         "centroide": [
           -30.05994444444444,
           -69.76925555555555
-        ]
+        ],
+        "fechaInscripcion": "2025-02-13T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -125808,7 +126540,9 @@
         "centroide": [
           -31.83032,
           -70.30018
-        ]
+        ],
+        "fechaInscripcion": "2016-07-26T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -125945,7 +126679,9 @@
         "centroide": [
           -28.66512,
           -69.60940000000001
-        ]
+        ],
+        "fechaInscripcion": "2021-05-10T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -126084,7 +126820,9 @@
         "centroide": [
           -28.66512,
           -69.60940000000001
-        ]
+        ],
+        "fechaInscripcion": "2021-05-10T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -126226,7 +126964,9 @@
         "centroide": [
           -31.7888,
           -70.40443333333333
-        ]
+        ],
+        "fechaInscripcion": "2016-07-26T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -126745,7 +127485,9 @@
         "centroide": [
           -30.467539999999996,
           -70.10083999999999
-        ]
+        ],
+        "fechaInscripcion": "2022-04-19T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -126901,7 +127643,9 @@
         "centroide": [
           -30.770514285714285,
           -68.9563
-        ]
+        ],
+        "fechaInscripcion": "2023-02-14T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -127133,7 +127877,9 @@
         "centroide": [
           -31.59542,
           -70.41682
-        ]
+        ],
+        "fechaInscripcion": "2024-04-23T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -127745,7 +128491,9 @@
         "centroide": [
           -30.695309090909088,
           -69.53182727272727
-        ]
+        ],
+        "fechaInscripcion": "2022-04-07T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -127902,7 +128650,9 @@
         "centroide": [
           -30.485942857142856,
           -69.63608571428571
-        ]
+        ],
+        "fechaInscripcion": "2022-06-28T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -128335,7 +129085,9 @@
         "centroide": [
           -32.03095333333333,
           -69.55522666666667
-        ]
+        ],
+        "fechaInscripcion": "2025-11-14T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -129276,7 +130028,9 @@
         "centroide": [
           -31.67208,
           -70.41704
-        ]
+        ],
+        "fechaInscripcion": "2013-08-01T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -129404,7 +130158,9 @@
         "centroide": [
           -31.080785714285714,
           -68.51808571428572
-        ]
+        ],
+        "fechaInscripcion": "2025-11-12T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -129713,7 +130469,9 @@
         "centroide": [
           -31.839080000000003,
           -70.2517
-        ]
+        ],
+        "fechaInscripcion": "2025-11-03T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -130354,7 +131112,9 @@
         "centroide": [
           -28.40886746031746,
           -69.64500158730159
-        ]
+        ],
+        "fechaInscripcion": "2018-04-11T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -130994,7 +131754,9 @@
         "centroide": [
           -31.631511111111113,
           -69.42852222222223
-        ]
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -131164,7 +131926,9 @@
         "centroide": [
           -30.57116,
           -69.51504
-        ]
+        ],
+        "fechaInscripcion": "1988-09-20T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -131401,7 +132165,9 @@
         "centroide": [
           -31.47722,
           -69.3813
-        ]
+        ],
+        "fechaInscripcion": "2025-11-19T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -132684,7 +133450,9 @@
         "centroide": [
           -30.9159,
           -69.70255999999999
-        ]
+        ],
+        "fechaInscripcion": "2025-10-24T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -133005,7 +133773,9 @@
         "centroide": [
           -29.83442,
           -69.70504000000001
-        ]
+        ],
+        "fechaInscripcion": "1999-05-18T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -133298,7 +134068,9 @@
         "centroide": [
           -29.83442,
           -69.70504000000001
-        ]
+        ],
+        "fechaInscripcion": "1999-05-18T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -133473,7 +134245,9 @@
         "centroide": [
           -31.92115714285714,
           -70.12862857142856
-        ]
+        ],
+        "fechaInscripcion": "2021-06-03T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -133654,7 +134428,9 @@
         "centroide": [
           -30.74502222222222,
           -68.9718111111111
-        ]
+        ],
+        "fechaInscripcion": "2023-07-26T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -133843,7 +134619,9 @@
         "centroide": [
           -30.06422222222222,
           -69.0985
-        ]
+        ],
+        "fechaInscripcion": "2012-09-10T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -134843,7 +135621,9 @@
         "centroide": [
           -32.07384444444445,
           -69.56543333333333
-        ]
+        ],
+        "fechaInscripcion": "2021-02-18T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -135016,7 +135796,9 @@
         "centroide": [
           -29.703300000000002,
           -68.6894
-        ]
+        ],
+        "fechaInscripcion": "2006-08-09T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -135182,7 +135964,9 @@
         "centroide": [
           -29.703300000000002,
           -68.6894
-        ]
+        ],
+        "fechaInscripcion": "2006-08-09T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -135319,7 +136103,9 @@
         "centroide": [
           -29.74128,
           -68.75324
-        ]
+        ],
+        "fechaInscripcion": "1998-04-27T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -135467,7 +136253,9 @@
         "centroide": [
           -29.74128,
           -68.75324
-        ]
+        ],
+        "fechaInscripcion": "1998-04-27T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -135608,7 +136396,9 @@
         "centroide": [
           -31.199779999999997,
           -70.22678
-        ]
+        ],
+        "fechaInscripcion": "2023-12-18T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -135761,7 +136551,9 @@
         "centroide": [
           -29.41192857142857,
           -69.93702857142857
-        ]
+        ],
+        "fechaInscripcion": "1997-12-02T00:00:00Z",
+        "fechaResolucionMensura": "2000-07-05T00:00:00Z"
       }
     },
     {
@@ -135956,7 +136748,9 @@
         "centroide": [
           -31.834134615384617,
           -70.45153076923077
-        ]
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -137552,7 +138346,9 @@
         "centroide": [
           -29.763966666666665,
           -68.70753333333333
-        ]
+        ],
+        "fechaInscripcion": "2007-07-02T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -137717,7 +138513,9 @@
         "centroide": [
           -30.63755714285714,
           -69.6131
-        ]
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -137912,7 +138710,9 @@
         "centroide": [
           -30.765986666666667,
           -68.96332000000001
-        ]
+        ],
+        "fechaInscripcion": "2017-10-27T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -138076,7 +138876,9 @@
         "centroide": [
           -30.70753333333333,
           -69.6954
-        ]
+        ],
+        "fechaInscripcion": "2022-09-27T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -138187,7 +138989,9 @@
         "centroide": [
           -31.794240000000002,
           -70.29968
-        ]
+        ],
+        "fechaInscripcion": "2013-08-06T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -138437,7 +139241,9 @@
         "centroide": [
           -31.453480000000003,
           -69.38046
-        ]
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -138697,7 +139503,9 @@
         "centroide": [
           -31.8582375,
           -70.2581625
-        ]
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -139344,7 +140152,9 @@
         "centroide": [
           -29.839888429752065,
           -69.89168099173554
-        ]
+        ],
+        "fechaInscripcion": "1994-11-29T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -139556,7 +140366,9 @@
         "centroide": [
           -30.765986666666667,
           -68.96332000000001
-        ]
+        ],
+        "fechaInscripcion": "2017-10-27T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -139711,7 +140523,9 @@
         "centroide": [
           -30.70753333333333,
           -69.6954
-        ]
+        ],
+        "fechaInscripcion": "2022-09-27T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -140501,9 +141315,10 @@
           "etapa": "constitucion",
           "fechas": [
             "2026-06-30",
-            "2026-07-07"
+            "2026-07-07",
+            "2026-07-14"
           ],
-          "apariciones": 2,
+          "apariciones": 3,
           "anios": [
             "2026"
           ],
@@ -140575,7 +141390,9 @@
         "centroide": [
           -29.821,
           -69.42714444444444
-        ]
+        ],
+        "fechaInscripcion": "1995-06-27T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -140595,9 +141412,10 @@
         "oro"
       ],
       "minas": [
+        "NEVADA II",
         "NEVADA ll"
       ],
-      "mina": "NEVADA ll",
+      "mina": "NEVADA II",
       "agrimensores": [],
       "superficie_ha": null,
       "n_vertices": 7,
@@ -140675,9 +141493,10 @@
           "etapa": "constitucion",
           "fechas": [
             "2026-06-30",
-            "2026-07-07"
+            "2026-07-07",
+            "2026-07-14"
           ],
-          "apariciones": 2,
+          "apariciones": 3,
           "anios": [
             "2026"
           ],
@@ -140695,8 +141514,8 @@
         "2026-07"
       ],
       "catastro": {
-        "match_metodo": "espacial",
-        "match_confianza": "baja",
+        "match_metodo": "nombre_mina",
+        "match_confianza": "media",
         "capa": "manifestaciones",
         "expediente": "1124-546450-1994-EXP",
         "denominacion": "NEVADA II",
@@ -140733,7 +141552,9 @@
         "centroide": [
           -29.84286,
           -69.4417
-        ]
+        ],
+        "fechaInscripcion": "2022-02-25T00:00:00Z",
+        "fechaResolucionMensura": null
       }
     },
     {
@@ -140759,7 +141580,7 @@
       "agrimensores": [],
       "superficie_ha": 2363.71,
       "n_vertices": 6,
-      "n_vertices_ocr": 46,
+      "n_vertices_ocr": 51,
       "vertices_gk": [
         [
           6775358.26,
@@ -140824,9 +141645,11 @@
           "tipo_label": "Edicto de mensura",
           "etapa": "constitucion",
           "fechas": [
-            "2026-07-03"
+            "2026-07-03",
+            "2026-07-08",
+            "2026-07-17"
           ],
-          "apariciones": 1,
+          "apariciones": 3,
           "anios": [
             "2026"
           ],
@@ -140896,7 +141719,847 @@
         "centroide": [
           -29.173144444444443,
           -69.67552222222223
+        ],
+        "fechaInscripcion": "2017-03-22T00:00:00Z",
+        "fechaResolucionMensura": null
+      }
+    },
+    {
+      "clave": "1124-000373-B-10",
+      "expediente": "1124-000373-B-10",
+      "departamento": "Iglesia",
+      "datum": "posgar2007",
+      "titulares": [
+        {
+          "nombre": "Bastias Hugo Enrique",
+          "desde": "2026-07-23",
+          "hasta": null
+        }
+      ],
+      "titular_actual": "Bastias Hugo Enrique",
+      "minerales": [],
+      "minas": [
+        "MARIA"
+      ],
+      "mina": "MARIA",
+      "agrimensores": [],
+      "superficie_ha": null,
+      "n_vertices": 6,
+      "n_vertices_ocr": 28,
+      "vertices_gk": [
+        [
+          6678231.54,
+          2490426.63
+        ],
+        [
+          6675496.69,
+          2492427.52
+        ],
+        [
+          6675496.69,
+          2494756.59
+        ],
+        [
+          6676375.69,
+          2494756.59
+        ],
+        [
+          6680269.67,
+          2494554.59
+        ],
+        [
+          6680269.67,
+          2492772.3
         ]
+      ],
+      "poligono_wgs84": [
+        [
+          -69.09925473987488,
+          -30.032630978382958
+        ],
+        [
+          -69.07852986999129,
+          -30.05731588649545
+        ],
+        [
+          -69.0543771199325,
+          -30.057328091845584
+        ],
+        [
+          -69.0543727877981,
+          -30.049398699470192
+        ],
+        [
+          -69.05644747782233,
+          -30.014270404602634
+        ],
+        [
+          -69.07492206215082,
+          -30.014261184594247
+        ]
+      ],
+      "centroide": [
+        -30.037534207565177,
+        -69.06965067626165
+      ],
+      "estado": "edicto_mensura",
+      "estado_label": "Edicto de mensura",
+      "eventos": [
+        {
+          "tipo": "edicto_mensura",
+          "tipo_label": "Edicto de mensura",
+          "etapa": "constitucion",
+          "fechas": [
+            "2026-07-23",
+            "2026-07-24",
+            "2026-07-27"
+          ],
+          "apariciones": 3,
+          "anios": [
+            "2026"
+          ],
+          "meses": [
+            "2026-07"
+          ]
+        }
+      ],
+      "anios": [
+        "2026"
+      ],
+      "meses": [
+        "2026-07"
+      ],
+      "catastro": {
+        "match_metodo": "expediente",
+        "match_confianza": "alta",
+        "capa": "manifestaciones",
+        "expediente": "1124-000373-2010-EXP",
+        "denominacion": "MARIA",
+        "titular": "Hugo Enrique Bastias",
+        "minerales": "Cobre - Oro - Plata",
+        "tipo_yacimiento": "Diseminado",
+        "sup_reg_ha": 1124.5047,
+        "cantidad_pertenencias": 12,
+        "departamento": "Iglesia",
+        "fechaInscripcionMensura": null,
+        "numeroInscripcionMensura": null,
+        "poligono_wgs84": [
+          [
+            -69.0878,
+            -30.0142
+          ],
+          [
+            -69.0749,
+            -30.0142
+          ],
+          [
+            -69.0749,
+            -30.0143
+          ],
+          [
+            -69.0564,
+            -30.0143
+          ],
+          [
+            -69.0565,
+            -30.05
+          ],
+          [
+            -69.0766,
+            -30.05
+          ],
+          [
+            -69.076,
+            -30.0479
+          ],
+          [
+            -69.0861,
+            -30.046
+          ],
+          [
+            -69.0835,
+            -30.0356
+          ],
+          [
+            -69.0878,
+            -30.0348
+          ],
+          [
+            -69.0878,
+            -30.0142
+          ]
+        ],
+        "centroide": [
+          -30.030499999999996,
+          -69.07711818181818
+        ],
+        "fechaInscripcion": "2017-12-07T00:00:00Z",
+        "fechaResolucionMensura": null
+      }
+    },
+    {
+      "clave": "1124-212-0-2024",
+      "expediente": "1124-212-0-2024",
+      "departamento": "Calingasta",
+      "datum": "posgar2007",
+      "titulares": [
+        {
+          "nombre": "GRUPO IDAHO S.A.S",
+          "desde": "2026-07-20",
+          "hasta": null
+        }
+      ],
+      "titular_actual": "GRUPO IDAHO S.A.S",
+      "minerales": [
+        "bentonita"
+      ],
+      "minas": [],
+      "mina": null,
+      "agrimensores": [],
+      "superficie_ha": null,
+      "n_vertices": 1,
+      "n_vertices_ocr": 1,
+      "vertices_gk": [
+        [
+          6501553.41,
+          2457783.55
+        ]
+      ],
+      "poligono_wgs84": [
+        [
+          -69.4449685551947,
+          -31.625503700158653
+        ]
+      ],
+      "centroide": [
+        -31.625503700158653,
+        -69.4449685551947
+      ],
+      "estado": "edicto_mensura",
+      "estado_label": "Edicto de mensura",
+      "eventos": [
+        {
+          "tipo": "manifestacion_descubrimiento",
+          "tipo_label": "Manifestación de descubrimiento",
+          "etapa": "constitucion",
+          "fechas": [
+            "2026-07-20"
+          ],
+          "apariciones": 1,
+          "anios": [
+            "2026"
+          ],
+          "meses": [
+            "2026-07"
+          ]
+        },
+        {
+          "tipo": "edicto_mensura",
+          "tipo_label": "Edicto de mensura",
+          "etapa": "constitucion",
+          "fechas": [
+            "2026-07-21",
+            "2026-07-22"
+          ],
+          "apariciones": 2,
+          "anios": [
+            "2026"
+          ],
+          "meses": [
+            "2026-07"
+          ]
+        }
+      ],
+      "anios": [
+        "2026"
+      ],
+      "meses": [
+        "2026-07"
+      ],
+      "catastro": {
+        "match_metodo": "expediente",
+        "match_confianza": "alta",
+        "capa": "manifestaciones",
+        "expediente": "1124-000212-2024-EXP-MANIF",
+        "denominacion": "ALITA",
+        "titular": null,
+        "minerales": null,
+        "tipo_yacimiento": null,
+        "sup_reg_ha": 529.758,
+        "cantidad_pertenencias": null,
+        "departamento": null,
+        "fechaInscripcionMensura": null,
+        "numeroInscripcionMensura": null,
+        "poligono_wgs84": [
+          [
+            -69.445,
+            -31.6255
+          ],
+          [
+            -69.4299,
+            -31.6255
+          ],
+          [
+            -69.4299,
+            -31.6292
+          ],
+          [
+            -69.4212,
+            -31.6293
+          ],
+          [
+            -69.4212,
+            -31.6316
+          ],
+          [
+            -69.4097,
+            -31.6316
+          ],
+          [
+            -69.4098,
+            -31.6428
+          ],
+          [
+            -69.445,
+            -31.6426
+          ],
+          [
+            -69.445,
+            -31.6255
+          ]
+        ],
+        "centroide": [
+          -31.631511111111113,
+          -69.42852222222223
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
+      }
+    },
+    {
+      "clave": "1124-224-E-25",
+      "expediente": "1124-224-E-25",
+      "departamento": "Albardón",
+      "datum": "posgar2007",
+      "titulares": [
+        {
+          "nombre": "Elizondo Juan Carlos",
+          "desde": "2026-07-23",
+          "hasta": null
+        }
+      ],
+      "titular_actual": "Elizondo Juan Carlos",
+      "minerales": [],
+      "minas": [],
+      "mina": null,
+      "agrimensores": [],
+      "superficie_ha": null,
+      "n_vertices": 4,
+      "n_vertices_ocr": 4,
+      "vertices_gk": [
+        [
+          6520694.42,
+          2542489.43
+        ],
+        [
+          6520361.15,
+          2542643.85
+        ],
+        [
+          6520096.27,
+          2542791.93
+        ],
+        [
+          6520724.42,
+          2542520.23
+        ]
+      ],
+      "poligono_wgs84": [
+        [
+          -68.55298221221805,
+          -31.452868873054335
+        ],
+        [
+          -68.55134331555664,
+          -31.455868855552467
+        ],
+        [
+          -68.5497739682466,
+          -31.458252260774334
+        ],
+        [
+          -68.55265946776429,
+          -31.452597180638513
+        ]
+      ],
+      "centroide": [
+        -31.45489679250491,
+        -68.55168974094639
+      ],
+      "estado": "otro",
+      "estado_label": "Otro / sin clasificar",
+      "eventos": [
+        {
+          "tipo": "otro",
+          "tipo_label": "Otro / sin clasificar",
+          "etapa": "otro",
+          "fechas": [
+            "2026-07-23",
+            "2026-07-24",
+            "2026-07-27"
+          ],
+          "apariciones": 3,
+          "anios": [
+            "2026"
+          ],
+          "meses": [
+            "2026-07"
+          ]
+        }
+      ],
+      "anios": [
+        "2026"
+      ],
+      "meses": [
+        "2026-07"
+      ],
+      "catastro": {
+        "match_metodo": "expediente",
+        "match_confianza": "alta",
+        "capa": "canteras",
+        "expediente": "1124-000224-2025-EXP",
+        "denominacion": "ELIZONDO",
+        "titular": null,
+        "minerales": null,
+        "tipo_yacimiento": null,
+        "sup_reg_ha": 2.6763,
+        "cantidad_pertenencias": null,
+        "departamento": null,
+        "fechaInscripcionMensura": null,
+        "numeroInscripcionMensura": null,
+        "poligono_wgs84": [
+          [
+            -68.5527,
+            -31.4526
+          ],
+          [
+            -68.5509,
+            -31.4557
+          ],
+          [
+            -68.5495,
+            -31.4582
+          ],
+          [
+            -68.5498,
+            -31.4582
+          ],
+          [
+            -68.5513,
+            -31.4559
+          ],
+          [
+            -68.553,
+            -31.4529
+          ],
+          [
+            -68.5527,
+            -31.4526
+          ]
+        ],
+        "centroide": [
+          -31.455157142857143,
+          -68.55141428571429
+        ]
+      }
+    },
+    {
+      "clave": "1124-307-B-2024",
+      "expediente": "1124-307-B-2024",
+      "departamento": "Calingasta",
+      "datum": "posgar2007",
+      "titulares": [
+        {
+          "nombre": "GABRIEL ENRIQUE BASTIAS",
+          "desde": "2026-07-14",
+          "hasta": null
+        }
+      ],
+      "titular_actual": "GABRIEL ENRIQUE BASTIAS",
+      "minerales": [
+        "oro"
+      ],
+      "minas": [],
+      "mina": null,
+      "agrimensores": [],
+      "superficie_ha": null,
+      "n_vertices": 1,
+      "n_vertices_ocr": 1,
+      "vertices_gk": [
+        [
+          6580543.03,
+          2441778.0
+        ]
+      ],
+      "poligono_wgs84": [
+        [
+          -69.60906815182992,
+          -30.9124188560354
+        ]
+      ],
+      "centroide": [
+        -30.9124188560354,
+        -69.60906815182992
+      ],
+      "estado": "edicto_mensura",
+      "estado_label": "Edicto de mensura",
+      "eventos": [
+        {
+          "tipo": "edicto_mensura",
+          "tipo_label": "Edicto de mensura",
+          "etapa": "constitucion",
+          "fechas": [
+            "2026-07-14",
+            "2026-07-15",
+            "2026-07-16"
+          ],
+          "apariciones": 3,
+          "anios": [
+            "2026"
+          ],
+          "meses": [
+            "2026-07"
+          ]
+        }
+      ],
+      "anios": [
+        "2026"
+      ],
+      "meses": [
+        "2026-07"
+      ],
+      "catastro": {
+        "match_metodo": "espacial",
+        "match_confianza": "baja",
+        "capa": "manifestaciones",
+        "expediente": "1124-00030-72024-EXP",
+        "denominacion": "VIEJO II",
+        "titular": null,
+        "minerales": null,
+        "tipo_yacimiento": null,
+        "sup_reg_ha": 589.3208,
+        "cantidad_pertenencias": null,
+        "departamento": null,
+        "fechaInscripcionMensura": null,
+        "numeroInscripcionMensura": null,
+        "poligono_wgs84": [
+          [
+            -69.6154,
+            -30.8883
+          ],
+          [
+            -69.6141,
+            -30.8883
+          ],
+          [
+            -69.6141,
+            -30.8884
+          ],
+          [
+            -69.5932,
+            -30.8885
+          ],
+          [
+            -69.5934,
+            -30.9156
+          ],
+          [
+            -69.6143,
+            -30.9155
+          ],
+          [
+            -69.6143,
+            -30.9128
+          ],
+          [
+            -69.6155,
+            -30.9128
+          ],
+          [
+            -69.6155,
+            -30.9105
+          ],
+          [
+            -69.6069,
+            -30.907
+          ],
+          [
+            -69.6083,
+            -30.9045
+          ],
+          [
+            -69.6065,
+            -30.9038
+          ],
+          [
+            -69.6074,
+            -30.9022
+          ],
+          [
+            -69.6155,
+            -30.9055
+          ],
+          [
+            -69.6154,
+            -30.8883
+          ]
+        ],
+        "centroide": [
+          -30.90213333333333,
+          -69.60998666666666
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
+      }
+    },
+    {
+      "clave": "1124-333-D-24",
+      "expediente": "1124-333-D-24",
+      "departamento": "San Martín",
+      "datum": "posgar2007",
+      "titulares": [
+        {
+          "nombre": "Dirección Provincial de Vialidad",
+          "desde": "2026-07-13",
+          "hasta": null
+        }
+      ],
+      "titular_actual": "Dirección Provincial de Vialidad",
+      "minerales": [],
+      "minas": [],
+      "mina": null,
+      "agrimensores": [],
+      "superficie_ha": null,
+      "n_vertices": 4,
+      "n_vertices_ocr": 4,
+      "vertices_gk": [
+        [
+          6512321.68,
+          2555040.0
+        ],
+        [
+          6512056.86,
+          2555358.32
+        ],
+        [
+          6512632.85,
+          2555117.58
+        ],
+        [
+          6512528.53,
+          2555061.41
+        ]
+      ],
+      "poligono_wgs84": [
+        [
+          -68.42048067243454,
+          -31.527849282840084
+        ],
+        [
+          -68.41711436332557,
+          -31.530222309008163
+        ],
+        [
+          -68.41968121221684,
+          -31.525039320203966
+        ],
+        [
+          -68.4202667772574,
+          -31.525982802676694
+        ]
+      ],
+      "centroide": [
+        -31.52727342868223,
+        -68.41938575630859
+      ],
+      "estado": "edicto_mensura",
+      "estado_label": "Edicto de mensura",
+      "eventos": [
+        {
+          "tipo": "edicto_mensura",
+          "tipo_label": "Edicto de mensura",
+          "etapa": "constitucion",
+          "fechas": [
+            "2026-07-13",
+            "2026-07-14",
+            "2026-07-15"
+          ],
+          "apariciones": 3,
+          "anios": [
+            "2026"
+          ],
+          "meses": [
+            "2026-07"
+          ]
+        }
+      ],
+      "anios": [
+        "2026"
+      ],
+      "meses": [
+        "2026-07"
+      ],
+      "catastro": {
+        "match_metodo": "expediente",
+        "match_confianza": "alta",
+        "capa": "canteras",
+        "expediente": "1124-000333-2024-EXP",
+        "denominacion": "DPV",
+        "titular": null,
+        "minerales": null,
+        "tipo_yacimiento": null,
+        "sup_reg_ha": 14.8605,
+        "cantidad_pertenencias": null,
+        "departamento": null,
+        "fechaInscripcionMensura": null,
+        "numeroInscripcionMensura": null,
+        "poligono_wgs84": [
+          [
+            -68.4197,
+            -31.525
+          ],
+          [
+            -68.4155,
+            -31.5272
+          ],
+          [
+            -68.4171,
+            -31.5302
+          ],
+          [
+            -68.4205,
+            -31.5278
+          ],
+          [
+            -68.4203,
+            -31.526
+          ],
+          [
+            -68.4197,
+            -31.525
+          ]
+        ],
+        "centroide": [
+          -31.526866666666667,
+          -68.4188
+        ]
+      }
+    },
+    {
+      "clave": "1124-649-E-241",
+      "expediente": "1124-649-E-241",
+      "departamento": "Albardón",
+      "datum": "posgar2007",
+      "titulares": [
+        {
+          "nombre": "Epitermal S.A",
+          "desde": "2026-08-04",
+          "hasta": null
+        }
+      ],
+      "titular_actual": "Epitermal S.A",
+      "minerales": [
+        "cuarzo"
+      ],
+      "minas": [],
+      "mina": null,
+      "agrimensores": [],
+      "superficie_ha": null,
+      "n_vertices": 1,
+      "n_vertices_ocr": 1,
+      "vertices_gk": [
+        [
+          6612378.56,
+          2632987.18
+        ]
+      ],
+      "poligono_wgs84": [
+        [
+          -67.61307355011296,
+          -30.619302691657673
+        ]
+      ],
+      "centroide": [
+        -30.619302691657673,
+        -67.61307355011296
+      ],
+      "estado": "cateo_exploracion",
+      "estado_label": "Permiso de cateo / exploración",
+      "eventos": [
+        {
+          "tipo": "cateo_exploracion",
+          "tipo_label": "Permiso de cateo / exploración",
+          "etapa": "constitucion",
+          "fechas": [
+            "2026-08-04"
+          ],
+          "apariciones": 1,
+          "anios": [
+            "2026"
+          ],
+          "meses": [
+            "2026-08"
+          ]
+        }
+      ],
+      "anios": [
+        "2026"
+      ],
+      "meses": [
+        "2026-08"
+      ],
+      "catastro": {
+        "match_metodo": "espacial",
+        "match_confianza": "media",
+        "capa": "manifestaciones",
+        "expediente": "1124-000231-2023-EXP-MANIF",
+        "denominacion": "TEOTUPAC",
+        "titular": null,
+        "minerales": null,
+        "tipo_yacimiento": null,
+        "sup_reg_ha": 107.7639,
+        "cantidad_pertenencias": null,
+        "departamento": null,
+        "fechaInscripcionMensura": null,
+        "numeroInscripcionMensura": null,
+        "poligono_wgs84": [
+          [
+            -67.6133,
+            -30.6149
+          ],
+          [
+            -67.6057,
+            -30.6149
+          ],
+          [
+            -67.6055,
+            -30.6237
+          ],
+          [
+            -67.6208,
+            -30.6238
+          ],
+          [
+            -67.6133,
+            -30.6149
+          ]
+        ],
+        "centroide": [
+          -30.61844,
+          -67.61172
+        ],
+        "fechaInscripcion": null,
+        "fechaResolucionMensura": null
       }
     }
   ]
