@@ -13,9 +13,13 @@
   header h1 b{color:var(--accent)}
   .btn{background:var(--panel2);border:1px solid var(--line);color:var(--muted);padding:5px 10px;border-radius:7px;font-size:12px;cursor:pointer;text-decoration:none}
   .btn:hover{color:var(--accent)}
-  #wrap{display:flex;height:calc(100% - 46px)}
+  .toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:8px 14px;background:var(--panel);border-bottom:1px solid var(--line)}
+  .toolbar label{font-size:11px;color:var(--muted);margin-right:4px}
+  .toolbar select,.toolbar input[type=text]{background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:5px 8px;border-radius:7px;font-size:12px}
+  .toolbar input[type=text]{min-width:230px}
+  .cnt{font-size:11px;color:var(--muted);margin-left:auto}
+  #wrap{display:flex;height:calc(100% - 92px)}
   #side{width:320px;min-width:320px;overflow:auto;border-right:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column}
-  #q{margin:12px;background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:8px 10px;border-radius:8px;font-size:13px}
   #list{flex:1;overflow:auto}
   .it{padding:8px 12px;border-bottom:1px solid var(--line);cursor:pointer;font-size:12px}
   .it:hover{background:var(--panel2)}
@@ -52,11 +56,14 @@
   <a class="btn" href="sociedades.html">Distribución</a>
   <a class="btn" href="historico.html">Análisis</a>
 </header>
+<div class="toolbar">
+  <span><label>Año</label><select id="anio"></select></span>
+  <span><label>Buscar</label><input id="q" type="text" placeholder="sociedad, expediente o mina…" autocomplete="off"/></span>
+  <span><label><input type="checkbox" id="soloMen"/> solo con mensura inscripta</label></span>
+  <span class="cnt" id="cnt"></span>
+</div>
 <div id="wrap">
-  <div id="side">
-    <input id="q" type="text" placeholder="Buscar expediente, titular o mina…" autocomplete="off"/>
-    <div id="list"></div>
-  </div>
+  <div id="side"><div id="list"></div></div>
   <div id="main"></div>
 </div>
 <script>
@@ -76,8 +83,11 @@ async function load(){
   // solo expedientes con al menos 2 hitos con fecha
   ITEMS=MODELO.expedientes.filter(e=>hitos(e).length>=2);
   ITEMS.sort((a,b)=>(titu(b)?1:0)-(titu(a)?1:0));
-  renderList('');
-  $('q').oninput=()=>renderList($('q').value);
+  // años disponibles (de cualquier hito)
+  const ys=new Set(); ITEMS.forEach(e=>hitos(e).forEach(h=>{const y=yr(h.f); if(y) ys.add(y);}));
+  $('anio').innerHTML='<option value="todos">Todos</option>'+[...ys].sort().reverse().map(y=>`<option>${y}</option>`).join('');
+  $('q').oninput=renderList; $('anio').onchange=renderList; $('soloMen').onchange=renderList;
+  renderList();
   intro();
 }
 function titu(e){ const c=e.catastro||{}; return c.titular||e.titular_actual||''; }
@@ -102,17 +112,23 @@ function intro(){
    — p. ej. cuántos años pasan desde el descubrimiento hasta que la mensura queda inscripta.
    <br><br><span style="color:#6b7280">Se listan las ${ITEMS.length} propiedades con al menos dos fechas.</span></div>`;
 }
-function renderList(q){
-  const v=deb(q);
-  const res=(!v?ITEMS:ITEMS.filter(e=>deb([e.expediente,titu(e),mina(e)].join(' ')).includes(v))).slice(0,300);
-  $('list').innerHTML=res.map(e=>{const i=MODELO.expedientes.indexOf(e);
+function renderList(){
+  const v=deb($('q').value), anio=$('anio').value, soloMen=$('soloMen').checked;
+  const res=ITEMS.filter(e=>{
+    if(soloMen && !(e.catastro||{}).fechaInscripcionMensura) return false;
+    if(anio!=='todos' && !hitos(e).some(h=>yr(h.f)===anio)) return false;
+    if(v && !deb([e.expediente,titu(e),mina(e)].join(' ')).includes(v)) return false;
+    return true;
+  });
+  $('cnt').textContent=res.length+' propiedades'+(SEL.length?' · '+SEL.length+' seleccionadas':'');
+  $('list').innerHTML=res.slice(0,400).map(e=>{const i=MODELO.expedientes.indexOf(e);
     return `<div class="it${SEL.includes(i)?' on':''}" data-i="${i}">
       <div class="e">${e.expediente||'(s/exp)'} ${mina(e)?'· '+mina(e):''}</div>
       <div class="s">${titu(e)||'—'} · ${hitos(e).length} hitos</div></div>`;}).join('')
     || '<div class="empty" style="padding:20px">Sin resultados</div>';
   $('list').querySelectorAll('.it').forEach(el=>el.onclick=()=>toggle(+el.dataset.i));
 }
-function toggle(i){ const k=SEL.indexOf(i); if(k>=0) SEL.splice(k,1); else SEL.push(i); renderList($('q').value); renderMain(); }
+function toggle(i){ const k=SEL.indexOf(i); if(k>=0) SEL.splice(k,1); else SEL.push(i); renderList(); renderMain(); }
 function fmtDur(d1,d2){
   const a=new Date(d1), b=new Date(d2); const dias=(b-a)/86400000;
   const años=dias/365.25;
