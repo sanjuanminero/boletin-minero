@@ -144,7 +144,7 @@ function renderEmbudo(){
       <span class="ebar"><i style="width:${Math.max(1.5,v/max*100)}%;background:${c}"></i></span>
       <span class="ev">${fmt(v)} ha</span></div>`).join('')}
     <div class="epct">
-      <div>Cateos / Manifestaciones: <b>${pct(e.cateos,e.manifestaciones)}%</b> <span style="color:#6b7280">(la exploración cubre más área que el descubrimiento)</span></div>
+      <div>Manifestaciones / Cateos: <b>${pct(e.manifestaciones,e.cateos)}%</b> <span style="color:#6b7280">(del área cateada termina en manifestación)</span></div>
       <div>Mensura (trámite) / Manifestaciones: <b>${pct(e.mensura_tramite,e.manifestaciones)}%</b></div>
       <div>Mensura efectiva / Mensura (trámite): <b>${pct(e.mensura_efectiva,e.mensura_tramite)}%</b></div>
       <div class="hi">Solo el <b>${pct(e.mensura_efectiva,e.manifestaciones)}%</b> del área descubierta llega a mensura registrada.</div>

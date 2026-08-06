@@ -44,7 +44,6 @@
   <a class="btn" href="sociedades.html">Sociedades</a>
   <div class="modes">
     <button data-m="libres" class="on">🟢 Áreas vacantes</button>
-    <button data-m="dormidas">😴 Manif. dormidas</button>
     <button data-m="zonas">🔥 Movimiento</button>
   </div>
 </header>
@@ -56,7 +55,33 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 let DATA=null, map=null, layer=null, occLayer=null, mode='libres';
+let CATFEATS=null, zoneLayer=null;
 const $=id=>document.getElementById(id);
+const CELL=0.08;  // debe coincidir con bsj/historico.py
+// centroide aproximado de una geometría GeoJSON [lat,lon]
+function centroide(g){
+  if(!g) return null;
+  let ring=null;
+  if(g.type==='Polygon') ring=g.coordinates[0];
+  else if(g.type==='MultiPolygon') ring=(g.coordinates[0]||[])[0];
+  if(!ring||!ring.length) return null;
+  let sx=0,sy=0; ring.forEach(p=>{sx+=p[0];sy+=p[1];});
+  return [sy/ring.length, sx/ring.length];
+}
+// carga (una vez) las geometrías del catastro con su centroide y tipo
+async function loadCat(){
+  if(CATFEATS) return CATFEATS;
+  CATFEATS=[];
+  const map3={minas:{c:'#b00020',t:'mina'},manifestaciones:{c:'#0F6E56',t:'manifestación'},permisos:{c:'#185FA5',t:'cateo'}};
+  for(const capa of Object.keys(map3)){
+    try{const r=await fetch('out_hist/catastro/catastro_'+capa+'.geojson'); if(!r.ok) continue;
+      const gj=await r.json();
+      gj.features.forEach(f=>{ const cen=centroide(f.geometry);
+        if(cen) CATFEATS.push({cen, geom:f.geometry, props:f.properties||{}, tipo:map3[capa].t, color:map3[capa].c}); });
+    }catch(e){}
+  }
+  return CATFEATS;
+}
 function initMap(){
   if(map) return;
   map=L.map('map',{zoomControl:true,preferCanvas:true}).setView([-31.0,-69.0],7);
@@ -77,7 +102,7 @@ function setMode(m){
   mode=m;
   document.querySelectorAll('.modes button').forEach(b=>b.classList.toggle('on',b.dataset.m===m));
   if(layer){ layer.remove(); layer=null; }
-  ({libres:renderLibres, dormidas:renderDormidas, zonas:renderZonas}[m])();
+  ({libres:renderLibres, zonas:renderZonas}[m])();
 }
 function occToggleHTML(){
   return `<label class="toggleocc"><input type="checkbox" id="occ" ${occLayer&&map.hasLayer(occLayer)?'checked':''}> Mostrar padrón ocupado (contexto)</label>`;
@@ -166,29 +191,46 @@ function renderDormidas(){
 }
 
 // ---- MOVIMIENTO ----
+// Al clickear una zona, prende TODAS las propiedades del catastro cuyo centroide cae
+// en esa celda (~8 km), coloreadas por tipo, y hace zoom.
+async function mostrarZona(z){
+  const feats=await loadCat();
+  if(zoneLayer){ zoneLayer.remove(); }
+  zoneLayer=L.layerGroup().addTo(map);
+  const bounds=[];
+  const sel=feats.filter(f=> Math.abs(f.cen[0]-z.cen[0])<=CELL/2 && Math.abs(f.cen[1]-z.cen[1])<=CELL/2);
+  sel.forEach(f=>{
+    L.geoJSON(f.geom,{style:{color:f.color,weight:1.2,fillColor:f.color,fillOpacity:0.35},
+      onEachFeature:(ff,l)=>l.bindPopup(`<div class="pp"><b>${f.props.denominacion||f.props.nombre_mina||f.tipo}</b><br>${f.props.titular||''}<br><span style="color:#555">${f.tipo} · ${f.props.sup_reg_ha?Math.round(f.props.sup_reg_ha)+' ha':''}</span></div>`)
+    }).addTo(zoneLayer);
+    L.geoJSON(f.geom).getBounds().isValid() && bounds.push(...[L.geoJSON(f.geom).getBounds().getSouthWest(),L.geoJSON(f.geom).getBounds().getNorthEast()]);
+  });
+  if(bounds.length) map.fitBounds(L.latLngBounds(bounds),{padding:[40,40],maxZoom:13}); else map.setView(z.cen,12);
+  $('legend').innerHTML=`<b style="color:var(--txt)">Zona: ${sel.length} propiedades</b><br>`+
+    '<i style="background:#185FA5"></i> cateo &nbsp;<i style="background:#0F6E56"></i> manif. &nbsp;<i style="background:#b00020"></i> mina';
+}
 function renderZonas(){
   const list=DATA.zonas;
-  const max=list.length?list[0].n:1;
-  $('legend').innerHTML='<i style="background:var(--hot);border-radius:50%"></i> zona de actividad<br>tamaño = nº de registros (cateos+manif+minas)';
+  $('legend').innerHTML='<i style="background:var(--hot);border-radius:50%"></i> zona de actividad<br>tamaño = nº de registros · <b style="color:var(--txt)">clic = ver sus propiedades</b>';
+  if(zoneLayer){ zoneLayer.remove(); zoneLayer=null; }
   layer=L.layerGroup();
-  list.forEach(z=>{
+  list.forEach((z,i)=>{
     L.circleMarker(z.cen,{radius:6+Math.sqrt(z.n)*1.6,color:'#fb7185',weight:1,fillColor:'#fb7185',fillOpacity:0.35})
-     .bindPopup(`<div class="pp"><b>Zona de actividad</b><br>${z.n} registros<br><span style="color:#555">${z.mina} minas · ${z.manif} manif. · ${z.cateo} cateos</span></div>`)
+     .bindPopup(`<div class="pp"><b>Zona ${i+1}</b> · ${z.n} registros<br><span style="color:#555">${z.mina} minas · ${z.manif} manif. · ${z.cateo} cateos</span><br><span style="color:#B4630A">clic para prender sus propiedades</span></div>`)
+     .on('click',()=>mostrarZona(z))
      .addTo(layer);
   });
   layer.addTo(map);
   let html=`<div class="intro"><b>Zonas con más movimiento.</b> Celdas de ~8 km con más
-    registros acumulados (minas + manifestaciones + cateos). Marcan los distritos donde se
-    concentra la actividad minera. Clic para ubicarlas.</div>${occToggleHTML()}`;
+    registros acumulados (minas + manifestaciones + cateos). <b>Clic en una zona = se prenden
+    todas las propiedades de esa zona</b> en el mapa, coloreadas por tipo.</div>`;
   list.forEach((z,i)=>{
     html+=`<div class="row" data-i="${i}"><span class="pos">${i+1}</span>
       <span class="nm">Zona ${i+1}<div class="sub">${z.mina} minas · ${z.manif} manif · ${z.cateo} cateos</div></span>
       <span class="v" style="color:var(--hot)">${z.n}</span></div>`;
   });
-  $('side').innerHTML=html; wireOcc();
-  $('side').querySelectorAll('.row').forEach(el=>el.onclick=()=>{
-    const z=list[+el.dataset.i]; map.setView(z.cen,11);
-  });
+  $('side').innerHTML=html;
+  $('side').querySelectorAll('.row').forEach(el=>el.onclick=()=>mostrarZona(list[+el.dataset.i]));
 }
 load();
 </script>
