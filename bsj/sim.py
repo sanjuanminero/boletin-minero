@@ -137,11 +137,26 @@ def enriquecer_geometria(salida, minas):
                     cen = [round(sum(x[1] for x in r) / len(r), 6),
                            round(sum(x[0] for x in r) / len(r), 6)]
                     idx[e] = {"cen": cen, "pol": r}
+    # área en hectáreas del polígono (reproyecta a POSGAR 2007). Opcional: si no está
+    # shapely/pyproj, deja ha=None y sigue.
+    try:
+        from shapely.geometry import Polygon
+        from shapely.ops import transform
+        from pyproj import Transformer
+        _to_m = Transformer.from_crs("EPSG:4326", "EPSG:5344", always_xy=True).transform
+        def _ha(pol):
+            try:
+                return round(transform(_to_m, Polygon([(x[0], x[1]) for x in pol])).area / 10000.0, 1)
+            except Exception:
+                return None
+    except Exception:
+        _ha = lambda pol: None
     n = 0
     for m in minas:
         g = idx.get(_canon(m.get("expediente")))
         m["cen"] = g["cen"] if g else None
         m["pol"] = g["pol"] if g else None
+        m["ha"] = _ha(g["pol"]) if g else None
         if g:
             n += 1
     return n

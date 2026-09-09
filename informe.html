@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Informe de Inteligencia Minera — San Juan</title>
+<style>
+  :root{--bg:#0f1115;--panel:#171a21;--panel2:#1e222b;--line:#2a2f3a;--txt:#e6e8ec;--muted:#9aa3b2;--accent:#F3C323;
+        --vig:#1D9E75;--cad:#e0533b;--vac:#888780;--op:#34d399}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,Segoe UI,Roboto,sans-serif}
+  header{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:12px;padding:9px 14px;background:var(--panel);border-bottom:1px solid var(--line);flex-wrap:wrap}
+  header h1{font-size:15px;font-weight:600;margin:0}header h1 b{color:var(--accent)}
+  .btn{background:var(--panel2);border:1px solid var(--line);color:var(--muted);padding:5px 10px;border-radius:7px;font-size:12px;cursor:pointer;text-decoration:none}
+  .btn:hover{color:var(--accent)}
+  main{max-width:940px;margin:0 auto;padding:22px 20px 80px}
+  h2{font-size:19px;margin:34px 0 6px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+  h2 .n{color:var(--accent);font-size:13px;font-weight:600;margin-right:6px}
+  h3{font-size:14px;color:var(--txt);margin:20px 0 8px}
+  p{line-height:1.65;color:#c7ccd6;font-size:14px}
+  .lead{font-size:15px;color:var(--txt)}
+  b{color:var(--txt)}
+  .kpis{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0}
+  .kpi{flex:1;min-width:150px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .kpi .v{font-size:26px;font-weight:700}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:3px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:720px){.grid2{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0}
+  .bar{display:flex;align-items:center;gap:9px;margin:6px 0;font-size:12.5px}
+  .bar .nm{width:150px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bar .t{flex:1;height:14px;background:var(--panel2);border-radius:4px;overflow:hidden}
+  .bar .t i{display:block;height:100%;border-radius:4px}
+  .bar .v{width:78px;text-align:right;font-variant-numeric:tabular-nums}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;margin:8px 0}
+  th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
+  th{color:var(--muted);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.03em}
+  td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+  .tag{display:inline-block;font-size:10px;padding:1px 7px;border-radius:10px;font-weight:600}
+  .insight{background:#1a2230;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:10px 14px;margin:12px 0;font-size:13.5px;line-height:1.6}
+  .insight b{color:var(--accent)}
+  .muted{color:var(--muted);font-size:12px}
+  a.src{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<header>
+  <h1><b>Informe</b> · Inteligencia Minera San Juan</h1>
+  <a class="btn" href="visor.html">Visor</a>
+  <a class="btn" href="sociedades.html">Distribución</a>
+  <a class="btn" href="historico.html">Análisis</a>
+  <a class="btn" href="linea.html">Línea de tiempo</a>
+  <a class="btn" href="vencimientos.html">Vencimientos</a>
+</header>
+<main id="main"><p class="muted">Cargando datos…</p></main>
+<script>
+const fmt=n=>Math.round(n).toLocaleString('es-AR');
+const norm=s=>(s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase().replace(/[^a-z0-9 ]/g,' ').trim();
+async function j(p){ for(const u of [p, p.replace('out_hist/','')]){ try{const r=await fetch(u); if(r.ok) return await r.json();}catch(e){} } return null; }
+function barList(rows,color,unit){ // rows: [nombre, valor]
+  const max=rows.length?Math.max(...rows.map(r=>r[1])):1;
+  return rows.map(([n,v])=>`<div class="bar"><span class="nm" title="${n}">${n}</span>
+    <span class="t"><i style="width:${Math.max(3,v/max*100)}%;background:${color}"></i></span>
+    <span class="v">${fmt(v)}${unit||''}</span></div>`).join('');
+}
+(async()=>{
+  const sim=await j('out_hist/sim/padron_sim.json');
+  const hist=await j('out_hist/analisis_historico.json');
+  const soc=await j('out_hist/sociedades.json');
+  if(!sim){ document.getElementById('main').innerHTML='<p>No pude cargar out_hist/sim/padron_sim.json. Corré <code>python -m bsj.sim ./out_hist</code>.</p>'; return; }
+  const M=sim.minas;
+  const est={}; M.forEach(m=>est[m.estado]=(est[m.estado]||0)+1);
+  const cad=M.filter(m=>m.estado==='Caduca');
+  const haCad=cad.reduce((a,m)=>a+(m.ha||0),0);
+  // por año
+  const anio={}; cad.forEach(m=>{const y=(m.fecha_caducidad||'?').slice(0,4);(anio[y]=anio[y]||[0,0]),anio[y][0]++,anio[y][1]+=(m.ha||0);});
+  // por depto / mineral
+  const dep={}; cad.forEach(m=>{const d=m.departamento||'?';(dep[d]=dep[d]||[0,0]),dep[d][0]++,dep[d][1]+=(m.ha||0);});
+  const depTop=Object.entries(dep).sort((a,b)=>b[1][1]-a[1][1]).slice(0,7);
+  const min={}; cad.forEach(m=>(m.minerales||['?']).forEach(x=>min[x]=(min[x]||0)+1));
+  const minTop=Object.entries(min).sort((a,b)=>b[1]-a[1]).slice(0,7);
+  // vacantes existentes
+  const vacHa=hist?hist.meta.libres_ha_total:0, vacN=hist?hist.meta.n_libres:0;
+  // #2 por CUIT
+  const cuit={};
+  M.forEach(m=>(m.concesionarios||[]).forEach(c=>{ if(!c.id_fiscal) return;
+    const g=cuit[c.id_fiscal]||(cuit[c.id_fiscal]={nom:{},minas:0,ha:0,cad:0,tipo:c.tipo});
+    g.nom[c.nombre||'?']=(g.nom[c.nombre||'?']||0)+1; g.minas++; g.ha+=(m.ha||0); if(m.estado==='Caduca')g.cad++; }));
+  const holders=Object.entries(cuit).map(([k,g])=>({cuit:k,nombre:Object.entries(g.nom).sort((a,b)=>b[1]-a[1])[0][0],...g}));
+  const topMinas=[...holders].sort((a,b)=>b.minas-a.minas).slice(0,10);
+  const topRiesgo=[...holders].sort((a,b)=>b.cad-a.cad).slice(0,8);
+  const totHa=holders.reduce((a,h)=>a+h.ha,0);
+  const top10ha=[...holders].sort((a,b)=>b.ha-a.ha).slice(0,10).reduce((a,h)=>a+h.ha,0);
+  // cruce nombres
+  let cruce=0; if(soc){ const sn=new Set(soc.sociedades.map(s=>norm(s.nombre)));
+    cruce=holders.filter(h=>sn.has(norm(h.nombre))).length; }
+
+  const html=`
+  <p class="lead">Cruce de las <b>tres fuentes</b> del proyecto — Boletín Oficial (línea de tiempo),
+  Catastro Minero/GeoServer (geometrías) y el <b>Padrón del SIM Producción</b> (estados y titulares
+  al día) — para responder tres preguntas de negocio: qué se libera, quién concentra y quién está en riesgo.
+  <span class="muted">Generado ${new Date().toLocaleDateString('es-AR')} · padrón SIM: ${new Date(sim.generado).toLocaleDateString('es-AR')}.</span></p>
+
+  <div class="kpis">
+    <div class="kpi"><div class="v">${fmt(M.length)}</div><div class="l">minas en el padrón (SIM)</div></div>
+    <div class="kpi"><div class="v" style="color:var(--cad)">${fmt(cad.length)}</div><div class="l">caducando</div></div>
+    <div class="kpi"><div class="v" style="color:var(--cad)">${fmt(haCad)} ha</div><div class="l">superficie que se libera</div></div>
+    <div class="kpi"><div class="v" style="color:var(--op)">${fmt(haCad+vacHa)} ha</div><div class="l">oportunidad total (caducando + vacante)</div></div>
+  </div>
+
+  <h2><span class="n">1</span>Caducidad → oportunidad</h2>
+  <p>El padrón marca <b>${fmt(cad.length)} minas en estado “Caduca”</b>. Cuando una caduca, su terreno
+  vuelve a estar disponible para pedir un nuevo derecho. Sumadas a las <b>${fmt(vacN)} áreas ya vacantes</b>
+  del análisis (${fmt(vacHa)} ha), configuran el mapa real de oportunidad.</p>
+  <div class="insight">Se están liberando <b>${fmt(haCad)} ha</b> en ${cad.length} minas. El <b>${Math.round(haCad/(haCad+vacHa)*100)}%</b>
+  de la oportunidad total del momento viene de caducidades — no de terreno históricamente vacío.</div>
+  <div class="grid2">
+    <div class="card"><h3>Cuándo caducan (ha por año)</h3>
+      ${barList(Object.entries(anio).sort().map(([y,v])=>[y,v[1]]),'var(--cad)',' ha')}
+      <p class="muted">${Object.entries(anio).sort().map(([y,v])=>`${y}: ${v[0]} minas`).join(' · ')}</p></div>
+    <div class="card"><h3>Dónde (ha caducando por departamento)</h3>
+      ${barList(depTop.map(([d,v])=>[d,v[1]]),'var(--cad)',' ha')}</div>
+  </div>
+  <div class="card"><h3>Qué mineral (nº de minas caducando)</h3>${barList(minTop,'#c98a1a','')}</div>
+
+  <h2><span class="n">2</span>Concentración de titulares (unificado por CUIT)</h2>
+  <p>Unificando por CUIT/DNI (dato que solo trae el SIM) hay <b>${fmt(holders.length)} concesionarios</b>
+  distintos sobre ${fmt(M.length)} minas. La tenencia está muy concentrada:
+  el <b>top 10 controla ${fmt(top10ha)} ha</b> (${Math.round(top10ha/totHa*100)}% de la superficie del padrón).</p>
+  <div class="insight"><b>${cruce} de ${holders.length}</b> concesionarios del padrón SIM también aparecen
+  en nuestra base de Distribución (boletín+catastro) — el CUIT permite unificarlos aunque el nombre
+  esté escrito distinto en cada fuente.</div>
+  <div class="grid2">
+    <div class="card"><h3>Top 10 por nº de minas</h3>
+      <table><tr><th>Concesionario</th><th class="n">Minas</th><th class="n">ha</th><th class="n">Caduca</th></tr>
+      ${topMinas.map(h=>`<tr><td title="CUIT ${h.cuit}">${h.nombre}</td><td class="n">${h.minas}</td><td class="n">${fmt(h.ha)}</td><td class="n" style="color:${h.cad?'var(--cad)':'var(--muted)'}">${h.cad}</td></tr>`).join('')}
+      </table></div>
+    <div class="card"><h3>Quién pierde más (caducando)</h3>
+      ${barList(topRiesgo.map(h=>[h.nombre,h.cad]),'var(--cad)','')}
+      <p class="muted">Minera Ansilta pierde más de la mitad de su cartera; contraste con IPEEM/Argentina Minera, que tienen mucha ha pero caduca una fracción menor.</p></div>
+  </div>
+
+  <h2><span class="n">3</span>Canon minero (deuda / pagos)</h2>
+  <p>La API del SIM expone el canon por expediente (<code>canonMinero/.../importe</code>,
+  <code>historicoCanonMinero/.../obtenerPagados</code>), pero esos endpoints
+  <b>requieren autenticación</b> (login de productor/administración) — devuelven 401. No es dato público,
+  así que el ranking de deuda/pago no se puede armar con acceso abierto.
+  <span class="muted">Si en algún momento se consigue una cuenta de acceso, el cliente ya está listo para sumarlo.</span></p>
+
+  <h2>Fuentes y método</h2>
+  <p class="muted">
+  <b>SIM Producción</b> (<a class="src" href="https://simproduccion.sanjuan.gob.ar/expedientes" target="_blank">simproduccion.sanjuan.gob.ar</a>) —
+  padrón administrativo al día (estados, caducidades, concesionarios con CUIT); ${fmt(M.length)} minas vía API pública.
+  <b>Catastro/GeoServer</b> — geometrías oficiales (POSGAR 2007); aporta la superficie por cruce de expediente
+  (${fmt(sim.con_geometria||0)}/${fmt(M.length)} con polígono). <b>Boletín Oficial</b> — línea de tiempo de edictos.
+  El cruce entre fuentes es por número de expediente canónico (solo dígitos) y, para titulares, por CUIT (SIM) o nombre normalizado.
+  Las hectáreas se calculan reproyectando el polígono a EPSG:5344.</p>
+  `;
+  document.getElementById('main').innerHTML=html;
+})();
+</script>
+</body>
+</html>
