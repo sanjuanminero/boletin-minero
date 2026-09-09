@@ -4,17 +4,20 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Informe de Inteligencia Minera — San Juan</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
   :root{--bg:#0f1115;--panel:#171a21;--panel2:#1e222b;--line:#2a2f3a;--txt:#e6e8ec;--muted:#9aa3b2;--accent:#F3C323;
-        --vig:#1D9E75;--cad:#e0533b;--vac:#888780;--op:#34d399}
+        --vig:#1D9E75;--cad:#e0533b;--vac:#888780;--op:#34d399;--warn:#f59e0b;--pipe:#c98a1a;--blk:#8b5cf6}
   *{box-sizing:border-box}
   html,body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,Segoe UI,Roboto,sans-serif}
-  header{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:12px;padding:9px 14px;background:var(--panel);border-bottom:1px solid var(--line);flex-wrap:wrap}
+  header{position:sticky;top:0;z-index:1000;display:flex;align-items:center;gap:12px;padding:9px 14px;background:var(--panel);border-bottom:1px solid var(--line);flex-wrap:wrap}
   header h1{font-size:15px;font-weight:600;margin:0}header h1 b{color:var(--accent)}
   .btn{background:var(--panel2);border:1px solid var(--line);color:var(--muted);padding:5px 10px;border-radius:7px;font-size:12px;cursor:pointer;text-decoration:none}
   .btn:hover{color:var(--accent)}
-  main{max-width:940px;margin:0 auto;padding:22px 20px 80px}
-  h2{font-size:19px;margin:34px 0 6px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+  .btn.on{color:var(--accent);border-color:var(--accent)}
+  main{max-width:960px;margin:0 auto;padding:22px 20px 90px}
+  h2{font-size:20px;margin:40px 0 6px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
   h2 .n{color:var(--accent);font-size:13px;font-weight:600;margin-right:6px}
   h3{font-size:14px;color:var(--txt);margin:20px 0 8px}
   p{line-height:1.65;color:#c7ccd6;font-size:14px}
@@ -22,16 +25,16 @@
   b{color:var(--txt)}
   .kpis{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0}
   .kpi{flex:1;min-width:150px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
-  .kpi .v{font-size:26px;font-weight:700}
+  .kpi .v{font-size:25px;font-weight:700}
   .kpi .l{font-size:12px;color:var(--muted);margin-top:3px}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
   @media(max-width:720px){.grid2{grid-template-columns:1fr}}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0}
   .bar{display:flex;align-items:center;gap:9px;margin:6px 0;font-size:12.5px}
-  .bar .nm{width:150px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bar .nm{width:160px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .bar .t{flex:1;height:14px;background:var(--panel2);border-radius:4px;overflow:hidden}
   .bar .t i{display:block;height:100%;border-radius:4px}
-  .bar .v{width:78px;text-align:right;font-variant-numeric:tabular-nums}
+  .bar .v{width:86px;text-align:right;font-variant-numeric:tabular-nums}
   table{width:100%;border-collapse:collapse;font-size:12.5px;margin:8px 0}
   th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
   th{color:var(--muted);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.03em}
@@ -39,8 +42,39 @@
   .tag{display:inline-block;font-size:10px;padding:1px 7px;border-radius:10px;font-weight:600}
   .insight{background:#1a2230;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:10px 14px;margin:12px 0;font-size:13.5px;line-height:1.6}
   .insight b{color:var(--accent)}
+  .warn{background:#241a10;border-left:3px solid var(--warn)}
+  .warn b{color:var(--warn)}
   .muted{color:var(--muted);font-size:12px}
   a.src{color:var(--accent);text-decoration:none}
+  code{background:var(--panel2);padding:1px 5px;border-radius:4px;font-size:12px}
+  /* timeline de vacancia */
+  .tl{position:relative;margin:16px 0 8px;padding-left:6px}
+  .tl .row{display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:start;padding:9px 0;border-left:2px solid var(--line);margin-left:8px;padding-left:16px;position:relative}
+  .tl .row::before{content:"";position:absolute;left:-7px;top:14px;width:11px;height:11px;border-radius:50%;background:var(--panel2);border:2px solid var(--muted)}
+  .tl .row.fatal::before{background:var(--cad);border-color:var(--cad)}
+  .tl .dia{font-variant-numeric:tabular-nums;font-weight:700;font-size:13px;color:var(--accent);padding-top:1px}
+  .tl .desc{font-size:13px;color:var(--txt);line-height:1.45}
+  .tl .norma{font-size:11px;color:var(--muted);margin-top:2px}
+  .tl .cons{font-size:11.5px;color:#b9c0cc;margin-top:3px;font-style:italic}
+  .fatalpill{background:#3a1d17;color:#f0a08c;font-size:9px;padding:1px 6px;border-radius:8px;margin-left:6px;font-weight:700;vertical-align:middle}
+  .camino{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:8px 0;background:var(--panel)}
+  .camino .h{font-weight:600;color:var(--accent);font-size:13.5px}
+  .camino .n{font-size:11px;color:var(--muted);margin-top:2px}
+  .camino p{margin:6px 0 0;font-size:13px}
+  #mapa{height:440px;border-radius:12px;border:1px solid var(--line);margin:10px 0}
+  .leaflet-popup-content{font-size:12.5px;color:#111}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:6px 2px}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:5px;vertical-align:middle}
+  .exig{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+  @media(max-width:720px){.exig{grid-template-columns:repeat(2,1fr)}}
+  .exig .b{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:12px}
+  .exig .b .lv{font-size:11px;font-weight:700;letter-spacing:.04em}
+  .exig .b .c{font-size:23px;font-weight:700;margin:4px 0 0}
+  .exig .b .s{font-size:11px;color:var(--muted)}
+  .play{counter-reset:p;padding-left:0}
+  .play li{list-style:none;position:relative;padding:10px 0 10px 40px;border-bottom:1px solid var(--line);font-size:13.5px;line-height:1.55;color:#c7ccd6}
+  .play li::before{counter-increment:p;content:counter(p);position:absolute;left:0;top:9px;width:26px;height:26px;border-radius:50%;background:var(--panel2);border:1px solid var(--accent);color:var(--accent);font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center}
+  .play li b{color:var(--txt)}
 </style>
 </head>
 <body>
@@ -51,112 +85,185 @@
   <a class="btn" href="historico.html">Análisis</a>
   <a class="btn" href="linea.html">Línea de tiempo</a>
   <a class="btn" href="vencimientos.html">Vencimientos</a>
+  <a class="btn on" href="informe.html">Informe</a>
 </header>
 <main id="main"><p class="muted">Cargando datos…</p></main>
 <script>
-const fmt=n=>Math.round(n).toLocaleString('es-AR');
-const norm=s=>(s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase().replace(/[^a-z0-9 ]/g,' ').trim();
+const fmt=n=>Math.round(n||0).toLocaleString('es-AR');
+const money=n=>'$'+fmt(n);
 async function j(p){ for(const u of [p, p.replace('out_hist/','')]){ try{const r=await fetch(u); if(r.ok) return await r.json();}catch(e){} } return null; }
-function barList(rows,color,unit){ // rows: [nombre, valor]
+function barList(rows,color,unit){
   const max=rows.length?Math.max(...rows.map(r=>r[1])):1;
   return rows.map(([n,v])=>`<div class="bar"><span class="nm" title="${n}">${n}</span>
     <span class="t"><i style="width:${Math.max(3,v/max*100)}%;background:${color}"></i></span>
     <span class="v">${fmt(v)}${unit||''}</span></div>`).join('');
 }
 (async()=>{
-  const sim=await j('out_hist/sim/padron_sim.json');
-  const hist=await j('out_hist/analisis_historico.json');
-  const soc=await j('out_hist/sociedades.json');
-  if(!sim){ document.getElementById('main').innerHTML='<p>No pude cargar out_hist/sim/padron_sim.json. Corré <code>python -m bsj.sim ./out_hist</code>.</p>'; return; }
-  const M=sim.minas;
-  const est={}; M.forEach(m=>est[m.estado]=(est[m.estado]||0)+1);
-  const cad=M.filter(m=>m.estado==='Caduca');
-  const haCad=cad.reduce((a,m)=>a+(m.ha||0),0);
-  // por año
-  const anio={}; cad.forEach(m=>{const y=(m.fecha_caducidad||'?').slice(0,4);(anio[y]=anio[y]||[0,0]),anio[y][0]++,anio[y][1]+=(m.ha||0);});
-  // por depto / mineral
-  const dep={}; cad.forEach(m=>{const d=m.departamento||'?';(dep[d]=dep[d]||[0,0]),dep[d][0]++,dep[d][1]+=(m.ha||0);});
-  const depTop=Object.entries(dep).sort((a,b)=>b[1][1]-a[1][1]).slice(0,7);
-  const min={}; cad.forEach(m=>(m.minerales||['?']).forEach(x=>min[x]=(min[x]||0)+1));
-  const minTop=Object.entries(min).sort((a,b)=>b[1]-a[1]).slice(0,7);
-  // vacantes existentes
-  const vacHa=hist?hist.meta.libres_ha_total:0, vacN=hist?hist.meta.n_libres:0;
-  // #2 por CUIT
-  const cuit={};
-  M.forEach(m=>(m.concesionarios||[]).forEach(c=>{ if(!c.id_fiscal) return;
-    const g=cuit[c.id_fiscal]||(cuit[c.id_fiscal]={nom:{},minas:0,ha:0,cad:0,tipo:c.tipo});
-    g.nom[c.nombre||'?']=(g.nom[c.nombre||'?']||0)+1; g.minas++; g.ha+=(m.ha||0); if(m.estado==='Caduca')g.cad++; }));
-  const holders=Object.entries(cuit).map(([k,g])=>({cuit:k,nombre:Object.entries(g.nom).sort((a,b)=>b[1]-a[1])[0][0],...g}));
-  const topMinas=[...holders].sort((a,b)=>b.minas-a.minas).slice(0,10);
-  const topRiesgo=[...holders].sort((a,b)=>b.cad-a.cad).slice(0,8);
-  const totHa=holders.reduce((a,h)=>a+h.ha,0);
-  const top10ha=[...holders].sort((a,b)=>b.ha-a.ha).slice(0,10).reduce((a,h)=>a+h.ha,0);
-  // cruce nombres
-  let cruce=0; if(soc){ const sn=new Set(soc.sociedades.map(s=>norm(s.nombre)));
-    cruce=holders.filter(h=>sn.has(norm(h.nombre))).length; }
+  const D=await j('out_hist/sim/informe_avanzado.json');
+  if(!D){ document.getElementById('main').innerHTML='<p>No pude cargar <code>out_hist/sim/informe_avanzado.json</code>. Corré <code>python -m bsj.informe ./out_hist</code>.</p>'; return; }
+  const T=D.totales, X=D.exigibilidad, DIS=D.disponibilidad, C=D.caducidad, CO=D.concesionarios, ML=D.marco_legal;
+  const est=T.por_estado;
+  const canonJuego=T.canon_anual_caduca;
+  const lvl=(k)=>X[k]||{minas:0,ha:0};
 
   const html=`
-  <p class="lead">Cruce de las <b>tres fuentes</b> del proyecto — Boletín Oficial (línea de tiempo),
-  Catastro Minero/GeoServer (geometrías) y el <b>Padrón del SIM Producción</b> (estados y titulares
-  al día) — para responder tres preguntas de negocio: qué se libera, quién concentra y quién está en riesgo.
-  <span class="muted">Generado ${new Date().toLocaleDateString('es-AR')} · padrón SIM: ${new Date(sim.generado).toLocaleDateString('es-AR')}.</span></p>
+  <p class="lead">Informe de inteligencia que fusiona las <b>tres fuentes</b> del proyecto —
+  Boletín Oficial, Catastro Minero (GeoServer) y el <b>Padrón del SIM Producción</b>— con el
+  <b>motor legal</b> del asesor minero (Cód. de Minería nacional Ley 1919 + Cód. Procesal Minero de
+  San Juan, Ley 688-M). No describe estados: los traduce a <b>exigibilidad jurídica</b> — qué se puede
+  pedir, cuándo y bajo qué artículo.
+  <span class="muted">Generado ${new Date(D.generado).toLocaleDateString('es-AR')} · ${fmt(T.expedientes)} expedientes deduplicados de ${fmt(T.registros_crudos)} tramos del SIM.</span></p>
 
   <div class="kpis">
-    <div class="kpi"><div class="v">${fmt(M.length)}</div><div class="l">minas en el padrón (SIM)</div></div>
-    <div class="kpi"><div class="v" style="color:var(--cad)">${fmt(cad.length)}</div><div class="l">caducando</div></div>
-    <div class="kpi"><div class="v" style="color:var(--cad)">${fmt(haCad)} ha</div><div class="l">superficie que se libera</div></div>
-    <div class="kpi"><div class="v" style="color:var(--op)">${fmt(haCad+vacHa)} ha</div><div class="l">oportunidad total (caducando + vacante)</div></div>
+    <div class="kpi"><div class="v">${fmt(T.expedientes)}</div><div class="l">expedientes en el padrón</div></div>
+    <div class="kpi"><div class="v" style="color:var(--cad)">${fmt(est['Caduca']||0)}</div><div class="l">minas caducas (pipeline)</div></div>
+    <div class="kpi"><div class="v" style="color:var(--cad)">${fmt(T.ha_caduca)} ha</div><div class="l">superficie en caducidad</div></div>
+    <div class="kpi"><div class="v" style="color:var(--accent)">${money(canonJuego)}</div><div class="l">canon anual en juego (caducas)</div></div>
   </div>
 
-  <h2><span class="n">1</span>Caducidad → oportunidad</h2>
-  <p>El padrón marca <b>${fmt(cad.length)} minas en estado “Caduca”</b>. Cuando una caduca, su terreno
-  vuelve a estar disponible para pedir un nuevo derecho. Sumadas a las <b>${fmt(vacN)} áreas ya vacantes</b>
-  del análisis (${fmt(vacHa)} ha), configuran el mapa real de oportunidad.</p>
-  <div class="insight">Se están liberando <b>${fmt(haCad)} ha</b> en ${cad.length} minas. El <b>${Math.round(haCad/(haCad+vacHa)*100)}%</b>
-  de la oportunidad total del momento viene de caducidades — no de terreno históricamente vacío.</div>
-  <div class="grid2">
-    <div class="card"><h3>Cuándo caducan (ha por año)</h3>
-      ${barList(Object.entries(anio).sort().map(([y,v])=>[y,v[1]]),'var(--cad)',' ha')}
-      <p class="muted">${Object.entries(anio).sort().map(([y,v])=>`${y}: ${v[0]} minas`).join(' · ')}</p></div>
-    <div class="card"><h3>Dónde (ha caducando por departamento)</h3>
-      ${barList(depTop.map(([d,v])=>[d,v[1]]),'var(--cad)',' ha')}</div>
-  </div>
-  <div class="card"><h3>Qué mineral (nº de minas caducando)</h3>${barList(minTop,'#c98a1a','')}</div>
+  <div class="insight warn"><b>Advertencia metodológica.</b> El SIM devuelve <b>tramos</b> de estado, no minas:
+  ${fmt(T.registros_crudos)} registros son ${fmt(T.expedientes)} expedientes. Deduplicando por el tramo abierto
+  más reciente, los estados reales son <b>${fmt(est['Vigente']||0)} vigentes / ${fmt(est['Caduca']||0)} caducas /
+  ${fmt(est['Vacante No Disponible']||0)} vacantes</b> — no los 2.131/690/77 que da el conteo crudo. Todo este informe usa los números deduplicados.</div>
 
-  <h2><span class="n">2</span>Concentración de titulares (unificado por CUIT)</h2>
-  <p>Unificando por CUIT/DNI (dato que solo trae el SIM) hay <b>${fmt(holders.length)} concesionarios</b>
-  distintos sobre ${fmt(M.length)} minas. La tenencia está muy concentrada:
-  el <b>top 10 controla ${fmt(top10ha)} ha</b> (${Math.round(top10ha/totHa*100)}% de la superficie del padrón).</p>
-  <div class="insight"><b>${cruce} de ${holders.length}</b> concesionarios del padrón SIM también aparecen
-  en nuestra base de Distribución (boletín+catastro) — el CUIT permite unificarlos aunque el nombre
-  esté escrito distinto en cada fuente.</div>
+  <h2><span class="n">1</span>Estado ≠ exigibilidad: qué se puede pedir HOY</h2>
+  <p>El estado administrativo del padrón (“Caduca”, “Vacante”) <b>no</b> equivale a que el terreno esté
+  disponible para un tercero. La caducidad por canon (art. 216 CM) abre un <b>circuito de vacancia</b>
+  —rescate, inscripción, publicación, plazos— que la Dirección de Minería tiene que recorrer antes de
+  que la mina sea <i>pedible</i>. Clasificando cada derecho por exigibilidad:</p>
+  <div class="exig">
+    <div class="b"><div class="lv" style="color:var(--op)">DISPONIBLE</div><div class="c" style="color:var(--op)">${fmt(lvl('DISPONIBLE').minas)}</div><div class="s">${fmt(lvl('DISPONIBLE').ha)} ha · pedible hoy</div></div>
+    <div class="b"><div class="lv" style="color:var(--pipe)">PIPELINE</div><div class="c" style="color:var(--pipe)">${fmt(lvl('PIPELINE').minas)}</div><div class="s">${fmt(lvl('PIPELINE').ha)} ha · caduca, aún no</div></div>
+    <div class="b"><div class="lv" style="color:var(--blk)">BLOQUEADO</div><div class="c" style="color:var(--blk)">${fmt(lvl('BLOQUEADO').minas)}</div><div class="s">${fmt(lvl('BLOQUEADO').ha)} ha · vacante reciente/IPEEM</div></div>
+    <div class="b"><div class="lv" style="color:var(--vig)">VIGENTE</div><div class="c" style="color:var(--vig)">${fmt(lvl('VIGENTE').minas)}</div><div class="s">${fmt(lvl('VIGENTE').ha)} ha · de terceros</div></div>
+  </div>
+  <div class="insight">El titular apurado que ve “690 caducas” y cree que hay 690 minas para pedir se equivoca dos veces:
+  son <b>${fmt(est['Caduca']||0)}</b> (no 690, por los tramos), y de ésas <b>${fmt(lvl('PIPELINE').minas)} NO son pedibles</b> —el
+  circuito de vacancia está detenido. Legalmente pedibles hoy: <b>sólo ${fmt(DIS.pedibles_hoy)}</b> (art. 220 CM, registros
+  anulados por 3 años de vacancia). El valor no está en pedir: está en <b>ver el pipeline 12-18 meses antes</b> que quien lee el boletín.</div>
+
+  <h2><span class="n">2</span>El circuito de la vacancia (marco legal)</h2>
+  <p>Desde que una mina cae por falta de pago del canon, la ley marca una secuencia de hitos. Éste es el
+  cronograma que arma el motor legal (<code>cronograma_vacancia</code>), tomado como plantilla —el reloj
+  real arranca con la <b>notificación</b> al titular, dato que el SIM no publica:</p>
+  <div class="tl">
+    ${ML.vacancia.map(h=>`<div class="row ${h.fatal?'fatal':''}">
+      <div class="dia">+${h.dia} d</div>
+      <div><div class="desc">${h.desc}${h.fatal?'<span class="fatalpill">FATAL</span>':''}</div>
+        <div class="norma">${h.norma}</div>
+        ${h.consecuencia?`<div class="cons">${h.consecuencia}</div>`:''}</div></div>`).join('')}
+  </div>
+  <div class="insight">Dos plazos son <b>ventanas de oportunidad</b> que casi nadie mira: entre el día ~93
+  (queda DISPONIBLE, art. 90) y el día ~310 corre la <b>preferencia del IPEEM</b>; recién después el privado
+  entra en igualdad. Y la <b>veda al ex-titular</b> (no puede repedir su propia mina) es la palanca para
+  quien quiere quedarse con un área que un competidor dejó caer.</div>
+
+  <h2><span class="n">3</span>Mapa de vencimiento</h2>
+  <p>Las <b>${fmt(D.caducas_geo.length)}</b> minas caducas georreferenciadas. El tamaño del círculo es
+  proporcional al canon anual adeudado; el color, a la antigüedad de la caducidad (más rojo = hace más tiempo,
+  más cerca de la anulación del art. 220).</p>
+  <div id="mapa"></div>
+  <div class="legend">
+    <span><i style="background:#fde68a"></i>caducó hace poco (&lt;6m)</span>
+    <span><i style="background:#f59e0b"></i>6-12 meses</span>
+    <span><i style="background:#e0533b"></i>1-2 años</span>
+    <span><i style="background:#7f1d1d"></i>+2 años (cerca de art. 220)</span>
+    <span class="muted">· radio ∝ canon adeudado</span>
+  </div>
+
+  <h2><span class="n">4</span>Dónde y qué se libera</h2>
   <div class="grid2">
-    <div class="card"><h3>Top 10 por nº de minas</h3>
+    <div class="card"><h3>Cuándo caducaron</h3>
+      ${barList(Object.entries(C.por_anio).sort().map(([y,v])=>[y,v.ha]),'var(--cad)',' ha')}
+      <p class="muted">${Object.entries(C.por_anio).sort().map(([y,v])=>`${y}: ${v.n} minas · ${money(v.canon)}`).join(' · ')}</p></div>
+    <div class="card"><h3>Dónde (ha por departamento)</h3>
+      ${barList(Object.entries(C.por_depto).map(([d,v])=>[d,v.ha]).slice(0,7),'var(--cad)',' ha')}</div>
+  </div>
+  <div class="card"><h3>Qué mineral (nº de minas caducas)</h3>${barList(Object.entries(C.por_mineral),'#c98a1a','')}</div>
+  <div class="insight"><b>Calingasta e Iglesia concentran el ${Math.round((C.por_depto['Calingasta'].ha+ (C.por_depto['Iglesia']?.ha||0))/T.ha_caduca*100)}%</b>
+  de la superficie que cae, sobre pórfidos de <b>oro y cobre</b> (los tres minerales más frecuentes en el pipeline).
+  El <b>${Math.round(C.por_anio['2025'].n/(est['Caduca'])*100)}%</b> de las caducidades ocurrió en 2025 — una ola concentrada, no un goteo histórico.</div>
+
+  <h2><span class="n">5</span>Concentración de titulares (por CUIT)</h2>
+  <p>Unificando por CUIT/DNI —dato que sólo trae el SIM— hay <b>${fmt(CO.n)} concesionarios</b> distintos.
+  La foto de tenencia y la de riesgo no coinciden: quien más superficie tiene no es siempre quien más deja caer.</p>
+  <div class="grid2">
+    <div class="card"><h3>Top por superficie (ha)</h3>
       <table><tr><th>Concesionario</th><th class="n">Minas</th><th class="n">ha</th><th class="n">Caduca</th></tr>
-      ${topMinas.map(h=>`<tr><td title="CUIT ${h.cuit}">${h.nombre}</td><td class="n">${h.minas}</td><td class="n">${fmt(h.ha)}</td><td class="n" style="color:${h.cad?'var(--cad)':'var(--muted)'}">${h.cad}</td></tr>`).join('')}
+      ${CO.top_ha.slice(0,8).map(h=>`<tr><td title="CUIT ${h.cuit}">${h.nombre}</td><td class="n">${h.minas}</td><td class="n">${fmt(h.ha)}</td><td class="n" style="color:${h.caduca?'var(--cad)':'var(--muted)'}">${h.caduca}</td></tr>`).join('')}
       </table></div>
-    <div class="card"><h3>Quién pierde más (caducando)</h3>
-      ${barList(topRiesgo.map(h=>[h.nombre,h.cad]),'var(--cad)','')}
-      <p class="muted">Minera Ansilta pierde más de la mitad de su cartera; contraste con IPEEM/Argentina Minera, que tienen mucha ha pero caduca una fracción menor.</p></div>
+    <div class="card"><h3>Quién deja caer más (pipeline)</h3>
+      ${barList(C.concentracion.slice(0,8).map(h=>[h.nombre,h.minas]),'var(--cad)',' minas')}</div>
   </div>
+  <div class="insight"><b>El propio Estado es el mayor moroso.</b> El <b>IPEEM</b> es a la vez el mayor
+  tenedor (${fmt(CO.top_ha[0].minas)} minas, ${fmt(CO.top_ha[0].ha)} ha) y el que más derechos deja caer
+  (${C.concentracion[0].minas} en el pipeline) — y por el art. 29 <i>in fine</i> Ley 688-M tiene <b>preferencia
+  sobre toda área que se libere</b>. Es el actor a vigilar en cualquier estrategia de adquisición.</div>
 
-  <h2><span class="n">3</span>Canon minero (deuda / pagos)</h2>
-  <p>La API del SIM expone el canon por expediente (<code>canonMinero/.../importe</code>,
-  <code>historicoCanonMinero/.../obtenerPagados</code>), pero esos endpoints
-  <b>requieren autenticación</b> (login de productor/administración) — devuelven 401. No es dato público,
-  así que el ranking de deuda/pago no se puede armar con acceso abierto.
-  <span class="muted">Si en algún momento se consigue una cuenta de acceso, el cliente ya está listo para sumarlo.</span></p>
+  <h2><span class="n">6</span>Los cinco caminos de adquisición</h2>
+  ${ML.caminos.map(c=>`<div class="camino"><div class="h">${c.n}</div><div class="n">${c.norma}</div><p>${c.desc}</p></div>`).join('')}
+
+  <h2><span class="n">7</span>Canon minero</h2>
+  <p>El canon se estima con el motor legal (<code>canon_mina</code>, art. 215 CM t.o. Ley 27.701):
+  <b>${money(ML.canon_ref['1ra_por_pertenencia'])}</b> por pertenencia (1.ª categoría) / <b>${money(ML.canon_ref['2da'])}</b> (2.ª),
+  con multiplicadores por tipo de yacimiento (diseminado ×10, hierro ×3, carbón ×6). Sobre el padrón vigente
+  eso son <b>${money(T.canon_anual_vigente)}/año</b> en canon activo; las caducas representan
+  <b>${money(T.canon_anual_caduca)}/año</b> de recaudación perdida.</p>
+  <div class="insight warn"><b>Deuda y pagos reales:</b> los endpoints del SIM que traen importes y pagos
+  (<code>canonMinero/.../importe</code>, <code>historicoCanonMinero/.../obtenerPagados</code>) <b>requieren
+  login</b> (devuelven 401/405). El canon de este informe es una <b>estimación normativa</b>, no la deuda
+  liquidada. El cliente ya está listo para sumar los importes reales si se consigue una cuenta.</div>
+
+  <h2><span class="n">8</span>Playbook accionable</h2>
+  <ol class="play">
+    <li><b>Monitorear el pipeline, no el boletín.</b> Las ${fmt(est['Caduca']||0)} caducas del SIM anticipan
+      12-18 meses lo que el Boletín publicará como vacante. Alertar sobre cambios de estado da la ventaja de tiempo.</li>
+    <li><b>Vigilar al IPEEM.</b> Concentra tenencia, morosidad y preferencia legal. Todo movimiento sobre
+      área liberada compite primero contra el Estado (art. 29 <i>in fine</i>).</li>
+    <li><b>Comprar antes de la caída.</b> La transferencia (art. 25 CM) sobre una cartera en pipeline evita
+      el proceso de vacancia y la veda al ex-titular. Priorizar titulares con muchas caducas (Argentina Minera, Minera del Carmen).</li>
+    <li><b>Cronometrar la ventana del art. 90.</b> Para las que sí lleguen a vacancia declarada, el día ~93
+      abre la disponibilidad; anticipar la solicitud y controlar la preferencia del IPEEM.</li>
+    <li><b>Foco geográfico Calingasta–Iglesia, oro/cobre.</b> Ahí está el ${Math.round((C.por_depto['Calingasta'].ha+(C.por_depto['Iglesia']?.ha||0))/T.ha_caduca*100)}%
+      de la superficie que cae, sobre los minerales de mayor valor.</li>
+  </ol>
 
   <h2>Fuentes y método</h2>
   <p class="muted">
   <b>SIM Producción</b> (<a class="src" href="https://simproduccion.sanjuan.gob.ar/expedientes" target="_blank">simproduccion.sanjuan.gob.ar</a>) —
-  padrón administrativo al día (estados, caducidades, concesionarios con CUIT); ${fmt(M.length)} minas vía API pública.
-  <b>Catastro/GeoServer</b> — geometrías oficiales (POSGAR 2007); aporta la superficie por cruce de expediente
-  (${fmt(sim.con_geometria||0)}/${fmt(M.length)} con polígono). <b>Boletín Oficial</b> — línea de tiempo de edictos.
-  El cruce entre fuentes es por número de expediente canónico (solo dígitos) y, para titulares, por CUIT (SIM) o nombre normalizado.
-  Las hectáreas se calculan reproyectando el polígono a EPSG:5344.</p>
+  padrón administrativo vía API pública; se deduplican los tramos por expediente (tramo abierto más reciente).
+  <b>Catastro/GeoServer</b> — geometrías oficiales POSGAR 2007; superficie por reproyección a EPSG:5344.
+  <b>Boletín Oficial</b> — línea de tiempo de edictos. Cruce por expediente canónico (sólo dígitos) y titulares por CUIT.
+  <b>Marco legal:</b> motor de plazos <code>bsj/legal.py</code> sobre Cód. de Minería (Ley 1919) y Cód. Procesal Minero SJ (Ley 688-M).
+  El canon es estimación normativa (art. 215 CM), no deuda liquidada.</p>
   `;
   document.getElementById('main').innerHTML=html;
+
+  // ---- mapa ----
+  const map=L.map('mapa',{scrollWheelZoom:false}).setView([-31.0,-69.3],7);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+    {attribution:'© OpenStreetMap © CARTO',maxZoom:18}).addTo(map);
+  const hoy=new Date();
+  function colorEdad(fc){ if(!fc) return '#f59e0b';
+    const meses=(hoy-new Date(fc))/(1000*3600*24*30.4);
+    if(meses<6) return '#fde68a'; if(meses<12) return '#f59e0b'; if(meses<24) return '#e0533b'; return '#7f1d1d';
+  }
+  const canonMax=Math.max(1,...D.caducas_geo.map(m=>m.canon||0));
+  const pts=[];
+  D.caducas_geo.forEach(m=>{
+    if(!m.cen||m.cen.length<2) return;
+    const [lat,lon]=[m.cen[0],m.cen[1]];   // cen = [lat, lon]
+    if(!isFinite(lat)||!isFinite(lon)) return;
+    const r=5+Math.sqrt((m.canon||0)/canonMax)*16;
+    const mk=L.circleMarker([lat,lon],{radius:r,color:colorEdad(m.fecha_caducidad),weight:1,fillColor:colorEdad(m.fecha_caducidad),fillOpacity:.55});
+    mk.bindPopup(`<b>${m.nombre||m.expediente}</b><br>Expte ${m.expediente} · ${m.departamento||''}<br>
+      ${(m.minerales||[]).join(', ')||'—'}<br>
+      <b>${fmt(m.ha)} ha</b> · ${m.pertenencias} pert. · canon est. <b>${money(m.canon)}</b><br>
+      Caducó: ${m.fecha_caducidad||'—'}<br>
+      <span style="color:#555">${m.titular||''}${m.cuit?' · CUIT '+m.cuit:''}</span>`);
+    mk.addTo(map); pts.push([lat,lon]);
+  });
+  if(pts.length) map.fitBounds(pts,{padding:[30,30]});
 })();
 </script>
 </body>

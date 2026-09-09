@@ -1,0 +1,44 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "nombre": "Pedimento propuesto — Jáchal",
+    "superficie_ha": 6037.5,
+    "unidades": 13,
+    "datum": "POSGAR 2007 Faja 2 (EPSG 5344)",
+    "duracion_dias": 750,
+    "canon": 125840,
+    "estado": "PROPUESTA - no presentado"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -68.629329,
+       -30.049216
+      ],
+      [
+       -68.628941,
+       -30.152954
+      ],
+      [
+       -68.683436,
+       -30.153096
+      ],
+      [
+       -68.683766,
+       -30.049358
+      ],
+      [
+       -68.629329,
+       -30.049216
+      ]
+     ]
+    ]
+   }
+  }
+ ]
+}

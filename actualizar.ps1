@@ -43,7 +43,10 @@ Log "5/6 base de sociedades / entramado..."
 Log "6/7 analisis historico (antiguedad + zonas + areas vacantes)..."
 & $py -m bsj.historico $out *>> $log
 
-Log "7/7 padron SIM Produccion (estados, caducidades, concesionarios)..."
+Log "7/8 padron SIM Produccion (estados, caducidades, concesionarios)..."
 & $py -m bsj.sim $out *>> $log
+
+Log "8/8 informe avanzado (dedup tramos + motor legal + exigibilidad)..."
+& $py -m bsj.informe $out *>> $log
 
 Log "=== Fin. Modelo: $out/modelo.json ==="

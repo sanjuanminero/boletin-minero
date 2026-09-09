@@ -35095,7 +35095,7 @@
         "clave": "546.450-A-94",
         "expediente": "546.450-A-94",
         "titular": "Miranda S.A",
-        "mina": "NEVADA ll",
+        "mina": "NEVADA II",
         "minerales": "oro",
         "departamento": "Iglesia",
         "estado": "edicto_mensura",
@@ -35196,6 +35196,700 @@
             [
               -69.69543645908514,
               -29.15462952560044
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "clave": "1124-000373-B-10",
+        "expediente": "1124-000373-B-10",
+        "titular": "Bastias Hugo Enrique",
+        "mina": "MARIA",
+        "minerales": "",
+        "departamento": "Iglesia",
+        "estado": "edicto_mensura",
+        "estado_label": "Edicto de mensura",
+        "superficie_ha": null,
+        "n_eventos": 1,
+        "meses": "2026-07",
+        "datum": "posgar2007",
+        "centroide_lat": -30.037534,
+        "centroide_lon": -69.069651
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -69.09925473987488,
+              -30.032630978382958
+            ],
+            [
+              -69.07852986999129,
+              -30.05731588649545
+            ],
+            [
+              -69.0543771199325,
+              -30.057328091845584
+            ],
+            [
+              -69.0543727877981,
+              -30.049398699470192
+            ],
+            [
+              -69.05644747782233,
+              -30.014270404602634
+            ],
+            [
+              -69.07492206215082,
+              -30.014261184594247
+            ],
+            [
+              -69.09925473987488,
+              -30.032630978382958
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "clave": "1124-212-0-2024",
+        "expediente": "1124-212-0-2024",
+        "titular": "GRUPO IDAHO S.A.S",
+        "mina": null,
+        "minerales": "bentonita",
+        "departamento": "Calingasta",
+        "estado": "edicto_mensura",
+        "estado_label": "Edicto de mensura",
+        "superficie_ha": null,
+        "n_eventos": 2,
+        "meses": "2026-07",
+        "datum": "posgar2007",
+        "centroide_lat": -31.625504,
+        "centroide_lon": -69.444969
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.4449685551947,
+          -31.625503700158653
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "clave": "1124-224-E-25",
+        "expediente": "1124-224-E-25",
+        "titular": "Elizondo Juan Carlos",
+        "mina": null,
+        "minerales": "",
+        "departamento": "Albardón",
+        "estado": "otro",
+        "estado_label": "Otro / sin clasificar",
+        "superficie_ha": null,
+        "n_eventos": 1,
+        "meses": "2026-07",
+        "datum": "posgar2007",
+        "centroide_lat": -31.454897,
+        "centroide_lon": -68.55169
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -68.55298221221805,
+              -31.452868873054335
+            ],
+            [
+              -68.55134331555664,
+              -31.455868855552467
+            ],
+            [
+              -68.5497739682466,
+              -31.458252260774334
+            ],
+            [
+              -68.55265946776429,
+              -31.452597180638513
+            ],
+            [
+              -68.55298221221805,
+              -31.452868873054335
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "clave": "1124-307-B-2024",
+        "expediente": "1124-307-B-2024",
+        "titular": "GABRIEL ENRIQUE BASTIAS",
+        "mina": null,
+        "minerales": "oro",
+        "departamento": "Calingasta",
+        "estado": "edicto_mensura",
+        "estado_label": "Edicto de mensura",
+        "superficie_ha": null,
+        "n_eventos": 1,
+        "meses": "2026-07",
+        "datum": "posgar2007",
+        "centroide_lat": -30.912419,
+        "centroide_lon": -69.609068
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.60906815182992,
+          -30.9124188560354
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "clave": "1124-333-D-24",
+        "expediente": "1124-333-D-24",
+        "titular": "Dirección Provincial de Vialidad",
+        "mina": null,
+        "minerales": "",
+        "departamento": "San Martín",
+        "estado": "edicto_mensura",
+        "estado_label": "Edicto de mensura",
+        "superficie_ha": null,
+        "n_eventos": 1,
+        "meses": "2026-07",
+        "datum": "posgar2007",
+        "centroide_lat": -31.527273,
+        "centroide_lon": -68.419386
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -68.42048067243454,
+              -31.527849282840084
+            ],
+            [
+              -68.41711436332557,
+              -31.530222309008163
+            ],
+            [
+              -68.41968121221684,
+              -31.525039320203966
+            ],
+            [
+              -68.4202667772574,
+              -31.525982802676694
+            ],
+            [
+              -68.42048067243454,
+              -31.527849282840084
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "clave": "1118-R-96",
+        "expediente": "1118-R-96",
+        "titular": "Minera Peregrine Argentina S.A.U",
+        "mina": "PAMPA",
+        "minerales": "",
+        "departamento": "Calingasta",
+        "estado": "edicto_mensura",
+        "estado_label": "Edicto de mensura",
+        "superficie_ha": null,
+        "n_eventos": 1,
+        "meses": "2026-08",
+        "datum": "posgar2007",
+        "centroide_lat": -31.536724,
+        "centroide_lon": -70.479297
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.56963690386696,
+              -31.52429503625649
+            ],
+            [
+              -70.48600759773622,
+              -31.56136375963656
+            ],
+            [
+              -70.43335996425353,
+              -31.561965010553447
+            ],
+            [
+              -70.4326918379676,
+              -31.518237460775314
+            ],
+            [
+              -70.47479043484478,
+              -31.517759009316435
+            ],
+            [
+              -70.56963690386696,
+              -31.52429503625649
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "clave": "1124-000256-2020",
+        "expediente": "1124-000256-2020",
+        "titular": "LP E.E.M",
+        "mina": "RA 1",
+        "minerales": "",
+        "departamento": "Calingasta",
+        "estado": "edicto_mensura",
+        "estado_label": "Edicto de mensura",
+        "superficie_ha": null,
+        "n_eventos": 1,
+        "meses": "2026-08",
+        "datum": "posgar2007",
+        "centroide_lat": -31.211437,
+        "centroide_lon": -70.292871
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.3343144975767,
+              -31.19940794591631
+            ],
+            [
+              -70.3343369298192,
+              -31.217444080079584
+            ],
+            [
+              -70.28187112895243,
+              -31.21745250037907
+            ],
+            [
+              -70.27137780929249,
+              -31.21745159808574
+            ],
+            [
+              -70.2676728876258,
+              -31.21745101460472
+            ],
+            [
+              -70.26765262085328,
+              -31.199414715375447
+            ],
+            [
+              -70.3343144975767,
+              -31.19940794591631
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "clave": "1124-217-B-22",
+        "expediente": "1124-217-B-22",
+        "titular": "Bosque Hugo Arturo",
+        "mina": "MABEL 1",
+        "minerales": "",
+        "departamento": "Calingasta",
+        "estado": "edicto_mensura",
+        "estado_label": "Edicto de mensura",
+        "superficie_ha": null,
+        "n_eventos": 1,
+        "meses": "2026-08, 2026-09",
+        "datum": "posgar2007",
+        "centroide_lat": -30.553509,
+        "centroide_lon": -70.130916
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.14401524133585,
+              -30.55971055827887
+            ],
+            [
+              -70.11792105790266,
+              -30.556329194012584
+            ],
+            [
+              -70.11783833233694,
+              -30.54911122463038
+            ],
+            [
+              -70.14388826663925,
+              -30.548885012120873
+            ],
+            [
+              -70.14401524133585,
+              -30.55971055827887
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "clave": "1124-231-B-2023",
+        "expediente": "1124-231-B-2023",
+        "titular": "“BENEGAS DIEGO ARMANDO",
+        "mina": null,
+        "minerales": "cuarzo",
+        "departamento": "Valle Fértil",
+        "estado": "otro",
+        "estado_label": "Otro / sin clasificar",
+        "superficie_ha": null,
+        "n_eventos": 1,
+        "meses": "2026-08",
+        "datum": "posgar2007",
+        "centroide_lat": -30.619303,
+        "centroide_lon": -67.613074
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -67.61307355011296,
+          -30.619302691657673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "clave": "1124-385-E-15",
+        "expediente": "1124-385-E-15",
+        "titular": "Elizondo Dina Myriam",
+        "mina": "ESPERANZA",
+        "minerales": "",
+        "departamento": "Calingasta",
+        "estado": "edicto_mensura",
+        "estado_label": "Edicto de mensura",
+        "superficie_ha": null,
+        "n_eventos": 1,
+        "meses": "2026-08, 2026-09",
+        "datum": "posgar2007",
+        "centroide_lat": -30.894759,
+        "centroide_lon": -70.23393
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.24780809449427,
+              -30.92523111739734
+            ],
+            [
+              -70.22083678025697,
+              -30.925488586977924
+            ],
+            [
+              -70.22003829406196,
+              -30.86253711925486
+            ],
+            [
+              -70.24703728205333,
+              -30.865779952153318
+            ],
+            [
+              -70.24780809449427,
+              -30.92523111739734
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "clave": "1124-591-A-25",
+        "expediente": "1124-591-A-25",
+        "titular": "GOLDEN MINING S$.A",
+        "mina": null,
+        "minerales": "oro",
+        "departamento": "Caucete",
+        "estado": "cateo_exploracion",
+        "estado_label": "Permiso de cateo / exploración",
+        "superficie_ha": null,
+        "n_eventos": 1,
+        "meses": "2026-08",
+        "datum": "posgar2007",
+        "centroide_lat": -31.555908,
+        "centroide_lon": -67.473074
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -67.50341723181529,
+              -31.56980313462742
+            ],
+            [
+              -67.45626859255287,
+              -31.557585220391285
+            ],
+            [
+              -67.45953709208372,
+              -31.540336302103896
+            ],
+            [
+              -67.50341723181529,
+              -31.56980313462742
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "clave": "1124-610-G-2024",
+        "expediente": "1124-610-G-2024",
+        "titular": "GOLDEN MINING $.A",
+        "mina": "EXPTE",
+        "minerales": "oro",
+        "departamento": "Calingasta",
+        "estado": "edicto_mensura",
+        "estado_label": "Edicto de mensura",
+        "superficie_ha": null,
+        "n_eventos": 1,
+        "meses": "2026-08",
+        "datum": "posgar2007",
+        "centroide_lat": -30.645338,
+        "centroide_lon": -68.859395
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.87979377007389,
+          -30.617465350461103
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "clave": "1124-612-G-2024",
+        "expediente": "1124-612-G-2024",
+        "titular": "GOLDEN MINING S.A",
+        "mina": null,
+        "minerales": "oro",
+        "departamento": "Ullum",
+        "estado": "edicto_mensura",
+        "estado_label": "Edicto de mensura",
+        "superficie_ha": null,
+        "n_eventos": 1,
+        "meses": "2026-08",
+        "datum": "posgar2007",
+        "centroide_lat": -30.673211,
+        "centroide_lon": -68.838996
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.83899580393899,
+          -30.673210527716584
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "clave": "1124-634-F-23",
+        "expediente": "1124-634-F-23",
+        "titular": "Filo del Sol Exploraciones S.A",
+        "mina": null,
+        "minerales": "",
+        "departamento": "Iglesia",
+        "estado": "servidumbre",
+        "estado_label": "Servidumbre minera",
+        "superficie_ha": null,
+        "n_eventos": 1,
+        "meses": "2026-08",
+        "datum": "posgar2007",
+        "centroide_lat": -28.510013,
+        "centroide_lon": -69.577395
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -69.61655974565113,
+              -28.54390347729916
+            ],
+            [
+              -69.55678602390695,
+              -28.54416173064901
+            ],
+            [
+              -69.55662009003981,
+              -28.51258285566318
+            ],
+            [
+              -69.57961274379599,
+              -28.439402365567155
+            ],
+            [
+              -69.61655974565113,
+              -28.54390347729916
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "clave": "1124-649-E-241",
+        "expediente": "1124-649-E-241",
+        "titular": "Epitermal S.A",
+        "mina": null,
+        "minerales": "cuarzo",
+        "departamento": "Albardón",
+        "estado": "cateo_exploracion",
+        "estado_label": "Permiso de cateo / exploración",
+        "superficie_ha": null,
+        "n_eventos": 1,
+        "meses": "2026-08",
+        "datum": "posgar2007",
+        "centroide_lat": -30.619303,
+        "centroide_lon": -67.613074
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -67.61307355011296,
+          -30.619302691657673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "clave": "338.682-1-92",
+        "expediente": "338.682-1-92",
+        "titular": null,
+        "mina": "RA 1",
+        "minerales": "",
+        "departamento": "Calingasta",
+        "estado": "edicto_mensura",
+        "estado_label": "Edicto de mensura",
+        "superficie_ha": null,
+        "n_eventos": 1,
+        "meses": "2026-08",
+        "datum": "posgar2007",
+        "centroide_lat": -31.210994,
+        "centroide_lon": -70.295795
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.3343144975767,
+              -31.19940794591631
+            ],
+            [
+              -70.3343243578725,
+              -31.20833071086771
+            ],
+            [
+              -70.31335058115543,
+              -31.217449982337587
+            ],
+            [
+              -70.28187112895243,
+              -31.21745250037907
+            ],
+            [
+              -70.27137780929249,
+              -31.21745159808574
+            ],
+            [
+              -70.2676728876258,
+              -31.21745101460472
+            ],
+            [
+              -70.26765262085328,
+              -31.199414715375447
+            ],
+            [
+              -70.3343144975767,
+              -31.19940794591631
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "clave": "583-R-95",
+        "expediente": "583-R-95",
+        "titular": "Darío Becerra, Paz Eric Martín",
+        "mina": "LOS CRISOLES 3",
+        "minerales": "",
+        "departamento": "Iglesia",
+        "estado": "edicto_mensura",
+        "estado_label": "Edicto de mensura",
+        "superficie_ha": null,
+        "n_eventos": 1,
+        "meses": "2026-09",
+        "datum": "posgar2007",
+        "centroide_lat": -29.760661,
+        "centroide_lon": -69.674427
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -69.71438601245055,
+              -29.767673647161228
+            ],
+            [
+              -69.68032703233828,
+              -29.776874115386395
+            ],
+            [
+              -69.63172714850128,
+              -29.77711529836001
+            ],
+            [
+              -69.6315008606175,
+              -29.741032264998033
+            ],
+            [
+              -69.71419412083804,
+              -29.740611834928433
+            ],
+            [
+              -69.71438601245055,
+              -29.767673647161228
             ]
           ]
         ]

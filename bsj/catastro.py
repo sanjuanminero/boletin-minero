@@ -46,6 +46,10 @@ CAPAS = {
     "servidumbres_lin": ("mineria:vw_servidumbres_lineas",    "Servidumbres (línea)"),
     "proyectos":        ("mineria:vw_proyectosmineros",       "Proyectos mineros"),
     "limite":           ("mineria:vw_limite_provincial_dgc",  "Límite provincial"),
+    # --- agregadas 31/08/2026: estaban publicadas en el WFS y no se bajaban ---
+    "lem":              ("mineria:vw_lem",                    "Labores legales (puntos)"),
+    "aprov_comun":      ("mineria:vw_aprovechamiento_comun",  "Aprovechamiento común"),
+    "zonas_temporada":  ("mineria:vw_zonas_temporada",        "Zonas de temporada"),
 }
 
 

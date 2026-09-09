@@ -19,6 +19,22 @@ planilla Excel. Incluye una app de mapa (`mapa_catastro_minero.html`, Leaflet + 
 - `bsj/sociedades.py` — **base de sociedades/titulares** desde el catastro (minas+manifestaciones tienen `titular`+`fechaInscripcion`+geom). Separa co-titularidad (' - ') en entidades y genera aristas para el entramado. Produce `sociedades.json`.
 - `sociedades.html`  — **buscador por sociedad**: escribís una sociedad/persona y ves todas sus propiedades en el mapa + fechas de registro + co-titulares + edictos.
 - `red.html`         — **entramado**: grafo de co-titularidad (personas/sociedades), clústers familiares (ej. Bastias), fuerza propia en canvas. Nota: los edictos NO nombran agrimensores (0 menciones en el OCR).
+- `bsj/legal.py`     — **motor de plazos procesales mineros**: catálogo de 48 plazos con norma,
+  consecuencia y marca de fatalidad; resuelve hábiles vs corridos (art. 26 Ley 688-M) y arma
+  cronogramas de cateo, manifestación y vacancia. Es la base del bot abogado — usarlo en vez de
+  calcular fechas a mano. `python -m bsj.legal` imprime ejemplos.
+- `.claude/skills/abogado-minero-sj/` — **bot abogado minero**: skill que asesora sobre adquisición
+  y defensa de derechos mineros en San Juan. `references/` tiene marco legal, los 5 caminos de
+  adquisición, los formularios oficiales campo por campo y los datos de mercado del padrón.
+- `legal/normas/`    — textos legales completos: `LP-688-M.txt` (Cód. Proc. Mineros SJ),
+  `codmineria_nac.txt` y `cm_articulos.json` (362 artículos del Cód. de Minería indexados por
+  número — leer de acá antes de citar, no de memoria). `legal/formularios_ocr/` tiene los 15
+  formularios tipo de la Dirección de Minería OCR-eados.
+- `bsj/oportunidades.py` — **mapa de oportunidades**: clasifica cada derecho por
+  *exigibilidad legal* (DISPONIBLE / PIPELINE / BLOQUEADO), no por su estado
+  administrativo. ⚠ `historicoMina` del SIM devuelve **TRAMOS**, no minas: 2.898
+  registros son 1.848 expedientes. Usar siempre `estado_actual()` para deduplicar
+  (455 caducas reales, no 690). `python -m bsj.oportunidades`.
 - `bsj/pipeline.py`  — orquesta un PDF suelto (legado).
 - `escanear.py`      — **orquestador principal**: escanea un rango de fechas → modelo.json + geojson + xlsx + calendario.
 - `actualizar.ps1`   — **corrida diaria** (Programador de tareas, tarea `BoletinMinero-Diario` 07:00): encadena escanear→reproyectar→descargar_padron→cruce sobre `out_<año>`. Logs en `logs/`. Incremental por caché de PDF/OCR.
