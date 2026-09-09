@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Vencimientos — Padrón Minero SIM San Juan</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+  :root{--bg:#0f1115;--panel:#171a21;--panel2:#1e222b;--line:#2a2f3a;--txt:#e6e8ec;--muted:#9aa3b2;--accent:#F3C323;
+        --vig:#1D9E75;--cad:#e0533b;--vac:#888780}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;font-family:system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt);overflow:hidden}
+  header{display:flex;align-items:center;gap:12px;padding:9px 14px;background:var(--panel);border-bottom:1px solid var(--line);flex-wrap:wrap}
+  header h1{font-size:15px;font-weight:600;margin:0}
+  header h1 b{color:var(--accent)}
+  .btn{background:var(--panel2);border:1px solid var(--line);color:var(--muted);padding:5px 10px;border-radius:7px;font-size:12px;cursor:pointer;text-decoration:none}
+  .btn:hover{color:var(--accent)}
+  .toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:8px 14px;background:var(--panel);border-bottom:1px solid var(--line)}
+  .toolbar label{font-size:11px;color:var(--muted);margin-right:4px}
+  .toolbar select,.toolbar input[type=text]{background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:5px 8px;border-radius:7px;font-size:12px}
+  .toolbar input[type=text]{min-width:210px}
+  .cnt{font-size:11px;color:var(--muted);margin-left:auto}
+  #wrap{display:flex;height:calc(100% - 92px)}
+  #side{width:340px;min-width:340px;overflow:auto;border-right:1px solid var(--line);background:var(--panel)}
+  #map{flex:1}
+  .box{padding:12px 14px;border-bottom:1px solid var(--line)}
+  .box h3{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  .kpis{display:flex;gap:8px;flex-wrap:wrap}
+  .kpi{flex:1;min-width:86px;background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:8px 10px}
+  .kpi .v{font-size:19px;font-weight:700}
+  .kpi .l{font-size:10.5px;color:var(--muted);margin-top:1px}
+  .bar{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:11.5px}
+  .bar .nm{width:118px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted)}
+  .bar .t{flex:1;height:12px;background:var(--panel2);border-radius:4px;overflow:hidden}
+  .bar .t i{display:block;height:100%;background:var(--cad);border-radius:4px}
+  .bar .v{width:34px;text-align:right}
+  .row{display:flex;align-items:center;gap:9px;padding:7px 14px;cursor:pointer;border-bottom:1px solid var(--line);font-size:12px}
+  .row:hover{background:var(--panel2)}
+  .row .dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+  .row .nm{flex:1;overflow:hidden}
+  .row .nm b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .row .nm .s{color:var(--muted);font-size:10.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .row .f{color:var(--cad);font-size:11px;white-space:nowrap}
+  .leg{position:absolute;right:12px;bottom:20px;z-index:500;background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:9px 12px;font-size:11px;color:var(--muted);line-height:1.7}
+  .leg i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+  .leaflet-popup-content{font-size:12px;line-height:1.5}.pp b{color:#1a1a1a}
+</style>
+</head>
+<body>
+<header>
+  <h1><b>Vencimientos</b> · Padrón Minero (SIM Producción)</h1>
+  <a class="btn" href="visor.html">Visor</a>
+  <a class="btn" href="sociedades.html">Distribución</a>
+  <a class="btn" href="historico.html">Análisis</a>
+  <a class="btn" href="linea.html">Línea de tiempo</a>
+</header>
+<div class="toolbar">
+  <span><label>Estado</label><select id="fEstado"></select></span>
+  <span><label>Caduca en</label><select id="fAnio"></select></span>
+  <span><label>Depto</label><select id="fDepto"></select></span>
+  <span><label>Buscar</label><input id="q" type="text" placeholder="concesionario, expediente o mina…"/></span>
+  <span class="cnt" id="cnt"></span>
+</div>
+<div id="wrap">
+  <div id="side"></div>
+  <div id="map"></div>
+</div>
+<div class="leg" id="leg"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const COL={'Vigente':'#1D9E75','Caduca':'#e0533b','Vacante No Disponible':'#888780'};
+let DATA=null, map=null, layer=null, rend=null;
+const $=id=>document.getElementById(id);
+const deb=s=>(s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();
+const conc=m=>(m.concesionarios||[]).map(c=>c.nombre).filter(Boolean).join(' - ')||'—';
+const concCuit=m=>(m.concesionarios||[]).map(c=>c.nombre+(c.id_fiscal?' ('+c.id_fiscal+')':'')).filter(Boolean).join(' · ');
+
+async function load(){
+  for(const p of ['out_hist/sim/padron_sim.json','sim/padron_sim.json']){
+    try{const r=await fetch(p); if(r.ok){DATA=await r.json(); break;}}catch(e){}
+  }
+  if(!DATA){ $('side').innerHTML='<div class="box">No pude cargar padron_sim.json (corré <code>python -m bsj.sim ./out_hist</code>).</div>'; return; }
+  initMap();
+  // filtros
+  fill('fEstado', ['Todos',...uniq(m=>m.estado)]);
+  fill('fAnio', ['Todos',...uniq(m=>m.fecha_caducidad&&m.fecha_caducidad.slice(0,4)).sort()]);
+  fill('fDepto', ['Todos',...uniq(m=>m.departamento).sort()]);
+  ['fEstado','fAnio','fDepto'].forEach(id=>$(id).onchange=render);
+  $('q').oninput=render;
+  render();
+}
+function uniq(fn){ return [...new Set(DATA.minas.map(fn).filter(Boolean))]; }
+function fill(id,arr){ $(id).innerHTML=arr.map(v=>`<option value="${v==='Todos'?'':v}">${v}</option>`).join(''); }
+function initMap(){
+  map=L.map('map',{zoomControl:true,preferCanvas:true}).setView([-31.0,-69.0],7);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+  L.control.layers({'Calles':map._layers[Object.keys(map._layers)[0]],
+    'Satélite':L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Esri'})},null,{position:'topright'}).addTo(map);
+  rend=L.canvas({padding:0.5});
+}
+function filtrados(){
+  const est=$('fEstado').value, an=$('fAnio').value, dep=$('fDepto').value, q=deb($('q').value);
+  return DATA.minas.filter(m=>{
+    if(est && m.estado!==est) return false;
+    if(an && !(m.fecha_caducidad||'').startsWith(an)) return false;
+    if(dep && m.departamento!==dep) return false;
+    if(q && !deb([m.expediente,m.nombre,conc(m),(m.minerales||[]).join(' '),m.departamento].join(' ')).includes(q)) return false;
+    return true;
+  });
+}
+function render(){
+  const fs=filtrados();
+  $('cnt').textContent=fs.length.toLocaleString('es-AR')+' minas';
+  // mapa
+  if(layer) layer.remove(); layer=L.layerGroup().addTo(map);
+  const bounds=[];
+  fs.forEach(m=>{ if(!m.pol) return;
+    const col=COL[m.estado]||'#888';
+    const ll=m.pol.map(([lon,lat])=>[lat,lon]);
+    L.polygon(ll,{renderer:rend,color:col,weight:1,fillColor:col,fillOpacity:.35})
+      .bindPopup(`<div class="pp"><b>${m.nombre||m.expediente||'mina'}</b> <span style="color:${col}">· ${m.estado}</span><br>
+        <span style="color:#555">${m.expediente||''}</span><br>${concCuit(m)||'sin concesionario'}<br>
+        ${m.fecha_caducidad?'<b style="color:#c0392b">Caduca: '+m.fecha_caducidad+'</b><br>':''}
+        <span style="color:#555">${m.departamento||''} · ${(m.minerales||[]).join(', ')} · ${m.pertenencias||'?'} pert.</span></div>`,{maxWidth:300})
+      .addTo(layer);
+    ll.forEach(p=>bounds.push(p));
+  });
+  if(bounds.length && ($('fEstado').value||$('fAnio').value||$('fDepto').value||$('q').value)) map.fitBounds(bounds,{padding:[40,40],maxZoom:11});
+  $('leg').innerHTML='<i style="background:var(--vig)"></i>Vigente &nbsp;<i style="background:var(--cad)"></i>Caduca &nbsp;<i style="background:var(--vac)"></i>Vacante';
+  renderSide(fs);
+}
+function renderSide(fs){
+  const est={}; fs.forEach(m=>est[m.estado]=(est[m.estado]||0)+1);
+  const cad=fs.filter(m=>m.fecha_caducidad).sort((a,b)=>a.fecha_caducidad.localeCompare(b.fecha_caducidad));
+  // top concesionarios caducando
+  const cc={}; cad.forEach(m=>(m.concesionarios||[]).forEach(c=>{ if(c.nombre) cc[c.nombre]=(cc[c.nombre]||0)+1; }));
+  const top=Object.entries(cc).sort((a,b)=>b[1]-a[1]).slice(0,6);
+  const maxc=top.length?top[0][1]:1;
+  let html=`<div class="box"><h3>Estado (filtro actual)</h3><div class="kpis">
+    <div class="kpi"><div class="v" style="color:var(--vig)">${(est['Vigente']||0).toLocaleString('es-AR')}</div><div class="l">Vigente</div></div>
+    <div class="kpi"><div class="v" style="color:var(--cad)">${(est['Caduca']||0).toLocaleString('es-AR')}</div><div class="l">Caduca</div></div>
+    <div class="kpi"><div class="v" style="color:var(--vac)">${(est['Vacante No Disponible']||0).toLocaleString('es-AR')}</div><div class="l">Vacante</div></div>
+  </div></div>`;
+  if(top.length){
+    html+=`<div class="box"><h3>Quién pierde más (caducando)</h3>`+
+      top.map(([n,v])=>`<div class="bar"><span class="nm" title="${n}">${n}</span><span class="t"><i style="width:${Math.max(6,v/maxc*100)}%"></i></span><span class="v">${v}</span></div>`).join('')+`</div>`;
+  }
+  html+=`<div class="box"><h3>Vencimientos — ${cad.length} caducando ${cad.length>200?'(primeros 200)':''}</h3>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:2px">Ordenadas por fecha de caducidad. Clic para ubicar.</div></div>`;
+  html+=cad.slice(0,200).map((m,i)=>`<div class="row" data-i="${DATA.minas.indexOf(m)}">
+      <span class="dot" style="background:${COL[m.estado]||'#888'}"></span>
+      <span class="nm"><b>${m.nombre||m.expediente||'mina'}</b><span class="s">${conc(m)}</span></span>
+      <span class="f">${m.fecha_caducidad}</span></div>`).join('');
+  $('side').innerHTML=html;
+  $('side').querySelectorAll('.row').forEach(el=>el.onclick=()=>{
+    const m=DATA.minas[+el.dataset.i]; if(!m.cen) return;
+    map.setView(m.cen,13);
+    L.popup().setLatLng(m.cen).setContent(`<div class="pp"><b>${m.nombre||''}</b> · ${m.estado}<br>Caduca ${m.fecha_caducidad||'—'}</div>`).openOn(map);
+  });
+}
+load();
+</script>
+</body>
+</html>

@@ -40,7 +40,10 @@ Log "4/5 cruce boletín <-> catastro..."
 Log "5/6 base de sociedades / entramado..."
 & $py -m bsj.sociedades $out *>> $log
 
-Log "6/6 analisis historico (antiguedad + zonas + areas vacantes)..."
+Log "6/7 analisis historico (antiguedad + zonas + areas vacantes)..."
 & $py -m bsj.historico $out *>> $log
+
+Log "7/7 padron SIM Produccion (estados, caducidades, concesionarios)..."
+& $py -m bsj.sim $out *>> $log
 
 Log "=== Fin. Modelo: $out/modelo.json ==="
