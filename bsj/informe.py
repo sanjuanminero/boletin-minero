@@ -101,6 +101,25 @@ def construir(salida):
     }
     pedibles_hoy = niveles.get("DISPONIBLE", [])
 
+    def _geo(m, extra=None):
+        d = {"expediente": m.get("expediente"), "nombre": m.get("nombre"),
+             "departamento": m.get("departamento"), "cen": m.get("cen"), "pol": m.get("pol"),
+             "ha": round(m.get("ha") or 0, 1), "canon": m.get("canon") or 0,
+             "pertenencias": m.get("pertenencias") or 0,
+             "minerales": m.get("minerales") or [],
+             "tipoYacimiento": m.get("tipoYacimiento"),
+             "fecha_caducidad": (m.get("fecha_caducidad") or "")[:10],
+             "fechainscripcionvacante": (m.get("fechainscripcionvacante") or "")[:10],
+             "titular": (m.get("concesionarios") or [{}])[0].get("nombre"),
+             "cuit": (m.get("concesionarios") or [{}])[0].get("id_fiscal")}
+        if extra:
+            d.update(extra)
+        return d
+
+    # las 11 legalmente pedibles HOY (art. 220 CM) — con motivo y días de vacancia
+    pedibles_geo = [_geo(m, {"motivo": m.get("motivo"), "norma": m.get("norma"),
+                             "dias_vacante": m.get("dias_vacante")}) for m in pedibles_hoy]
+
     def _grp(items, keyfn):
         g = defaultdict(lambda: {"n": 0, "ha": 0.0, "canon": 0})
         for m in items:
@@ -162,8 +181,10 @@ def construir(salida):
          "sin cateo previo), labor legal y mensura.", "norma": "arts. 57-59 Ley 688-M; arts. 111 ss. CM",
          "clave": "manifestacion"},
         {"n": "Transferencia / cesión", "desc": "Comprar el derecho a un titular ANTES de que "
-         "caduque (evita el proceso de vacancia y la veda al ex-titular). Ideal para carteras "
-         "en riesgo detectadas en el pipeline.", "norma": "art. 25 CM (transmisibilidad)",
+         "caduque (evita el proceso de vacancia y la veda al ex-titular). La mina es inmueble y se "
+         "adquiere como propiedad raíz; no se puede dividir materialmente (se cede entera o en cuotas). "
+         "Ideal para carteras en riesgo detectadas en el pipeline.",
+         "norma": "arts. 12 y 21 CM (mina inmueble, adquirible); art. 14 (indivisibilidad)",
          "clave": "transferencia"},
         {"n": "Preferencia estatal (IPEEM)", "desc": "El IPEEM tiene preferencia sobre el área "
          "liberada durante 180 días hábiles; los privados operan después de esa ventana.",
@@ -205,18 +226,10 @@ def construir(salida):
         "marco_legal": {"vacancia": marco_vac, "caminos": caminos,
                         "canon_ref": {"1ra_por_pertenencia": L.CANON_1RA, "2da": L.CANON_2DA,
                                       "cateo_unidad": getattr(L, "CANON_CATEO_UNIDAD", None)}},
-        # compacto para el mapa de vencimiento (solo caducas georreferenciadas)
-        "caducas_geo": [
-            {"expediente": m.get("expediente"), "nombre": m.get("nombre"),
-             "departamento": m.get("departamento"), "cen": m.get("cen"),
-             "ha": round(m.get("ha") or 0, 1), "canon": m.get("canon") or 0,
-             "pertenencias": m.get("pertenencias") or 0,
-             "minerales": m.get("minerales") or [],
-             "fecha_caducidad": (m.get("fecha_caducidad") or "")[:10],
-             "titular": (m.get("concesionarios") or [{}])[0].get("nombre"),
-             "cuit": (m.get("concesionarios") or [{}])[0].get("id_fiscal")}
-            for m in cad if m.get("cen")
-        ],
+        # compacto para el mapa de vencimiento (solo caducas georreferenciadas, con polígono)
+        "caducas_geo": [_geo(m) for m in cad if m.get("pol") or m.get("cen")],
+        # las 11 legalmente pedibles HOY (art. 220 CM), con polígono
+        "pedibles_geo": pedibles_geo,
     }
     fp = os.path.join(salida, "sim", "informe_avanzado.json")
     json.dump(doc, open(fp, "w", encoding="utf-8"), ensure_ascii=False)

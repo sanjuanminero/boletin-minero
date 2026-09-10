@@ -61,7 +61,8 @@
   .camino .h{font-weight:600;color:var(--accent);font-size:13.5px}
   .camino .n{font-size:11px;color:var(--muted);margin-top:2px}
   .camino p{margin:6px 0 0;font-size:13px}
-  #mapa{height:440px;border-radius:12px;border:1px solid var(--line);margin:10px 0}
+  #mapa,#mapaPed{height:440px;border-radius:12px;border:1px solid var(--line);margin:10px 0}
+  #mapaPed{height:380px}
   .leaflet-popup-content{font-size:12.5px;color:#111}
   .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:6px 2px}
   .legend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:5px;vertical-align:middle}
@@ -159,17 +160,37 @@ function barList(rows,color,unit){
   quien quiere quedarse con un área que un competidor dejó caer.</div>
 
   <h2><span class="n">3</span>Mapa de vencimiento</h2>
-  <p>Las <b>${fmt(D.caducas_geo.length)}</b> minas caducas georreferenciadas. El tamaño del círculo es
-  proporcional al canon anual adeudado; el color, a la antigüedad de la caducidad (más rojo = hace más tiempo,
-  más cerca de la anulación del art. 220).</p>
+  <p>Las <b>${fmt(D.caducas_geo.length)}</b> minas caducas dibujadas con su <b>polígono real</b> (catastro,
+  POSGAR 2007). El color va con la antigüedad de la caducidad — más rojo = hace más tiempo, más cerca de la
+  anulación del art. 220. Clic en cada parcela para ver expediente, titular, canon y fecha.</p>
   <div id="mapa"></div>
   <div class="legend">
     <span><i style="background:#fde68a"></i>caducó hace poco (&lt;6m)</span>
     <span><i style="background:#f59e0b"></i>6-12 meses</span>
     <span><i style="background:#e0533b"></i>1-2 años</span>
     <span><i style="background:#7f1d1d"></i>+2 años (cerca de art. 220)</span>
-    <span class="muted">· radio ∝ canon adeudado</span>
   </div>
+
+  <h2><span class="n">3b</span>Las ${fmt(D.pedibles_geo.length)} minas pedibles HOY</h2>
+  <p>De las ${fmt(est['Caduca']||0)} caducas, el circuito de vacancia sólo está <b>completo</b> en
+  <b>${fmt(D.pedibles_geo.length)} expedientes</b>: registros empadronados como vacantes por <b>más de 3 años</b>,
+  cuyo asiento se anula de pleno derecho y el terreno queda franco (<b>art. 220 CM</b>). Son las únicas
+  legalmente disponibles para pedir en este momento. Éstas son, con su polígono:</p>
+  <div id="mapaPed"></div>
+  <div class="card"><table>
+    <tr><th>Mina</th><th>Depto</th><th class="n">ha</th><th class="n">Años vacante</th><th>Titular anterior</th></tr>
+    ${D.pedibles_geo.slice().sort((a,b)=>(b.dias_vacante||0)-(a.dias_vacante||0)).map(p=>`<tr>
+      <td title="${p.expediente}">${p.nombre||p.expediente}</td>
+      <td>${p.departamento||'—'}</td>
+      <td class="n">${p.ha?fmt(p.ha):'s/d'}</td>
+      <td class="n">${p.dias_vacante?(p.dias_vacante/365).toFixed(1):'—'}</td>
+      <td class="muted">${p.titular||'—'}</td></tr>`).join('')}
+  </table>
+  <p class="muted">“ha s/d” = el catastro no tiene polígono para ese expediente (registros muy antiguos);
+  igual son pedibles. La antigüedad se cuenta desde la inscripción de vacancia.</p></div>
+  <div class="insight">Ojo con el <b>art. 220</b>: la anulación incorpora el terreno <i>de pleno derecho y
+  sin cargo a los permisos de exploración vigentes que lo cubran</i>. Antes de pedir, verificar en el visor
+  si un cateo activo ya se superpone: en ese caso el área cae dentro de ese permiso, no queda libre para un tercero.</div>
 
   <h2><span class="n">4</span>Dónde y qué se libera</h2>
   <div class="grid2">
@@ -202,6 +223,43 @@ function barList(rows,color,unit){
 
   <h2><span class="n">6</span>Los cinco caminos de adquisición</h2>
   ${ML.caminos.map(c=>`<div class="camino"><div class="h">${c.n}</div><div class="n">${c.norma}</div><p>${c.desc}</p></div>`).join('')}
+
+  <h3>En detalle: transferencia / cesión — la vía más rápida</h3>
+  <p>La mina es un <b>inmueble</b> (art. 12 CM), se concede <b>por tiempo ilimitado</b> (art. 18) y se
+  <b>adquiere y posee como una propiedad raíz</b> (art. 21): puede venderse, cederse, arrendarse, hipotecarse o
+  aportarse a una sociedad. La única restricción fuerte es que <b>no se puede dividir materialmente</b>
+  (art. 14) — se transfiere la mina entera o cuotas-parte indivisas. No hace falta esperar a que caduque ni
+  recorrer el circuito de vacancia: se compra el derecho <b>directamente al titular</b>. Es la única vía que
+  <b>no depende del ritmo de la Dirección de Minería</b> —que, como muestra este informe, tiene el circuito de
+  vacancia detenido— y la única que <b>esquiva la veda al ex-titular</b>: si dejás caducar y después pedís, el
+  anterior concesionario no puede repedir su mina; pero si se la comprás antes, el derecho sigue vivo y sin veda.</p>
+  <div class="grid2">
+    <div class="card"><h3 style="margin-top:0">Cómo se instrumenta</h3>
+      <p style="font-size:13px">1. <b>Contrato de cesión/compraventa</b> por instrumento público (la mina es
+      inmueble, art. 12).<br>
+      2. <b>Inscripción</b> en el Registro Catastral Minero (art. 20 CM) — recién ahí es oponible a terceros.<br>
+      3. Verificar que el <b>canon esté al día</b>: la deuda de canon sigue a la mina; el comprador la hereda.
+      Pedir libre deuda antes de firmar.<br>
+      4. Chequear <b>servidumbres, hipotecas y co-titularidad</b> en el padrón (la cesión de una cuota indivisa
+      requiere acuerdo con el resto: la mina no se divide, art. 14).</p></div>
+    <div class="card"><h3 style="margin-top:0">Por qué conviene sobre la vacancia</h3>
+      <p style="font-size:13px">· <b>Certeza:</b> el título ya existe y está mensurado; no dependés de que se
+      declare la vacancia ni de ganar la puja del art. 90.<br>
+      · <b>Sin veda:</b> evitás el art. 90 <i>in fine</i> / 219 <i>in fine</i> CM que traba al ex-titular.<br>
+      · <b>Sin preferencia estatal:</b> el IPEEM sólo tiene preferencia sobre lo que <i>se libera</i>; una
+      transferencia privada no pasa por esa ventana.<br>
+      · <b>Timing:</b> comprás antes de la caída, cuando el titular en apuros de canon todavía puede negociar.</p></div>
+  </div>
+  <div class="card"><h3>Carteras-objetivo detectadas en el pipeline</h3>
+    <p class="muted">Titulares privados con más derechos <b>en caducidad</b> (no el IPEEM, que es estatal): son
+    los que más incentivo tienen a vender antes de perderlo todo. Candidatos naturales para acercarse con una oferta de cesión.</p>
+    <table><tr><th>Titular</th><th class="n">Minas caducas</th><th class="n">ha en riesgo</th></tr>
+    ${C.concentracion.filter(h=>!/IPEEM|I\.P\.E\.E\.M/i.test(h.nombre)).slice(0,7).map(h=>`<tr>
+      <td>${h.nombre}</td><td class="n" style="color:var(--cad)">${h.minas}</td><td class="n">${fmt(h.ha)}</td></tr>`).join('')}
+    </table></div>
+  <div class="insight warn"><b>Riesgo a mirar:</b> el canon adeudado viaja con la mina. En una cartera en
+  pipeline la deuda acumulada puede acercarse al valor del activo — por eso la due-diligence de <i>libre deuda de
+  canon</i> (y de regalías, Ley 716-M) es el paso que define si la transferencia conviene o si es mejor esperar la vacancia.</div>
 
   <h2><span class="n">7</span>Canon minero</h2>
   <p>El canon se estima con el motor legal (<code>canon_mina</code>, art. 215 CM t.o. Ley 27.701):
@@ -239,31 +297,57 @@ function barList(rows,color,unit){
   `;
   document.getElementById('main').innerHTML=html;
 
-  // ---- mapa ----
-  const map=L.map('mapa',{scrollWheelZoom:false}).setView([-31.0,-69.3],7);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-    {attribution:'© OpenStreetMap © CARTO',maxZoom:18}).addTo(map);
+  // ---- mapas (polígonos reales; cen = [lat,lon], pol = [[lon,lat],...]) ----
   const hoy=new Date();
   function colorEdad(fc){ if(!fc) return '#f59e0b';
     const meses=(hoy-new Date(fc))/(1000*3600*24*30.4);
     if(meses<6) return '#fde68a'; if(meses<12) return '#f59e0b'; if(meses<24) return '#e0533b'; return '#7f1d1d';
   }
-  const canonMax=Math.max(1,...D.caducas_geo.map(m=>m.canon||0));
-  const pts=[];
-  D.caducas_geo.forEach(m=>{
-    if(!m.cen||m.cen.length<2) return;
-    const [lat,lon]=[m.cen[0],m.cen[1]];   // cen = [lat, lon]
-    if(!isFinite(lat)||!isFinite(lon)) return;
-    const r=5+Math.sqrt((m.canon||0)/canonMax)*16;
-    const mk=L.circleMarker([lat,lon],{radius:r,color:colorEdad(m.fecha_caducidad),weight:1,fillColor:colorEdad(m.fecha_caducidad),fillOpacity:.55});
-    mk.bindPopup(`<b>${m.nombre||m.expediente}</b><br>Expte ${m.expediente} · ${m.departamento||''}<br>
+  function baseTiles(map){ L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+    {attribution:'© OpenStreetMap © CARTO',maxZoom:18}).addTo(map); }
+  function popupHtml(m){ return `<b>${m.nombre||m.expediente}</b><br>Expte ${m.expediente} · ${m.departamento||''}<br>
       ${(m.minerales||[]).join(', ')||'—'}<br>
-      <b>${fmt(m.ha)} ha</b> · ${m.pertenencias} pert. · canon est. <b>${money(m.canon)}</b><br>
-      Caducó: ${m.fecha_caducidad||'—'}<br>
-      <span style="color:#555">${m.titular||''}${m.cuit?' · CUIT '+m.cuit:''}</span>`);
-    mk.addTo(map); pts.push([lat,lon]);
-  });
+      <b>${m.ha?fmt(m.ha)+' ha':'sup. s/d'}</b> · ${m.pertenencias} pert. · canon est. <b>${money(m.canon)}</b><br>
+      ${m.fecha_caducidad?'Caducó: '+m.fecha_caducidad+'<br>':''}
+      ${m.dias_vacante?'Vacante hace <b>'+(m.dias_vacante/365).toFixed(1)+' años</b> (art. 220)<br>':''}
+      <span style="color:#555">${m.titular||''}${m.cuit?' · CUIT '+m.cuit:''}</span>`; }
+  // un pedimento real no supera ~0.3° (~30 km); más que eso es geometría errónea -> se ignora
+  function polSano(p){ if(!p||p.length<3) return null;
+    let lo0=180,lo1=-180,la0=90,la1=-90;
+    for(const q of p){ if(q[0]<lo0)lo0=q[0]; if(q[0]>lo1)lo1=q[0]; if(q[1]<la0)la0=q[1]; if(q[1]>la1)la1=q[1]; }
+    return ((lo1-lo0)>0.3||(la1-la0)>0.3)?null:p; }
+  // dibuja un derecho como polígono (si tiene pol) o marcador (fallback); devuelve latlngs para bounds
+  function dibujar(map,m,col,opts){
+    opts=opts||{};
+    const pol=polSano(m.pol);
+    if(pol){
+      const ll=pol.map(([lon,lat])=>[lat,lon]);
+      L.polygon(ll,{color:col,weight:opts.weight||1.5,fillColor:col,fillOpacity:opts.fill!=null?opts.fill:.45})
+        .bindPopup(popupHtml(m)).addTo(map);
+      return ll;
+    }
+    if(m.cen&&m.cen.length>=2 && isFinite(m.cen[0]) && isFinite(m.cen[1])){
+      const c=[m.cen[0],m.cen[1]];
+      L.circleMarker(c,{radius:6,color:col,weight:2,fillColor:col,fillOpacity:.6,dashArray:'2 2'})
+        .bindPopup(popupHtml(m)+'<br><span style="color:#a33">▲ sin polígono en catastro</span>').addTo(map);
+      return [c];
+    }
+    return [];
+  }
+
+  // mapa 1: todas las caducas
+  const map=L.map('mapa',{scrollWheelZoom:false}).setView([-31.0,-69.3],7);
+  baseTiles(map);
+  let pts=[];
+  D.caducas_geo.forEach(m=>{ pts=pts.concat(dibujar(map,m,colorEdad(m.fecha_caducidad),{weight:1,fill:.4})); });
   if(pts.length) map.fitBounds(pts,{padding:[30,30]});
+
+  // mapa 2: las pedibles hoy (destacadas en verde-oportunidad)
+  const mapP=L.map('mapaPed',{scrollWheelZoom:false}).setView([-31.0,-69.3],7);
+  baseTiles(mapP);
+  let ptsP=[];
+  D.pedibles_geo.forEach(m=>{ ptsP=ptsP.concat(dibujar(mapP,m,'#34d399',{weight:2,fill:.5})); });
+  if(ptsP.length) mapP.fitBounds(ptsP,{padding:[40,40],maxZoom:11});
 })();
 </script>
 </body>

@@ -53,6 +53,28 @@ def _valida(g):
         return None
 
 
+def _ring_lonlat(sh):
+    """Anillo exterior [[lon,lat],...] del polígono (el mayor si es multi). Descarta
+    geometrías con extensión implausible (>0.3°≈30 km): son agregados/errores que
+    dibujarían un 'manchón' en el mapa."""
+    try:
+        geom = sh
+        if geom.geom_type == "MultiPolygon":
+            geom = max(geom.geoms, key=lambda g: g.area)
+        if geom.geom_type != "Polygon":
+            return None
+        coords = [[round(x, 6), round(y, 6)] for x, y in geom.exterior.coords]
+        if len(coords) < 4:
+            return None
+        lons = [c[0] for c in coords]
+        lats = [c[1] for c in coords]
+        if (max(lons) - min(lons) > 0.3) or (max(lats) - min(lats) > 0.3):
+            return None
+        return coords
+    except Exception:
+        return None
+
+
 def _load(cat_dir, capa):
     fp = os.path.join(cat_dir, f"catastro_{capa}.geojson")
     if not os.path.exists(fp):
@@ -85,9 +107,11 @@ def analizar(salida, buffer_grados=0.06, min_ha=80, max_ha=60000, top_libres=90)
             continue
         sh = _valida(f.get("geometry"))
         cen = None
+        pol = None
         if sh:
             c = sh.representative_point()
             cen = [round(c.y, 6), round(c.x, 6)]
+            pol = _ring_lonlat(sh)
         dormidas.append({
             "tipo": "manifestacion",
             "titular": p.get("titular"),
@@ -97,6 +121,7 @@ def analizar(salida, buffer_grados=0.06, min_ha=80, max_ha=60000, top_libres=90)
             "depto": p.get("departamento"),
             "min": p.get("minerales"),
             "cen": cen,
+            "pol": pol,
         })
     dormidas.sort(key=lambda x: x["fecha"])
     dormidas = dormidas[:60]

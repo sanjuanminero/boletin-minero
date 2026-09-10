@@ -170,9 +170,12 @@ function renderDormidas(){
   layer=L.layerGroup();
   list.forEach(a=>{
     const yr=a.fecha.slice(0,4);
-    L.circleMarker(a.cen,{radius:6,color:'#111',weight:1,fillColor:colorEdad(yr),fillOpacity:0.9})
-     .bindPopup(`<div class="pp"><b>${a.denom||'manifestación'}</b> · ${yr}<br>${a.titular||'?'}<br><span style="color:#555">manif. sin mensurar · ${a.ha||'?'} ha · ${a.depto||''} · ${a.min||''}</span></div>`)
-     .addTo(layer);
+    const col=colorEdad(yr);
+    const pop=`<div class="pp"><b>${a.denom||'manifestación'}</b> · ${yr}<br>${a.titular||'?'}<br><span style="color:#555">manif. sin mensurar · ${a.ha||'?'} ha · ${a.depto||''} · ${a.min||''}</span></div>`;
+    let lyr=null;
+    if(a.pol&&a.pol.length>=3){ const ll=a.pol.map(([lon,lat])=>[lat,lon]); lyr=L.polygon(ll,{color:'#111',weight:1,fillColor:col,fillOpacity:0.75}); }
+    else if(a.cen){ lyr=L.circleMarker(a.cen,{radius:6,color:'#111',weight:1,fillColor:col,fillOpacity:0.9}); }
+    if(lyr){ lyr.bindPopup(pop).addTo(layer); }
   });
   layer.addTo(map);
   let html=`<div class="intro"><b>Manifestaciones "dormidas".</b> Reclamos de descubrimiento

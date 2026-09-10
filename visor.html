@@ -116,9 +116,19 @@ const tipoOn = {};  // clave -> bool
 
 // preferencia catastro (oficial) sobre boletín (OCR)
 function cat(e){return e.catastro||null;}
+// Un pedimento real mide a lo sumo unos pocos km; si el anillo abarca más de ~0.3°
+// (~30 km) es un match/geometría erróneo (p. ej. una capa provincial completa) -> se
+// descarta y se cae al centroide. Evita "manchones" que cubren media provincia.
+const MAX_EXT_DEG=0.3;
+function ringSano(r){
+  if(!r||r.length<3) return null;
+  let lo0=180,lo1=-180,la0=90,la1=-90;
+  for(const p of r){ if(p[0]<lo0)lo0=p[0]; if(p[0]>lo1)lo1=p[0]; if(p[1]<la0)la0=p[1]; if(p[1]>la1)la1=p[1]; }
+  return ((lo1-lo0)>MAX_EXT_DEG||(la1-la0)>MAX_EXT_DEG) ? null : r;
+}
 function ringDe(e){ const c=cat(e);
-  if(c&&c.poligono_wgs84&&c.poligono_wgs84.length>=3) return c.poligono_wgs84;
-  return (e.poligono_wgs84&&e.poligono_wgs84.length>=3)?e.poligono_wgs84:null; }
+  if(c&&c.poligono_wgs84&&c.poligono_wgs84.length>=3){ const r=ringSano(c.poligono_wgs84); if(r) return r; }
+  return (e.poligono_wgs84&&e.poligono_wgs84.length>=3)?ringSano(e.poligono_wgs84):null; }
 function centroDe(e){ const c=cat(e); return (c&&c.centroide)||e.centroide||null; }
 function titularDe(e){ const c=cat(e); const t=(c&&c.titular)||e.titular_actual; if(t) return t;
   // cateos/servidumbres tersos: el boletín no publica al peticionante y el catastro

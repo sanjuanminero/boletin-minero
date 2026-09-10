@@ -175,18 +175,26 @@ function renderRanking(metric){
   document.querySelectorAll('.rk-row').forEach(el=>el.onclick=()=>select(decodeURIComponent(el.dataset.n)));
   renderMapRanking(list);
 }
+// un pedimento real no supera ~0.3° (~30 km); más que eso es geometría errónea -> se ignora
+function polSano(p){ if(!p||p.length<3) return null;
+  let lo0=180,lo1=-180,la0=90,la1=-90;
+  for(const q of p){ if(q[0]<lo0)lo0=q[0]; if(q[0]>lo1)lo1=q[0]; if(q[1]<la0)la0=q[1]; if(q[1]>la1)la1=q[1]; }
+  return ((lo1-lo0)>0.3||(la1-la0)>0.3)?null:p; }
 function renderMapRanking(list){
   initMap(); if(layer) layer.remove(); layer=L.layerGroup().addTo(map);
   const bounds=[];
   list.forEach((s,i)=>{
-    const pts=[...(s.props||[]),...(s.edictos||[])].map(p=>p.cen).filter(Boolean);
-    if(!pts.length) return;
-    const lat=pts.reduce((a,p)=>a+p[0],0)/pts.length, lon=pts.reduce((a,p)=>a+p[1],0)/pts.length;
-    const m=L.circleMarker([lat,lon],{radius:Math.max(5,14-i*0.22),color:'#F3C323',fillColor:'#F3C323',fillOpacity:.45,weight:2});
-    m.bindPopup(`<div class="pp"><b>${i+1}. ${s.nombre}</b><br>${s.n} prop · ${Math.round(s.total_ha).toLocaleString('es-AR')} ha</div>`);
-    m.on('click',()=>select(s.nombre)); m.addTo(layer); bounds.push([lat,lon]);
+    const col='#F3C323';
+    // dibujar el POLÍGONO real de cada propiedad de la sociedad (no un punto resumen)
+    (s.props||[]).forEach(p=>{
+      const pol=polSano(p.pol);
+      let lyr=null;
+      if(pol){ const ll=pol.map(([lon,lat])=>[lat,lon]); lyr=L.polygon(ll,{color:col,weight:1.5,fillColor:col,fillOpacity:.35}); ll.forEach(x=>bounds.push(x)); }
+      else if(p.cen){ lyr=L.circleMarker([p.cen[0],p.cen[1]],{radius:5,color:col,fillColor:col,fillOpacity:.5,weight:2}); bounds.push(p.cen); }
+      if(lyr){ lyr.bindPopup(`<div class="pp"><b>${i+1}. ${s.nombre}</b><br>${p.denom||p.tipo||''}${p.ha?' · '+Math.round(p.ha)+' ha':''}<br><span style="color:#555">${s.n} prop · ${Math.round(s.total_ha).toLocaleString('es-AR')} ha en total</span></div>`); lyr.on('click',()=>select(s.nombre)); lyr.addTo(layer); }
+    });
   });
-  if(bounds.length) map.fitBounds(bounds,{padding:[50,50],maxZoom:9}); else map.setView([-31,-69.2],7);
+  if(bounds.length) map.fitBounds(bounds,{padding:[50,50],maxZoom:11}); else map.setView([-31,-69.2],7);
 }
 function initMap(){
   if(map) return;

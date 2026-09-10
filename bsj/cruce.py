@@ -78,6 +78,20 @@ def _centroide(anillo):
     return [lat, lon]
 
 
+# Un pedimento minero real no supera unos pocos km. Si el anillo abarca más de ~0.3°
+# (~30 km) es una geometría agregada (capa provincial/zona) mal matcheada -> se excluye
+# del cruce espacial para no pegar "manchones" que cubren media provincia en el visor.
+_MAX_EXT_DEG = 0.3
+
+
+def _extent_grande(anillo):
+    if not anillo:
+        return True
+    lons = [p[0] for p in anillo]
+    lats = [p[1] for p in anillo]
+    return (max(lons) - min(lons) > _MAX_EXT_DEG) or (max(lats) - min(lats) > _MAX_EXT_DEG)
+
+
 def cargar_catastro(carpeta):
     """Lee los catastro_*.geojson y devuelve features normalizados."""
     feats = []
@@ -189,7 +203,8 @@ def matchear(e, by_canon, by_den, feats):
     cen = e.get("centroide")
     if cen:
         dep = _norm(e.get("departamento"))
-        candidatos = [f for f in feats if f["anillo"] and (not dep or not f["depto"] or f["depto"] == dep)]
+        candidatos = [f for f in feats if f["anillo"] and not _extent_grande(f["anillo"])
+                      and (not dep or not f["depto"] or f["depto"] == dep)]
         dentro = [f for f in candidatos if _punto_en_anillo(cen[1], cen[0], f["anillo"])]
         if len(dentro) == 1:
             return _bloque(dentro[0], "espacial", "media")
