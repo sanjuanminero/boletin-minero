@@ -11345,5 +11345,12 @@
     "paginas": 52,
     "minas": false,
     "eventos": 0
+  },
+  {
+    "fecha": "2026-09-09",
+    "item_id": "10757",
+    "paginas": 60,
+    "minas": true,
+    "eventos": 1
   }
 ]

@@ -70,6 +70,19 @@ def _anillo(geom):
     return None
 
 
+def _linea(geom):
+    """Traza [[lon,lat],...] de una servidumbre lineal (LineString / MultiLineString).
+    Las servidumbres son corredores, no áreas: se dibujan como línea, no como punto."""
+    if not geom:
+        return None
+    t = geom.get("type"); c = geom.get("coordinates")
+    if t == "LineString":
+        return c
+    if t == "MultiLineString":
+        return max(c, key=len)
+    return None
+
+
 def _centroide(anillo):
     if not anillo:
         return None
@@ -111,6 +124,7 @@ def cargar_catastro(carpeta):
                 "tit": _norm(p.get("titular")),
                 "depto": _norm(p.get("departamento")),
                 "anillo": anillo, "centroide": _centroide(anillo),
+                "linea": _linea(f.get("geometry")),
             })
     return feats
 
@@ -177,7 +191,24 @@ def _bloque(f, metodo, confianza):
         "fechaInscripcionMensura": p.get("fechaInscripcionMensura"),
         "numeroInscripcionMensura": p.get("numeroInscripcionMensura"),
         "poligono_wgs84": f["anillo"], "centroide": f["centroide"],
+        "linea_wgs84": f.get("linea"),
     }
+
+
+def _tiene_poligono_sano(f):
+    """El feature aporta un polígono dibujable (no un punto suelto ni un manchón)."""
+    a = f.get("anillo")
+    return bool(a) and len(a) >= 3 and not _extent_grande(a)
+
+
+def _elegir(cand, dep):
+    """Entre features candidatos, preferir (1) los que tienen polígono sano y
+    (2) el mismo departamento. Evita que un registro Punto (capa 'lem') le gane a la
+    manifestación con polígono real y deje al expediente como 'pelotita' en el visor."""
+    return sorted(cand, key=lambda f: (
+        0 if _tiene_poligono_sano(f) else 1,
+        0 if f["depto"] == dep else 1,
+    ))[0]
 
 
 def matchear(e, by_canon, by_den, feats):
@@ -186,10 +217,8 @@ def matchear(e, by_canon, by_den, feats):
     c = canon_exp(e.get("expediente"))
     if c and c in by_canon:
         cand = by_canon[c]
-        # si hay varios, preferir mismo departamento
         dep = _norm(e.get("departamento"))
-        best = next((f for f in cand if f["depto"] == dep), cand[0])
-        return _bloque(best, "expediente", "alta")
+        return _bloque(_elegir(cand, dep), "expediente", "alta")
     # 2) por nombre de mina (denominación) exacta
     mina = _norm(e.get("mina"))
     if mina and len(mina) > 2 and mina in by_den:

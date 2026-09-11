@@ -35848,6 +35848,56 @@
     {
       "type": "Feature",
       "properties": {
+        "clave": "1124-242-H-13",
+        "expediente": "1124-242-H-13",
+        "titular": "Moncho Juan Jose y Alonso manuel Domingo",
+        "mina": "MARTINA",
+        "minerales": "",
+        "departamento": "Calingasta",
+        "estado": "edicto_mensura",
+        "estado_label": "Edicto de mensura",
+        "superficie_ha": null,
+        "n_eventos": 1,
+        "meses": "2026-09",
+        "datum": "posgar2007",
+        "centroide_lat": -31.096375,
+        "centroide_lon": -69.73418
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -69.76522400319996,
+              -31.114962191475538
+            ],
+            [
+              -69.71547125501365,
+              -31.11524803135534
+            ],
+            [
+              -69.71263051900702,
+              -31.08578928697303
+            ],
+            [
+              -69.71261036728494,
+              -31.08308860785281
+            ],
+            [
+              -69.7649661057279,
+              -31.082788623542264
+            ],
+            [
+              -69.76522400319996,
+              -31.114962191475538
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "clave": "583-R-95",
         "expediente": "583-R-95",
         "titular": "Darío Becerra, Paz Eric Martín",

@@ -129,6 +129,7 @@ function ringSano(r){
 function ringDe(e){ const c=cat(e);
   if(c&&c.poligono_wgs84&&c.poligono_wgs84.length>=3){ const r=ringSano(c.poligono_wgs84); if(r) return r; }
   return (e.poligono_wgs84&&e.poligono_wgs84.length>=3)?ringSano(e.poligono_wgs84):null; }
+function lineaDe(e){ const c=cat(e); return (c&&c.linea_wgs84&&c.linea_wgs84.length>=2)?c.linea_wgs84:null; }
 function centroDe(e){ const c=cat(e); return (c&&c.centroide)||e.centroide||null; }
 function titularDe(e){ const c=cat(e); const t=(c&&c.titular)||e.titular_actual; if(t) return t;
   // cateos/servidumbres tersos: el boletín no publica al peticionante y el catastro
@@ -400,7 +401,13 @@ function renderMap(exps){
   exps.forEach(e=>{
     const col=colorDe(e);
     const oficial=!!(cat(e)&&cat(e).poligono_wgs84); // geometría del catastro
-    const r=ringDe(e), cen=centroDe(e);
+    const r=ringDe(e);
+    const linea = !r ? lineaDe(e) : null;   // servidumbres: corredor, se dibuja como línea
+    // Un punto sólo se dibuja si la ubicación es CONFIABLE (centroide del catastro) y no
+    // hay polígono ni línea. El centroide propio del boletín, cuando no hubo geometría
+    // dibujable, viene de un OCR corrupto y caería en un lugar equivocado -> no se dibuja
+    // (queda en la lista lateral). Así el mapa no muestra "pelotitas" mal ubicadas.
+    const cen = (r||linea) ? null : ((cat(e)&&cat(e).centroide) || null);
     let lyr=null;
     if(r){
       const latlng=r.map(([lon,lat])=>[lat,lon]);
@@ -409,8 +416,13 @@ function renderMap(exps){
         ? {renderer:boletinRenderer,color:col,weight:2,fillColor:col,fillOpacity:.30}
         : {renderer:boletinRenderer,color:col,weight:1.5,dashArray:'4 3',fillColor:col,fillOpacity:.12});
       latlng.forEach(p=>bounds.push(p));
+    } else if(linea){
+      const latlng=linea.map(([lon,lat])=>[lat,lon]);
+      lyr=L.polyline(latlng,{renderer:boletinRenderer,color:col,weight:3,opacity:.85});
+      latlng.forEach(p=>bounds.push(p));
     } else if(cen){
-      lyr=L.circleMarker([cen[0],cen[1]],{renderer:boletinRenderer,radius:7,color:col,fillColor:col,fillOpacity:.7,weight:2});
+      // registro sin polígono/línea pero con ubicación oficial (p. ej. punto del catastro)
+      lyr=L.circleMarker([cen[0],cen[1]],{renderer:boletinRenderer,radius:6,color:col,fillColor:col,fillOpacity:.7,weight:2});
       bounds.push([cen[0],cen[1]]);
     }
     if(lyr){
