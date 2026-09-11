@@ -1,0 +1,55 @@
+{
+  "fuente": "Dirección de Minería de San Juan — carteles oficiales de CBU y valores 2026 + portal de trámites.",
+  "actualizado": "2026",
+  "unidad_medida_cateo_2026": {
+    "descripcion": "Valor de la unidad de medida para permiso de exploración (cateo). Cada unidad = 500 ha (art. 29 CM). El valor es lineal: $90.381,06 por unidad.",
+    "valor_por_unidad": 90381.06,
+    "unidad_ha": 500,
+    "tabla": [
+      {"n": 1, "hasta_ha": 500, "valor": 90381.06},
+      {"n": 2, "hasta_ha": 1000, "valor": 180762.12},
+      {"n": 3, "hasta_ha": 1500, "valor": 271143.18},
+      {"n": 4, "hasta_ha": 2000, "valor": 361524.24},
+      {"n": 5, "hasta_ha": 2500, "valor": 451905.30},
+      {"n": 6, "hasta_ha": 3000, "valor": 542286.36},
+      {"n": 7, "hasta_ha": 3500, "valor": 632667.42},
+      {"n": 8, "hasta_ha": 4000, "valor": 723048.48},
+      {"n": 9, "hasta_ha": 4500, "valor": 813429.54},
+      {"n": 10, "hasta_ha": 5000, "valor": 903810.60},
+      {"n": 11, "hasta_ha": 5500, "valor": 994191.66},
+      {"n": 12, "hasta_ha": 6000, "valor": 1084572.72},
+      {"n": 13, "hasta_ha": 6500, "valor": 1174953.78},
+      {"n": 14, "hasta_ha": 7000, "valor": 1265334.84},
+      {"n": 15, "hasta_ha": 7500, "valor": 1355715.90},
+      {"n": 16, "hasta_ha": 8000, "valor": 1446096.96},
+      {"n": 17, "hasta_ha": 8500, "valor": 1536478.02},
+      {"n": 18, "hasta_ha": 9000, "valor": 1626859.08},
+      {"n": 19, "hasta_ha": 9500, "valor": 1717240.14},
+      {"n": 20, "hasta_ha": 10000, "valor": 1807621.20}
+    ]
+  },
+  "cbu": [
+    {"concepto": "Fondos de terceros para exploración o cateo", "cbu": "0450600901800021114420", "clave": "cateo"},
+    {"concepto": "Guías", "cbu": "0450600901800021130970", "clave": "guias"},
+    {"concepto": "Fondo Desarrollo de Comunidades - Multas", "cbu": "0450600901800021369462", "clave": "comunidades_multas"},
+    {"concepto": "Canon minero", "cbu": "0450600901800021130888", "clave": "canon"},
+    {"concepto": "Recargo", "cbu": "0450600901800021131188", "clave": "recargo"},
+    {"concepto": "Eventuales", "cbu": "0450600901800021131096", "clave": "eventuales"},
+    {"concepto": "Servicios requeridos", "cbu": "0450600901800021131270", "clave": "servicios"},
+    {"concepto": "Unidades Tributarias D.G. Rentas", "cbu": "0450600901800000067873", "clave": "unidades_tributarias_rentas"}
+  ],
+  "nota_pago": "Traer el comprobante de transferencia impreso.",
+  "tramites": [
+    {"n": 4, "id": 4, "nombre": "Permiso de Exploración", "desc": "Autorización exclusiva para explorar un área determinada (cateo).", "url": "https://tramite.sanjuan.gob.ar/tramite/d/4/permiso-de-exploracion", "clave": "permiso_exploracion"},
+    {"n": 7, "id": 7, "nombre": "Programa Mínimo de Exploración", "desc": "Requisito para obtener el Permiso de Exploración.", "url": "https://tramite.sanjuan.gob.ar/tramite/d/7/programa-minimo-de-exploracion", "clave": "programa_minimo"},
+    {"n": 10, "id": 10, "nombre": "Manifestación de Descubrimiento o Solicitud de Mina", "desc": "Presentación de datos sobre nuevo criadero mineral.", "url": "https://tramite.sanjuan.gob.ar/tramite/d/10/manifestacion-de-descubrimiento-o-solicitud-de-mina", "clave": "manifestacion"},
+    {"n": 3, "id": 3, "nombre": "Denuncia de Labor Legal", "desc": "Manifestación de descubrimiento de nuevo criadero mineral.", "url": "https://tramite.sanjuan.gob.ar/tramite/d/3/denuncia-de-labor-legal", "clave": "labor_legal"},
+    {"n": 2, "id": 2, "nombre": "Petición de Mensura", "desc": "Solicitud de medición de la manifestación de descubrimiento.", "url": "https://tramite.sanjuan.gob.ar/tramite/d/2/peticion-de-mensura", "clave": "peticion_mensura"},
+    {"n": 6, "id": 6, "nombre": "Acta de Mensura", "desc": "Mensura y demarcación de pertenencias mineras.", "url": "https://tramite.sanjuan.gob.ar/tramite/d/6/acta-de-mensura", "clave": "acta_mensura"},
+    {"n": 5, "id": 5, "nombre": "Solicitud de Mina Vacante", "desc": "Adquisición de minas vacantes (Cód. de Minería, arts. 216 y ss.).", "url": "https://tramite.sanjuan.gob.ar/tramite/d/5/solicitud-de-mina-vacantes", "clave": "mina_vacante"},
+    {"n": 1, "id": 1, "nombre": "Solicitud de Liberación de Áreas de Exploración", "desc": "Presentación de datos sobre descubrimiento de nuevos criaderos.", "url": "https://tramite.sanjuan.gob.ar/tramite/d/1/solicitud-de-liberacion-de-areas-de-exploracion", "clave": "liberacion_areas"},
+    {"n": 8, "id": 8, "nombre": "Solicitud de Servidumbre", "desc": "Presentación de datos sobre descubrimiento mineral y servidumbre.", "url": "https://tramite.sanjuan.gob.ar/tramite/d/8/solicitud-de-servidumbre", "clave": "servidumbre"},
+    {"n": 9, "id": 9, "nombre": "Inscripción en el Registro de Productores, Comerciantes e Industriales Mineros", "desc": "Registro obligatorio para productores de materias primas mineras.", "url": "https://tramite.sanjuan.gob.ar/tramite/d/9/inscripcion-en-el-registro-de-productores-comerciantes-e-industriales-mineros", "clave": "registro_productores"},
+    {"n": 253, "id": 253, "nombre": "Plan Nacional de Minería Social", "desc": "Guía de requisitos para solicitudes de proyectos PNMS.", "url": "https://tramite.sanjuan.gob.ar/tramite/d/253/plan-nacional-de-mineria-social", "clave": "pnms"}
+  ]
+}

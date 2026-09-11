@@ -46,6 +46,21 @@
   .warn b{color:var(--warn)}
   .muted{color:var(--muted);font-size:12px}
   a.src{color:var(--accent);text-decoration:none}
+  tr.cart:hover td{background:var(--panel2)}
+  tr.cart .tri{display:inline-block;transition:transform .15s;color:var(--accent)}
+  tr.cart.open .tri{transform:rotate(90deg)}
+  table.sub{margin:0;background:var(--bg);border-radius:8px}
+  table.sub th{font-size:10px}
+  table.sub td,table.sub th{padding:4px 8px;border-bottom:1px solid var(--panel2)}
+  .cbu{font-family:ui-monospace,Consolas,monospace;font-size:12px;letter-spacing:.02em;color:var(--txt);word-break:break-all}
+  .cbucard{display:flex;flex-direction:column;gap:2px;background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:9px 11px}
+  .cbucard .cc{font-size:11px;color:var(--muted)}
+  .cbucard .copy{align-self:flex-start;margin-top:3px;font-size:10px;background:var(--panel2);border:1px solid var(--line);color:var(--muted);border-radius:6px;padding:2px 7px;cursor:pointer}
+  .cbucard .copy:hover{color:var(--accent)}
+  .tramite{display:block;background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:9px 12px;margin:6px 0;text-decoration:none;color:var(--txt)}
+  .tramite:hover{border-color:var(--accent)}
+  .tramite .tn{color:var(--accent);font-weight:600;font-size:13px}
+  .tramite .td{font-size:12px;color:var(--muted);margin-top:2px}
   code{background:var(--panel2);padding:1px 5px;border-radius:4px;font-size:12px}
   /* timeline de vacancia */
   .tl{position:relative;margin:16px 0 8px;padding-left:6px}
@@ -87,6 +102,7 @@
   <a class="btn" href="linea.html">Línea de tiempo</a>
   <a class="btn" href="vencimientos.html">Vencimientos</a>
   <a class="btn on" href="informe.html">Informe</a>
+  <a class="btn" href="cateo.html">Cateo</a>
 </header>
 <main id="main"><p class="muted">Cargando datos…</p></main>
 <script>
@@ -102,6 +118,7 @@ function barList(rows,color,unit){
 (async()=>{
   const D=await j('out_hist/sim/informe_avanzado.json');
   if(!D){ document.getElementById('main').innerHTML='<p>No pude cargar <code>out_hist/sim/informe_avanzado.json</code>. Corré <code>python -m bsj.informe ./out_hist</code>.</p>'; return; }
+  const REF=await j('legal/referencia_minera_sj.json');
   const T=D.totales, X=D.exigibilidad, DIS=D.disponibilidad, C=D.caducidad, CO=D.concesionarios, ML=D.marco_legal;
   const est=T.por_estado;
   const canonJuego=T.canon_anual_caduca;
@@ -252,11 +269,24 @@ function barList(rows,color,unit){
   </div>
   <div class="card"><h3>Carteras-objetivo detectadas en el pipeline</h3>
     <p class="muted">Titulares privados con más derechos <b>en caducidad</b> (no el IPEEM, que es estatal): son
-    los que más incentivo tienen a vender antes de perderlo todo. Candidatos naturales para acercarse con una oferta de cesión.</p>
-    <table><tr><th>Titular</th><th class="n">Minas caducas</th><th class="n">ha en riesgo</th></tr>
-    ${C.concentracion.filter(h=>!/IPEEM|I\.P\.E\.E\.M/i.test(h.nombre)).slice(0,7).map(h=>`<tr>
-      <td>${h.nombre}</td><td class="n" style="color:var(--cad)">${h.minas}</td><td class="n">${fmt(h.ha)}</td></tr>`).join('')}
-    </table></div>
+    los que más incentivo tienen a vender antes de perderlo todo. Candidatos naturales para acercarse con una
+    oferta de cesión. <b>Clic en una fila</b> para ver sobre qué propiedades pesa esa deuda.</p>
+    <table><tr><th>Titular</th><th class="n">Minas</th><th class="n">ha</th><th class="n">Canon anual (est.)</th><th class="n">Deuda acum. (est.)</th></tr>
+    ${(C.carteras||[]).map((g,i)=>`<tr class="cart" data-i="${i}" style="cursor:pointer">
+        <td><span class="tri">▸</span> ${g.nombre}${g.cuit?` <span class="muted">· CUIT ${g.cuit}</span>`:''}</td>
+        <td class="n" style="color:var(--cad)">${g.minas}</td><td class="n">${fmt(g.ha)}</td>
+        <td class="n">${money(g.canon_anual)}</td><td class="n" style="color:var(--cad)">${money(g.deuda_est)}</td></tr>
+      <tr class="det" id="det${i}" hidden><td colspan="5"><table class="sub">
+        <tr><th>Expediente</th><th>Mina</th><th>Depto</th><th class="n">ha</th><th class="n">Canon/año</th><th class="n">Años cad.</th><th class="n">Deuda est.</th></tr>
+        ${g.props.map(p=>`<tr><td class="muted">${p.expediente||''}</td><td>${p.nombre||'—'}</td><td>${p.departamento||''}</td>
+          <td class="n">${p.ha?fmt(p.ha):'s/d'}</td><td class="n">${money(p.canon)}</td><td class="n">${p.anios_caduca}</td>
+          <td class="n" style="color:var(--cad)">${money(p.deuda_est)}</td></tr>`).join('')}
+      </table></td></tr>`).join('')}
+    </table>
+    ${(C.carteras_estatal||[]).map(g=>`<p class="muted" style="margin-top:8px">↳ <b style="color:var(--blk)">${g.nombre}</b> (estatal, no vendible):
+      ${g.minas} minas · ${fmt(g.ha)} ha · deuda est. <b>${money(g.deuda_est)}</b> — además tiene preferencia sobre lo que se libere.</p>`).join('')}
+    <p class="muted" style="margin-top:6px">La deuda es una <b>estimación normativa</b> (canon anual del art. 215 CM × años en caducidad),
+    no la deuda liquidada del SIM (que requiere login). Sirve para dimensionar y priorizar, no como monto exacto.</p></div>
   <div class="insight warn"><b>Riesgo a mirar:</b> el canon adeudado viaja con la mina. En una cartera en
   pipeline la deuda acumulada puede acercarse al valor del activo — por eso la due-diligence de <i>libre deuda de
   canon</i> (y de regalías, Ley 716-M) es el paso que define si la transferencia conviene o si es mejor esperar la vacancia.</div>
@@ -286,6 +316,29 @@ function barList(rows,color,unit){
       de la superficie que cae, sobre los minerales de mayor valor.</li>
   </ol>
 
+  ${REF?`
+  <h2><span class="n">9</span>Aranceles, CBUs y trámites 2026</h2>
+  <p>Datos oficiales de la Dirección de Minería para operar: cuánto cuesta un cateo según su superficie,
+  a qué cuenta se paga cada concepto y dónde está cada trámite. <a class="src" href="cateo.html">→ Calculadora y armador de cateo</a></p>
+  <div class="grid2">
+    <div class="card"><h3>Valor de la unidad de medida — cateo (2026)</h3>
+      <p class="muted">Cada unidad = ${fmt(REF.unidad_medida_cateo_2026.unidad_ha)} ha. Valor por unidad: <b>${money(REF.unidad_medida_cateo_2026.valor_por_unidad)}</b> (lineal).</p>
+      <table><tr><th class="n">#</th><th>Superficie</th><th class="n">Valor 2026</th></tr>
+      ${REF.unidad_medida_cateo_2026.tabla.map(r=>`<tr><td class="n">${r.n}</td><td>hasta ${fmt(r.hasta_ha)} ha</td><td class="n">${money(r.valor)}</td></tr>`).join('')}
+      </table></div>
+    <div class="card"><h3>CBUs de pago (Dirección de Minería)</h3>
+      <div style="display:grid;gap:8px">
+      ${REF.cbu.map(c=>`<div class="cbucard"><span class="cc">${c.concepto}</span><span class="cbu">${c.cbu}</span>
+        <button class="copy" data-cbu="${c.cbu}">copiar CBU</button></div>`).join('')}
+      </div>
+      <div class="insight warn" style="margin-top:10px"><b>Importante:</b> ${REF.nota_pago}</div></div>
+  </div>
+  <div class="card"><h3>Trámites oficiales (cada uno con su ficha y PDF)</h3>
+    ${REF.tramites.map(t=>`<a class="tramite" href="${t.url}" target="_blank" rel="noopener">
+      <span class="tn">${t.nombre}</span><span class="td">${t.desc}</span></a>`).join('')}
+    <p class="muted">Fuente: <a class="src" href="https://tramite.sanjuan.gov.ar/index.php/tramite/org/31" target="_blank">portal de trámites de San Juan — Minería</a>.</p></div>
+  `:''}
+
   <h2>Fuentes y método</h2>
   <p class="muted">
   <b>SIM Producción</b> (<a class="src" href="https://simproduccion.sanjuan.gob.ar/expedientes" target="_blank">simproduccion.sanjuan.gob.ar</a>) —
@@ -296,6 +349,20 @@ function barList(rows,color,unit){
   El canon es estimación normativa (art. 215 CM), no deuda liquidada.</p>
   `;
   document.getElementById('main').innerHTML=html;
+
+  // desplegable de propiedades por cartera
+  document.querySelectorAll('tr.cart').forEach(r=>{
+    r.addEventListener('click',()=>{
+      const d=document.getElementById('det'+r.dataset.i);
+      if(d){ d.hidden=!d.hidden; r.classList.toggle('open',!d.hidden); }
+    });
+  });
+  // copiar CBU
+  document.querySelectorAll('.copy').forEach(b=>{
+    b.addEventListener('click',async()=>{
+      try{ await navigator.clipboard.writeText(b.dataset.cbu); const t=b.textContent; b.textContent='✓ copiado'; setTimeout(()=>b.textContent=t,1200); }catch(e){}
+    });
+  });
 
   // ---- mapas (polígonos reales; cen = [lat,lon], pol = [[lon,lat],...]) ----
   const hoy=new Date();

@@ -162,6 +162,49 @@ def construir(salida):
     # ---- concentración de la CADUCIDAD: quién deja caer más ----
     exp_pipeline = OP.concesionarios_expuestos(niveles, "PIPELINE", top=15)
 
+    # ---- carteras-objetivo: por titular, con deuda estimada y sus propiedades ----
+    # La deuda REAL de canon no es pública (endpoint con auth). Estimamos:
+    #   canon_anual = suma del canon anual de las minas caducas del titular
+    #   deuda_acum_est = por mina, canon x años desde la caducidad (piso 1 año)
+    # Es una ESTIMACIÓN normativa (art. 215 CM), no la deuda liquidada.
+    cartera = {}
+    for m in cad:
+        ac = (m.get("fecha_caducidad") or "")[:10]
+        try:
+            anios = max(1, (HOY - dt.date.fromisoformat(ac)).days / 365.0) if ac else 1
+        except Exception:
+            anios = 1
+        canon = m.get("canon") or 0
+        prop = {"expediente": m.get("expediente"), "nombre": m.get("nombre"),
+                "ha": round(m.get("ha") or 0, 1), "canon": canon,
+                "pertenencias": m.get("pertenencias") or 0,
+                "minerales": m.get("minerales") or [],
+                "departamento": m.get("departamento"),
+                "fecha_caducidad": ac, "anios_caduca": round(anios, 1),
+                "deuda_est": round(canon * anios)}
+        for c in (m.get("concesionarios") or []):
+            nom = c.get("nombre")
+            if not nom:
+                continue
+            g = cartera.setdefault(nom, {"nombre": nom, "cuit": c.get("id_fiscal"),
+                                         "tipo": c.get("tipo"), "minas": 0, "ha": 0.0,
+                                         "canon_anual": 0, "deuda_est": 0, "props": []})
+            g["minas"] += 1
+            g["ha"] += (m.get("ha") or 0)
+            g["canon_anual"] += canon
+            g["deuda_est"] += prop["deuda_est"]
+            g["props"].append(prop)
+    carteras = []
+    for g in cartera.values():
+        if OP is not None and ("IPEEM" in (g["nombre"] or "").upper() or "I.P.E.E.M" in (g["nombre"] or "").upper()):
+            g["estatal"] = True
+        else:
+            g["estatal"] = False
+        g["ha"] = round(g["ha"])
+        g["props"].sort(key=lambda p: -p["deuda_est"])
+        carteras.append(g)
+    carteras.sort(key=lambda g: -g["deuda_est"])
+
     # ---- marco legal: etapas de la vacancia (plantilla, días relativos) ----
     ref = dt.date(2025, 1, 1)
     marco_vac = [{"cod": h.codigo, "dia": (h.fecha - ref).days, "desc": h.descripcion,
@@ -217,6 +260,9 @@ def construir(salida):
             "por_mineral": dict(por_min.most_common(8)),
             "concentracion": [{"nombre": nom, "minas": cant, "ha": ha}
                               for nom, cant, ha in exp_pipeline],
+            # carteras-objetivo con deuda estimada y propiedades (privadas, sin IPEEM primero)
+            "carteras": [g for g in carteras if not g["estatal"]][:12],
+            "carteras_estatal": [g for g in carteras if g["estatal"]][:3],
         },
         "concesionarios": {
             "n": len(hl),

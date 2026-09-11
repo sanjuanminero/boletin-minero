@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Armador de Cateo — Minería San Juan</title>
+<style>
+  :root{--bg:#0f1115;--panel:#171a21;--panel2:#1e222b;--line:#2a2f3a;--txt:#e6e8ec;--muted:#9aa3b2;--accent:#F3C323;
+        --ok:#34d399;--cad:#e0533b;--warn:#f59e0b}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--txt);font-family:system-ui,Segoe UI,Roboto,sans-serif}
+  header{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:12px;padding:9px 14px;background:var(--panel);border-bottom:1px solid var(--line);flex-wrap:wrap}
+  header h1{font-size:15px;font-weight:600;margin:0}header h1 b{color:var(--accent)}
+  .btn{background:var(--panel2);border:1px solid var(--line);color:var(--muted);padding:5px 10px;border-radius:7px;font-size:12px;cursor:pointer;text-decoration:none}
+  .btn:hover{color:var(--accent)} .btn.on{color:var(--accent);border-color:var(--accent)}
+  main{max-width:1000px;margin:0 auto;padding:20px 18px 90px}
+  h2{font-size:18px;margin:30px 0 6px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+  h2 .n{color:var(--accent);font-size:12px;font-weight:600;margin-right:6px}
+  h3{font-size:13.5px;margin:14px 0 6px}
+  p{line-height:1.6;color:#c7ccd6;font-size:13.5px}
+  .lead{font-size:14.5px;color:var(--txt)}
+  b{color:var(--txt)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0}
+  label{display:block;font-size:12px;color:var(--muted);margin:9px 0 3px}
+  input,select,textarea{width:100%;background:var(--panel2);border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:8px 10px;font-size:13px;font-family:inherit}
+  textarea{min-height:70px;resize:vertical}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+  .kpis{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0}
+  .kpi{flex:1;min-width:120px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:11px 13px}
+  .kpi .v{font-size:21px;font-weight:700}
+  .kpi .l{font-size:11px;color:var(--muted);margin-top:2px}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;margin:6px 0}
+  th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
+  th{color:var(--muted);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.03em}
+  td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+  .muted{color:var(--muted);font-size:12px}
+  .warnbox{background:#241a10;border-left:3px solid var(--warn);border-radius:0 8px 8px 0;padding:9px 13px;margin:10px 0;font-size:13px}
+  .warnbox b{color:var(--warn)}
+  .okbox{background:#10231b;border-left:3px solid var(--ok);border-radius:0 8px 8px 0;padding:9px 13px;margin:10px 0;font-size:13px}
+  .tl .row{display:grid;grid-template-columns:96px 1fr;gap:10px;padding:7px 0;border-left:2px solid var(--line);margin-left:6px;padding-left:14px;position:relative}
+  .tl .row::before{content:"";position:absolute;left:-7px;top:11px;width:11px;height:11px;border-radius:50%;background:var(--panel2);border:2px solid var(--muted)}
+  .tl .row.fatal::before{background:var(--cad);border-color:var(--cad)}
+  .tl .f{font-variant-numeric:tabular-nums;font-weight:700;font-size:12px;color:var(--accent)}
+  .tl .d{font-size:12.5px}.tl .nm{font-size:11px;color:var(--muted);margin-top:1px}
+  .fatalpill{background:#3a1d17;color:#f0a08c;font-size:9px;padding:1px 6px;border-radius:8px;margin-left:5px;font-weight:700}
+  .cbu{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;color:var(--txt);word-break:break-all}
+  .copy{font-size:10px;background:var(--panel2);border:1px solid var(--line);color:var(--muted);border-radius:6px;padding:2px 7px;cursor:pointer;margin-left:6px}
+  .copy:hover{color:var(--accent)}
+  .tramite{display:block;background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:9px 12px;margin:6px 0;text-decoration:none;color:var(--txt)}
+  .tramite:hover{border-color:var(--accent)} .tramite .tn{color:var(--accent);font-weight:600;font-size:13px}.tramite .td{font-size:11.5px;color:var(--muted)}
+  .chk{font-size:13px;line-height:1.9;color:#c7ccd6;list-style:none;padding-left:0}
+  .chk li::before{content:"☐ ";color:var(--accent)}
+  pre.resumen{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px;font-size:12px;white-space:pre-wrap;color:#d7dce4;font-family:ui-monospace,Consolas,monospace}
+  .art{font-size:12.5px;color:#c7ccd6;border-left:2px solid var(--line);padding:2px 0 2px 12px;margin:8px 0}
+  .art b{color:var(--accent)}
+</style>
+</head>
+<body>
+<header>
+  <h1><b>Armador de Cateo</b> · Minería San Juan</h1>
+  <a class="btn" href="visor.html">Visor</a>
+  <a class="btn" href="sociedades.html">Distribución</a>
+  <a class="btn" href="historico.html">Análisis</a>
+  <a class="btn" href="linea.html">Línea de tiempo</a>
+  <a class="btn" href="vencimientos.html">Vencimientos</a>
+  <a class="btn" href="informe.html">Informe</a>
+  <a class="btn on" href="cateo.html">Cateo</a>
+</header>
+<main id="main">
+  <p class="lead">Arma y presupuesta una <b>solicitud de permiso de exploración (cateo)</b> en San Juan: calcula
+  unidades de medida, duración legal, arancel 2026 y el cronograma de plazos con sus artículos, te dice a qué
+  CBU pagar y genera un resumen para volcar en el formulario oficial. Une los datos del proyecto (Dirección de
+  Minería + Catastro) con el motor legal del asesor minero (Cód. de Minería Ley 1919 + Cód. Proc. Mineros SJ 688-M).</p>
+
+  <div class="grid2">
+    <div class="card">
+      <h3 style="margin-top:0">Datos del cateo</h3>
+      <label>Superficie a explorar (hectáreas)</label>
+      <input id="has" type="number" min="1" step="1" value="1500"/>
+      <label>Fecha de solicitud</label>
+      <input id="fecha" type="date"/>
+      <div class="grid2">
+        <div><label>Departamento</label>
+          <select id="depto"></select></div>
+        <div><label>Sustancia / mineral</label>
+          <input id="mineral" type="text" placeholder="oro, cobre, litio…"/></div>
+      </div>
+      <label>Solicitante (titular)</label>
+      <input id="titular" type="text" placeholder="Persona o razón social"/>
+      <div class="grid2">
+        <div><label>CUIT / DNI</label><input id="cuit" type="text" placeholder="30-xxxxxxxx-x"/></div>
+        <div><label>Domicilio legal en la Provincia</label><input id="domicilio" type="text" placeholder="constituido en San Juan"/></div>
+      </div>
+      <label>Vértices del área (coordenadas POSGAR 2007 / GK Faja 2, opcional)</label>
+      <textarea id="vertices" placeholder="V1  E 2.500.000  N 6.500.000&#10;V2 …"></textarea>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0">Cálculo</h3>
+      <div class="kpis">
+        <div class="kpi"><div class="v" id="k_uni">—</div><div class="l">unidades de medida (500 ha c/u)</div></div>
+        <div class="kpi"><div class="v" id="k_dur">—</div><div class="l">duración del permiso (días)</div></div>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><div class="v" style="color:var(--accent)" id="k_valor">—</div><div class="l">arancel unidad de medida 2026</div></div>
+        <div class="kpi"><div class="v" id="k_canon">—</div><div class="l">canon de cateo (art. 215 CM)</div></div>
+      </div>
+      <div id="limites"></div>
+      <h3>Pago</h3>
+      <div id="pagos"></div>
+    </div>
+  </div>
+
+  <h2><span class="n">1</span>Cronograma legal del cateo</h2>
+  <p class="muted">Calculado desde la fecha de solicitud con las reglas de cómputo de la Ley 688-M (art. 26:
+  plazos procesales en días hábiles; los del Código de Minería, corridos). Los hitos marcados <span class="fatalpill">FATAL</span>
+  son de caducidad/veda: no admiten prórroga.</p>
+  <div class="tl" id="crono"></div>
+
+  <h2><span class="n">2</span>Requisitos y trámites</h2>
+  <div class="grid2">
+    <div class="card"><h3 style="margin-top:0">Checklist de la solicitud</h3>
+      <ul class="chk">
+        <li>Solicitud con datos del peticionante y domicilio legal en la Provincia</li>
+        <li>Objeto: sustancias de 1ª y 2ª categoría a explorar</li>
+        <li>Superficie y ubicación (departamento) del área</li>
+        <li>Coordenadas de los vértices (POSGAR 2007 / GK Faja 2)</li>
+        <li>Unidades de medida solicitadas (máx. 20 por permiso)</li>
+        <li>Programa Mínimo de Exploración (trámite N.º 7)</li>
+        <li>Constancia de pago del arancel / canon (comprobante impreso)</li>
+        <li>Declaración de no superar el máximo por titular en la Provincia</li>
+      </ul></div>
+    <div class="card"><h3 style="margin-top:0">Trámites oficiales</h3>
+      <div id="tramites"></div></div>
+  </div>
+
+  <h2><span class="n">3</span>Marco legal</h2>
+  <div class="card">
+    <div class="art"><b>Art. 25 CM</b> — Toda persona física o jurídica puede solicitar permisos exclusivos para explorar un área determinada; el titular del permiso tiene derecho exclusivo a obtener las concesiones de explotación dentro de su área.</div>
+    <div class="art"><b>Art. 29 CM</b> — La unidad de medida del cateo es de 500 ha. Máximo 20 unidades por permiso; hasta 20 permisos y 400 unidades por persona y provincia.</div>
+    <div class="art"><b>Art. 30 CM</b> — Duración del permiso según cantidad de unidades (150 días por la 1ª unidad + 50 por cada unidad adicional); liberaciones parciales obligatorias sobre el excedente de 4 unidades.</div>
+    <div class="art"><b>Arts. 40-48 Ley 688-M</b> — Procedimiento provincial: informe de Catastro, publicación de edictos (2 veces en 10 días), acreditación, oposición de terceros, otorgamiento, instalación de trabajos e informe final.</div>
+    <div class="art"><b>Art. 215 inc. 3 CM (t.o. Ley 27.701)</b> — Canon anual del permiso de exploración por unidad de medida.</div>
+  </div>
+
+  <h2><span class="n">4</span>Resumen para el formulario</h2>
+  <p class="muted">Copiá este bloque y volcalo en la solicitud del Permiso de Exploración.</p>
+  <pre class="resumen" id="resumen"></pre>
+  <button class="btn" id="copiarResumen" style="margin-top:6px">Copiar resumen</button>
+</main>
+
+<script>
+const DEPTOS=["Albardón","Angaco","Calingasta","Capital","Caucete","Chimbas","Iglesia","Jáchal","9 de Julio","Pocito","Rawson","Rivadavia","San Martín","Santa Lucía","Sarmiento","Ullum","Valle Fértil","Zonda","25 de Mayo"];
+const fmt=n=>Math.round(n||0).toLocaleString('es-AR');
+const money=n=>'$'+ (n||0).toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const $=id=>document.getElementById(id);
+async function j(p){ for(const u of [p, p.replace('out_hist/','')]){ try{const r=await fetch(u); if(r.ok) return await r.json();}catch(e){} } return null; }
+
+// ---- cómputo de plazos (port de bsj/legal.py) ----
+function feriados(y){ return new Set(["-01-01","-03-24","-04-02","-05-01","-05-25","-06-20","-07-09","-12-08","-12-25"].map(s=>y+s)); }
+function iso(d){ return d.toISOString().slice(0,10); }
+function esHabil(d){ const wd=d.getUTCDay(); if(wd===0||wd===6) return false; return !feriados(d.getUTCFullYear()).has(iso(d)); }
+function sumarHabiles(desde,n){ let f=new Date(desde),c=0; while(c<n){ f=new Date(f.getTime()+864e5); if(esHabil(f)) c++; } return f; }
+function sumarCorridos(desde,n){ let f=new Date(desde.getTime()+n*864e5); while(!esHabil(f)) f=new Date(f.getTime()+864e5); return f; }
+const UNIDAD_HA=500, MAX_UNI=20;
+function unidadesDe(has){ return Math.max(1, Math.ceil(has/UNIDAD_HA)); }
+function duracionCateo(u){ return 150+50*(u-1); }
+
+function cronogramaCateo(fs, has){
+  const u=unidadesDe(has), dur=duracionCateo(Math.min(u,MAX_UNI)), H=[];
+  const add=(f,cod,d,norma,cons,fatal)=>H.push({f:new Date(f),cod,d,norma,cons,fatal:!!fatal});
+  const ordenPub=sumarHabiles(fs,15);
+  add(ordenPub,"CAT-PUB","Publicar edictos: 2 veces alternadas en 10 días","art. 41 Ley 688-M; art. 53 CM","Sin publicación acreditada no avanza el trámite.",false);
+  const ultPub=sumarCorridos(ordenPub,10);
+  add(ultPub,"CAT-PUB2","Última publicación de edictos (fin del plazo de 10 días)","art. 41 Ley 688-M","Desde acá corre la oposición.",false);
+  add(sumarHabiles(ordenPub,20),"CAT-ACR","Acreditar la publicación ante la Autoridad Minera","art. 41 párr. 2 Ley 688-M","Exhibir copia del recibo de pago.",false);
+  const finOpo=sumarCorridos(ultPub,20);
+  add(finOpo,"CAT-OPO","Plazo de terceros para deducir oposición","art. 42 Ley 688-M; art. 27 CM","Vencido sin oposición, queda en estado de resolver.",false);
+  const otorg=sumarHabiles(finOpo,60);
+  add(otorg,"CAT-OTOR","Otorgamiento estimado del permiso ("+u+" unidades, "+dur+" días)","art. 29 inc. c Ley 688-M","Estimación operativa, no plazo legal.",false);
+  add(sumarCorridos(otorg,30),"CAT-INST","Instalar los trabajos del programa mínimo","art. 45 Ley 688-M; art. 30 párr. 3 CM","Revocación del permiso (art. 41 inc. a CM).",true);
+  const inicio=new Date(otorg.getTime()+30*864e5);
+  const venc=sumarCorridos(inicio,dur);
+  if(u>4){ for(const [dia,et] of [[300,"1ra"],[700,"2da"]]){ if(dur>=dia){ const f=sumarCorridos(inicio,dia);
+    add(f,"CAT-LIB"+dia,et+" liberación obligatoria: desafectar la mitad del excedente sobre 4 unidades","art. 30 párr. 2 CM","Si no se pide en término, libera Catastro + multa igual al canon.",true); } } }
+  add(venc,"CAT-VENC","VENCIMIENTO del permiso ("+dur+" días corridos)","art. 30 CM","Caducidad de pleno derecho (art. 48 Ley 688-M).",true);
+  add(sumarCorridos(venc,90),"CAT-INFO","Presentar información y documentación técnica","art. 45 in fine Ley 688-M; art. 30 in fine CM","Multa igual al DOBLE del canon abonado.",false);
+  H.sort((a,b)=>a.f-b.f);
+  return {u,dur,hitos:H};
+}
+
+let REF=null, CANON_CATEO_UNIDAD=9680;
+function valorUnidad(u){
+  if(REF && REF.unidad_medida_cateo_2026){ return u*REF.unidad_medida_cateo_2026.valor_por_unidad; }
+  return null;
+}
+function recalcular(){
+  const has=parseFloat($('has').value)||0;
+  const u=unidadesDe(has);
+  const dur=duracionCateo(Math.min(u,MAX_UNI));
+  $('k_uni').textContent=u;
+  $('k_dur').textContent=dur;
+  const val=valorUnidad(u);
+  $('k_valor').textContent = val!=null? money(val) : '—';
+  $('k_canon').textContent = money(u*CANON_CATEO_UNIDAD);
+  // límites
+  let lim='';
+  if(u>MAX_UNI) lim+=`<div class="warnbox"><b>Excede el máximo:</b> ${u} unidades pedidas; el máximo por permiso es ${MAX_UNI} (10.000 ha, art. 29 CM). Hay que dividir en varios permisos.</div>`;
+  else lim+=`<div class="okbox">Dentro del máximo de ${MAX_UNI} unidades por permiso (art. 29 CM).</div>`;
+  $('limites').innerHTML=lim;
+  // pagos
+  if(REF){
+    const cCateo=(REF.cbu||[]).find(c=>c.clave==='cateo');
+    const cRentas=(REF.cbu||[]).find(c=>c.clave==='unidades_tributarias_rentas');
+    let ph=`<p class="muted">Arancel a transferir: <b style="color:var(--accent)">${val!=null?money(val):'—'}</b> (${u} × ${REF.unidad_medida_cateo_2026?money(REF.unidad_medida_cateo_2026.valor_por_unidad):'—'}).</p>`;
+    [cCateo,cRentas].filter(Boolean).forEach(c=>{ ph+=`<div style="margin:6px 0"><div class="muted">${c.concepto}</div><span class="cbu">${c.cbu}</span><button class="copy" data-cbu="${c.cbu}">copiar</button></div>`; });
+    ph+=`<div class="warnbox">${REF.nota_pago||'Traer el comprobante de transferencia impreso.'}</div>`;
+    $('pagos').innerHTML=ph;
+    $('pagos').querySelectorAll('.copy').forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(b.dataset.cbu);const t=b.textContent;b.textContent='✓';setTimeout(()=>b.textContent=t,1000);}catch(e){}});
+  }
+  // cronograma
+  const fv=$('fecha').value;
+  if(fv){
+    const fs=new Date(fv+'T00:00:00Z');
+    const {hitos}=cronogramaCateo(fs,has);
+    const hoy=new Date();
+    $('crono').innerHTML=hitos.map(h=>{
+      const dias=Math.round((h.f-fs)/864e5);
+      return `<div class="row ${h.fatal?'fatal':''}"><div class="f">${iso(h.f)}<br><span class="muted">+${dias}d</span></div>
+        <div><div class="d">${h.d}${h.fatal?'<span class="fatalpill">FATAL</span>':''}</div><div class="nm">${h.norma} · ${h.cons}</div></div></div>`;
+    }).join('');
+  }
+  // resumen
+  const r=[
+    'SOLICITUD DE PERMISO DE EXPLORACIÓN (CATEO) — San Juan',
+    '',
+    'Solicitante: '+($('titular').value||'…'),
+    'CUIT/DNI: '+($('cuit').value||'…')+'   Domicilio legal: '+($('domicilio').value||'…'),
+    'Departamento: '+$('depto').value+'   Sustancias: '+($('mineral').value||'…'),
+    'Superficie: '+fmt(has)+' ha  ->  '+u+' unidad(es) de medida de 500 ha (art. 29 CM)',
+    'Duración legal del permiso: '+dur+' días corridos (art. 30 CM)',
+    'Arancel unidad de medida 2026: '+(val!=null?money(val):'—')+'  ('+u+' x '+(REF&&REF.unidad_medida_cateo_2026?money(REF.unidad_medida_cateo_2026.valor_por_unidad):'—')+')',
+    'Vértices: '+(($('vertices').value||'a completar').replace(/\n/g,' | ')),
+    '',
+    'Trámite: Permiso de Exploración (N.º 4) + Programa Mínimo de Exploración (N.º 7).',
+    'Pago: CBU Fondos de terceros para cateo + CBU Unidades Tributarias D.G. Rentas. Traer comprobante impreso.',
+  ].join('\n');
+  $('resumen').textContent=r;
+}
+
+(async()=>{
+  $('depto').innerHTML=DEPTOS.map(d=>`<option>${d}</option>`).join('');
+  $('depto').value='Calingasta';
+  $('fecha').value=new Date().toISOString().slice(0,10);
+  REF=await j('legal/referencia_minera_sj.json');
+  if(REF && REF.tramites){
+    const claves=['permiso_exploracion','programa_minimo','manifestacion','peticion_mensura','acta_mensura','mina_vacante'];
+    $('tramites').innerHTML=claves.map(k=>REF.tramites.find(t=>t.clave===k)).filter(Boolean)
+      .map(t=>`<a class="tramite" href="${t.url}" target="_blank" rel="noopener"><span class="tn">${t.nombre}</span><br><span class="td">${t.desc}</span></a>`).join('');
+  }
+  ['has','fecha','depto','mineral','titular','cuit','domicilio','vertices'].forEach(id=>{
+    $(id).addEventListener('input',recalcular); $(id).addEventListener('change',recalcular);
+  });
+  $('copiarResumen').onclick=async()=>{try{await navigator.clipboard.writeText($('resumen').textContent);$('copiarResumen').textContent='✓ copiado';setTimeout(()=>$('copiarResumen').textContent='Copiar resumen',1200);}catch(e){}};
+  recalcular();
+})();
+</script>
+</body>
+</html>
